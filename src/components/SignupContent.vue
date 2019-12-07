@@ -1,19 +1,28 @@
 <template>
-    <div>
-        <div class="parent">
-            <input type="text" v-model="user.name" placeholder="نام و نام خانوادگی">
-            <input type="email" v-model="user.email" placeholder="ایمیل">
-            <input type="password" v-model="user.password" placeholder="رمز عبور">
-            <button></button>
+    <div class="back">
+        <notifications position="top center" class="noti-style"/>
+        <div class="main-frame">
+            <div class="subject"><h1>ایجاد حساب کاربری</h1></div>
+            <div class="top">
+                <input type="text" v-model="user.name" placeholder="نام و نام خانوادگی">
+                <input type="email" v-model="user.email" placeholder="ایمیل">
+                <p v-if="!verifyEmail" class="red">ایمیل معتبر نمی باشد*</p>
+                <input type="password" v-model="user.password" placeholder="رمز عبور">
+            </div>
+            <div class="bottom">
+                <button @click="submitUser()">ایجاد حساب کاربری</button>
+                <p>در صورت داشتن حساب کاربری به حساب خود <span><router-link to="/signin" class="red"> وارد </router-link></span>شوید
+                </p>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Signup",
-        data:function () {
-            return{
+        name: "SignupContent",
+        data: function () {
+            return {
                 user: {
                     name: '',
                     email: '',
@@ -21,12 +30,103 @@
                     status: 'pending'
                 }
             }
+        },
+        methods: {
+            submitUser: function () {
+                if (this.user.name !=='' && this.user.email !== '' && this.user.password !== '') {
+                     // this.items.push(this.user);
+                    //this.$store.commit('setUsers', this.items);
+                    var success=this.$store.commit('signUp',this.user)
+                }
+                this.user = {
+                    name: '',
+                    email: '',
+                    password: '',
+                    status: 'pending'
+                };
+                // if(success===true){
+                    this.$notify('حساب کاربری ایجاد شد')
+                // }
+
+
+                // console.log(this.items, this.items.length);
+
+            }
+        },
+        computed: {
+            verifyEmail: function () {
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.user.email) || this.user.email === '') {
+                    return true;
+                }
+                return false;
+            }
         }
     }
 </script>
 
 <style scoped>
-.parent{
-    background-color: white;
-}
+    .back{
+        background-color: black;
+        padding: 100px 200px 100px 200px;
+    }
+    .main-frame {
+        background-color: white;
+        padding: 10px;
+        border-radius: 60px;
+        width: 600px;
+        margin: 0 auto;
+    }
+    .red {
+        color: darkred;
+    }
+    .bottom {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px;
+    }
+    button{
+        background-color: #521c34;
+        border-radius: 35px;
+        border: none;
+        padding: 0px 30px 0px 30px;
+        font-size: 15px;
+        color: white;
+        margin: 10px;
+    }
+    .bottom p{
+        color: #521c34;
+        margin: 20px;
+        text-align: right;
+        font-size: 13px;
+    }
+    .top{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 10px;
+    }
+    .top input{
+        margin: 10px;
+        border: none;
+        background-color: #dddddd;
+        border-radius: 25px;
+        padding: 10px;
+        text-align: right;
+
+    }
+    .subject h1{
+        text-align: center;
+        color: #521c34;
+    }
+    .top p{
+        font-size: 13px;
+        text-align: right;
+    }
+
+    /*notification*/
+    .noti-style{
+        padding: 0px;
+        margin: 0px 5px 5px;
+        font-size: 15px;
+    }
 </style>

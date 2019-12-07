@@ -1,10 +1,12 @@
 <template>
-    $END$
+    <SigninContent></SigninContent>
 </template>
 
 <script>
+    import SigninContent from "../components/SigninContent";
     export default {
-        name: "Signin"
+        name: "Signin",
+        components: {SigninContent}
     }
 </script>
 

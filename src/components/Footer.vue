@@ -1,5 +1,7 @@
 <template>
-    $END$
+    <div class="parent">
+
+    </div>
 </template>
 
 <script>
@@ -9,5 +11,8 @@
 </script>
 
 <style scoped>
-
+    .parent{
+        background-color: black;
+        min-height: 300px;
+    }
 </style>

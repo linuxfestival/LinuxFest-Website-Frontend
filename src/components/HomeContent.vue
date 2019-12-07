@@ -1,28 +1,39 @@
 <template>
-    <div class="parent">
-        <div class="top child"></div>
-        <div class="child">
-            <p class="about-event">{{aboutThisEvent}}</p>
+    <div class="main-frame">
+        <div class="top child"><p></p></div>
+        <div class="child about-event">
+            <AboutEvent></AboutEvent>
         </div>
-        <div class="workshops child"></div>
+        <div class="workshops child"><Workshops></Workshops></div>
+        <div class="text"></div>
     </div>
 </template>
 
 <script>
+    import AboutEvent from "./AboutEvent";
+    import Workshops from "./Workshops";
     export default {
-        name: "Home",
-        data:function () {
-            return{
-                aboutThisEvent: 'haloooooooooooooo'
+        name: "HomeContent",
+        components: {Workshops, AboutEvent},
+        data: function () {
+            return {
+
             }
-        }
+        },
+
     }
 </script>
 
 <style scoped>
-.about-event{
-    font-size: 18px;
-    color: white;
-    background-color: #521c34;
-}
+    .top {
+        background-color: #292929;
+        min-height: 500px;
+    }
+    .about-event{
+        margin: 5px 0 0 0;
+        border-bottom: 4px solid #e4b22b;
+    }
+    .workshops{
+        border-bottom: 4px solid #e4b22b;
+    }
 </style>

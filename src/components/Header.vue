@@ -3,7 +3,7 @@
         <div class="left child">
             <button class="register">ثبت نام کارگاه ها</button>
             <div class="vl"></div>
-            <router-link to="" class="link"> ورود به حساب کاربری </router-link>
+            <router-link to="/signin" class="link"> ورود به حساب کاربری </router-link>
         </div>
         <div class="right child">
             <router-link to="" class="link"> تماس با ما </router-link>
