@@ -6,7 +6,7 @@
             <router-link to="/signin" class="link"> ورود به حساب کاربری </router-link>
         </div>
         <div class="right child">
-            <router-link to="" class="link"> تماس با ما </router-link>
+            <router-link to="/user/me" class="link"> تماس با ما </router-link>
             <div class="vl"></div>
             <router-link to="" class="link"> کارگاه ها </router-link>
             <div class="vl"></div>

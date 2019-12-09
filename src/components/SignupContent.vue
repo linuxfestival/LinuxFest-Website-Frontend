@@ -19,6 +19,8 @@
 </template>
 
 <script>
+    import router from "../router/router";
+
     export default {
         name: "SignupContent",
         data: function () {
@@ -36,7 +38,11 @@
                 if (this.user.name !=='' && this.user.email !== '' && this.user.password !== '') {
                      // this.items.push(this.user);
                     //this.$store.commit('setUsers', this.items);
-                    var success=this.$store.commit('signUp',this.user)
+                   var success=this.$store.commit('signUp',this.user)
+                    if(success===true){
+                       this.$router.push('')
+                   }
+
                 }
                 this.user = {
                     name: '',
@@ -47,7 +53,6 @@
                 // if(success===true){
                     this.$notify('حساب کاربری ایجاد شد')
                 // }
-
 
                 // console.log(this.items, this.items.length);
 

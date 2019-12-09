@@ -22,6 +22,9 @@
 </template>
 
 <script>
+
+    import router from "../router/router";
+
     export default {
         name: "SigninContent",
         data: function () {
@@ -36,7 +39,9 @@
             logIn: function () {
                 //send https request and check if the user exists
                 //if true -> return newUser
-                this.$store.dispatch('logIn', newUser);
+                //this.$store.dispatch('logIn', newUser);
+                this.$router.push('user/me')
+                console.log("L")
             },
             logOut: function () {
                 // console.log(this.$store.getters.isLoggedIn);

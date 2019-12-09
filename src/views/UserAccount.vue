@@ -1,12 +1,14 @@
 <template>
     <div>
-
+        <UserAccountContent></UserAccountContent>
     </div>
 </template>
 
 <script>
+    import UserAccountContent from "../components/UserAccountContent";
     export default {
-        name: "UserAccount"
+        name: "UserAccount",
+        components: {UserAccountContent}
     }
 </script>
 

@@ -13,7 +13,8 @@
   import Signup from "./views/Signup";
   import Signin from "./views/Signin";
   import Footer from "./components/Footer";
+  import UserAccount from "./views/UserAccount";
   export default {
-    components: {Footer, Signin, Signup, Header}
+    components: {Footer, Signin, Signup, Header,UserAccount}
   }
 </script>
