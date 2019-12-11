@@ -7,34 +7,32 @@ export default new Vuex.Store({
     state: {
         token: localStorage.getItem('token') || '',
         loggedInUser: {},
-        allUsers: [],
         baseUrl:'',
-        baseUserUrl : this.baseUrl + '/users',
+        baseUserUrl : '' + '/users',
     },
     mutations: {
-        setToken: function (state, newToken) {
+        SetToken: function (state, newToken) {
             state.token = newToken;
             localStorage.setItem('token', newToken);
         },
 
-        setLoggedInUser: function (state, user) {
+        SetLoggedInUser: function (state, user) {
             state.loggedInUser = user;
         },
 
-        logOut: function (state) {
+        LogOut: function (state) {
             state.loggedInUser = {};
             state.token = '';
             localStorage.removeItem('token');
         },
-        setUsers: function (state, items) {
+        SetUsers: function (state, items) {
             state.allUsers = items;
         }
     },
     actions: {
-        logIn: function ({commit}, userToLogIn) {
+        LogIn: function ({commit}, userToLogIn) {
             console.log('login called');
-            console.log('payload : ', userToLogIn);
-            commit('setLoggedInUser', userToLogIn);
+
             //http request to login
             axios.post(this.baseUserUrl+'/login', {
                 email: userToLogIn.email,
@@ -44,14 +42,15 @@ export default new Vuex.Store({
                     console.log(response);
                     if(response.body.user===true){
                         //set the token
-                        commit('setToken',response.body.token)
+                        commit('SetToken',response.body.token)
 
                         //send new http request to get the full user info
                         axios.get(this.baseUserUrl+'/me')
                             .then(function (response) {
                                 // handle success
                                 console.log(response);
-                                commit('setLoggedInUser',response.body.user)
+                                commit('SetLoggedInUser',response.body.user)
+                                return true
 
                             })
                             .catch(function (error) {
@@ -61,16 +60,17 @@ export default new Vuex.Store({
                             .finally(function () {
                                 // always executed
                             });
-                        return true;
+                    }
+                    else{
+                        return false
                     }
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-            // if response ok - > commit('setToken', response)
-            //else
+
         },
-        signUp: function ({commit}, user) {
+        SignUp: function ({commit}, user) {
             //http request to signup
             axios.post(this.baseUrl+'/user', {
                 firstname: user.firstName,
@@ -81,6 +81,7 @@ export default new Vuex.Store({
                 .then(function (response) {
                     console.log(response);
                     if (response.body.user===true) {
+                        console.log("signUp OK")
                         return true;
                     }
                 })
@@ -88,17 +89,16 @@ export default new Vuex.Store({
                     console.log(error);
                 });
 
-            //write ok
         }
     },
     getters: {
-        isLoggedIn: (state) => {
+        IsLoggedIn: (state) => {
             return state.token !== '';
         },
-        getLoggedInUser: function (state) {
+        GetLoggedInUser: function (state) {
             return state.loggedInUser;
         },
-        getAllUsers: function (state) {
+        GetAllUsers: function (state) {
             return state.allUsers;
         }
     }

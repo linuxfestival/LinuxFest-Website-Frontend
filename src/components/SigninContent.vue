@@ -36,15 +36,14 @@
         },
         methods: {
             logIn: function () {
-                //send https request and check if the user exists
-                //if true -> return newUser
-                //this.$store.dispatch('logIn', newUser);
+                var success=this.$store.commit('LogIn',this.user)
+                if(success===true & this.$store.getters.GetLoggedInUser!=='')
                 this.$router.push('user/me')
-                console.log("L")
+                console.log("logged in")
             },
             logOut: function () {
                 // console.log(this.$store.getters.isLoggedIn);
-                this.$store.commit('logOut');
+                this.$store.commit('LogOut');
                 this.user = {
                     email: '',
                     password: ''
@@ -55,7 +54,7 @@
 
         computed: {
             isLoggedIn: function () {
-                return this.$store.getters.isLoggedIn;
+                return this.$store.getters.IsLoggedIn;
             }
         }
     }

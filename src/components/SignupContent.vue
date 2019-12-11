@@ -28,7 +28,7 @@
             return {
                 user: {
                     firstName: '',
-                    lastName:'',
+                    lastName: '',
                     email: '',
                     password: '',
                     status: 'pending'
@@ -43,36 +43,29 @@
         },
         methods: {
             submitUser: function () {
-                if (this.user.name !== '' && this.user.email !== '' && this.user.password !== '') {
-                    // this.items.push(this.user);
-                    //this.$store.commit('setUsers', this.items);
-                    this.$store.commit('signUp', this.user)
-
+                if (this.user.firstName !== '' && this.user.lastName !== '' && this.user.email !== '' && this.user.password !== '') {
+                    var success = this.$store.commit('SignUp', this.user);
+                    if (success === true) {
+                        this.$notify('حساب کاربری ایجاد شد')
+                    }
+                    this.user = {
+                        name: '',
+                        email: '',
+                        password: '',
+                        status: 'pending'
+                    };
 
                 }
-                this.user = {
-                    name: '',
-                    email: '',
-                    password: '',
-                    status: 'pending'
-                };
-                // if(success===true){
-                this.$notify('حساب کاربری ایجاد شد')
-                // }
-
-                // console.log(this.items, this.items.length);
-
-            }
-        },
-        computed: {
-            verifyEmail: function () {
-                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.user.email) || this.user.email === '') {
-                    return true;
+            },
+            computed: {
+                verifyEmail: function () {
+                    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.user.email) || this.user.email === '') {
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
             }
         }
-    }
 </script>
 
 <style scoped>
