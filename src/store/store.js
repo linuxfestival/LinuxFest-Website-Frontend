@@ -7,7 +7,9 @@ export default new Vuex.Store({
     state: {
         token: localStorage.getItem('token') || '',
         loggedInUser: {},
-        allUsers: []
+        allUsers: [],
+        baseUrl:'',
+        baseUserUrl : this.baseUrl + '/users',
     },
     mutations: {
         setToken: function (state, newToken) {
@@ -32,16 +34,60 @@ export default new Vuex.Store({
         logIn: function ({commit}, userToLogIn) {
             console.log('login called');
             console.log('payload : ', userToLogIn);
-            commit('setToken', userToLogIn.email);
             commit('setLoggedInUser', userToLogIn);
             //http request to login
+            axios.post(this.baseUserUrl+'/login', {
+                email: userToLogIn.email,
+                password: userToLogIn.password
+            })
+                .then(function (response) {
+                    console.log(response);
+                    if(response.body.user===true){
+                        //set the token
+                        commit('setToken',response.body.token)
+
+                        //send new http request to get the full user info
+                        axios.get(this.baseUserUrl+'/me')
+                            .then(function (response) {
+                                // handle success
+                                console.log(response);
+                                commit('setLoggedInUser',response.body.user)
+
+                            })
+                            .catch(function (error) {
+                                // handle error
+                                console.log(error);
+                            })
+                            .finally(function () {
+                                // always executed
+                            });
+                        return true;
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             // if response ok - > commit('setToken', response)
             //else
         },
-        signUp:function ({commit},user) {
+        signUp: function ({commit}, user) {
             //http request to signup
-            //if ok ->
-            this.logIn(user)
+            axios.post(this.baseUrl+'/user', {
+                firstname: user.firstName,
+                lastname: user.lastName,
+                email: user.email,
+                password: user.password
+            })
+                .then(function (response) {
+                    console.log(response);
+                    if (response.body.user===true) {
+                        return true;
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
             //write ok
         }
     },

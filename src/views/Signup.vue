@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    import SignupContent from "../components/SignupContent";
+    import SignupContent from "@/components/SignupContent";
     export default {
         name: "Signup",
         components: {SignupContent}

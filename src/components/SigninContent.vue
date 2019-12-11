@@ -23,7 +23,6 @@
 
 <script>
 
-    import router from "../router/router";
 
     export default {
         name: "SigninContent",

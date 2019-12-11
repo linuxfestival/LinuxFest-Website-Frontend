@@ -4,14 +4,16 @@
         <div class="main-frame">
             <div class="subject"><h1>ایجاد حساب کاربری</h1></div>
             <div class="top">
-                <input type="text" v-model="user.name" placeholder="نام و نام خانوادگی">
+                <input type="text" v-model="user.firstName" placeholder="نام">
+                <input type="text" v-model="user.lastName" placeholder="نام خانوادگی">
                 <input type="email" v-model="user.email" placeholder="ایمیل">
                 <p v-if="!verifyEmail" class="red">ایمیل معتبر نمی باشد*</p>
                 <input type="password" v-model="user.password" placeholder="رمز عبور">
             </div>
             <div class="bottom">
                 <button @click="submitUser()">ایجاد حساب کاربری</button>
-                <p>در صورت داشتن حساب کاربری به حساب خود <span><router-link to="/signin" class="red"> وارد </router-link></span>شوید
+                <p>در صورت داشتن حساب کاربری به حساب خود <span><router-link to="/signin"
+                                                                            class="red"> وارد </router-link></span>شوید
                 </p>
             </div>
         </div>
@@ -19,29 +21,33 @@
 </template>
 
 <script>
-    import router from "../router/router";
 
     export default {
         name: "SignupContent",
         data: function () {
             return {
                 user: {
-                    name: '',
+                    firstName: '',
+                    lastName:'',
                     email: '',
                     password: '',
                     status: 'pending'
                 }
             }
         },
+        created() {
+            console.log("component created");
+        },
+        mounted() {
+            console.log("component mounted.");
+        },
         methods: {
             submitUser: function () {
-                if (this.user.name !=='' && this.user.email !== '' && this.user.password !== '') {
-                     // this.items.push(this.user);
+                if (this.user.name !== '' && this.user.email !== '' && this.user.password !== '') {
+                    // this.items.push(this.user);
                     //this.$store.commit('setUsers', this.items);
-                   var success=this.$store.commit('signUp',this.user)
-                    if(success===true){
-                       this.$router.push('')
-                   }
+                    this.$store.commit('signUp', this.user)
+
 
                 }
                 this.user = {
@@ -51,7 +57,7 @@
                     status: 'pending'
                 };
                 // if(success===true){
-                    this.$notify('حساب کاربری ایجاد شد')
+                this.$notify('حساب کاربری ایجاد شد')
                 // }
 
                 // console.log(this.items, this.items.length);
@@ -70,10 +76,11 @@
 </script>
 
 <style scoped>
-    .back{
+    .back {
         background-color: black;
         padding: 100px 200px 100px 200px;
     }
+
     .main-frame {
         background-color: white;
         padding: 10px;
@@ -81,15 +88,18 @@
         width: 600px;
         margin: 0 auto;
     }
+
     .red {
         color: darkred;
     }
+
     .bottom {
         display: flex;
         justify-content: space-between;
         margin: 10px;
     }
-    button{
+
+    button {
         background-color: #521c34;
         border-radius: 35px;
         border: none;
@@ -98,19 +108,22 @@
         color: white;
         margin: 10px;
     }
-    .bottom p{
+
+    .bottom p {
         color: #521c34;
         margin: 20px;
         text-align: right;
         font-size: 13px;
     }
-    .top{
+
+    .top {
         display: flex;
         flex-direction: column;
         justify-content: center;
         margin: 10px;
     }
-    .top input{
+
+    .top input {
         margin: 10px;
         border: none;
         background-color: #dddddd;
@@ -119,17 +132,19 @@
         text-align: right;
 
     }
-    .subject h1{
+
+    .subject h1 {
         text-align: center;
         color: #521c34;
     }
-    .top p{
+
+    .top p {
         font-size: 13px;
         text-align: right;
     }
 
     /*notification*/
-    .noti-style{
+    .noti-style {
         padding: 0px;
         margin: 0px 5px 5px;
         font-size: 15px;
