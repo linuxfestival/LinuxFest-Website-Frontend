@@ -4,25 +4,24 @@
             <h1>کارگاه ها</h1>
         </div>
         <div class="bottom">
-            <!--            <div v-for="ws in allWorkshops">-->
-            <!--                {{ name }}: {{ value }}-->
-            <div class="main-frame">
-                <div class="left">
-                    <div class="detail">
-                        <h2>{{workshop.name}}</h2>
-                        <p>:مدرس</p>
-                        <p>{{workshop.teacher}}</p>
+            <div v-for="workshop in this.$store.getters.getWorkshops">
+                <div class="main-frame">
+                    <div class="left">
+                        <div class="detail">
+                            <h2>{{workshop.name}}</h2>
+                            <p>:مدرس</p>
+                            <p>{{workshop.teacher}}</p>
+                        </div>
+                        <div class="buttom">
+                            <button>توضیحات</button>
+                        </div>
                     </div>
-                    <div class="buttom">
-                        <button>توضیحات</button>
+                    <div class="right">
+                        <!--                    <img v-bind:src="workshop.image" alt="WORKSHOP">-->
+                        <img src="../assets/workshop.png" alt="WORKSHOP">
                     </div>
-                </div>
-                <div class="right">
-                    <!--                    <img v-bind:src="workshop.image" alt="WORKSHOP">-->
-                    <img src="../assets/workshop.png" alt="WORKSHOP">
                 </div>
             </div>
-            <!--            </div>-->
         </div>
     </div>
 </template>
@@ -32,7 +31,7 @@
         name: "Workshops",
         data: function () {
             return {
-                workshop: {
+                workshopSample: {
                     name: 'workshop1',
                     teacher: 'mahvash',
                     image: '../assets/workshop.png'
@@ -42,8 +41,19 @@
         },
         methods: {
             getWorkshops: function () {
-                this.allWorkshops.push(this.workshop);
+                // this.allWorkshops.push(this.workshopSample);
+                this.$store.commit('getWorkshopsFromServer')
             }
+        },
+
+        created() {
+            console.log("component created");
+            this.getWorkshops()
+
+        },
+        mounted() {
+            console.log("component mounted.");
+
         }
     }
 </script>
@@ -107,7 +117,8 @@
     .left p {
         margin: 0;
     }
-    .left button{
+
+    .left button {
         background-color: white;
         border-radius: 25px;
         border: none;
@@ -115,10 +126,12 @@
         font-size: 15px;
         color: black;
     }
-    .left .buttom{
+
+    .left .buttom {
         margin: 0 auto;
     }
-    .left .detail{
+
+    .left .detail {
         display: flex;
         flex-direction: column;
         text-align: right;

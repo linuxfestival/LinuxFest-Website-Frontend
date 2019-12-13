@@ -7,12 +7,20 @@ export default new Vuex.Store({
     state: {
         token: localStorage.getItem('token') || '',
         loggedInUser: {},
-        baseUrl:''
+        baseUrl:'',
+        allWorkshops:[],
+        config:{
+            headers:{
+                Authorization: ''
+            }
+        }
     },
     mutations: {
         setToken: function (state, newToken) {
             state.token = newToken;
             localStorage.setItem('token', newToken);
+            //////??????????????????
+            state.config.headers.Authorization="bearer " + this.token
         },
 
         setLoggedInUser: function (state, user) {
@@ -26,6 +34,9 @@ export default new Vuex.Store({
         },
         setUsers: function (state, items) {
             state.allUsers = items;
+        },
+        setAllWorkshops:function (state,workshops) {
+            state.allWorkshops=workshops
         }
     },
     actions: {
@@ -94,9 +105,7 @@ export default new Vuex.Store({
 
         },
         editUserInfo:function ({commit},user) {
-            axios.patch(this.baseUrl+'users'+'/me',{
-
-            })
+            axios.patch(this.baseUrl+'users'+'/me',{user},this.config )
                 .then((response) => {
                     console.log(response);
                     commit('setLoggedInUser',response.body.user)
@@ -105,6 +114,21 @@ export default new Vuex.Store({
                 }, (error) => {
                     console.log(error);
                     return false
+                });
+        },
+        getWorkshopsFromServer:function ({commit}) {
+            axios.get(this.baseUrl+'/workshops')
+                .then(function (response) {
+                    // handle success
+                    console.log(response);
+                    this.setAllWorkshops(response.body)
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
                 });
         }
     },
@@ -117,6 +141,9 @@ export default new Vuex.Store({
         },
         getAllUsers: function (state) {
             return state.allUsers;
+        },
+        getAllWorkshops:function () {
+            return state.allWorkshops;
         }
     }
 })

@@ -50,6 +50,7 @@
         methods:{
             editUser: function () {
                 var newUser=this.user
+                //delete the empty properties in the object
                 for (var propName in newUser) {
                     if (newUser[propName] === null || newUser[propName] ==="" || newUser[propName] === undefined) {
                         delete newUser[propName];
