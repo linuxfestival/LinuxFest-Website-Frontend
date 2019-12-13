@@ -5,6 +5,7 @@ import Signup from "../views/Signup";
 import Signin from "../views/Signin";
 import UserAccount from "../views/UserAccount";
 import WorkshopMore from "../views/WorkshopMore";
+import EditUserInfo from "../views/EditUserInfo";
 
 Vue.use(VueRouter);
 
@@ -30,9 +31,14 @@ const routes = [
     component: UserAccount
   },
   {
-    path: '/more',
+    path: '/more/#',
     name: 'more',
     component: WorkshopMore
+  },
+  {
+    path: '/edit',
+    name: 'edit',
+    component: EditUserInfo
   }
 
 ];

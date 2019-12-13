@@ -10,13 +10,14 @@
                     <div class="title"><h4>  کارگاه ها  </h4></div>
                     <div class="line"></div>
                 </div>
-                <div class="workshop-list">
+                <div class="workshop-list" v-for="workshop in this.$store.getters.getLoggedInUser.workshops">
                     <div class="workshop-item">
                         <div class="sub one"><img src="../assets/background2.png" alt=""></div>
-                        <div class="sub two"><p>عنوان کارگاه</p></div>
-                        <div class="sub three"><p>{{}}</p></div>
-                        <div class="sub four"><p><span>{{}}</span>هزار تومان</p></div>
-                        <div class="sub five"><button>اطلاعات بیشتر</button></div>
+                        <div class="sub two"><p>{{workshop.name}}</p></div>
+                        <div class="sub three"><p>{{workshop.teacher}}</p></div>
+                        <div class="sub four"><p><span>{{workshop.price}}</span>هزار تومان</p></div>
+                        //workshop id is something that you use to identify workshops easily
+                        <div class="sub five"><button @click="this.$router.push('/more'+workshop.id)">اطلاعات بیشتر</button></div>
                     </div>
                 </div>
             </div>
@@ -28,16 +29,16 @@
                 </div>
                 <div class="info-list">
                     <p>:نام</p>
-                    <!--                    <p class="yellow">{{this.$store.getLoggedInUser.name}}</p>-->
+                                        <p class="yellow">{{this.$store.getters.getLoggedInUser.firstName + this.$store.getters.getLoggedInUser.lastName}}</p>
                     <p>:ایمیل</p>
-                    <!--                    <p class="yellow">{{this.$store.getLoggedInUser.email}}</p>-->
+                                        <p class="yellow">{{this.$store.getters.getLoggedInUser.email}}</p>
                     <p>:شماره تماس</p>
-                    <!--                    <p class="yellow">{{this.$store.getLoggedInUser.phoneNumber}}</p>-->
+                                        <p class="yellow">{{this.$store.getters.getLoggedInUser.phoneNumber}}</p>
                     <p>:شماره دانشجویی</p>
-                    <!--                    <p class="yellow">{{this.$store.getLoggedInUser.studentNumber}}</p>-->
+                                        <p class="yellow">{{this.$store.getters.getLoggedInUser.studentNumber}}</p>
                 </div>
                 <div class="button">
-                    <button>ویرایش اطلاعات</button>
+                    <button><router-link to="/edit" class="link">ویرایش اطلاعات</router-link></button>
                 </div>
             </div>
 
@@ -168,4 +169,9 @@
         color: white;
         margin: 10px;
     }
+    .link{
+        text-decoration: none;
+        color: white;
+    }
+
 </style>

@@ -8,7 +8,7 @@
         <div class="right child">
             <router-link to="/user/me" class="link"> تماس با ما </router-link>
             <div class="vl"></div>
-            <router-link to="/more" class="link"> کارگاه ها </router-link>
+            <router-link to="" class="link"> کارگاه ها </router-link>
             <div class="vl"></div>
             <router-link to="/" class="link"> خانه </router-link>
         </div>

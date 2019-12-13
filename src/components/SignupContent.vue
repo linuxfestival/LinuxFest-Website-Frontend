@@ -8,6 +8,12 @@
                 <input type="text" v-model="user.lastName" placeholder="نام خانوادگی">
                 <input type="email" v-model="user.email" placeholder="ایمیل">
                 <p v-if="!verifyEmail" class="red">ایمیل معتبر نمی باشد*</p>
+                <div class="check-box">
+                    <input type="checkbox" id="checkbox" v-model="checked">
+                    <label for="checkbox">امیرکبیری هستم</label>
+                </div>
+                <input type="text" v-model="user.studentNumber" v-if="this.checked" placeholder="شماره دانشجویی">
+                <input type="text" v-model="user.phoneNumber" placeholder="تلفن">
                 <input type="password" v-model="user.password" placeholder="رمز عبور">
             </div>
             <div class="bottom">
@@ -30,9 +36,11 @@
                     firstName: '',
                     lastName: '',
                     email: '',
+                    studentNumber: '',
+                    phoneNumber: '',
                     password: '',
-                    status: 'pending'
-                }
+                },
+                checked: ''
             }
         },
         created() {
@@ -43,16 +51,20 @@
         },
         methods: {
             submitUser: function () {
-                if (this.user.firstName !== '' && this.user.lastName !== '' && this.user.email !== '' && this.user.password !== '') {
-                    var success = this.$store.commit('SignUp', this.user);
-                    if (success === true) {
-                        this.$notify('حساب کاربری ایجاد شد')
+                if (this.user.firstName !== '' && this.user.phoneNumber !== ' ' && this.user.lastName !== '' && this.user.email !== '' && this.user.password !== '') {
+                    if (this.checked && this.user.studentNumber !== ' ') {
+                        var success = this.$store.commit('signUp', this.user);
+                        if (success === true) {
+                            this.$notify('حساب کاربری ایجاد شد')
+                        }
                     }
                     this.user = {
-                        name: '',
+                        firstName: '',
+                        lastName: '',
                         email: '',
+                        studentNumber: '',
+                        phoneNumber: '',
                         password: '',
-                        status: 'pending'
                     };
 
                 }
@@ -66,6 +78,7 @@
                 }
             }
         }
+    }
 </script>
 
 <style scoped>
@@ -124,6 +137,23 @@
         padding: 10px;
         text-align: right;
 
+    }
+
+    .top label {
+        font-size: 13px;
+        text-align: right;
+    }
+
+    .top .check-box {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: right;
+    }
+
+    .top #checkbox {
+        justify-content: right;
+        position: relative;
+        top: -10px;
     }
 
     .subject h1 {
