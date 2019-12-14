@@ -3,7 +3,11 @@
         <div class="left child">
             <button class="register">ثبت نام کارگاه ها</button>
             <div class="vl"></div>
-            <router-link to="/signin" class="link"> ورود به حساب کاربری </router-link>
+            <router-link to="/signin" class="link" v-if="!this.ifLoggedin"> ورود به حساب کاربری </router-link>
+            <router-link to="/signin" class="link" v-if="this.ifLoggedin">
+                حساب من
+            </router-link>
+            <button class="sign-out" v-if="this.ifLoggedin" @click="this.logout">خروج</button>
         </div>
         <div class="right child">
             <router-link to="/user/me" class="link"> تماس با ما </router-link>
@@ -17,7 +21,17 @@
 
 <script>
     export default {
-        name: "Header"
+        name: "Header",
+        methods:{
+          logout:function () {
+              this.$store.commit('logOut');
+          }
+        },
+        computed:{
+            ifLoggedin:function () {
+                return this.$store.getters.isLoggedIn;
+            }
+        }
     }
 </script>
 

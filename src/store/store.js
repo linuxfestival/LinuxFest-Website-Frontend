@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {config} from "@fortawesome/fontawesome-svg-core";
 
 Vue.use(Vuex);
 
@@ -20,17 +21,11 @@ export default new Vuex.Store({
             state.token = newToken;
             localStorage.setItem('token', newToken);
             //////??????????????????
-            state.config.headers.Authorization="bearer " + this.token
+            state.config.headers.Authorization="bearer " + this.token;
         },
 
         setLoggedInUser: function (state, user) {
             state.loggedInUser = user;
-        },
-
-        logOut: function (state) {
-            state.loggedInUser = {};
-            state.token = '';
-            localStorage.removeItem('token');
         },
         setUsers: function (state, items) {
             state.allUsers = items;
@@ -44,7 +39,7 @@ export default new Vuex.Store({
             console.log('login called');
 
             //http request to login
-            axios.post(this.baseUserUrl+'/login', {
+            axios.post(this.baseUrl+'/users'+'/login', {
                 email: userToLogIn.email,
                 password: userToLogIn.password
             })
@@ -82,9 +77,24 @@ export default new Vuex.Store({
                 });
 
         },
+
+        logOut: function (state) {
+            state.loggedInUser = {};
+            state.token = '';
+            localStorage.removeItem('token');
+            axios.post(this.baseUrl+'/users'+'/me/logout', {})
+                .then(function (response) {
+                    console.log(response);
+                    return true
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    return false
+                });
+        },
         signUp: function ({commit}, user) {
             //http request to signup
-            axios.post(this.baseUrl+'/user', {
+            axios.post(this.baseUrl+'/users', {
                 firstname: user.firstName,
                 lastname: user.lastName,
                 email: user.email,
@@ -105,7 +115,7 @@ export default new Vuex.Store({
 
         },
         editUserInfo:function ({commit},user) {
-            axios.patch(this.baseUrl+'users'+'/me',{user},this.config )
+            axios.patch(this.baseUrl+'/users'+'/me',{user}, this.config )
                 .then((response) => {
                     console.log(response);
                     commit('setLoggedInUser',response.body.user)
@@ -130,6 +140,21 @@ export default new Vuex.Store({
                 .finally(function () {
                     // always executed
                 });
+        },
+        getUserFromServer:function ({commit}) {
+            axios.get(this.baseUrl+'/users'+'/me',this.config)
+                .then(function (response) {
+                    // handle success
+                    console.log(response);
+                    this.setLoggedInUser(response.body.user)
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
+                });
         }
     },
     getters: {
@@ -142,7 +167,7 @@ export default new Vuex.Store({
         getAllUsers: function (state) {
             return state.allUsers;
         },
-        getAllWorkshops:function () {
+        getAllWorkshops:function (state) {
             return state.allWorkshops;
         }
     }

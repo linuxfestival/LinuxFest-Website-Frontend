@@ -3,18 +3,18 @@
         <notifications position="top center" class="noti-style"/>
         <div class="main-frame">
             <div class="info-list">
-                <input type="text" v-model="user.firstName"  :placeholder="this.$store.getters.getLoggedInUser.firstName+'  (نام)'">
-                <input type="text" v-model="user.lastName" :placeholder="this.$store.getters.getLoggedInUser.lastName+'  (نام خانوادگی)'">
-                <input type="email" v-model="user.email" :placeholder="this.$store.getters.getLoggedInUser.email+'  (ایمیل)'">
+                <input type="text" v-model="user.firstName"  :placeholder="this.getFirstName +'  (نام)'">
+                <input type="text" v-model="user.lastName" :placeholder="this.getLastName+'  (نام خانوادگی)'">
+                <input type="email" v-model="user.email" :placeholder="this.getEmail+'  (ایمیل)'">
                 <p v-if="!verifyEmail" class="red">ایمیل معتبر نمی باشد*</p>
                 <input type="password" v-model="user.password" placeholder="رمز عبور">
-                <input type="text" v-model="user.phoneNumber" :placeholder="this.$store.getters.getLoggedInUser.phoneNumber+'  (تلفن)'">
+                <input type="text" v-model="user.phoneNumber" :placeholder="this.getPhoneNumber+'  (تلفن)'">
                 <div class="check-box">
                     <input type="checkbox" id="checkbox" v-model="checked">
                     <label for="checkbox">امیرکبیری هستم</label>
                 </div>
-                <input type="email" v-model="user.email" v-if="this.checked" :placeholder="this.$store.getters.getLoggedInUser.studentNumber+'  (شماره دانشجویی)'">
-                <input type="email" v-model="user.email" :placeholder="this.$store.getters.getLoggedInUser.age+'  (سن)'">
+                <input type="email" v-model="user.email" v-if="this.checked" :placeholder="this.getStudentNumber+'  (شماره دانشجویی)'">
+                <input type="email" v-model="user.email" :placeholder="this.getAge+'  (سن)'">
             </div>
             <div class="button">
                 <button @click="editUser()">ثبت</button>
@@ -45,6 +45,24 @@
                     return true;
                 }
                 return false;
+            },
+            getFirstName:function () {
+                return this.$store.getters.getLoggedInUser.firstName;
+            },
+            getLastName:function () {
+                return this.$store.getters.getLoggedInUser.lastName;
+            },
+            getEmail:function () {
+                return this.$store.getters.getLoggedInUser.email;
+            },
+            getPhoneNumber:function () {
+                return this.$store.getters.getLoggedInUser.phoneNumber;
+            },
+            getStudentNumber:function () {
+                return this.$store.getters.getLoggedInUser.studentNumber;
+            },
+            getAge:function () {
+                return this.$store.getters.getLoggedInUser.age;
             }
         },
         methods:{

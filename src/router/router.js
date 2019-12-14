@@ -50,7 +50,7 @@ const router = new VueRouter({
 
 
 const requiredAuth = ['/edit', '/user/me'];
-const notRequiredAuth = ['/signin', 'signup'];
+const notRequiredAuth = ['/signin', '/signup'];
 router.beforeEach((to, from, next) => {
     console.log('from ', from);
     console.log('to ', to);
@@ -62,10 +62,10 @@ router.beforeEach((to, from, next) => {
         } else {
         }
     } else if (notRequiredAuth.includes(to.path)) {
-      if(store.getters.isLoggedIn()){
+      if(store.getters.isLoggedIn){
         next('/user/me')
       }else{
-
+            next()
       }
     } else {
         next()
