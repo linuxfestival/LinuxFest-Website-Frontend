@@ -27,7 +27,7 @@
         name: "Header",
         methods:{
           logout:function () {
-              this.$store.commit('logOut');
+              this.$store.dispatch('logOut');
           }
         },
         mounted() {
