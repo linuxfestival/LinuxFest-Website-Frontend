@@ -43,7 +43,7 @@
             },
             logOut: function () {
                 // console.log(this.$store.getters.isLoggedIn);
-                this.$store.commit('logOut');
+                this.$store.dispatch('logOut');
                 this.user = {
                     email: '',
                     password: ''

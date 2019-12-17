@@ -14,6 +14,7 @@
                 </div>
                 <input type="text" v-model="user.studentNumber" v-if="this.checked" placeholder="شماره دانشجویی">
                 <input type="text" v-model="user.phoneNumber" placeholder="تلفن">
+                <input type="text" v-model="user.age" placeholder="سن">
                 <input type="password" v-model="user.password" placeholder="رمز عبور">
             </div>
             <div class="bottom">
@@ -39,6 +40,8 @@
                     studentNumber: '',
                     phoneNumber: '',
                     password: '',
+                    age: '',
+                    isAmirkabiri:''
                 },
                 checked: ''
             }
@@ -51,11 +54,23 @@
         },
         methods: {
             submitUser: function () {
-                if (this.user.firstName !== '' && this.user.phoneNumber !== ' ' && this.user.lastName !== '' && this.user.email !== '' && this.user.password !== '') {
-                    if (this.checked && this.user.studentNumber !== ' ') {
-                        var success = this.$store.commit('signUp', this.user);
-                        if (success === true) {
+                if (this.user.age!=='' && this.user.firstName !== '' && this.user.phoneNumber !== ' ' && this.user.lastName !== '' && this.user.email !== '' && this.user.password !== '') {
+                    if ((this.checked==='' && this.user.studentNumber === '')||(this.checked!=='' && this.user.studentNumber!=='')) {
+                        if(this.checked!=='') this.isAmirkabiri='true';
+                        //delete the empty properties in the object
+                        for (var propName in this.user) {
+                            if (this.user[propName] === null || this.user[propName] ==="" || this.user[propName] === undefined) {
+                                delete this.user[propName];
+                            }
+                        }
+                        console.log("Before");
+                        var success = this.$store.dispatch('signUp', this.user);
+                        console.log(success);
+                        if (success == true) {
                             this.$notify('حساب کاربری ایجاد شد')
+                        }else{
+                            this.$notify('خطا دز ایجاد حساب جدید')
+
                         }
                     }
                     this.user = {
@@ -68,14 +83,14 @@
                     };
 
                 }
-            },
-            computed: {
-                verifyEmail: function () {
-                    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.user.email) || this.user.email === '') {
-                        return true;
-                    }
-                    return false;
+            }
+
+            }, computed: {
+            verifyEmail: function () {
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.user.email) || this.user.email === '') {
+                    return true;
                 }
+                return false;
             }
         }
     }

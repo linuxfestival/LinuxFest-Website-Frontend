@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 import {config} from "@fortawesome/fontawesome-svg-core";
 
 Vue.use(Vuex);
@@ -8,7 +9,7 @@ export default new Vuex.Store({
     state: {
         token: localStorage.getItem('token') || '',
         loggedInUser: {},
-        baseUrl:'',
+        baseUrl:'45.147.76.80',
         allWorkshops:[],
         config:{
             headers:{
@@ -93,13 +94,9 @@ export default new Vuex.Store({
                 });
         },
         signUp: function ({commit}, user) {
+            console.log("In signUp in store")
             //http request to signup
-            axios.post(this.baseUrl+'/users', {
-                firstname: user.firstName,
-                lastname: user.lastName,
-                email: user.email,
-                password: user.password
-            })
+            axios.post(this.baseUrl+'/users', user)
                 .then(function (response) {
                     console.log(response);
                     if (response.body.user===true) {
@@ -109,6 +106,7 @@ export default new Vuex.Store({
                 })
                 .catch(function (error) {
                     console.log(error);
+                    console.log("ERROR")
                     return false
 
                 });

@@ -75,7 +75,7 @@
                     }
                 }
                 console.log(newUser)
-                var success=this.$store.commit('editUserInfo',newUser)
+                var success=this.$store.dispatch('editUserInfo',newUser)
                 if(success===true){
                     this.$notify('ویرایش با موفقیت انجام شد')
                 }
