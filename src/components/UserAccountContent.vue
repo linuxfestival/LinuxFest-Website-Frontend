@@ -1,7 +1,7 @@
 <template>
     <div class="parent">
         <div class="top">
-            <img src="../assets/background2.png" alt="">
+            <!-- <img src="../assets/background2.png" alt=""> -->
         </div>
         <div class="bottom">
             <div class="left info-card">
@@ -12,7 +12,7 @@
                 </div>
                 <div class="workshop-list" v-for="workshop in this.getUserWorkshops">
                     <div class="workshop-item">
-                        <div class="sub one"><img src="../assets/background2.png" alt=""></div>
+                        <!-- <div class="sub one"><img src="../assets/img/background2.png" alt=""></div> -->
                         <div class="sub two"><p>{{workshop.firstName + " " + workshop.lastName}}</p></div>
                         <div class="sub three"><p>{{workshop.teacher}}</p></div>
                         <div class="sub four"><p><span>{{workshop.price}}</span>هزار تومان</p></div>

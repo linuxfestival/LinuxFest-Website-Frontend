@@ -2,7 +2,7 @@
     <div class="parent">
         <div>
             <div class="top">
-                <img src="../assets/background2.png" alt="">
+                <!-- <img src="../assets/background2.png" alt=""> -->
             </div>
             <div class="title"><h3>کارگاه فلان</h3></div>
         </div>
