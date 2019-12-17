@@ -10,7 +10,7 @@
                     <div class="title"><h4> کارگاه ها </h4></div>
                     <div class="line"></div>
                 </div>
-                <div class="workshop-list" v-for="workshop in this.getUserWorkshops">
+                <div class="workshop-list" v-if="hasWorkshop" v-for="workshop in this.getUserWorkshops">
                     <div class="workshop-item">
                         <!-- <div class="sub one"><img src="../assets/img/background2.png" alt=""></div> -->
                         <div class="sub two"><p>{{workshop.firstName + " " + workshop.lastName}}</p></div>
@@ -53,31 +53,38 @@
 <script>
     export default {
         name: "UserAccountContent",
+        data: function () {
+            return {
+                allWorkshops:[]
+            }
+            },
         computed: {
+            hasWorkshop:function(){
+              if(this.$store.getters.getLoggedInUser.workshops =='')
+                  return false
+                else return true;
+            },
             getUserWorkshops: function () {
                 return this.$store.getters.getLoggedInUser.workshops
+            }, getName: function () {
+                return this.$store.getters.getLoggedInUser.firstName + " " + this.$store.getters.getLoggedInUser.lastName;
             },
-            created() {
-                console.log("component created");
-                this.$store.commit('getUserFromServer');
+            getEmail: function () {
+                return this.$store.getters.getLoggedInUser.email + " ";
             },
-            mounted() {
-                console.log("component mounted.");
+            getPhoneNumber: function () {
+                return this.$store.getters.getLoggedInUser.phoneNumber + " ";
             },
-            computed: {
-                getName: function () {
-                    return this.$store.getters.getLoggedInUser.firstName + " " + this.$store.getters.getLoggedInUser.lastName;
-                },
-                getEmail: function () {
-                    return this.$store.getters.getLoggedInUser.email + " ";
-                },
-                getPhoneNumber: function () {
-                    return this.$store.getters.getLoggedInUser.phoneNumber + " ";
-                },
-                getStudentNumber: function f() {
-                    return this.$store.getters.getLoggedInUser.studentNumber+ " ";
-                }
+            getStudentNumber: function f() {
+                return this.$store.getters.getLoggedInUser.studentNumber + " ";
             }
+        },
+        created() {
+            console.log("component created");
+            this.$store.dispatch('getUserFromServer');
+        },
+        mounted() {
+            console.log("component mounted.");
         }
     }
 </script>
@@ -93,7 +100,7 @@
 
     .bottom {
         display: flex;
-        flex-direction: row;
+        flex-direction: row-reverse;
         justify-content: space-around;
         padding: 40px 0 30px 0;
     }
@@ -147,12 +154,16 @@
         border-bottom: 3px solid #c7962b;
         width: 100%;
         height: 30px;
+        position: relative;
+        top: -20px;
     }
 
     .right .line {
         border-bottom: 3px solid #c7962b;
         width: 100%;
         height: 30px;
+        position: relative;
+        top: -20px;
     }
 
     .title {

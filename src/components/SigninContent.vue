@@ -38,7 +38,7 @@
             logIn: function () {
                 var success=this.$store.dispatch('logIn',this.user)
                 if(success==true & this.$store.getters.getLoggedInUser!=='')
-                this.$router.push('user/me')
+                this.$router.push('/user/me')
                 console.log("logged in")
             },
             logOut: function () {

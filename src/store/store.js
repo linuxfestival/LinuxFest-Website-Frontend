@@ -13,7 +13,7 @@ export default new Vuex.Store({
         allWorkshops:[],
         config:{
             headers:{
-                Authorization: ''
+                Authorization: "Bearer "+localStorage.getItem('token')
             }
         }
     },
@@ -21,7 +21,7 @@ export default new Vuex.Store({
         setToken: function (state, newToken) {
             state.token = newToken;
             localStorage.setItem('token', newToken);
-            state.config.headers.Authorization="bearer " + state.token;
+            state.config.headers.Authorization="Bearer " + state.token;
         },
 
         setLoggedInUser: function (state, user) {
@@ -53,13 +53,14 @@ export default new Vuex.Store({
                             .then(function (response) {
                                 // handle success
                                 console.log(response);
-                                commit('setLoggedInUser',response.data.user)
+                                commit('setLoggedInUser',response.data);
                                 return true
 
                             })
                             .catch(function (error) {
                                 // handle error
                                 console.log(error);
+                                return false
                             })
                             .finally(function () {
                                 // always executed
@@ -139,11 +140,12 @@ export default new Vuex.Store({
                 });
         },
         getUserFromServer:function ({commit,state}) {
+            console.log(state.config);
             axios.get(state.baseUrl+'/users'+'/me',state.config)
                 .then(function (response) {
                     // handle success
                     console.log(response);
-                    commit('setLoggedInUser',response.data.user);
+                    commit('setLoggedInUser',response.data );
                 })
                 .catch(function (error) {
                     // handle error
