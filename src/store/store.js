@@ -159,15 +159,18 @@ export default new Vuex.Store({
     },
     getters: {
         isLoggedIn: (state) => {
-            return state.token !== '';
+            if(state.token == '') {
+                return false;
+            } else return true;
         },
-        getLoggedInUser: function (state) {
+    
+        getLoggedInUser: (state) => {
             return state.loggedInUser;
         },
-        getAllUsers: function (state) {
+        getAllUsers: (state) => {
             return state.allUsers;
         },
-        getAllWorkshops:function (state) {
+        getAllWorkshops: (state) => {
             return state.allWorkshops;
         }
     }
