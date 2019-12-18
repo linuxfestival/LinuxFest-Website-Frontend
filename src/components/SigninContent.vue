@@ -1,5 +1,7 @@
 <template>
     <div class="back">
+        <v-wait for="Wait to sign in"></v-wait>
+        <notifications position="top center" class="noti-style"/>
         <div class="main-frame">
             <div class="subject"><h1>ورود به حساب کاربری</h1></div>
             <div class="top">
@@ -7,7 +9,7 @@
                 <input type="password" v-model="user.password" placeholder="رمز عبور">
             </div>
             <div class="bottom">
-                <button @click="logIn()">ورود به حساب کاربری</button>
+                <button @click="logIn()" type="button">ورود به حساب کاربری</button>
                 <div class="help">
                     <p class="help-text">در صورت نداشتن حساب کاربری یک حساب <span><router-link to="/signup"
                                                                                                class="red"> ایجاد </router-link></span>کنید
@@ -35,11 +37,18 @@
             }
         },
         methods: {
-            logIn: function () {
-                var success=this.$store.dispatch('logIn',this.user)
-                if(success==true & this.$store.getters.getLoggedInUser!=='')
-                this.$router.push('/user/me')
-                console.log("logged in")
+            logIn: async function () {
+                var success = await this.$store.dispatch('logIn', this.user)
+                if (success == true & this.$store.getters.getLoggedInUser != '') {
+
+                    console.log("logged in")
+                    console.log(success);
+                    this.$wait.start('Wait to sign in');
+                    await this.$router.push('/user/me')
+                } else {
+                    this.$notify('خطا در ورود به حساب')
+
+                }
             },
             logOut: function () {
                 // console.log(this.$store.getters.isLoggedIn);

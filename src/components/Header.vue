@@ -15,7 +15,9 @@
             <router-link to="/registerworkshops" class="profileMenu-link registerLink">ثبت نام کارگاه ها</router-link>
             <div class="divider" ></div>
 
-            <router-link to="/signin" class="link" v-if="isLoggedIn">حساب من</router-link>
+            <router-link to="/user/me" class="link" v-if="isLoggedIn"> حساب من </router-link>
+            <div class="divider" v-if="isLoggedIn"></div>
+
             <button class="profileMenu-link singoutLink" v-if="isLoggedIn" @click="logout()">خروج</button>
         </nav>
         
@@ -26,8 +28,11 @@
     export default {
         name: "Header",
         methods:{
-          logout:function () {
-              this.$store.dispatch('logOut');
+          logout:async function () {
+              var success=await this.$store.dispatch('logOut');
+              if(success==true){
+                  await this.$router.push('/')
+              }
           }
         },
         mounted() {
@@ -89,5 +94,14 @@
     .divider {
         border-left: 2px solid #e4b22b;
         width: 1px;
+        margin: 0 3px 0 3px;
+    }
+    .profileMenu button{
+        background-color: #e4b22b;
+        border-radius: 25px;
+        border: none;
+        padding: 5px 10px 5px 10px;
+        font-size: 15px;
+        color: white;
     }
 </style>

@@ -9,11 +9,11 @@ export default new Vuex.Store({
     state: {
         token: localStorage.getItem('token') || '',
         loggedInUser: {},
-        baseUrl:"http://45.147.76.80",
-        allWorkshops:[],
-        config:{
-            headers:{
-                Authorization: "Bearer "+localStorage.getItem('token')
+        baseUrl: "http://45.147.76.80",
+        allWorkshops: [],
+        config: {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('token')
             }
         }
     },
@@ -21,7 +21,7 @@ export default new Vuex.Store({
         setToken: function (state, newToken) {
             state.token = newToken;
             localStorage.setItem('token', newToken);
-            state.config.headers.Authorization="Bearer " + state.token;
+            state.config.headers.Authorization = "Bearer " + state.token;
         },
 
         setLoggedInUser: function (state, user) {
@@ -30,93 +30,86 @@ export default new Vuex.Store({
         setUsers: function (state, items) {
             state.allUsers = items;
         },
-        setAllWorkshops:function (state,workshops) {
-            state.allWorkshops=workshops
+        setAllWorkshops: function (state, workshops) {
+            state.allWorkshops = workshops
         }
     },
     actions: {
-        logIn: function ({commit,state}, userToLogIn) {
+        logIn: async function ({commit, state}, userToLogIn) {
             console.log('login called');
 
-            //http request to login
-            axios.post(state.baseUrl+'/users'+'/login', {
-                email: userToLogIn.email,
-                password: userToLogIn.password
-            })
-                .then(function (response) {
-                    console.log(response);
-                        //set the token
-                        commit('setToken',response.data.token)
-                        console.log(state.config)
-                        //send new http request to get the full user info
-                        axios.get(state.baseUrl+'/users'+'/me',state.config)
-                            .then(function (response) {
-                                // handle success
-                                console.log(response);
-                                commit('setLoggedInUser',response.data);
-                                return true
-
-                            })
-                            .catch(function (error) {
-                                // handle error
-                                console.log(error);
-                                return false
-                            })
-                            .finally(function () {
-                                // always executed
-                            });
-
+            try{
+                //http request to login
+                const response=await axios.post(state.baseUrl + '/users' + '/login', {
+                    email: userToLogIn.email,
+                    password: userToLogIn.password
                 })
-                .catch(function (error) {
-                    console.log(error);
-                    return false
-
-                });
-
-        },
-
-        logOut: function (state) {
-
-            axios.post(state.baseUrl+'/users'+'/me/logout', state.config)
-                .then(function (response) {
-                    console.log(response);
+                console.log(response);
+                //set the token
+                commit('setToken', response.data.token)
+                console.log(state.config)
+                //send new http request to get the full user info
+                try {
+                    const res=await axios.get(state.baseUrl + '/users' + '/me', state.config);
+                    // handle success
+                    console.log(res);
+                    commit('setLoggedInUser', res.data);
                     return true
-                })
-                .catch(function (error) {
-                    console.log(error);
+                }catch (e) {
+                    console.log(e);
                     return false
-                });
-            state.loggedInUser = {};
-            state.token = '';
-            localStorage.removeItem('token');
+                }
+
+            }catch (e) {
+                console.log(e);
+                return false
+            }
+
         },
-        signUp: function ({commit,state}, user) {
+
+        logOut: async function ({state}) {
+
+            try{
+                console.log(state.baseUrl)
+                console.log(state.config)
+                const response= await axios.post(state.baseUrl + '/users' + '/me/logout',{}, state.config);
+                console.log(response);
+                state.loggedInUser = {};
+                localStorage.removeItem('token');
+                state.token = '';
+                state.config.Authorization = '';
+                return true;
+            }catch (e) {
+                console.log(e);
+                console.log("LOG OUT REQUEST FAILED");
+                return false
+            }
+
+        },
+        signUp: async function ({commit, state}, user) {
             console.log("In signUp in store");
             console.log(state.baseUrl);
             console.log(user);
-            //http request to signup
-            axios.post(state.baseUrl+'/users', user)
-
-                .then(function (response) {
-                    console.log(response);
-                    if (response.body.user==true) {
-                        console.log("signUp OK")
-                        return true;
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                    console.log("ERROR")
-                    return false
-
-                });
+            try {
+                const response = await axios.post(state.baseUrl + '/users', user)
+                console.log(response);
+                console.log(response.status);
+                if (response.status == '201') {
+                    console.log("signUp OK");
+                    return true;
+                }
+            } catch (err) {
+                console.log("ops:    " + err.data);
+                return false;
+            }
+            return false;
 
         },
-        editUserInfo:function ({commit,state},user) {
-            axios.patch(state.baseUrl+'/users'+'/me',user, state.config )
+        editUserInfo: function ({commit, state}, user) {
+            axios.patch(state.baseUrl + '/users' + '/me', user, state.config)
                 .then((response) => {
                     console.log(response);
-                    commit('setLoggedInUser',response.body.user)
+                    commit('setLoggedInUser', response.body.user)
                     return true
 
                 }, (error) => {
@@ -124,8 +117,8 @@ export default new Vuex.Store({
                     return false
                 });
         },
-        getWorkshopsFromServer:function ({commit,state}) {
-            axios.get(state.baseUrl+'/workshops')
+        getWorkshopsFromServer: function ({commit, state}) {
+            axios.get(state.baseUrl + '/workshops')
                 .then(function (response) {
                     // handle success
                     console.log(response);
@@ -139,13 +132,13 @@ export default new Vuex.Store({
                     // always executed
                 });
         },
-        getUserFromServer:function ({commit,state}) {
+        getUserFromServer: function ({commit, state}) {
             console.log(state.config);
-            axios.get(state.baseUrl+'/users'+'/me',state.config)
+            axios.get(state.baseUrl + '/users' + '/me', state.config)
                 .then(function (response) {
                     // handle success
                     console.log(response);
-                    commit('setLoggedInUser',response.data );
+                    commit('setLoggedInUser', response.data);
                 })
                 .catch(function (error) {
                     // handle error
@@ -158,11 +151,11 @@ export default new Vuex.Store({
     },
     getters: {
         isLoggedIn: (state) => {
-            if(state.token == '') {
+            if (state.token == '') {
                 return false;
             } else return true;
         },
-    
+
         getLoggedInUser: (state) => {
             return state.loggedInUser;
         },
