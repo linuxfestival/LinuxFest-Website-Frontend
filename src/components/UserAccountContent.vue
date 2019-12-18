@@ -30,14 +30,16 @@
                     <div class="line"></div>
                 </div>
                 <div class="info-list">
-                    <p>:نام</p>
+                    <p class="info-title">نام:</p>
                     <p class="yellow">{{this.getName}}</p>
-                    <p>:ایمیل</p>
+                    <p class="info-title">ایمیل:</p>
                     <p class="yellow">{{this.getEmail}}</p>
-                    <p>:شماره تماس</p>
+                    <p class="info-title">شماره تماس:</p>
                     <p class="yellow">{{this.getPhoneNumber}}</p>
-                    <p>:شماره دانشجویی</p>
-                    <p class="yellow">{{this.getStudentNumber}}</p>
+                    <p class="info-title" v-if="isAmirkabiri">شماره دانشجویی:</p>
+                    <p v-if="isAmirkabiri" class="yellow">{{this.getStudentNumber}}
+                    <p class="info-title">سن:</p>
+                    <p class="yellow">{{this.getAge}}</p>
                 </div>
                 <div class="button">
                     <button>
@@ -72,11 +74,21 @@
             getEmail: function () {
                 return this.$store.getters.getLoggedInUser.email + " ";
             },
+            getAge: function () {
+                return this.$store.getters.getLoggedInUser.age + " ";
+            },
             getPhoneNumber: function () {
                 return this.$store.getters.getLoggedInUser.phoneNumber + " ";
             },
             getStudentNumber: function f() {
                 return this.$store.getters.getLoggedInUser.studentNumber + " ";
+            },
+            isAmirkabiri: function () {
+                if('studentNumber' in this.$store.getters.getLoggedInUser){
+                    return true
+                }else {
+                    return false
+                }
             }
         },
         created() {
@@ -90,6 +102,12 @@
 </script>
 
 <style scoped>
+    p{
+        font-family: 'iransans';
+    }
+    h4{
+        font-family: 'iransans';
+    }
     .parent {
         background-color: #e8e8e8;
     }
@@ -118,18 +136,19 @@
 
     .right {
         min-height: 300px;
-        min-width: 20%;
+        min-width: 25%;
         border-radius: 30px;
         background-color: black;
         display: flex;
         flex-direction: column;
         color: white;
-        padding: 10px 40px 10px 40px;
+        padding: 10px 20px 10px 20px;
         text-align: right;
     }
 
     .yellow {
         color: #c7962b;
+        margin: 5px 30px 30px 0;
     }
 
     .right button {
@@ -142,13 +161,14 @@
         margin: 20px 0 0 0;
     }
 
+    .right button:hover{
+        opacity: 0.8;
+    }
     .button {
         text-align: left;
     }
 
-    .right p {
-        margin: 20px 0 0 0;
-    }
+
 
     .left .line {
         border-bottom: 3px solid #c7962b;
@@ -221,6 +241,9 @@
     .link {
         text-decoration: none;
         color: white;
+    }
+    .info-title{
+        margin: 20px 30px 0 0;
     }
 
 </style>

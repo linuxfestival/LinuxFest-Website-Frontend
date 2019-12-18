@@ -1,5 +1,6 @@
 <template>
     <div class="parent">
+        <v-wait for="Wait to sign in"></v-wait>
         <notifications position="top center" class="noti-style"/>
         <div class="main-frame">
             <div class="info-list">
@@ -7,9 +8,9 @@
                 <input type="text" v-model="user.lastName" :placeholder="this.getLastName+'  (نام خانوادگی)'" v-bind:class="!verifyLastName ? 'notVerified' : 'input'">
                 <input type="email" v-model="user.email" :placeholder="this.getEmail+'  (ایمیل)'" v-bind:class="!verifyEmail ? 'notVerified' : 'input'">
                 <p v-if="!verifyEmail" class="red">ایمیل معتبر نمی باشد*</p>
-                <input type="password" v-model="user.password" placeholder="رمز عبور">
+                <input type="password" v-model="user.password" v-bind:class="!verifyPassword ? 'notVerified' : 'input'" placeholder="رمز عبور">
                 <input type="text" v-model="user.phoneNumber" :placeholder="this.getPhoneNumber+'  (تلفن)'"  v-bind:class="!verifyPhoneNumber ? 'notVerified' : 'input'">
-                <input type="email" v-model="user.email" :placeholder="this.getAge+'  (سن)'" v-bind:class="!verifyAge ? 'notVerified' : 'input'">
+                <input type="email" v-model="user.age" :placeholder="this.getAge+'  (سن)'" v-bind:class="!verifyAge ? 'notVerified' : 'input'">
             </div>
             <div class="button">
                 <button @click="editUser()">ثبت</button>
@@ -30,6 +31,7 @@
                     studentNumber: '',
                     phoneNumber: '',
                     password: '',
+                    age: ''
                 },
                 checked:''
             }
@@ -116,7 +118,8 @@
                 }
                 console.log(newUser)
                 var success=await this.$store.dispatch('editUserInfo',newUser)
-                if(success===true){
+                this.$wait.start('Wait to sign in');
+                if(success==true){
                     this.$notify('ویرایش با موفقیت انجام شد')
                     this.user = {
                         firstName: '',
@@ -136,6 +139,12 @@
 </script>
 
 <style scoped>
+    p{
+        font-family: 'iransans';
+    }
+    input{
+        font-family: 'iransans';
+    }
     .parent{
         background-color: black;
         padding: 100px 200px 100px 200px;
@@ -157,7 +166,7 @@
         justify-content: right;
         flex-wrap: wrap;
     }
-    .info-list input{
+    .info-list .input{
         margin: 10px;
         border: none;
         background-color: #dddddd;
@@ -174,6 +183,9 @@
         font-size: 15px;
         color: white;
         margin: 10px;
+    }
+    .button button:hover {
+        background-color: rgb(242,169,56);
     }
     .red{
         color: darkred;
@@ -196,5 +208,14 @@
         padding: 0px;
         margin: 0px 5px 5px;
         font-size: 15px;
+    }
+
+    .notVerified {
+        border: 1px solid red;
+        margin: 10px;
+        background-color: #dddddd;
+        border-radius: 25px;
+        padding: 10px;
+        text-align: right;
     }
 </style>

@@ -39,16 +39,18 @@
         methods: {
             logIn: async function () {
                 var success = await this.$store.dispatch('logIn', this.user)
+                this.$wait.start('Wait to sign in');
                 if (success == true & this.$store.getters.getLoggedInUser != '') {
 
                     console.log("logged in")
                     console.log(success);
-                    this.$wait.start('Wait to sign in');
                     await this.$router.push('/user/me')
                 } else {
                     this.$notify('خطا در ورود به حساب')
 
                 }
+                this.$wait.end('Wait to sign in');
+
             },
             logOut: function () {
                 // console.log(this.$store.getters.isLoggedIn);
@@ -101,6 +103,9 @@
         font-size: 15px;
         color: white;
         margin: 10px;
+    }
+    button:hover {
+        background-color: rgb(242,169,56);
     }
 
     .bottom .help-text {

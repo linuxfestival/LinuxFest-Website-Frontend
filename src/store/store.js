@@ -110,7 +110,6 @@ export default new Vuex.Store({
                 const response = await axios.patch(state.baseUrl + '/users' + '/me', user, state.config)
                 console.log(response);
                 console.log(response.data)
-                commit('setLoggedInUser', response.body.user)
                 return true
             }catch (e) {
                 console.log(e);

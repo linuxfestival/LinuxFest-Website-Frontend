@@ -1,5 +1,6 @@
 <template>
     <div class="back">
+        <v-wait for="Wait to sign in"></v-wait>
         <notifications position="top center" class="noti-style"/>
         <div class="main-frame">
             <div class="subject"><h1>ایجاد حساب کاربری</h1></div>
@@ -69,31 +70,36 @@
             submitUser: async function () {
                 if (this.user.age !== '' && this.user.firstName !== '' && this.user.phoneNumber !== ' ' && this.user.lastName !== '' && this.user.email !== '' && this.user.password !== '') {
                     if ((this.checked === '' && this.user.studentNumber === '') || (this.checked !== '' && this.user.studentNumber !== '')) {
-                        if (this.checked !== '') this.isAmirkabiri = 'true';
-                        //delete the empty properties in the object
-                        for (var propName in this.user) {
-                            if (this.user[propName] === null || this.user[propName] === "" || this.user[propName] === undefined) {
-                                delete this.user[propName];
+                        if (this.verifyFirstName && this.verifyLastName && this.verifyEmail && this.verifyStudentNumber && this.verifyPhoneNumber && this.verifyPassword && this.verifyAge) {
+                            if (this.checked !== '') this.isAmirkabiri = 'true';
+                            //delete the empty properties in the object
+                            for (var propName in this.user) {
+                                if (this.user[propName] === null || this.user[propName] === "" || this.user[propName] === undefined) {
+                                    delete this.user[propName];
+                                }
                             }
-                        }
-                        console.log("Before");
-                        var success = await this.$store.dispatch('signUp', this.user);
-                        console.log(success);
-                        if (success == true) {
-                            this.$notify('حساب کاربری ایجاد شد');
-                            this.user = {
-                                firstName: '',
-                                lastName: '',
-                                email: '',
-                                studentNumber: '',
-                                phoneNumber: '',
-                                password: '',
-                            };
-                        } else {
-                            this.$notify('خطا دز ایجاد حساب جدید')
+                            console.log("Before");
+                            var success = await this.$store.dispatch('signUp', this.user);
+                            this.$wait.start('Wait to sign in');
+                            console.log(success);
+                            if (success == true) {
+                                this.$notify('حساب کاربری ایجاد شد');
+                                this.user = {
+                                    firstName: '',
+                                    lastName: '',
+                                    email: '',
+                                    studentNumber: '',
+                                    phoneNumber: '',
+                                    password: '',
+                                };
+                            } else {
+                                this.$notify('خطا دز ایجاد حساب جدید')
+
+                            }
+                            this.$wait.end('Wait to sign in');
+                            await this.$router.push('/user/me');
 
                         }
-
                     }
 
 
@@ -124,7 +130,7 @@
 
             verifyPhoneNumber: function () {
                 var p = /^\d+$/
-                if (this.user.phoneNumber == '' || (this.user.phoneNumber.length == 11 && p.test(this.user.studentNumber))) {
+                if (this.user.phoneNumber == '' || (this.user.phoneNumber.length == 11 && p.test(this.user.phoneNumber))) {
                     return true
                 } else {
                     return false
@@ -159,6 +165,14 @@
 </script>
 
 <style scoped>
+    p {
+        font-family: 'iransans';
+    }
+
+    input {
+        font-family: 'iransans';
+    }
+
     .back {
         background-color: black;
         padding: 100px 200px 100px 200px;
@@ -190,6 +204,10 @@
         font-size: 15px;
         color: white;
         margin: 10px;
+    }
+
+    button:hover {
+        background-color: rgb(242, 169, 56);
     }
 
     .bottom p {
