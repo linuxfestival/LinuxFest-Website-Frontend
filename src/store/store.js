@@ -105,17 +105,17 @@ export default new Vuex.Store({
             return false;
 
         },
-        editUserInfo: function ({commit, state}, user) {
-            axios.patch(state.baseUrl + '/users' + '/me', user, state.config)
-                .then((response) => {
-                    console.log(response);
-                    commit('setLoggedInUser', response.body.user)
-                    return true
-
-                }, (error) => {
-                    console.log(error);
-                    return false
-                });
+        editUserInfo: async function ({commit, state}, user) {
+            try{
+                const response = await axios.patch(state.baseUrl + '/users' + '/me', user, state.config)
+                console.log(response);
+                console.log(response.data)
+                commit('setLoggedInUser', response.body.user)
+                return true
+            }catch (e) {
+                console.log(e);
+                return false
+            }
         },
         getWorkshopsFromServer: function ({commit, state}) {
             axios.get(state.baseUrl + '/workshops')

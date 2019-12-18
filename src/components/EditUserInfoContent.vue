@@ -3,18 +3,13 @@
         <notifications position="top center" class="noti-style"/>
         <div class="main-frame">
             <div class="info-list">
-                <input type="text" v-model="user.firstName"  :placeholder="this.getFirstName +'  (نام)'">
-                <input type="text" v-model="user.lastName" :placeholder="this.getLastName+'  (نام خانوادگی)'">
-                <input type="email" v-model="user.email" :placeholder="this.getEmail+'  (ایمیل)'">
+                <input type="text" v-model="user.firstName"  :placeholder="this.getFirstName +'  (نام)'" v-bind:class="!verifyFirstName ? 'notVerified' : 'input'">
+                <input type="text" v-model="user.lastName" :placeholder="this.getLastName+'  (نام خانوادگی)'" v-bind:class="!verifyLastName ? 'notVerified' : 'input'">
+                <input type="email" v-model="user.email" :placeholder="this.getEmail+'  (ایمیل)'" v-bind:class="!verifyEmail ? 'notVerified' : 'input'">
                 <p v-if="!verifyEmail" class="red">ایمیل معتبر نمی باشد*</p>
                 <input type="password" v-model="user.password" placeholder="رمز عبور">
-                <input type="text" v-model="user.phoneNumber" :placeholder="this.getPhoneNumber+'  (تلفن)'">
-                <div class="check-box">
-                    <input type="checkbox" id="checkbox" v-model="checked">
-                    <label for="checkbox">امیرکبیری هستم</label>
-                </div>
-                <input type="email" v-model="user.email" v-if="this.checked" :placeholder="this.getStudentNumber+'  (شماره دانشجویی)'">
-                <input type="email" v-model="user.email" :placeholder="this.getAge+'  (سن)'">
+                <input type="text" v-model="user.phoneNumber" :placeholder="this.getPhoneNumber+'  (تلفن)'"  v-bind:class="!verifyPhoneNumber ? 'notVerified' : 'input'">
+                <input type="email" v-model="user.email" :placeholder="this.getAge+'  (سن)'" v-bind:class="!verifyAge ? 'notVerified' : 'input'">
             </div>
             <div class="button">
                 <button @click="editUser()">ثبت</button>
@@ -63,10 +58,55 @@
             },
             getAge:function () {
                 return this.$store.getters.getLoggedInUser.age;
+            },
+            verifyEmail: function () {
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.user.email) || this.user.email === '') {
+                    return true;
+                }
+                return false;
+            },
+            verifyFirstName: function () {
+                var p = /^[\u0600-\u06FF\s]+$/;
+
+                if (p.test(this.user.firstName) || this.user.firstName === '') {
+                    return true
+                } else return false
+            },
+            verifyLastName: function (str) {
+                var p = /^[\u0600-\u06FF\s]+$/;
+
+                if (p.test(this.user.lastName) || this.user.lastName === '') {
+                    return true
+                } else return false
+            },
+
+            verifyPhoneNumber: function () {
+                var p = /^\d+$/
+                if (this.user.phoneNumber == '' || (this.user.phoneNumber.length == 11 && p.test(this.user.studentNumber))) {
+                    return true
+                } else {
+                    return false
+                }
+            },
+            verifyAge: function () {
+                if (this.user.age == '' || (this.user.age < 100 && this.user.age > 15)) {
+                    return true
+                } else {
+                    return false
+                }
+
+            },
+            verifyPassword: function () {
+                var p = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/;
+                if (this.user.password == '' || (this.user.password.length > 5 && p.test(this.user.password))) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
         },
         methods:{
-            editUser: function () {
+            editUser:async function () {
                 var newUser=this.user
                 //delete the empty properties in the object
                 for (var propName in newUser) {
@@ -75,18 +115,21 @@
                     }
                 }
                 console.log(newUser)
-                var success=this.$store.dispatch('editUserInfo',newUser)
+                var success=await this.$store.dispatch('editUserInfo',newUser)
                 if(success===true){
                     this.$notify('ویرایش با موفقیت انجام شد')
+                    this.user = {
+                        firstName: '',
+                        lastName: '',
+                        email: '',
+                        studentNumber: '',
+                        phoneNumber: '',
+                        password: '',
+                    };
+                    await this.$router.push('/user/me')
+
                 }
-                this.user = {
-                    firstName: '',
-                    lastName: '',
-                    email: '',
-                    studentNumber: '',
-                    phoneNumber: '',
-                    password: '',
-                };
+
             }
         }
     }

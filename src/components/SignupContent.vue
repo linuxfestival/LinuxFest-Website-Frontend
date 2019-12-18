@@ -4,24 +4,31 @@
         <div class="main-frame">
             <div class="subject"><h1>ایجاد حساب کاربری</h1></div>
             <div class="top">
-                <input type="text" v-model="user.firstName" placeholder="نام">
-                <p v-if="!verifyEmail" class="red">ایمیل معتبر نمی باشد*</p>
-                <input type="text" v-model="user.lastName" placeholder="نام خانوادگی">
-                <p v-if="!verifyEmail" class="red">ایمیل معتبر نمی باشد*</p>
-                <input type="email" v-model="user.email" placeholder="ایمیل">
-                <p v-if="!verifyEmail" class="red">ایمیل معتبر نمی باشد*</p>
+                <input type="text" v-model="user.firstName" v-bind:class="!verifyFirstName ? 'notVerified' : 'input'"
+                       placeholder="نام">
+                <p v-if="!verifyFirstName" class="red">*نام باید فقط شامل حروف فارسی باشد</p>
+                <input type="text" v-model="user.lastName" v-bind:class="!verifyLastName ? 'notVerified' : 'input'"
+                       placeholder="نام خانوادگی">
+                <p v-if="!verifyLastName" class="red">*نام خانوادگی باید فقط شامل حروف فارسی باشد</p>
+                <input type="email" v-model="user.email" v-bind:class="!verifyEmail ? 'notVerified' : 'input'"
+                       placeholder="ایمیل">
+                <p v-if="!verifyEmail" class="red">*ایمیل معتبر نمی باشد</p>
                 <div class="check-box">
                     <input type="checkbox" id="checkbox" v-model="checked">
                     <label for="checkbox">امیرکبیری هستم</label>
                 </div>
-                <input type="text" v-model="user.studentNumber" v-if="this.checked" placeholder="شماره دانشجویی">
-                <p v-if="!verifyEmail" class="red">ایمیل معتبر نمی باشد*</p>
-                <input type="text" v-model="user.phoneNumber" placeholder="تلفن">
-                <p v-if="!verifyEmail" class="red">ایمیل معتبر نمی باشد*</p>
-                <input type="text" v-model="user.age" placeholder="سن">
-                <p v-if="!verifyEmail" class="red">ایمیل معتبر نمی باشد*</p>
-                <input type="password" v-model="user.password" placeholder="رمز عبور">
-                <p v-if="!verifyEmail" class="red">ایمیل معتبر نمی باشد*</p>
+                <input type="text" v-model="user.studentNumber" v-if="this.checked"
+                       v-bind:class="!verifyStudentNumber ? 'notVerified' : 'input'" placeholder="شماره دانشجویی">
+                <p v-if="!verifyStudentNumber" class="red">*شماره دانشجویی معتبر نمی باشد</p>
+                <input type="text" v-model="user.phoneNumber"
+                       v-bind:class="!verifyPhoneNumber ? 'notVerified' : 'input'" placeholder="تلفن">
+                <p v-if="!verifyPhoneNumber" class="red">*شماره تلفن همراه شما باید با ۰۹ شروع شود</p>
+                <input type="text" v-model="user.age" v-bind:class="!verifyAge ? 'notVerified' : 'input'"
+                       placeholder="سن">
+                <p v-if="!verifyAge" class="red">*سن معتبر نمی باشد</p>
+                <input type="password" v-model="user.password" v-bind:class="!verifyPassword ? 'notVerified' : 'input'"
+                       placeholder="رمز عبور">
+                <p v-if="!verifyPassword" class="red">*رمز عبور باید بیش از ۶ کاراکتر و شامل حروف و اعداد باشد</p>
             </div>
             <div class="bottom">
                 <button @click="submitUser()" type="button">ایجاد حساب کاربری</button>
@@ -47,7 +54,7 @@
                     phoneNumber: '',
                     password: '',
                     age: '',
-                    isAmirkabiri:''
+                    isAmirkabiri: ''
                 },
                 checked: ''
             }
@@ -60,12 +67,12 @@
         },
         methods: {
             submitUser: async function () {
-                if (this.user.age!=='' && this.user.firstName !== '' && this.user.phoneNumber !== ' ' && this.user.lastName !== '' && this.user.email !== '' && this.user.password !== '') {
-                    if ((this.checked==='' && this.user.studentNumber === '')||(this.checked!=='' && this.user.studentNumber!=='')) {
-                        if(this.checked!=='') this.isAmirkabiri='true';
+                if (this.user.age !== '' && this.user.firstName !== '' && this.user.phoneNumber !== ' ' && this.user.lastName !== '' && this.user.email !== '' && this.user.password !== '') {
+                    if ((this.checked === '' && this.user.studentNumber === '') || (this.checked !== '' && this.user.studentNumber !== '')) {
+                        if (this.checked !== '') this.isAmirkabiri = 'true';
                         //delete the empty properties in the object
                         for (var propName in this.user) {
-                            if (this.user[propName] === null || this.user[propName] ==="" || this.user[propName] === undefined) {
+                            if (this.user[propName] === null || this.user[propName] === "" || this.user[propName] === undefined) {
                                 delete this.user[propName];
                             }
                         }
@@ -73,7 +80,7 @@
                         var success = await this.$store.dispatch('signUp', this.user);
                         console.log(success);
                         if (success == true) {
-                            this.$notify('حساب کاربری ایجاد شد')
+                            this.$notify('حساب کاربری ایجاد شد');
                             this.user = {
                                 firstName: '',
                                 lastName: '',
@@ -82,7 +89,7 @@
                                 phoneNumber: '',
                                 password: '',
                             };
-                        }else{
+                        } else {
                             this.$notify('خطا دز ایجاد حساب جدید')
 
                         }
@@ -93,41 +100,59 @@
                 }
             }
 
-            }, computed: {
+        }, computed: {
             verifyEmail: function () {
                 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.user.email) || this.user.email === '') {
                     return true;
                 }
                 return false;
             },
-            verifyName:function (str) {
+            verifyFirstName: function () {
                 var p = /^[\u0600-\u06FF\s]+$/;
 
-                if (p.test(str) || str==='') {
+                if (p.test(this.user.firstName) || this.user.firstName === '') {
                     return true
-                }
-                else return false
+                } else return false
+            },
+            verifyLastName: function (str) {
+                var p = /^[\u0600-\u06FF\s]+$/;
+
+                if (p.test(this.user.lastName) || this.user.lastName === '') {
+                    return true
+                } else return false
             },
 
-            verifyPhoneNumber:function () {
-                if(this.user.phoneNumber.length==11 && ){
+            verifyPhoneNumber: function () {
+                var p = /^\d+$/
+                if (this.user.phoneNumber == '' || (this.user.phoneNumber.length == 11 && p.test(this.user.studentNumber))) {
                     return true
-                }else{
+                } else {
                     return false
                 }
             },
-            verifyStudentNumber:function () {
-                if(this.user.studentNumber=='' || this.user.studentNumber.length==7){
+            verifyStudentNumber: function () {
+                var p = /^\d+$/
+                if (this.user.studentNumber == '' || (this.user.studentNumber.length == 7 && p.test(this.user.studentNumber))) {
                     return true
-                }else{
+                } else {
                     return false
                 }
             },
-            verifyAge:function () {
+            verifyAge: function () {
+                if (this.user.age == '' || (this.user.age < 100 && this.user.age > 15)) {
+                    return true
+                } else {
+                    return false
+                }
 
             },
-            verifyPassword:function () {
-
+            verifyPassword: function () {
+                var p = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/;
+                if (this.user.password == '' || (this.user.password.length > 5 && p.test(this.user.password))) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
         }
     }
@@ -179,11 +204,12 @@
         flex-direction: column;
         justify-content: center;
         margin: 10px;
+        text-align: right;
     }
 
-    .top input {
+    .top .input {
         margin: 10px;
-        border: none;
+        border: 1px solid #dddddd;
         background-color: #dddddd;
         border-radius: 25px;
         padding: 10px;
@@ -198,14 +224,14 @@
 
     .top .check-box {
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         justify-content: right;
+        padding: 10px;
     }
 
     .top #checkbox {
         justify-content: right;
         position: relative;
-        top: -10px;
     }
 
     .subject h1 {
@@ -225,7 +251,12 @@
         font-size: 15px;
     }
 
-    .notVerified{
-        border-color: #B82E24;
+    .notVerified {
+        border: 1px solid red;
+        margin: 10px;
+        background-color: #dddddd;
+        border-radius: 25px;
+        padding: 10px;
+        text-align: right;
     }
 </style>
