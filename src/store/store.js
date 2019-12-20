@@ -35,9 +35,7 @@ export default new Vuex.Store({
             state.allWorkshops = workshops
         },
         setWorkshopMore:function (state, workshop) {
-            for (let i = 0; i <workshop.size ; i++) {
-                state.allWorkshops.add(workshop.get(i))
-            }
+            state.workshopMore=workshop
         }
     },
     actions: {
@@ -194,7 +192,7 @@ export default new Vuex.Store({
             return state.allWorkshops;
         },
         getWorkshopMore: state => {
-            return state.workshopMore
+            return state.workshopMore;
         }
     }
 })

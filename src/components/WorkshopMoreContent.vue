@@ -8,7 +8,10 @@
         </div>
         <div class="bottom">
             <div class="right">
-                <div><h3 class="yellow">در مورد مدرس کارگاه</h3></div>
+                <div>
+                    <h3 class="sub-title" v-if="getTeachers.length == 1">در مورد مدرس کارگاه</h3>
+                    <h3 class="sub-title" v-if="getTeachers.length > 1">در مورد مدرسین کارگاه</h3>
+                </div>
                 <div>
                     <div v-for="teacher in getTeachers">
                         <h4 class="teacher yellow indent">{{teacher.teacher}}</h4>
@@ -17,7 +20,7 @@
                 </div>
             </div>
             <div class="left">
-                <div><h3 class="yellow">در مورد این کارگاه</h3></div>
+                <div><h3 class="sub-title">در مورد این کارگاه</h3></div>
                 <div><p class="text indent">{{getDescription}}</p></div>
                 <div class="button">
                     <button>ثبت نام برای این کارگاه</button>
@@ -41,7 +44,7 @@
                 return this.$store.getters.getWorkshopMore.teachers;
             }
         },
-        created() {
+        async created() {
             console.log(this.$router.currentRoute)
             var currentPath = this.$router.currentRoute.path;
             // var matches = currentPath.match(/(\d+)/);
@@ -50,14 +53,20 @@
             //     id = matches[0];
             // }
             var res = currentPath.split("/");
-            id=res[2];
+            id = res[2];
             console.log(id);
-            this.$store.dispatch('getWorkshopMoreInfo', id)
+            await this.$store.dispatch('getWorkshopMoreInfo', id)
+
         }
     }
 </script>
 
 <style scoped>
+
+    p, h4, h3 {
+        font-family: 'iransans';
+    }
+
     .top img {
         width: 100%;
     }
@@ -82,6 +91,12 @@
         text-align: center;
         font-size: 40px;
         top: -100px
+    }
+
+    .sub-title {
+        margin: 5px 0 20px 0;
+        color: #e4b22b;
+
     }
 
     .right {
@@ -109,10 +124,12 @@
 
     .yellow {
         color: #e4b22b;
+        font-size: 15px;
     }
 
     .text {
         color: white;
+        margin-bottom: 20px;
     }
 
     .indent {
