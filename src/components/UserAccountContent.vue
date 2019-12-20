@@ -13,12 +13,12 @@
                 <div class="workshop-list" v-if="hasWorkshop" v-for="workshop in this.getUserWorkshops">
                     <div class="workshop-item">
                         <!-- <div class="sub one"><img src="../assets/img/background2.png" alt=""></div> -->
-                        <div class="sub two"><p>{{workshop.firstName + " " + workshop.lastName}}</p></div>
-                        <div class="sub three"><p>{{workshop.teacher}}</p></div>
+                        <div class="sub two"><p>{{workshop.name}}</p></div>
+                        <div class="sub three" v-for="teacher in workshop.teacher"><p>{{teacher}}</p></div>
                         <div class="sub four"><p><span>{{workshop.price}}</span>هزار تومان</p></div>
                         <!--                        //workshop id is something that you use to identify workshops easily-->
                         <div class="sub five">
-                            <button @click="this.$router.push('/more'+workshop.id)">اطلاعات بیشتر</button>
+                            <button @click="this.$router.push('/more/'+workshop.id)">اطلاعات بیشتر</button>
                         </div>
                     </div>
                 </div>
@@ -159,6 +159,7 @@
         font-size: 15px;
         color: white;
         margin: 20px 0 0 0;
+        font-family: 'iransans';
     }
 
     .right button:hover{
@@ -191,6 +192,7 @@
         padding: 0 auto;
         margin: 0 10px 0 10px;
         min-width: 100px;
+        font-family: 'iransans';
     }
 
     .head {
@@ -236,14 +238,17 @@
         font-size: 15px;
         color: white;
         margin: 10px;
+        font-family: 'iransans';
     }
 
     .link {
         text-decoration: none;
         color: white;
+        font-family: 'iransans';
     }
     .info-title{
         margin: 20px 30px 0 0;
+        font-family: 'iransans';
     }
 
 </style>

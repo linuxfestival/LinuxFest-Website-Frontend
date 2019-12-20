@@ -3,6 +3,7 @@
         <v-wait for="Wait to sign in"></v-wait>
         <notifications position="top center" class="noti-style"/>
         <div class="main-frame">
+            <h1>ویرایش اطلاعات</h1>
             <div class="info-list">
                 <input type="text" v-model="user.firstName"  :placeholder="this.getFirstName +'  (نام)'" v-bind:class="!verifyFirstName ? 'notVerified' : 'input'">
                 <input type="text" v-model="user.lastName" :placeholder="this.getLastName+'  (نام خانوادگی)'" v-bind:class="!verifyLastName ? 'notVerified' : 'input'">
@@ -145,6 +146,11 @@
     input{
         font-family: 'iransans';
     }
+    h1{
+        font-family: 'iransans';
+        text-align: center;
+        margin: 5px 0 5px 0;
+    }
     .parent{
         background-color: black;
         padding: 100px 200px 100px 200px;
@@ -185,7 +191,7 @@
         margin: 10px;
     }
     .button button:hover {
-        background-color: rgb(242,169,56);
+        background-color: #521c34;
     }
     .red{
         color: darkred;

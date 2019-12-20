@@ -32,7 +32,7 @@ const routes = [
         component: UserAccount
     },
     {
-        path: '/more/#',
+        path: '/more/:id',
         name: 'more',
         component: WorkshopMore
     },

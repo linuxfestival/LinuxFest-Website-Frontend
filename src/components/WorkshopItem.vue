@@ -2,7 +2,7 @@
     <div class="workshop-item">
         <img class="workshop-item--image" src="../assets/img/workshop.png" :alt="'workshop ' + workshop.id + ' image'">
         <div class="workshop-item--info">
-            <h2 class="workshop-item--info-title">{{workshop.name}}</h2>
+            <h2 class="workshop-item--info-title">{{workshop.title}}</h2>
             <h3 v-if="workshop.teachers.length == 1" class="workshop-item--info-teachTitle">
                 <i class="material-icons">person</i>
                 مدرس :
@@ -12,9 +12,9 @@
                 مدرسین :
             </h3>
             <p class="workshop-item--info-teachItem" v-for="teacher in workshop.teachers" :key=teacher.id>
-                {{teacher.name}}
+                {{teacher.teacher}}
             </p>
-            <button class="workshop-item--info-moreButton">
+            <button class="workshop-item--info-moreButton" @click="showMore(workshop)">
                 توضیحات
                 <i class="material-icons">keyboard_arrow_left</i>    
             </button>    
@@ -28,7 +28,11 @@ export default {
     props : {
         workshop : {}
     },
-    
+    methods:{
+        showMore:function () {
+            this.$router.push('/more/'+this.workshop._id)
+        }
+    }
 }
 </script>
 

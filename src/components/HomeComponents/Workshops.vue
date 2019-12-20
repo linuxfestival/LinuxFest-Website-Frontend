@@ -2,7 +2,9 @@
     <section class="workshops">
         <h1 class="workshops-title">{{workshopsTitle}}</h1>
         <section class="workshops-list">
-            <WorkshopItem v-for="workshop in allWorkshops" :workshop="workshop" :key="allWorkshops.indexOf(workshop)"></WorkshopItem>
+            <WorkshopItem v-for="workshop in getWorkshops" :workshop="workshop" :key="getWorkshops.indexOf(workshop)">
+
+            </WorkshopItem>
         </section>
     </section>
 </template>
@@ -32,43 +34,46 @@
                         name : 'linux test ws2',
                         teachers : [{name : 'mahvash'}],
                         image : '',
-                        id : '2'
+                        id : '3'
                     },
                     {
                         name : 'linux test ws2',
                         teachers : [{name : 'mahvash'}],
                         image : '',
-                        id : '2'
+                        id : '4'
                     },
                    {
                         name : 'linux test ws2',
                         teachers : [{name : 'mahvash'}],
                         image : '',
-                        id : '2'
+                        id : '5'
                     },
                     {
                         name : 'linux test ws2',
                         teachers : [{name : 'mahvash'}],
                         image : '',
-                        id : '2'
+                        id : '5'
                     }
                 ]
             }
         },
         methods: {
-            getWorkshops: function () {
-                // this.allWorkshops.push(this.workshopSample);
-                this.$store.commit('getWorkshopsFromServer')
-            }
+
         },
 
-        created() {
-            console.log("component created");
-            this.getWorkshops()
+        async created() {
+            await this.$store.dispatch('getWorkshopsFromServer')
 
         },
         mounted() {
             console.log("component mounted.");
+
+        },
+        computed:{
+            getWorkshops:function () {
+                return this.$store.getters.getAllWorkshops;
+
+            },
 
         }
     }

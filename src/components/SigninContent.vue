@@ -72,6 +72,12 @@
 </script>
 
 <style scoped>
+    input{
+        font-family: 'iransans';
+    }
+    p{
+        font-family: 'iransans';
+    }
     .back {
         background-color: black;
         padding: 100px 200px 100px 200px;
@@ -103,6 +109,7 @@
         font-size: 15px;
         color: white;
         margin: 10px;
+        font-family: 'iransans';
     }
     button:hover {
         background-color: rgb(242,169,56);
@@ -139,6 +146,7 @@
     .subject h1 {
         text-align: center;
         color: #521c34;
+        font-family: 'iransans';
     }
 
     .help {

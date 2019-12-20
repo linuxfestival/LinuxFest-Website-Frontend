@@ -5,31 +5,31 @@
         <div class="main-frame">
             <div class="subject"><h1>ایجاد حساب کاربری</h1></div>
             <div class="top">
-                <input type="text" v-model="user.firstName" v-bind:class="!verifyFirstName ? 'notVerified' : 'input'"
+                <input class="persian" type="text" v-model="user.firstName" v-bind:class="!verifyFirstName ? 'notVerified' : 'input'"
                        placeholder="نام">
                 <p v-if="!verifyFirstName" class="red">*نام باید فقط شامل حروف فارسی باشد</p>
-                <input type="text" v-model="user.lastName" v-bind:class="!verifyLastName ? 'notVerified' : 'input'"
+                <input class="persian"  type="text" v-model="user.lastName" v-bind:class="!verifyLastName ? 'notVerified' : 'input'"
                        placeholder="نام خانوادگی">
                 <p v-if="!verifyLastName" class="red">*نام خانوادگی باید فقط شامل حروف فارسی باشد</p>
                 <input type="email" v-model="user.email" v-bind:class="!verifyEmail ? 'notVerified' : 'input'"
                        placeholder="ایمیل">
-                <p v-if="!verifyEmail" class="red">*ایمیل معتبر نمی باشد</p>
+                <p v-if="!verifyEmail" class="red">*ایمیل معتبر نمی باشد(از کیبورد انگلیسی استفاده کنید)</p>
                 <div class="check-box">
                     <input type="checkbox" id="checkbox" v-model="checked">
                     <label for="checkbox">امیرکبیری هستم</label>
                 </div>
                 <input type="text" v-model="user.studentNumber" v-if="this.checked"
                        v-bind:class="!verifyStudentNumber ? 'notVerified' : 'input'" placeholder="شماره دانشجویی">
-                <p v-if="!verifyStudentNumber" class="red">*شماره دانشجویی معتبر نمی باشد</p>
+                <p v-if="!verifyStudentNumber" class="red">*شماره دانشجویی معتبر نمی باشد(از کیبورد انگلیسی استفاده کنید)</p>
                 <input type="text" v-model="user.phoneNumber"
                        v-bind:class="!verifyPhoneNumber ? 'notVerified' : 'input'" placeholder="تلفن">
-                <p v-if="!verifyPhoneNumber" class="red">*شماره تلفن همراه شما باید با ۰۹ شروع شود</p>
+                <p v-if="!verifyPhoneNumber" class="red">*شماره تلفن همراه شما باید با ۰۹ شروع شود(از کیبورد انگلیسی استفاده کنید)</p>
                 <input type="text" v-model="user.age" v-bind:class="!verifyAge ? 'notVerified' : 'input'"
                        placeholder="سن">
-                <p v-if="!verifyAge" class="red">*سن معتبر نمی باشد</p>
+                <p v-if="!verifyAge" class="red">*سن معتبر نمی باشد(از کیبورد انگلیسی استفاده کنید)</p>
                 <input type="password" v-model="user.password" v-bind:class="!verifyPassword ? 'notVerified' : 'input'"
                        placeholder="رمز عبور">
-                <p v-if="!verifyPassword" class="red">*رمز عبور باید بیش از ۶ کاراکتر و شامل حروف و اعداد باشد</p>
+                <p v-if="!verifyPassword" class="red">*رمز عبور باید بیش از ۶ کاراکتر و شامل حروف و اعداد باشد(از کیبورد انگلیسی استفاده کنید)</p>
             </div>
             <div class="bottom">
                 <button @click="submitUser()" type="button">ایجاد حساب کاربری</button>
@@ -91,13 +91,14 @@
                                     studentNumber: '',
                                     phoneNumber: '',
                                     password: '',
+                                    age: ''
                                 };
                             } else {
                                 this.$notify('خطا دز ایجاد حساب جدید')
 
                             }
                             this.$wait.end('Wait to sign in');
-                            await this.$router.push('/user/me');
+                            // await this.$router.push('/user/me');
 
                         }
                     }
@@ -204,6 +205,7 @@
         font-size: 15px;
         color: white;
         margin: 10px;
+
     }
 
     button:hover {
@@ -238,6 +240,7 @@
     .top label {
         font-size: 13px;
         text-align: right;
+        font-family: 'iransans';
     }
 
     .top .check-box {
@@ -255,6 +258,7 @@
     .subject h1 {
         text-align: center;
         color: #521c34;
+        font-family: 'iransans';
     }
 
     .top p {

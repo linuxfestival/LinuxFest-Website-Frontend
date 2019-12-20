@@ -12,13 +12,13 @@
             <router-link to="/signin" class="profileMenu-link" v-if="!isLoggedIn">ورود به حساب کاربری</router-link>
             <div class="divider" v-if="!isLoggedIn"></div>
 
-            <router-link to="/registerworkshops" class="profileMenu-link registerLink">ثبت نام کارگاه ها</router-link>
-            <div class="divider" ></div>
-
             <router-link to="/user/me" class="link" v-if="isLoggedIn"> حساب من </router-link>
-            <div class="divider" v-if="isLoggedIn"></div>
 
+            <div class="divider" v-if="isLoggedIn"></div>
             <button class="profileMenu-link singoutLink" v-if="isLoggedIn" @click="logout()">خروج</button>
+            <div class="divider" v-if="isLoggedIn"></div>
+            <router-link to="/registerworkshops" class="profileMenu-link registerLink">ثبت نام کارگاه ها</router-link>
+
         </nav>
         
     </header>

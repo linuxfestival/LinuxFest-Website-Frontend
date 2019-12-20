@@ -10,6 +10,7 @@ export default new Vuex.Store({
         token: localStorage.getItem('token') || '',
         loggedInUser: {},
         baseUrl: "http://45.147.76.80",
+        workshopMore:{},
         allWorkshops: [],
         config: {
             headers: {
@@ -32,6 +33,11 @@ export default new Vuex.Store({
         },
         setAllWorkshops: function (state, workshops) {
             state.allWorkshops = workshops
+        },
+        setWorkshopMore:function (state, workshop) {
+            for (let i = 0; i <workshop.size ; i++) {
+                state.allWorkshops.add(workshop.get(i))
+            }
         }
     },
     actions: {
@@ -99,7 +105,7 @@ export default new Vuex.Store({
                     return true;
                 }
             } catch (err) {
-                console.log("ops:    " + err.data);
+                console.log("ops:    " + err);
                 return false;
             }
             return false;
@@ -116,20 +122,33 @@ export default new Vuex.Store({
                 return false
             }
         },
-        getWorkshopsFromServer: function ({commit, state}) {
-            axios.get(state.baseUrl + '/workshops')
-                .then(function (response) {
-                    // handle success
-                    console.log(response);
-                    state.setAllWorkshops(response.body)
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-                .finally(function () {
-                    // always executed
-                });
+        getWorkshopsFromServer: async function ({commit, state}) {
+            console.log('workshop from server');
+            try {
+                const response = await axios.get(state.baseUrl + '/workshops');
+                console.log(response);
+                commit('setAllWorkshops', response.data)
+                console.log(state.allWorkshops)
+                return true
+            } catch (e) {
+                console.log(e);
+
+            }
+
+            // axios.get(state.baseUrl + '/workshops')
+            //     .then(function (response) {
+            //         // handle success
+            //         console.log(response);
+            //         commit('setAllWorkshops',response.data)
+            //     })
+            //     .catch(function (error) {
+            //         // handle error
+            //         console.log(error);
+            //     })
+            //     .finally(function () {
+            //         // always executed
+            //     });
+
         },
         getUserFromServer: function ({commit, state}) {
             console.log(state.config);
@@ -146,6 +165,16 @@ export default new Vuex.Store({
                 .finally(function () {
                     // always executed
                 });
+        },
+        getWorkshopMoreInfo: async function ({commit, state}, id) {
+            console.log("STORE")
+            try {
+                const response = await axios.get(state.baseUrl + '/workshops/' + id);
+                console.log(response);
+                commit('setWorkshopMore', response.data);
+            } catch (e) {
+                console.log(e);
+            }
         }
     },
     getters: {
@@ -163,6 +192,9 @@ export default new Vuex.Store({
         },
         getAllWorkshops: (state) => {
             return state.allWorkshops;
+        },
+        getWorkshopMore: state => {
+            return state.workshopMore
         }
     }
 })
