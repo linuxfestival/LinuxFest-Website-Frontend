@@ -63,7 +63,7 @@
         computed: {
             hasWorkshop:function(){
               if(this.$store.getters.getLoggedInUser.workshops =='')
-                  return false
+                  return false;
                 else return true;
             },
             getUserWorkshops: function () {

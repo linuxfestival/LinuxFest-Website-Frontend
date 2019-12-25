@@ -7,6 +7,7 @@ import UserAccount from "../views/UserAccount";
 import WorkshopMore from "../views/WorkshopMore";
 import EditUserInfo from "../views/EditUserInfo";
 import store from '../store/store'
+import AllWorkshops from "../views/AllWorkshops";
 
 Vue.use(VueRouter);
 
@@ -40,6 +41,15 @@ const routes = [
         path: '/edit',
         name: 'edit',
         component: EditUserInfo
+    },
+    {
+        path: '/allWorkshops',
+        name: 'allWorkshops',
+        component: AllWorkshops
+    }, {
+        path : '/user/forget/:forgetHash',
+        name : 'forget',
+
     }
 
 ];

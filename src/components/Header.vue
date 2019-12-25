@@ -1,11 +1,14 @@
 <template>
     <header class ="header">
+
         <nav class="mainMenu">
-            <router-link to="/" class="mainMenu-link">خانه</router-link>
+            <button @click="toggleMobileMenu()" class="mobileMenuButton" v-if="showMobileMenu"><i class="material-icons">close</i></button>
+            <button @click="toggleMobileMenu()" class="mobileMenuButton" v-else><i class="material-icons">menu</i></button>
+            <router-link to="/" class="mainMenu-link" :class="[{'show' : showMobileMenu}]" >خانه</router-link>
             <div class="divider"></div>
-            <router-link to="/" class="mainMenu-link">کارگاه ها</router-link>
+            <router-link to="/" class="mainMenu-link" :class="[{'show' : showMobileMenu}]" >کارگاه ها</router-link>
             <div class="divider"></div>
-            <router-link to="/user/me" class="mainMenu-link">تماس با ما</router-link>
+            <router-link to="/user/me" class="mainMenu-link" :class="[{'show' : showMobileMenu}]" >تماس با ما</router-link>
         </nav>
 
         <nav class="profileMenu">
@@ -17,7 +20,7 @@
             <div class="divider" v-if="isLoggedIn"></div>
             <button class="profileMenu-link singoutLink" v-if="isLoggedIn" @click="logout()">خروج</button>
             <div class="divider" v-if="isLoggedIn"></div>
-            <router-link to="/registerworkshops" class="profileMenu-link registerLink">ثبت نام کارگاه ها</router-link>
+            <router-link to="/allWorkshops" class="profileMenu-link registerLink">ثبت نام کارگاه ها</router-link>
 
         </nav>
         
@@ -33,7 +36,17 @@
               if(success==true){
                   await this.$router.push('/')
               }
-          }
+          },
+            toggleMobileMenu: function(){
+              console.log("toggle mobile menu");
+                this.showMobileMenu = !this.showMobileMenu;
+                console.log(this.showMobileMenu);
+            }
+        },
+        data(){
+            return {
+                showMobileMenu : false,
+            }
         },
         mounted() {
           console.log('is logged in :', this.isLoggedIn)  
@@ -103,5 +116,36 @@
         padding: 5px 10px 5px 10px;
         font-size: 15px;
         color: white;
+    }
+
+    .mobileMenuButton {
+        background:none;
+        color:white;
+        border:none;
+        display: none;
+    }
+
+    /*med*/
+    @media only screen and (max-width:768px) {
+        .header {
+            /*background-color: red;*/
+        }
+
+        .mainMenu {
+            flex-direction: column;
+        }
+
+        .mobileMenuButton {
+            display:flex;
+        }
+
+        .mainMenu-link {
+            display:none;
+        }
+
+        .mainMenu-link.show {
+            display:flex;
+        }
+
     }
 </style>

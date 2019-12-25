@@ -45,17 +45,8 @@
             }
         },
         async created() {
-            console.log(this.$router.currentRoute)
-            var currentPath = this.$router.currentRoute.path;
-            // var matches = currentPath.match(/(\d+)/);
-            var id;
-            // if (matches) {
-            //     id = matches[0];
-            // }
-            var res = currentPath.split("/");
-            id = res[2];
-            console.log(id);
-            await this.$store.dispatch('getWorkshopMoreInfo', id)
+            console.log(this.$route.params.id);
+            await this.$store.dispatch('getWorkshopMoreInfo', this.$route.params.id)
 
         }
     }
