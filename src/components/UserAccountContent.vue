@@ -119,7 +119,7 @@
     .bottom {
         display: flex;
         flex-direction: row-reverse;
-        justify-content: space-around;
+        justify-content: center;
         padding: 40px 0 30px 0;
     }
 
@@ -251,4 +251,20 @@
         font-family: 'iransans';
     }
 
+    @media only screen and (max-width: 768px) {
+        p,h4{
+            font-size: smaller;
+        }
+        .bottom{
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0 30px 0;
+        }
+        .left , .right{
+            width: 80%;
+            margin: 5px;
+        }
+    }
 </style>

@@ -7,16 +7,23 @@
             <div class="title"><h3>ثبت نام کارگاه ها</h3></div>
         </div>
         <div class="workshop-list" v-if="getWorkshops.length>0" v-for="workshop in getWorkshops">
-            <div class="workshop-item">
-                 <div class="sub one"><img src="../assets/img/background2.png" alt=""></div>
-                <div class="sub two"><p>{{workshop.title}}</p></div>
-                <div class="sub three" v-for="teacher in workshop.teacher"><p>{{teacher.teacher}}</p></div>
-                <div class="sub four"><p><span>{{workshop.price}}</span>هزار تومان</p></div>
-                <!--                        //workshop id is something that you use to identify workshops easily-->
-                <div class="sub five">
-                    <button @click="this.$router.push('/more/'+workshop.id)">اطلاعات بیشتر</button>
+            <div class="item">
+                <input type="radio" v-bind:value="workshop._id" name="workshop"
+                       v-on:click="setSelectedWorkshop(workshop)">
+                <div class="workshop-item">
+                    <div class="sub one"><img src="../assets/img/background2.png" alt=""></div>
+                    <div class="sub two"><p>{{workshop.title}}</p></div>
+                    <div class="sub three" v-for="teacher in workshop.teacher"><p>{{teacher.teacher}}</p></div>
+                    <div class="sub four"><p><span>{{workshop.price}}</span>هزار تومان</p></div>
+                    <!--                        //workshop id is something that you use to identify workshops easily-->
+                    <div class="sub five">
+                        <button @click="showMore(workshop._id)">اطلاعات بیشتر</button>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="button">
+            <button @click="register()">ثبت نام</button>
         </div>
     </div>
 </template>
@@ -27,12 +34,32 @@
         async created() {
             await this.$store.dispatch('getWorkshopsFromServer');
         },
+        data: function () {
+            return {
+                selectedWorkshop: 'empty',
+                checked: 'empty'
+            }
+        },
         computed: {
             getWorkshops: function () {
                 return this.$store.getters.getAllWorkshops;
 
             }
-        }
+        },
+        methods: {
+            setSelectedWorkshop: function (workshop) {
+                console.log(workshop)
+                this.selectedWorkshop = workshop._id;
+                console.log(this.selectedWorkshop);
+            },
+            register:function () {
+
+            },
+            showMore:function (id) {
+                this.$router.push('/more/'+id)
+            }
+        },
+
     }
 </script>
 
@@ -52,6 +79,7 @@
     .top img {
         width: 100%;
     }
+
     .title {
         position: relative;
         margin: 0 auto;
@@ -60,6 +88,7 @@
         top: -100px;
         color: white;
     }
+
 
     .bottom {
         display: flex;
@@ -150,24 +179,33 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
     }
 
     .workshop-item {
         background-color: black;
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         justify-content: space-between;
         align-items: stretch;
         border-radius: 25px;
-        width: 90%;
-        margin: 0 auto;
+        width: 80%;
+        margin: 1px;
         color: white;
+    }
+
+    .sub {
+
     }
 
     .sub img {
         width: 50px;
         height: 100%;
         border-radius: 0 25px 25px 0;
+    }
+
+    .sub img:hover {
+        opacity: 0.5;
     }
 
     .one {
@@ -186,6 +224,51 @@
         font-family: 'iransans';
     }
 
+    .item {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+        width: 90%;
+    }
+
+    .item input {
+        border: 0px;
+        width: 2em;
+        height: 2em;
+        position: relative;
+        top: 15px
+    }
+    .button{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 10px;
+    }
+    .button button{
+        background-color: #521c34;
+        border-radius: 35px;
+        border: none;
+        padding: 0px 30px 0px 30px;
+        font-size: 20px;
+        color: white;
+        margin: 10px;
+        font-family: 'iransans';
+
+    }
+
+    @media only screen and (max-width: 768px) {
+        .title{
+            font-size: 20px;
+            top: -50px
+        }
+        .workshop-item{
+            font-size: 15px;
+        }
+        .item{
+            width: 100%;
+        }
+    }
     /*.link {*/
     /*    text-decoration: none;*/
     /*    color: white;*/

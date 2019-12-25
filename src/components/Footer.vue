@@ -44,13 +44,13 @@
         display:flex;
         align-items:center;
         justify-content:space-between;
+        padding: 10px;
     }
 
     .footer-map {
         border-radius:15px;
-        width:450px;
-        height:300px;
-        margin:20px;
+        /*width:450px;*/
+        /*height:300px;*/
     }
 
     .footer-copyright {
@@ -58,5 +58,8 @@
         align-items:center;
         justify-content:center;
         flex-direction:column;
+    }
+    @media only screen and (max-width: 768px) {
+
     }
 </style>

@@ -63,7 +63,6 @@
     }
 
     .parent {
-
     }
 
     .bottom {
@@ -73,7 +72,8 @@
         min-height: 300px;
         position: relative;
         text-align: right;
-        margin: 10px 0 50px 0;
+        padding: 20px;
+
     }
 
     .title {
@@ -132,6 +132,16 @@
         justify-content: left;
         position: absolute;
         bottom: 30px;
+    }
+
+    @media only screen and (max-width: 768px) {
+     .title{
+         font-size: 20px;
+         top: -50px
+     }
+        P, h4, h3{
+            font-size: smaller;
+        }
     }
 
 </style>

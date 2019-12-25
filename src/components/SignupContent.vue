@@ -176,7 +176,9 @@
 
     .back {
         background-color: black;
-        padding: 100px 200px 100px 200px;
+        padding: 50px 0 30px 0 ;
+        display: flex;
+        justify-content: center;
     }
 
     .main-frame {
@@ -223,7 +225,6 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin: 10px;
         text-align: right;
     }
 
@@ -280,5 +281,12 @@
         border-radius: 25px;
         padding: 10px;
         text-align: right;
+    }
+
+    /*med*/
+    @media only screen and (max-width: 768px) {
+        .back{
+            background-color: #68CD86;
+        }
     }
 </style>
