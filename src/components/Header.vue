@@ -12,15 +12,17 @@
         </nav>
 
         <nav class="profileMenu">
-            <router-link to="/signin" class="profileMenu-link" v-if="!isLoggedIn">ورود به حساب کاربری</router-link>
+            <button @click="toggleMobileProfile()" class="mobileMenuButton" v-if="showMobileProfile"><i class="material-icons">close</i></button>
+            <button @click="toggleMobileProfile()" class="mobileMenuButton" v-else><i class="material-icons">menu</i></button>
+            <router-link to="/signin" class="profileMenu-link" v-if="!isLoggedIn" :class="[{'show' : showMobileProfile}]">ورود به حساب کاربری</router-link>
             <div class="divider" v-if="!isLoggedIn"></div>
 
-            <router-link to="/user/me" class="link" v-if="isLoggedIn"> حساب من </router-link>
+            <router-link to="/user/me" class="link" v-if="isLoggedIn" :class="[{'show' : showMobileProfile}]"> حساب من </router-link>
 
             <div class="divider" v-if="isLoggedIn"></div>
-            <button class="profileMenu-link singoutLink" v-if="isLoggedIn" @click="logout()">خروج</button>
+            <button class="profileMenu-link singoutLink" v-if="isLoggedIn" @click="logout()" :class="[{'show' : showMobileProfile}]">خروج</button>
             <div class="divider" v-if="isLoggedIn"></div>
-            <router-link to="/allWorkshops" class="profileMenu-link registerLink">ثبت نام کارگاه ها</router-link>
+            <router-link to="/allWorkshops" class="profileMenu-link registerLink" :class="[{'show' : showMobileProfile}]">ثبت نام کارگاه ها</router-link>
 
         </nav>
         
@@ -41,11 +43,17 @@
               console.log("toggle mobile menu");
                 this.showMobileMenu = !this.showMobileMenu;
                 console.log(this.showMobileMenu);
+            },
+            toggleMobileProfile: function () {
+                console.log("Toggle Mobile Profile");
+                this.showMobileProfile=!this.showMobileProfile;
+                console.log(this.showMobileProfile);
             }
         },
         data(){
             return {
                 showMobileMenu : false,
+                showMobileProfile:false,
             }
         },
         mounted() {
@@ -109,7 +117,7 @@
         width: 1px;
         margin: 0 3px 0 3px;
     }
-    .profileMenu button{
+    .registerLink{
         background-color: #e4b22b;
         border-radius: 25px;
         border: none;
@@ -144,6 +152,18 @@
         }
 
         .mainMenu-link.show {
+            display:flex;
+        }
+
+        .profileMenu {
+            flex-direction: column;
+        }
+
+        .profileMenu-link {
+            display:none;
+        }
+
+        .profileMenu-link.show {
             display:flex;
         }
 

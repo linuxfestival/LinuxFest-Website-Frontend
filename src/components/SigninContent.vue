@@ -80,7 +80,9 @@
     }
     .back {
         background-color: black;
-        padding: 100px 200px 100px 200px;
+        display: flex;
+        justify-content: center;
+        padding: 50px 0 30px 0 ;
     }
 
     .main-frame {
@@ -88,7 +90,6 @@
         padding: 10px;
         border-radius: 60px;
         width: 600px;
-        margin: 0 auto;
     }
 
     .red {
@@ -130,7 +131,6 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin: 10px;
     }
 
     .top input {
