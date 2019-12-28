@@ -3,7 +3,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <Header></Header>
-    <router-view></router-view>
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <router-view></router-view>
+      </transition>
     <Footer></Footer>
   </div>
 </template>
@@ -22,6 +27,19 @@
     padding : 0;
     direction: rtl;
   }
+
+  .fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0
+}
+
   body {
     direction: rtl;
   }
