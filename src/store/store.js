@@ -12,6 +12,7 @@ export default new Vuex.Store({
         baseUrl: "http://45.147.76.80",
         workshopMore:{},
         allWorkshops: [],
+        selectedWorkshopsForRegister : [],
         config: {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
@@ -133,20 +134,6 @@ export default new Vuex.Store({
 
             }
 
-            // axios.get(state.baseUrl + '/workshops')
-            //     .then(function (response) {
-            //         // handle success
-            //         console.log(response);
-            //         commit('setAllWorkshops',response.data)
-            //     })
-            //     .catch(function (error) {
-            //         // handle error
-            //         console.log(error);
-            //     })
-            //     .finally(function () {
-            //         // always executed
-            //     });
-
         },
         getUserFromServer: function ({commit, state}) {
             console.log(state.config);
@@ -193,6 +180,12 @@ export default new Vuex.Store({
         },
         getWorkshopMore: state => {
             return state.workshopMore;
+        },
+        baseUrl: (state) => {
+            return state.baseUrl;
+        },
+        selectedWorkshopsForRegister :(state) => {
+            return state.selectedWorkshopsForRegister;
         }
     }
 })
