@@ -1,5 +1,5 @@
 <template>
-    <div class="workshop-item">
+    <div class="workshop-item" @click="showMore()">
         <img class="workshop-item--image" src="../assets/img/workshop.png" :alt="'workshop ' + workshop.id + ' image'">
         <div class="workshop-item--info">
             <h2 class="workshop-item--info-title">{{workshop.title}}</h2>
