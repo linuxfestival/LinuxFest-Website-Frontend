@@ -1,11 +1,13 @@
 <template>
     <section class="workshops">
-        <h1 class="workshops-title">{{workshopsTitle}}</h1>
+        <div class="workshopsContainer">
+            <h1 class="workshops-title">{{workshopsTitle}}</h1>
         <section class="workshops-list">
             <WorkshopItem v-for="workshop in getWorkshops" :workshop="workshop" :key="getWorkshops.indexOf(workshop)">
 
             </WorkshopItem>
         </section>
+        </div>
     </section>
 </template>
 
@@ -85,10 +87,16 @@
         display:flex;
         align-items:center;
         justify-content:center;
-        flex-direction:column;
         padding-bottom:30px;
     }
 
+    .workshopsContainer {
+        max-width:1140px;
+        display : flex;
+        align-items:center;
+        justify-content:flex-start;
+        flex-direction:column;
+    }
     .workshops-title {
         font-family: 'iransans';
         font-size:30px;

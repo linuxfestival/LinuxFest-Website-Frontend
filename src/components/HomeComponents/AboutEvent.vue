@@ -1,10 +1,12 @@
 <template>
     <section class="aboutEventWrapper">
-        <h1 class="aboutEvent-title">
+        <div class="aboutEventContainer">
+            <h1 class="aboutEvent-title">
             <i class="material-icons">{{aboutThisEventTitleIcon}}</i>
             {{aboutThiSEventTitle}}
         </h1>
         <p class="aboutEvent-description">{{aboutThisEventDescription}}</p>
+        </div>
     </section>
 </template>
 
@@ -28,11 +30,19 @@
         border-bottom:5px solid rgb(242,169,56);
         display:flex;
         flex-direction:column;
-        align-items:flex-start;
-        justify-content:flex-start;
+        align-items:center;
+        justify-content:center;
         background: url("../../assets/img/pinguin.png") no-repeat left ;
         background-size:50%;
         background-color: #521c34;
+    }
+
+    .aboutEventContainer {
+        max-width:1140px;
+        display: flex;
+        flex-direction : column;
+        align-items : flex-start;
+        justify-content : flex-start;   
     }
 
     .aboutEvent-title {

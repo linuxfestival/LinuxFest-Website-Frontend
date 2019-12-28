@@ -47,4 +47,11 @@
         height:335px;
         margin-left:10px;
     }
+
+    @media only screen and (max-width: 576px) {
+        .homeHeader-title {
+            font-size: 65px;
+            line-height:70px;
+        }
+    }
 </style>
