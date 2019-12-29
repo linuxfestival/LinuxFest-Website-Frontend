@@ -38,7 +38,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="title"><h3>{{getName}}</h3></div> -->
     </div>
 </template>
 

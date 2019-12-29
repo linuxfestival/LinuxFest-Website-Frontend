@@ -46,11 +46,8 @@
     export default {
         name: "Header",
         methods: {
-            logout: async function () {
-                var success = await this.$store.dispatch('logOut');
-                if (success == true) {
-                    await this.$router.push('/')
-                }
+            logout: function() {
+                this.$store.dispatch('logout');
             },
             toggleMobileMenu: function () {
                 console.log("toggle mobile menu");

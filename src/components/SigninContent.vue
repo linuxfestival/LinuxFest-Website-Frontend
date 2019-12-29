@@ -1,24 +1,23 @@
 <template>
-    <div class="back">
+    <div class="loginWrapper">
         <v-wait for="Wait to sign in"></v-wait>
         <notifications position="top center" class="noti-style"/>
-        <div class="main-frame">
-            <div class="subject"><h1>ورود به حساب کاربری</h1></div>
-            <div class="top">
-                <input type="email" v-model="user.email" placeholder="ایمیل">
-                <input type="password" v-model="user.password" placeholder="رمز عبور">
-            </div>
-            <div class="bottom">
-                <button @click="logIn()" type="button">ورود به حساب کاربری</button>
-                <div class="help">
-                    <p class="help-text">در صورت نداشتن حساب کاربری یک حساب <span><router-link to="/signup"
-                                                                                               class="red"> ایجاد </router-link></span>کنید
-                    </p>
-                    <p class="help-text">
-                        <router-link to="" class="link">رمز عبور خود را فراموش کرده ام</router-link>
-                    </p>
+        <div class="formWrapper">
+            <h1 class="formTitle">ورود به حساب کاربری</h1>
+            <form action="" class="formForm" @submit.prevent="login()">
+                <input v-model="user.email" type="email" class="formFormInput" placeholder="ایمیل خود را وارد کنید">
+                <input v-model="user.password" type="password" class="formFormInput" placeholder="رمز عبور خود را وارد کنید">
+
+                <div class="formFormFooter">
+                    <ul class="formOptionsList">
+                        <li>حساب کاربری ندارید ؟ <router-link to="/singup">اینجا</router-link> را کلیک کنید</li>
+                        <li><a href="#">رمز عبور خود را فراموش کردم</a></li>
+                    </ul>
+                    <button class="loginButton">
+                        ورود به حساب کاربری
+                    </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </template>
@@ -37,7 +36,7 @@
             }
         },
         methods: {
-            logIn: async function () {
+            login: async function () {
                 var success = await this.$store.dispatch('logIn', this.user)
                 this.$wait.start('Wait to sign in');
                 if (success == true & this.$store.getters.getLoggedInUser != '') {
@@ -52,109 +51,82 @@
                 this.$wait.end('Wait to sign in');
 
             },
-            logOut: function () {
-                // console.log(this.$store.getters.isLoggedIn);
-                this.$store.dispatch('logOut');
-                this.user = {
-                    email: '',
-                    password: ''
-                }
-                // console.log(this.$store.getters.isLoggedIn);
-            }
         },
-
-        computed: {
-            isLoggedIn: function () {
-                return this.$store.getters.isLoggedIn;
-            }
-        }
     }
 </script>
 
 <style scoped>
-    input{
-        font-family: 'iransans';
-    }
-    p{
-        font-family: 'iransans';
-    }
-    .back {
-        background-color: black;
-        display: flex;
+
+    .loginWrapper {
+        min-height: 100vh;
+        background: rgb(0,0,0);
+        display:flex;
+        align-items:center;
         justify-content: center;
-        padding: 50px 0 30px 0 ;
+        width:100%;
     }
 
-    .main-frame {
+    .formWrapper {
+        width:550px;
         background-color: white;
-        padding: 10px;
-        border-radius: 60px;
-        width: 600px;
-    }
-
-    .red {
-        color: darkred;
-    }
-
-    .bottom {
-        display: flex;
-        justify-content: space-between;
-        margin: 10px;
-    }
-
-    button {
-        background-color: #521c34;
-        border-radius: 35px;
-        border: none;
-        padding: 0px 30px 0px 30px;
-        font-size: 15px;
-        color: white;
-        margin: 10px;
-        font-family: 'iransans';
-    }
-    button:hover {
-        background-color: rgb(242,169,56);
-    }
-
-    .bottom .help-text {
-        color: #521c34;
-        text-align: right;
-        margin: 0;
-        font-size: 13px;
-    }
-
-    .bottom .link {
-        color: #521c34;
-    }
-
-    .top {
-        display: flex;
+        border-radius:30px;
+        padding:50px;
+        display:flex;
+        align-items:center;
+        justify-content:flex-start;
         flex-direction: column;
-        justify-content: center;
     }
 
-    .top input {
-        margin: 10px;
-        border: none;
-        background-color: #dddddd;
-        border-radius: 25px;
-        padding: 10px;
-        text-align: right;
-
-    }
-
-    .subject h1 {
-        text-align: center;
+    .formTitle {
+        font-family : "iransans";
+        margin-bottom:10px;
         color: #521c34;
-        font-family: 'iransans';
     }
 
-    .help {
-        display: flex;
-        flex-direction: column;
+    .formForm {
+        width:100%;
+        display:flex;
+        align-items:center;
         justify-content: center;
-        padding: 20px
+        flex-direction:column;
     }
+
+    .formFormInput {
+        width:100%;
+        margin-top:5px;
+        margin-bottom:5px;
+        border-radius:30px;
+        background-color : #ddd;
+        padding:15px;
+        color: #333;
+        border:none;
+        font-family : 'iransans';
+    }
+
+    .formFormFooter {
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        width:100%;
+        margin-top:10px;        
+    }
+
+    .loginButton {
+        border:none;
+        border-radius:30px;
+        padding:10px 20px;
+        background-color :#521c34;
+        color:white;
+        cursor:pointer;
+        font-family:'iransans';
+    }
+
+    .formOptionsList {
+        font-family : 'iransans';
+        list-style-type :disc;
+        font-size:15px;
+    }
+
 
 
 </style>

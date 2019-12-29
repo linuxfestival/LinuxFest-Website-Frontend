@@ -33,8 +33,8 @@
             </div>
             <div class="bottom">
                 <button @click="submitUser()" type="button">ایجاد حساب کاربری</button>
-                <p>در صورت داشتن حساب کاربری به حساب خود <span><router-link to="/signin"
-                                                                            class="red"> وارد </router-link></span>شوید
+                <p>در صورت داشتن حساب کاربری به حساب خود <span>
+                    <router-link to="/signin" class="red"> وارد </router-link></span>شوید
                 </p>
             </div>
         </div>

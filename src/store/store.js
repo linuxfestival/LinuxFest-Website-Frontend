@@ -72,15 +72,16 @@ export default new Vuex.Store({
 
         },
 
-        logOut: async function ({state}) {
+        logut: async function ({state}) {
 
             try{
                 console.log(state.baseUrl)
                 console.log(state.config)
-                const response= await axios.post(state.baseUrl + '/users' + '/me/logout',{}, state.config);
-                console.log(response);
+                // const response= await axios.post(state.baseUrl + '/users' + '/me/logout',{}, state.config);
+                // console.log(response);
+                
+                localStorage.clear('token');
                 state.loggedInUser = {};
-                localStorage.removeItem('token');
                 state.token = '';
                 state.config.Authorization = '';
                 return true;
