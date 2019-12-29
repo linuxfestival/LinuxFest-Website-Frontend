@@ -12,7 +12,7 @@
                 مدرسین :
             </h3>
             <p class="workshop-item--info-teachItem" v-for="teacher in workshop.teachers" :key=teacher.id>
-                {{teacher.teacher}}
+                {{teacher.name}}
             </p>
             <button class="workshop-item--info-moreButton" @click="showMore(workshop)">
                 توضیحات

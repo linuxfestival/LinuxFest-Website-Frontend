@@ -49,6 +49,7 @@
         display: flex;
         align-items:center;
         transition:all 0.2s ease-in;
+        cursor:default;
     }
 
     .workshopRegItemContent.selected {

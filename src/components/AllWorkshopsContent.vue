@@ -33,6 +33,7 @@
         },
         created() {
             this.getWorkshops();
+            this.toggleSelectMe(this.$route.query.workshop)
         },
         data: function () {
             return {
