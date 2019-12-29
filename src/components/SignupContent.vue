@@ -81,6 +81,7 @@
                             }
                             console.log("Before");
                             this.$store.dispatch('signup', this.user).then(() => {
+                                console.log('sign up success');
                                 this.$notify({
                                     group : 'auth',
                                     title : 'موفقیت',
@@ -98,6 +99,7 @@
                                 };
                                 this.$router.push('/user/me');
                             }).catch(() => {
+                                console.log('sign up error');
                                 this.$notify({
                                     group : 'auth',
                                     title : 'خطا',

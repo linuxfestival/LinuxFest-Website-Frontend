@@ -73,6 +73,7 @@ export default new Vuex.Store({
             this.commit('resetStats');         
         },
         signup : function({commit,state} , userToRegister) {
+            console.log('sending signup request');
             return new Promise((resolve,reject) => {
                 axios({
                     url : state.baseUrl + '/users',
@@ -80,11 +81,14 @@ export default new Vuex.Store({
                     data : userToRegister,
                     headers : state.config.headers
                 }).then(response => {
-                    this.commit('setToken'.response.data.token);
+                    console.log('request done')
+                    this.commit('setToken',response.data.token);
                     console.log(response);
                     resolve();
                 }).catch(error => {
+                    console.log(error);
                     console.log(error.response);
+                    console.log('request catch')
                     reject();
                 })
             })
