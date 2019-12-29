@@ -2,6 +2,7 @@
   <div>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+    <notifications group="auth" position="top center"></notifications>
     <Header></Header>
       <transition
         name="fade"
@@ -88,6 +89,23 @@
 
   /* Support for IE. */
   font-feature-settings: 'liga';
+}
+
+/* .vue-notification {
+  font-family : 'iransans';
+  direction: rtl;
+} */
+
+.notification-title {
+  font-family : 'iransans' !important;
+  direction: rtl !important;
+  text-align:right;
+}
+
+.notification-content {
+  font-family : 'iransans' !important;
+  direction: rtl !important;
+  text-align:right;
 }
 
 </style>

@@ -10,7 +10,7 @@
             <div class="divider"></div>
             <router-link to="/" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">کارگاه ها</router-link>
             <div class="divider"></div>
-            <router-link to="/user/me" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">تماس با ما
+            <router-link to="/" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">تماس با ما
             </router-link>
         </nav>
 
@@ -33,7 +33,7 @@
                     :class="[{'show' : showMobileProfile}]">خروج
             </button>
             <div class="divider" v-if="isLoggedIn"></div>
-            <router-link to="/allWorkshops" class="profileMenu-link registerLink"
+            <router-link to="/registerworkshop" class="profileMenu-link registerLink"
                          :class="[{'show' : showMobileProfile}]">ثبت نام کارگاه ها
             </router-link>
 
@@ -48,6 +48,7 @@
         methods: {
             logout: function() {
                 this.$store.dispatch('logout');
+                this.$router.push('/');
             },
             toggleMobileMenu: function () {
                 console.log("toggle mobile menu");

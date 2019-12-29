@@ -17,7 +17,7 @@ export default new Vuex.Store({
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
             }
-        }
+        },
     },
     mutations: {
         setToken: function (state, newToken) {
@@ -29,9 +29,21 @@ export default new Vuex.Store({
         setLoggedInUser: function (state, user) {
             state.loggedInUser = user;
         },
+        
         setUsers: function (state, items) {
             state.allUsers = items;
         },
+        
+        resetStats: function(state) {
+            state.token = '';
+            state.loggedInUser = {};
+            state.workshopMore = {};
+            state.allWorkshops = {};
+            state.selectedWorkshopsForRegister = [];
+            state.config.Authorization = ''
+            localStorage.clear();
+        },
+
         setAllWorkshops: function (state, workshops) {
             state.allWorkshops = workshops
         },
@@ -40,80 +52,47 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        logIn: async function ({commit, state}, userToLogIn) {
+        login: function ({commit, state}, userToLogIn) {
             console.log('login called');
-
-            try{
-                //http request to login
-                const response=await axios.post(state.baseUrl + '/users' + '/login', {
-                    email: userToLogIn.email,
-                    password: userToLogIn.password
+            return new Promise((resolve,reject) => {
+                axios({
+                    url : state.baseUrl + "/users/login",
+                    method : 'post',
+                    data : userToLogIn
+                }).then(response => {
+                    commit('setToken', response.data.token);
+                    resolve();
+                }).catch(error => {
+                    console.log(error.response);        
+                    reject();
                 })
-                console.log(response);
-                //set the token
-                commit('setToken', response.data.token)
-                console.log(state.config)
-                //send new http request to get the full user info
-                try {
-                    const res=await axios.get(state.baseUrl + '/users' + '/me', state.config);
-                    // handle success
-                    console.log(res);
-                    commit('setLoggedInUser', res.data);
-                    return true
-                }catch (e) {
-                    console.log(e);
-                    return false
-                }
-
-            }catch (e) {
-                console.log(e);
-                return false
-            }
-
+            })
         },
 
-        logut: async function ({state}) {
-
-            try{
-                console.log(state.baseUrl)
-                console.log(state.config)
-                // const response= await axios.post(state.baseUrl + '/users' + '/me/logout',{}, state.config);
-                // console.log(response);
-                
-                localStorage.clear('token');
-                state.loggedInUser = {};
-                state.token = '';
-                state.config.Authorization = '';
-                return true;
-            }catch (e) {
-                console.log(e);
-                console.log("LOG OUT REQUEST FAILED");
-                return false
-            }
-
+        logout: function ({state}) {
+            this.commit('resetStats');         
         },
-        signUp: async function ({commit, state}, user) {
-            console.log("In signUp in store");
-            console.log(state.baseUrl);
-            console.log(user);
-            try {
-                const response = await axios.post(state.baseUrl + '/users', user)
-                console.log(response);
-                console.log(response.status);
-                if (response.status == '201') {
-                    console.log("signUp OK");
-                    return true;
-                }
-            } catch (err) {
-                console.log("ops:    " + err);
-                return false;
-            }
-            return false;
-
+        signup : function({commit,state} , userToRegister) {
+            return new Promise((resolve,reject) => {
+                axios({
+                    url : state.baseUrl + '/users',
+                    method : 'post',
+                    data : userToRegister,
+                    headers : state.config.headers
+                }).then(response => {
+                    this.commit('setToken'.response.data.token);
+                    console.log(response);
+                    resolve();
+                }).catch(error => {
+                    console.log(error.response);
+                    reject();
+                })
+            })
         },
+
         editUserInfo: async function ({commit, state}, user) {
             try{
-                const response = await axios.patch(state.baseUrl + '/users' + '/me', user, state.config)
+                const response = await axios.patch(state.baseUrl + '/users/me', user, state.config)
                 console.log(response);
                 console.log(response.data)
                 return true
@@ -138,7 +117,7 @@ export default new Vuex.Store({
         },
         getUserFromServer: function ({commit, state}) {
             console.log(state.config);
-            axios.get(state.baseUrl + '/users' + '/me', state.config)
+            axios.get(state.baseUrl + '/users/me', state.config)
                 .then(function (response) {
                     // handle success
                     console.log(response);

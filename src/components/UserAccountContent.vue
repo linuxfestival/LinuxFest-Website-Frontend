@@ -1,7 +1,6 @@
 <template>
     <div class="parent">
         <div class="top">
-            <!-- <img src="../assets/background2.png" alt=""> -->
         </div>
         <div class="bottom">
             <div class="left info-card">
@@ -12,13 +11,11 @@
                 </div>
                 <div class="workshop-list" v-if="hasWorkshop" v-for="workshop in this.getUserWorkshops">
                     <div class="workshop-item">
-                        <!-- <div class="sub one"><img src="../assets/img/background2.png" alt=""></div> -->
                         <div class="sub two"><p>{{workshop.name}}</p></div>
-                        <div class="sub three" v-for="teacher in workshop.teacher"><p>{{teacher}}</p></div>
+                        <div class="sub three" :key="workshop.teachers.indexOf(teacher)" v-for="teacher in workshop.teacher"><p>{{teacher}}</p></div>
                         <div class="sub four"><p><span>{{workshop.price}}</span>هزار تومان</p></div>
-                        <!--                        //workshop id is something that you use to identify workshops easily-->
                         <div class="sub five">
-                            <button @click="this.$router.push('/more/'+workshop.id)">اطلاعات بیشتر</button>
+                            <button @click="this.$router.push('/workshops/'+workshop.id)">اطلاعات بیشتر</button>
                         </div>
                     </div>
                 </div>
@@ -43,7 +40,7 @@
                 </div>
                 <div class="button">
                     <button>
-                        <router-link to="/edit" class="link">ویرایش اطلاعات</router-link>
+                        <router-link to="/user/edit" class="link">ویرایش اطلاعات</router-link>
                     </button>
                 </div>
             </div>

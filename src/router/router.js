@@ -29,24 +29,25 @@ const routes = [
     },
     {
         path: '/user/me',
-        name: 'userme',
+        name: 'userProfile',
         component: UserAccount
     },
     {
-        path: '/more/:id',
-        name: 'more',
+        path: '/workshops/:id',
+        name: 'workshopInfo',
         component: WorkshopMore
     },
     {
-        path: '/edit',
-        name: 'edit',
+        path: '/user/edit',
+        name: 'userEdit',
         component: EditUserInfo
     },
     {
-        path: '/allWorkshops',
-        name: 'allWorkshops',
+        path: '/registerworkshop',
+        name: 'workshopsRegister',
         component: AllWorkshops
-    }, {
+    },
+    {
         path : '/user/forget/:forgetHash',
         name : 'forget',
 
@@ -55,25 +56,27 @@ const routes = [
 ];
 
 const router = new VueRouter({
-    routes
+    routes,
+    mode : 'hash'
 });
 
 
-const requiredAuth = ['/edit', '/user/me'];
-const notRequiredAuth = ['/signin', '/signup'];
+const requiredAuth = ['userEdit', 'userProfile', 'workshopsRegister'];
+const notRequiredAuth = ['signin', 'signup'];
 router.beforeEach((to, from, next) => {
     console.log('from ', from);
     console.log('to ', to);
     console.log(store.getters.isLoggedIn)
-    if (requiredAuth.includes(to.path)) {
+    if (requiredAuth.includes(to.name)) {
         //check if user is logged in
         if (store.getters.isLoggedIn) {
             next()
         } else {
+            next('/signin');
         }
-    } else if (notRequiredAuth.includes(to.path)) {
+    } else if (notRequiredAuth.includes(to.name)) {
       if(store.getters.isLoggedIn){
-        next('/user/me')
+        next('/')
       }else{
             next()
       }

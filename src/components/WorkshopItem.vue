@@ -30,7 +30,7 @@ export default {
     },
     methods:{
         showMore:function () {
-            this.$router.push('/more/'+this.workshop._id)
+            this.$router.push('/workshops/'+this.workshop._id)
         }
     }
 }
@@ -76,7 +76,7 @@ export default {
 
     .workshop-item--info-title {
         margin-top:20px;
-        font-family :'Arial';
+        font-family :'Arial','iransans';
         font-size:20px;
     }
 

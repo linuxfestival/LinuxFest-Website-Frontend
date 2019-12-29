@@ -4,7 +4,7 @@
         <notifications position="top center" class="noti-style"/>
         <div class="main-frame">
             <div class="subject"><h1>ایجاد حساب کاربری</h1></div>
-            <div class="top">
+            <form class="top" @submit.prevent="submitUser()">
                 <input class="persian" type="text" v-model="user.firstName" v-bind:class="!verifyFirstName ? 'notVerified' : 'input'"
                        placeholder="نام">
                 <p v-if="!verifyFirstName" class="red">*نام باید فقط شامل حروف فارسی باشد</p>
@@ -30,13 +30,13 @@
                 <input type="password" v-model="user.password" v-bind:class="!verifyPassword ? 'notVerified' : 'input'"
                        placeholder="رمز عبور">
                 <p v-if="!verifyPassword" class="red">*رمز عبور باید بیش از ۶ کاراکتر و شامل حروف و اعداد باشد(از کیبورد انگلیسی استفاده کنید)</p>
-            </div>
-            <div class="bottom">
-                <button @click="submitUser()" type="button">ایجاد حساب کاربری</button>
+                <div class="bottom">
+                <button>ایجاد حساب کاربری</button>
                 <p>در صورت داشتن حساب کاربری به حساب خود <span>
                     <router-link to="/signin" class="red"> وارد </router-link></span>شوید
                 </p>
             </div>
+            </form>
         </div>
     </div>
 </template>
@@ -67,7 +67,8 @@
             console.log("component mounted.");
         },
         methods: {
-            submitUser: async function () {
+            submitUser: function () {
+                console.log("submit user");
                 if (this.user.age !== '' && this.user.firstName !== '' && this.user.phoneNumber !== ' ' && this.user.lastName !== '' && this.user.email !== '' && this.user.password !== '') {
                     if ((this.checked === '' && this.user.studentNumber === '') || (this.checked !== '' && this.user.studentNumber !== '')) {
                         if (this.verifyFirstName && this.verifyLastName && this.verifyEmail && this.verifyStudentNumber && this.verifyPhoneNumber && this.verifyPassword && this.verifyAge) {
@@ -79,11 +80,13 @@
                                 }
                             }
                             console.log("Before");
-                            var success = await this.$store.dispatch('signUp', this.user);
-                            this.$wait.start('Wait to sign in');
-                            console.log(success);
-                            if (success == true) {
-                                this.$notify('حساب کاربری ایجاد شد');
+                            this.$store.dispatch('signup', this.user).then(() => {
+                                this.$notify({
+                                    group : 'auth',
+                                    title : 'موفقیت',
+                                    text : 'حساب کاربری شما با موفقیت ساخته شد. به پروفایل خود برده می شوید',
+                                    type : "success"
+                                });
                                 this.user = {
                                     firstName: '',
                                     lastName: '',
@@ -93,17 +96,20 @@
                                     password: '',
                                     age: ''
                                 };
-                            } else {
-                                this.$notify('خطا دز ایجاد حساب جدید')
+                                this.$router.push('/user/me');
+                            }).catch(() => {
+                                this.$notify({
+                                    group : 'auth',
+                                    title : 'خطا',
+                                    text : 'خطایی هنگام ارتباط با سرور رخ داد. لطفا ورودی های خود را کنترل کنید',
+                                    type : "error"
+                                });
+                                
+                            }).finally(() => {
 
-                            }
-                            this.$wait.end('Wait to sign in');
-                            // await this.$router.push('/user/me');
-
+                            });
                         }
                     }
-
-
                 }
             }
 
@@ -207,6 +213,8 @@
         font-size: 15px;
         color: white;
         margin: 10px;
+        font-family: 'iransans';
+        cursor:pointer;
 
     }
 
@@ -284,9 +292,9 @@
     }
 
     /*med*/
-    @media only screen and (max-width: 768px) {
+    /* @media only screen and (max-width: 768px) {
         .back{
             background-color: #68CD86;
         }
-    }
+    } */
 </style>

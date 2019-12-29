@@ -12,7 +12,7 @@
                 <i class="material-icons">attach_money</i>
                  تومان {{workshop.price}}
             </h3>
-            <router-link :to="'/more/' + workshop._id" class="workshopRegItemMoreButton">اطلاعات بیشتر...</router-link>
+            <router-link :to="'/workshops/' + workshop._id" class="workshopRegItemMoreButton">اطلاعات بیشتر...</router-link>
         </div>
     </div>
 </template>

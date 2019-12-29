@@ -10,7 +10,7 @@
 
                 <div class="formFormFooter">
                     <ul class="formOptionsList">
-                        <li>حساب کاربری ندارید ؟ <router-link to="/singup">اینجا</router-link> را کلیک کنید</li>
+                        <li>حساب کاربری ندارید ؟ <router-link to="/signup">اینجا</router-link> را کلیک کنید</li>
                         <li><a href="#">رمز عبور خود را فراموش کردم</a></li>
                     </ul>
                     <button class="loginButton">
@@ -33,23 +33,28 @@
                     email: '',
                     password: '',
                 }
-            }
+            };
         },
         methods: {
-            login: async function () {
-                var success = await this.$store.dispatch('logIn', this.user)
-                this.$wait.start('Wait to sign in');
-                if (success == true & this.$store.getters.getLoggedInUser != '') {
+            login: function () {
+                this.$store.dispatch('login', this.user).then(() => {
+                    this.$router.push('/user/me');
+                    this.$notify({
+                        group :'auth',
+                        type : 'success',
+                        title : 'موفقیت',
+                        text : 'با موفقیت وارد شدید. به صفحه پروفایل برده می شوید.' 
+                    })
+                }).catch(() => {
+                    this.$notify({
+                        group :'auth',
+                        type : 'error',
+                        title : 'خطا',
+                        text : 'خطایی هنگاه ورود رخ داد. لطفا ورودی های خود را کنترل کنید' ,
+                    })
+                }).finally(() => {
 
-                    console.log("logged in")
-                    console.log(success);
-                    await this.$router.push('/user/me')
-                } else {
-                    this.$notify('خطا در ورود به حساب')
-
-                }
-                this.$wait.end('Wait to sign in');
-
+                })
             },
         },
     }
@@ -126,7 +131,4 @@
         list-style-type :disc;
         font-size:15px;
     }
-
-
-
 </style>

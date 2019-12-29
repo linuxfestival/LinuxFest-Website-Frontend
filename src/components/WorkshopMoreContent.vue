@@ -11,20 +11,20 @@
                             توضیحات مدرسین کارگاه :
                         </h2>
                         <div class="teacherDescriptionWrapper">
-                            <div class="teacherDescription" v-for="teacher in workshop.teachers" :key="workshop.teachers.indexOf(teacher)"> 
+                            <div class="teacherDescription" v-for="teacher in teachers" :key="teachers.indexOf(teacher)"> 
                                 <p class="teacherDescription-name">
                                     <i class="material-icons">person</i>
-                                    {{teacher.name}}
+                                    {{teacher.fullName}}
                                     :
                                 </p>
                                 <p class="teacherDescription-desc">
-                                    استاد تمام دانشگاه صنعتی امیرکبیر
+                                    {{teacher.description}}
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="workshopTeachersImages">
-                        <img v-for="teacher in workshop.teachers" :key="workshop.teachers.indexOf(teacher)" src="../assets/img/workshop.png" draggable="false" class="workshopTeacherImages-image">    
+                        <img v-for="teacher in teachers" :key="teachers.indexOf(teacher)" :src="teacher.imagePath" draggable="false" class="workshopTeacherImages-image" :alt="teacher.fullName + ' image'">    
                     </div>
                     <div class="workshopContentDescription">
                         <h1 class="workshopContentDescription-title">
@@ -34,7 +34,7 @@
                         <p class="workshopContentDescripion-desc">
                             {{workshop.description}}
                         </p>
-                        <router-link :to="'/allWorkshops/?workshop=' + workshop._id" class="registerButton">ثبت نام</router-link>
+                        <router-link :to="'/registerworkshop/?workshop=' + workshop._id" class="registerButton">ثبت نام</router-link>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,8 @@
         name: "WorkshopMoreContent",
         data() {
             return {
-                workshop : {}
+                workshop : {},
+                teachers : []
             }
         },
         computed: {
@@ -68,7 +69,8 @@
                 method : 'get', 
             }).then(response => {
                 console.log(response);
-                this.workshop = response.data;
+                this.workshop = response.data.workshop;
+                this.teachers = response.data.teachers;
             }).catch(error => {
                 console.log(error.response)
             })
