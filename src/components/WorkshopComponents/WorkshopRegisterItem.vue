@@ -1,6 +1,7 @@
 <template>
     <div class="workshopRegItemWrapper">
         <div class="workshopRegItemContent" :class="[{'selected' : isSelected}]" @click="$emit('toggleSelect')">
+            <i class="material-icons selectedIcon" v-if="isSelected">done</i>
             <img class="workshopRegItemImage" draggable="false" src="../../assets/img/workshop.png" :alt="'workshop ' + workshop.id + ' image'">
             <h3 class="workshopRegItemTitle">
                 <i class="material-icons" v-if="isSelected">done</i>
@@ -112,6 +113,13 @@
         border-left-color: #e4b22b;
     }
 
+    i.material-icons.selectedIcon {
+        position: absolute;
+        color: rgba(255,255,255,0.8);
+        font-weight: bold;
+        font-size: 50px;
+        margin-right: 7px;
+    }
 
     @media only screen and (max-width: 576px) {
         .workshopRegItemTitle i.material-icons {
