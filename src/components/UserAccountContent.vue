@@ -9,7 +9,7 @@
                     <div class="title"><h4> کارگاه ها </h4></div>
                     <div class="line"></div>
                 </div>
-                <div class="workshop-list" v-if="hasWorkshop" v-for="workshop in this.getUserWorkshops">
+                <!-- <div class="workshop-list" v-if="hasWorkshop" v-for="workshop in this.getUserWorkshops">
                     <div class="workshop-item">
                         <div class="sub two"><p>{{workshop.name}}</p></div>
                         <div class="sub three" :key="workshop.teachers.indexOf(teacher)" v-for="teacher in workshop.teacher"><p>{{teacher}}</p></div>
@@ -18,7 +18,7 @@
                             <button @click="this.$router.push('/workshops/'+workshop.id)">اطلاعات بیشتر</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="right workshop-card">
                 <div class="head">
@@ -56,7 +56,7 @@
             return {
                 allWorkshops:[]
             }
-            },
+        },
         computed: {
             hasWorkshop:function(){
               if(this.$store.getters.getLoggedInUser.workshops =='')

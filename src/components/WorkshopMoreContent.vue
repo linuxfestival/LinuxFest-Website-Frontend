@@ -121,6 +121,7 @@
         justify-content:flex-start;
         flex-direction:column;
         padding-left: 70px;
+        width:25%;
     }
 
     .teacherDescriptionWrapper {
@@ -261,6 +262,7 @@
             border-left:none;
             padding-left:0;
             border-radius:0;
+            width:initial;
         }
 
         .workshopContentDescription {
