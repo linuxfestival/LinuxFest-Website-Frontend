@@ -12,6 +12,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.8",
     "axios": "^0.19.0",
     "core-js": "^3.4.3",
+    "persian-rex": "^2.3.3",
     "vue": "^2.6.10",
     "vue-notification": "latest",
     "vue-router": "^3.1.3",
