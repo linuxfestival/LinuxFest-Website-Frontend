@@ -39,9 +39,9 @@ export default {
 <style scoped>
     .workshop-item {
         border-radius:30px;
-        min-width:350px;
+        min-width:380px;
         min-height:200px;
-        max-width:350px;
+        max-width:400px;
         background-color: rgb(41,41,41);
         display:flex;
         cursor:pointer;
