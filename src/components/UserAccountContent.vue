@@ -55,6 +55,7 @@
         data: function () {
             return {
                 allWorkshops:[]
+                
             }
         },
         computed: {
@@ -77,7 +78,7 @@
             getPhoneNumber: function () {
                 return this.$store.getters.getLoggedInUser.phoneNumber + " ";
             },
-            getStudentNumber: function f() {
+            getStudentNumber: function () {
                 return this.$store.getters.getLoggedInUser.studentNumber + " ";
             },
             isAmirkabiri: function () {
