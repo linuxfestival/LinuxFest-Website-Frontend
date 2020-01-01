@@ -4,10 +4,12 @@ import router from './router/router'
 import store from './store/store'
 import VueWait from 'vue-wait'
 import Notifications from 'vue-notification'
-
+import Vuelidate from 'vuelidate'
+import VueRouter from 'vue-router'
 Vue.config.productionTip = false
 Vue.use(VueWait) // add VueWait as Vue plugin
 Vue.use(Notifications)
+Vue.use(Vuelidate);
 
 new Vue({
   router,

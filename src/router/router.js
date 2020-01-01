@@ -8,6 +8,7 @@ import WorkshopMore from "../views/WorkshopMore";
 import EditUserInfo from "../views/EditUserInfo";
 import store from '../store/store'
 import AllWorkshops from "../views/AllWorkshops";
+import ForgetPass  from '@/views/ForgetPass';
 
 Vue.use(VueRouter);
 
@@ -48,9 +49,9 @@ const routes = [
         component: AllWorkshops
     },
     {
-        path : '/user/forget/:forgetHash',
+        path : '/user/forget/:forgetToken',
         name : 'forget',
-
+        component : ForgetPass
     }
 
 ];
@@ -62,7 +63,7 @@ const router = new VueRouter({
 
 
 const requiredAuth = ['userEdit', 'userProfile', 'workshopsRegister'];
-const notRequiredAuth = ['signin', 'signup'];
+const notRequiredAuth = ['signin', 'signup' , 'forget'];
 router.beforeEach((to, from, next) => {
     console.log('from ', from);
     console.log('to ', to);
