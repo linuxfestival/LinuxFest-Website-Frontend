@@ -24,6 +24,7 @@ export default new Vuex.Store({
             state.token = newToken;
             localStorage.setItem('token', newToken);
             state.config.headers.Authorization = "Bearer " + state.token;
+            console.log('token mutation completed');
         },
 
         setLoggedInUser: function (state, user) {
@@ -40,7 +41,7 @@ export default new Vuex.Store({
             state.workshopMore = {};
             state.allWorkshops = {};
             state.selectedWorkshopsForRegister = [];
-            state.config.Authorization = ''
+            state.config.headers.Authorization = ''
             localStorage.clear();
         },
 
@@ -130,6 +131,7 @@ export default new Vuex.Store({
                 .catch(function (error) {
                     // handle error
                     console.log(error);
+                    console.log(error.response)
                 })
                 .finally(function () {
                     // always executed
@@ -167,6 +169,9 @@ export default new Vuex.Store({
         },
         baseUrl: (state) => {
             return state.baseUrl;
+        },
+        httpHeaders : (state) => {
+            return state.config.headers;
         },
         selectedWorkshopsForRegister :(state) => {
             return state.selectedWorkshopsForRegister;

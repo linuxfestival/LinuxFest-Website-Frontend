@@ -9,16 +9,16 @@
                     <div class="title"><h4> کارگاه ها </h4></div>
                     <div class="line"></div>
                 </div>
-                <!-- <div class="workshop-list" v-if="hasWorkshop" v-for="workshop in this.getUserWorkshops">
+                <div class="workshop-list" v-for="workshop in workshops">
                     <div class="workshop-item">
                         <div class="sub two"><p>{{workshop.name}}</p></div>
-                        <div class="sub three" :key="workshop.teachers.indexOf(teacher)" v-for="teacher in workshop.teacher"><p>{{teacher}}</p></div>
+                        <div class="sub three" :key="workshop.teachers.indexOf(teacher)" v-for="teacher in workshop.teachers"><p>{{teacher}}</p></div>
                         <div class="sub four"><p><span>{{workshop.price}}</span>هزار تومان</p></div>
                         <div class="sub five">
-                            <button @click="this.$router.push('/workshops/'+workshop.id)">اطلاعات بیشتر</button>
+                            <router-link :to="'/workshops/' + workshop._id">اطلاعات بیشتر</router-link>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
             <div class="right workshop-card">
                 <div class="head">
@@ -28,15 +28,15 @@
                 </div>
                 <div class="info-list">
                     <p class="info-title">نام:</p>
-                    <p class="yellow">{{this.getName}}</p>
+                    <p class="yellow">{{this.user.firstName + " " + this.user.lastName}}</p>
                     <p class="info-title">ایمیل:</p>
-                    <p class="yellow">{{this.getEmail}}</p>
+                    <p class="yellow">{{this.user.email}}</p>
                     <p class="info-title">شماره تماس:</p>
-                    <p class="yellow">{{this.getPhoneNumber}}</p>
-                    <p class="info-title" v-if="isAmirkabiri">شماره دانشجویی:</p>
-                    <p v-if="isAmirkabiri" class="yellow">{{this.getStudentNumber}}
+                    <p class="yellow">{{this.user.phoneNumber}}</p>
+                    <p class="info-title" v-if="this.user.studentNumber != undefined">شماره دانشجویی:</p>
+                    <p v-if="this.user.studentNumber != undefined" class="yellow">{{this.user.studentNumber}}
                     <p class="info-title">سن:</p>
-                    <p class="yellow">{{this.getAge}}</p>
+                    <p class="yellow">{{this.user.age}}</p>
                 </div>
                 <div class="button">
                     <button>
@@ -50,48 +50,34 @@
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
         name: "UserAccountContent",
         data: function () {
             return {
-                allWorkshops:[]
-                
+                user : {},
+                workshops : []
             }
         },
         computed: {
-            hasWorkshop:function(){
-              if(this.$store.getters.getLoggedInUser.workshops =='')
-                  return false;
-                else return true;
+            getUser: function() {
+                axios({
+                    url : this.$store.getters.baseUrl + '/users/me',
+                    method : 'GET',
+                    headers : this.$store.getters.httpHeaders,
+                }).then(response => {
+                    console.log(response);
+                    this.user = response.data.user;
+                    this.workshops = response.data.workshops;
+                }).catch(error => {
+                    console.log(error.response);
+                })
             },
-            getUserWorkshops: function () {
-                return this.$store.getters.getLoggedInUser.workshops
-            }, getName: function () {
-                return this.$store.getters.getLoggedInUser.firstName + " " + this.$store.getters.getLoggedInUser.lastName;
-            },
-            getEmail: function () {
-                return this.$store.getters.getLoggedInUser.email + " ";
-            },
-            getAge: function () {
-                return this.$store.getters.getLoggedInUser.age + " ";
-            },
-            getPhoneNumber: function () {
-                return this.$store.getters.getLoggedInUser.phoneNumber + " ";
-            },
-            getStudentNumber: function () {
-                return this.$store.getters.getLoggedInUser.studentNumber + " ";
-            },
-            isAmirkabiri: function () {
-                if('studentNumber' in this.$store.getters.getLoggedInUser){
-                    return true
-                }else {
-                    return false
-                }
-            }
         },
         created() {
             console.log("component created");
-            this.$store.dispatch('getUserFromServer');
+            this.getUser(); 
+            // this.$store.dispatch('getUserFromServer');
         },
         mounted() {
             console.log("component mounted.");
