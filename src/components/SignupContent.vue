@@ -11,74 +11,74 @@
                         class="persian"
                         type="text"
                         v-model="$v.user.firstName.$model"
-                        v-bind:class="$v.user.firstName.$invalid ? 'notVerified' : 'input'"
+                        v-bind:class="$v.user.firstName.$error ? 'notVerified' : 'input'"
                         placeholder="نام"
                 />
-                <p v-if="$v.user.firstName.$invalid" class="red">*نام باید فقط شامل حروف فارسی باشد</p>
+                <p v-if="$v.user.firstName.$error" class="red">*نام باید فقط شامل حروف فارسی باشد</p>
 
                 <input
                         class="persian"
                         type="text"
                         v-model="$v.user.lastName.$model"
-                        v-bind:class="$v.user.lastName.$invalid ? 'notVerified' : 'input'"
+                        v-bind:class="$v.user.lastName.$error ? 'notVerified' : 'input'"
                         placeholder="نام خانوادگی"
                 />
-                <p v-if="$v.user.lastName.$invalid" class="red">*نام خانوادگی باید فقط شامل حروف فارسی باشد</p>
+                <p v-if="$v.user.lastName.$error" class="red">*نام خانوادگی باید فقط شامل حروف فارسی باشد</p>
 
                 <input
                         type="email"
                         v-model="$v.user.email.$model"
-                        v-bind:class="$v.user.email.$invalid ? 'notVerified' : 'input'"
+                        v-bind:class="$v.user.email.$error ? 'notVerified' : 'input'"
                         placeholder="ایمیل"
                 />
-                <p v-if="$v.user.email.$invalid" class="red">*ایمیل معتبر نمی باشد(از کیبورد انگلیسی استفاده کنید)</p>
+                <p v-if="$v.user.email.$error" class="red">*ایمیل معتبر نمی باشد(از کیبورد انگلیسی استفاده کنید)</p>
 
                 <div class="check-box">
-                    <input type="checkbox" id="checkbox" v-model="$v.user.isAmirkabiri.$model"/>
+                    <input type="checkbox" id="checkbox" v-model="user.isAmirkabiri" checked="false"/>
                     <label for="checkbox">امیرکبیری هستم</label>
                 </div>
 
                 <input
-                        type="text"
+                        type="number"
                         v-model="$v.user.studentNumber.$model"
                         v-if="user.isAmirkabiri"
-                        v-bind:class="$v.user.studentNumber.$invalid ? 'notVerified' : 'input'"
+                        :class="{'notVerified' : $v.user.studentNumber.$error , 'input' : !$v.user.studentNumber.$error}"
                         placeholder="شماره دانشجویی"
                 />
                 <p
-                        v-if="$v.user.studentNumber.$invalid"
+                        v-if="$v.user.studentNumber.$error"
                         class="red"
-                >*شماره دانشجویی معتبر نمی باشد(از کیبورد انگلیسی استفاده کنید)</p>
+                >شماره دانشجویی شما معتبر نمی باشد</p>
 
                 <input
                         type="text"
                         v-model="$v.user.phoneNumber.$model"
-                        v-bind:class="$v.user.phoneNumber.$invalid ? 'notVerified' : 'input'"
+                        v-bind:class="$v.user.phoneNumber.$error ? 'notVerified' : 'input'"
                         placeholder="تلفن"
                 />
                 <p
-                        v-if="$v.user.phoneNumber.$invalid"
+                        v-if="$v.user.phoneNumber.$error"
                         class="red"
-                >*شماره تلفن همراه شما باید با ۰۹ شروع شود(از کیبورد انگلیسی استفاده کنید)</p>
+                >* شماره تلفن شما معتبر نمی باشد.</p>
 
                 <input
-                        type="text"
+                        type="number"
                         v-model="$v.user.age.$model"
-                        v-bind:class="$v.user.age.$invalid ? 'notVerified' : 'input'"
+                        v-bind:class="$v.user.age.$error ? 'notVerified' : 'input'"
                         placeholder="سن"
                 />
-                <p v-if="$v.user.age.$invalid " class="red">*سن معتبر نمی باشد(از کیبورد انگلیسی استفاده کنید)</p>
+                <p v-if="$v.user.age.$error " class="red">سن شما معتبر نمی باشد.</p>
 
                 <input
                         type="password"
                         v-model="$v.user.password.$model"
-                        v-bind:class="$v.user.password.$invalid ? 'notVerified' : 'input'"
+                        v-bind:class="$v.user.password.$error ? 'notVerified' : 'input'"
                         placeholder="رمز عبور"
                 />
                 <p
-                        v-if="$v.user.password.$invalid"
+                        v-if="$v.user.password.$error"
                         class="red"
-                >*رمز عبور باید بیش از ۶ کاراکتر و شامل حروف و اعداد باشد(از کیبورد انگلیسی استفاده کنید)</p>
+                >رمز عبور باید بیش از ۸ کاراکتر و شامل حروف کوچک و بزرگ و اعداد باشد</p>
 
                 <div class="bottom">
                     <button>ایجاد حساب کاربری</button>
@@ -113,6 +113,7 @@
     const booleanValidator = (value) => {
         return value === false || value === true
     };
+
     const perisanRexValidator = (value) => {
         for(let word of value.trim().split(" ")) {
             if(!persianRex.letter.test(word)){
@@ -122,6 +123,11 @@
         return true;
     };
 
+    const validateIf = (prop, validator) =>
+  helpers.withParams({ type: 'validatedIf', prop }, function(value, parentVm) {
+    return helpers.ref(prop, this, parentVm) ? validator(value) : true
+  })
+
     export default {
         name: "SignupContent",
         validations: {
@@ -129,30 +135,28 @@
                 firstName: {required, perisanRexValidator},
                 lastName: {required, perisanRexValidator},
                 email: {required, email},
-                studentNumber: {
-                    numeric,
-                    minLength: minLength(7),
-                    maxLength: maxLength(8),
-                },
                 phoneNumber: {required, numeric, persianPhoneValidator},
                 password: {required, passwordRegexValidator},
                 age: {required, between: between(15, 100)},
-                isAmirkabiri: {booleanValidator }
+                studentNumber : {
+                    minLength : validateIf('isAmirkabiri', minLength(7)),
+                    maxLength : validateIf('isAmirkabiri', maxLength(10))
+                },
             }
         },
-        data: function () {
+        data() {
             return {
                 user: {
                     firstName: "",
                     lastName: "",
                     email: "",
-                    studentNumber: "",
                     phoneNumber: "",
                     password: "",
                     age: "",
-                    isAmirkabiri: false
-                }
-            };
+                    studentNumber: "",
+                    isAmirkabiri : false,
+                },
+            } 
         },
         created() {
             console.log("component created");
@@ -162,18 +166,18 @@
         },
         methods: {
             submitUser: function () {
-                console.log("submit user");
-                console.log('is invalid ', this.$v.user.$invalid);
-                console.log(this.$v.user);
 
                 if(!this.$v.$invalid) {
-                    if(this.user.isAmirkabiri !== true) {
-                        delete this.user.isAmirkabiri;
+                    if(this.user.isAmirkabiri === false) {
                         delete this.user.studentNumber;
                     }
-
-
-                    //form is valid, sending
+                    console.log('user to send ', this.user);
+                    this.$notify({
+                        group : "auth",
+                        title : "صبر کنید",
+                        text : "چند لحظه صبر کنید...",
+                        type : "warn"
+                    })
                     this.$store
                         .dispatch("signup", this.user)
                         .then(() => {
@@ -181,19 +185,9 @@
                             this.$notify({
                                 group: "auth",
                                 title: "موفقیت",
-                                text:
-                                    "حساب کاربری شما با موفقیت ساخته شد. به پروفایل خود برده می شوید",
+                                text: "حساب کاربری شما با موفقیت ساخته شد. به پروفایل خود برده می شوید",
                                 type: "success"
                             });
-                            this.user = {
-                                firstName: "",
-                                lastName: "",
-                                email: "",
-                                studentNumber: "",
-                                phoneNumber: "",
-                                password: "",
-                                age: ""
-                            };
                             this.$router.push("/user/me");
                         })
                         .catch(() => {
@@ -201,20 +195,24 @@
                             this.$notify({
                                 group: "auth",
                                 title: "خطا",
-                                text:
-                                    "خطایی هنگام ارتباط با سرور رخ داد. لطفا ورودی های خود را کنترل کنید",
+                                text: "خطایی هنگام ارتباط با سرور رخ داد. لطفا ورودی های خود را کنترل کنید",
                                 type: "error"
                             });
                         })
                         .finally(() => {
                         });
+                } else {
+                    this.$notify({
+                        group: "auth",
+                        title: "خطا",
+                        text:" لطفا ورودی های خود را کنترل کنید",
+                        type: "error"
+                    });
                 }
-
-
             }
         },
         computed: {}
-    };
+    }
 </script>
 
 <style scoped>
@@ -228,9 +226,10 @@
 
     .back {
         background-color: black;
-        padding: 50px 0 30px 0;
         display: flex;
         justify-content: center;
+        align-items:center;
+        min-height:calc(100vh - 50px);
     }
 
     .main-frame {
@@ -238,7 +237,6 @@
         padding: 10px;
         border-radius: 60px;
         width: 600px;
-        margin: 0 auto;
     }
 
     .red {
@@ -335,10 +333,11 @@
         text-align: right;
     }
 
-    /*med*/
-    /* @media only screen and (max-width: 768px) {
-            .back{
-                background-color: #68CD86;
-            }
-        } */
+    .d-none {
+        display:none;
+    }
+
+    v-none {
+        visibility: hidden;
+    }
 </style>
