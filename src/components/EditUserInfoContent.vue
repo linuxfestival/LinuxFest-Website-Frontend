@@ -2,25 +2,25 @@
     <div class="parent">
         <v-wait for="Wait to sign in"></v-wait>
         <notifications position="top center" class="noti-style"/>
-        <div class="main-frame">
+        <form class="main-frame" @submit.prevent="editUser()">
             <h1>ویرایش اطلاعات</h1>
             <div class="info-list">
-                <input type="text" v-model="user.firstName"  :placeholder="this.getFirstName +'  (نام)'" v-bind:class="!verifyFirstName ? 'notVerified' : 'input'">
-                <input type="text" v-model="user.lastName" :placeholder="this.getLastName+'  (نام خانوادگی)'" v-bind:class="!verifyLastName ? 'notVerified' : 'input'">
-                <input type="email" v-model="user.email" :placeholder="this.getEmail+'  (ایمیل)'" v-bind:class="!verifyEmail ? 'notVerified' : 'input'">
-                <p v-if="!verifyEmail" class="red">ایمیل معتبر نمی باشد*</p>
-                <input type="password" v-model="user.password" v-bind:class="!verifyPassword ? 'notVerified' : 'input'" placeholder="رمز عبور">
-                <input type="text" v-model="user.phoneNumber" :placeholder="this.getPhoneNumber+'  (تلفن)'"  v-bind:class="!verifyPhoneNumber ? 'notVerified' : 'input'">
-                <input type="email" v-model="user.age" :placeholder="this.getAge+'  (سن)'" v-bind:class="!verifyAge ? 'notVerified' : 'input'">
+                <input type="text" class="input" v-model="user.firstName"  :placeholder="this.currentUserData.firstName +'  (نام)'" >
+                <input type="text" class="input" v-model="user.lastName" :placeholder="this.currentUserData.lastName+'  (نام خانوادگی)'" >
+                <input type="email" class="input" v-model="user.email" :placeholder="this.currentUserData.email+'  (ایمیل)'" >
+                <input type="password" class="input" v-model="user.password" placeholder="رمز عبور">
+                <input type="text" class="input" v-model="user.phoneNumber" :placeholder="this.currentUserData.phoneNumber+'  (تلفن)'"  >
+                <input type="number" class="input" v-model="user.age" :placeholder="this.currentUserData.age+'  (سن)'">
             </div>
             <div class="button">
-                <button @click="editUser()">ثبت</button>
+                <button>اعمال تغییرات</button>
             </div>
-        </div>
+        </form>
     </div>
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
         name: "EditUserInfoContent",
         data: function () {
@@ -29,86 +29,104 @@
                     firstName: '',
                     lastName: '',
                     email: '',
-                    studentNumber: '',
                     phoneNumber: '',
                     password: '',
-                    age: ''
+                    age: '',
+                    studentNumber : '',
                 },
-                checked:''
+                checked:'',
+                currentUserData: {}
             }
+        },
+        created() {
+            this.getUser();
         },
         computed: {
-            verifyEmail: function () {
-                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.user.email) || this.user.email === '') {
-                    return true;
-                }
-                return false;
-            },
-            getFirstName:function () {
-                return this.$store.getters.getLoggedInUser.firstName;
-            },
-            getLastName:function () {
-                return this.$store.getters.getLoggedInUser.lastName;
-            },
-            getEmail:function () {
-                return this.$store.getters.getLoggedInUser.email;
-            },
-            getPhoneNumber:function () {
-                return this.$store.getters.getLoggedInUser.phoneNumber;
-            },
-            getStudentNumber:function () {
-                return this.$store.getters.getLoggedInUser.studentNumber;
-            },
-            getAge:function () {
-                return this.$store.getters.getLoggedInUser.age;
-            },
-            verifyEmail: function () {
-                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.user.email) || this.user.email === '') {
-                    return true;
-                }
-                return false;
-            },
-            verifyFirstName: function () {
-                var p = /^[\u0600-\u06FF\s]+$/;
+            // verifyEmail: function () {
+            //     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.user.email) || this.user.email === '') {
+            //         return true;
+            //     }
+            //     return false;
+            // },
+            // verifyEmail: function () {
+            //     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.user.email) || this.user.email === '') {
+            //         return true;
+            //     }
+            //     return false;
+            // },
+            // verifyFirstName: function () {
+            //     var p = /^[\u0600-\u06FF\s]+$/;
 
-                if (p.test(this.user.firstName) || this.user.firstName === '') {
-                    return true
-                } else return false
-            },
-            verifyLastName: function (str) {
-                var p = /^[\u0600-\u06FF\s]+$/;
+            //     if (p.test(this.user.firstName) || this.user.firstName === '') {
+            //         return true
+            //     } else return false
+            // },
+            // verifyLastName: function (str) {
+            //     var p = /^[\u0600-\u06FF\s]+$/;
 
-                if (p.test(this.user.lastName) || this.user.lastName === '') {
-                    return true
-                } else return false
-            },
+            //     if (p.test(this.user.lastName) || this.user.lastName === '') {
+            //         return true
+            //     } else return false
+            // },
 
-            verifyPhoneNumber: function () {
-                var p = /^\d+$/
-                if (this.user.phoneNumber == '' || (this.user.phoneNumber.length == 11 && p.test(this.user.studentNumber))) {
-                    return true
-                } else {
-                    return false
-                }
-            },
-            verifyAge: function () {
-                if (this.user.age == '' || (this.user.age < 100 && this.user.age > 15)) {
-                    return true
-                } else {
-                    return false
-                }
+            // verifyPhoneNumber: function () {
+            //     var p = /^\d+$/
+            //     if (this.user.phoneNumber == '' || (this.user.phoneNumber.length == 11 && p.test(this.user.studentNumber))) {
+            //         return true
+            //     } else {
+            //         return false
+            //     }
+            // },
+            // verifyAge: function () {
+            //     if (this.user.age == '' || (this.user.age < 100 && this.user.age > 15)) {
+            //         return true
+            //     } else {
+            //         return false
+            //     }
 
-            },
-            verifyPassword: function () {
-                var p = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/;
-                if (this.user.password == '' || (this.user.password.length > 5 && p.test(this.user.password))) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+            // },
+            // verifyPassword: function () {
+            //     var p = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/;
+            //     if (this.user.password == '' || (this.user.password.length > 5 && p.test(this.user.password))) {
+            //         return true;
+            //     } else {
+            //         return false;
+            //     }
+            // }
         },
         methods:{
+
+            getUser: function() {
+                    this.$notify({
+                        group : "auth",
+                        title : "صبر کنید",
+                        text : "چند لحظه صبر کنید...",
+                        type : "warn"
+                    })
+                axios({
+                    url : this.$store.getters.baseUrl + '/users/me',
+                    method : 'GET',
+                    headers : this.$store.getters.httpHeaders,
+                }).then(response => {
+                    console.log(response);
+                    this.currentUserData = response.data.user;
+                    // this.user = JSON.parse(JSON.stringify(this.currentUserData));
+                    this.$notify({
+                                group: "auth",
+                                title: "موفقیت",
+                                text: "اطلاعات شما دریافت شد.",
+                                type: "success"
+                            });
+                }).catch(error => {
+                    console.log(error.response);
+                            this.$notify({
+                                group: "auth",
+                                title: "خطا",
+                                text: "خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید",
+                                type: "error"
+                            });
+                })
+            },
             editUser:async function () {
                 var newUser=this.user
                 for (var propName in newUser) {
@@ -152,7 +170,11 @@
     }
     .parent{
         background-color: black;
-        padding: 100px 200px 100px 200px;
+        width: 100%;
+        min-height: calc(100vh - 40px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .main-frame {
         background-color: white;
