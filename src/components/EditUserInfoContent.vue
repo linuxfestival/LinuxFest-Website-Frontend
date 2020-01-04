@@ -1,8 +1,6 @@
 <template>
     <div class="parent">
-        <div class="workshopsListTitle">
-            <h1 class="workshopsListTitle-text">حساب کاربری</h1>
-        </div>
+        <PartialHeader title="حساب کاربری" backgroundUrl="../assets/img/background2.png" ></PartialHeader>
 
         <form class="main-frame" @submit.prevent="editUser()">
             <div class="formHeader">
@@ -57,6 +55,7 @@
 
 <script>
     import axios from 'axios'
+    import PartialHeader from '@/components/PartialHeader'
     import {numeric, between, email, helpers, minLength, maxLength} from 'vuelidate/lib/validators'
     import persianRex from 'persian-rex'
     const persianPhoneValidator = helpers.regex('persianPhoneValidator', /^(\+98?)?{?(0?9[0-9]{9,9}}?)$/gm);
@@ -76,6 +75,9 @@
 
     export default {
         name: "EditUserInfoContent",
+        components: {
+            PartialHeader
+        },
         validations: {
             user : {
                 firstName : {perisanRexValidator},
@@ -195,21 +197,6 @@
         align-items: center;
         justify-content: flex-start;
         flex-direction:column;
-    }
-
-    .workshopsListTitle {
-        background: url("../assets/img/background2.png") no-repeat center center;
-        min-height: 200px;
-        margin-bottom: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        align-self:stretch;
-    }
-
-    .workshopsListTitle-text {
-        font-family: 'iransans';
-        color: white;
     }
 
     .main-frame {

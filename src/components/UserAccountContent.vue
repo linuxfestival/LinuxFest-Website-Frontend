@@ -1,8 +1,7 @@
 <template>
     <div class="infoWrapper">
-        <div class="workshopsListTitle">
-            <h1 class="workshopsListTitle-text">حساب کاربری</h1>
-        </div>
+        <PartialHeader title="حساب کاربری" backgroundUrl="../assets/img/background2.png" ></PartialHeader>
+
         <div class="infoMiddleWrapper">
             
             <div class="userInfoBox">
@@ -52,10 +51,12 @@
 <script>
     import axios from 'axios'
     import WorkshopDoneRegisterItem from '@/components/WorkshopComponents/WorkshopDoneRegisterItem'
+    import PartialHeader from '@/components/PartialHeader'
     export default {
         name: "UserAccountContent",
         components : {
-            WorkshopDoneRegisterItem
+            WorkshopDoneRegisterItem,
+            PartialHeader
         },
         data: function () {
             return {
@@ -118,23 +119,7 @@
         flex-direction:column;
     }
 
-        .workshopsListTitle {
-        background: url("../assets/img/background2.png") no-repeat center center;
-        min-height: 200px;
-        margin-bottom: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        align-self:stretch;
-    }
-
-    .workshopsListTitle-text {
-        font-family: 'iransans';
-        color: white;
-    }
-
     .infoMiddleWrapper {
-        /* width:1140px; */
         display:flex;
         align-items:flex-start;
         justify-content:space-evenly;

@@ -1,8 +1,6 @@
 <template>
     <div class="parent">
-        <div class="workshopsListTitle">
-            <h1 class="workshopsListTitle-text">ثبت نام کارگاه ها</h1>
-        </div>
+        <PartialHeader title="ثبت نام در کارگاه ها" backgroundUrl="../assets/img/background2.png" ></PartialHeader>
 
         <div class="workshopsListWrapper">
             <div class="workshopsList">
@@ -24,12 +22,14 @@
 
 <script>
     import WorkshopRegisterItem from '@/components/WorkshopComponents/WorkshopRegisterItem'
+    import PartialHeader from '@/components/PartialHeader'
     import axios from 'axios'
 
     export default {
         name: "AllWorkshopsContent",
         components: {
-            WorkshopRegisterItem
+            WorkshopRegisterItem,
+            PartialHeader
         },
         created() {
             this.getWorkshops();
@@ -96,20 +96,6 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-    }
-
-    .workshopsListTitle {
-        background: url("../assets/img/background2.png") no-repeat center center;
-        min-height: 200px;
-        margin-bottom: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .workshopsListTitle-text {
-        font-family: 'iransans';
-        color: white;
     }
 
     .workshopsListWrapper {
