@@ -33,7 +33,9 @@
         },
         created() {
             this.getWorkshops();
-            this.toggleSelectMe(this.$route.query.workshop)
+            if(this.$route.query.workshop != undefined) {
+                this.toggleSelectMe(this.$route.query.workshop)
+            }
         },
         data: function () {
             return {
