@@ -1,17 +1,54 @@
 <template>
     <div class="parent">
+        <div class="workshopsListTitle">
+            <h1 class="workshopsListTitle-text">حساب کاربری</h1>
+        </div>
+
         <form class="main-frame" @submit.prevent="editUser()">
-            <h1>ویرایش اطلاعات</h1>
-            <h5>برای ویرایش اطلاعات خود فیلد های مورد نظر را تغییر دهید. فیلد های خالی نادیده گرفته می شوند</h5>
-            <div class="info-list">
-                <input type="text" class="input" v-model="$v.user.firstName.$model"  :placeholder="this.currentUserData.firstName +'  (نام)'" >
-                <input type="text" class="input" v-model="$v.user.lastName.$model" :placeholder="this.currentUserData.lastName+'  (نام خانوادگی)'" >
-                <input type="email" class="input" v-model="$v.user.email.$model" :placeholder="this.currentUserData.email+'  (ایمیل)'" >
-                <input type="password" class="input" v-model="$v.user.password.$model" placeholder="رمز عبور">
-                <input type="text" class="input" v-model="$v.user.phoneNumber.$model" :placeholder="this.currentUserData.phoneNumber+'  (تلفن)'"  >
-                <input type="number" class="input" v-model="$v.user.age.$model" :placeholder="this.currentUserData.age+'  (سن)'">
+            <div class="formHeader">
+                <h2 class="formHeader-title">
+                    <i class="material-icons formHeader-title-icon">edit</i>
+                    ویرایش اطلاعات شخصی
+                </h2>
+                <div class="formHeader-line"></div>
             </div>
-            <div class="button">
+
+            <h5 class="formDescription">برای ویرایش اطلاعات خود فیلد های مورد نظر را تغییر دهید. فیلد های خالی نادیده گرفته می شوند</h5>
+
+            <div class="formGroup">
+                <div class="formInputGroup">
+                    <label for="firstName">نام :</label>
+                    <input type="text" id="firstName" class="input" v-model="$v.user.firstName.$model"  :placeholder="this.currentUserData.firstName" >
+                </div>
+                <div class="formInputGroup">
+                    <label for="lastName">نام خانوادگی :</label>
+                    <input type="text" id="lastName" class="input" v-model="$v.user.lastName.$model" :placeholder="this.currentUserData.lastName" >
+                </div>                
+            </div>
+
+            <div class="formGroup">
+                <div class="formInputGroup">
+                    <label for="email">ایمیل :</label>
+                    <input type="email" id="email" class="input" v-model="$v.user.email.$model" :placeholder="this.currentUserData.email" >
+                </div>
+                <div class="formInputGroup">
+                    <label for="phoneNumber">شماره تماس :</label>
+                    <input type="text" id="phoneNumber" class="input" v-model="$v.user.phoneNumber.$model" :placeholder="this.currentUserData.phoneNumber"  >
+                </div>                
+            </div>
+
+            <div class="formGroup">
+                <div class="formInputGroup">
+                    <label for="password">رمز عبور :</label>
+                    <input type="password" id="password" class="input" v-model="$v.user.password.$model" placeholder="رمز عبور">
+                </div>
+                <div class="formInputGroup">
+                    <label for="age">سن :</label>
+                    <input type="number" id="age" class="input" v-model="$v.user.age.$model" :placeholder="this.currentUserData.age">
+                </div>                
+            </div>
+
+            <div class="formGroup">
                 <button>اعمال تغییرات</button>
             </div>
         </form>
@@ -150,76 +187,128 @@
 </script>
 
 <style scoped>
-    p{
-        font-family: 'iransans';
-    }
-    input{
-        font-family: 'iransans';
-    }
-    h1{
-        font-family: 'iransans';
-        text-align: center;
-        margin: 5px 0 5px 0;
-    }
-    h5 {
-        font-family: 'iransans';
-        margin-top:10px;
-        margin-bottom:10px;
-    }
     .parent{
-        background-color: black;
+        background-color: #e1e1e1;
         width: 100%;
         min-height: calc(100vh - 40px);
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+        flex-direction:column;
     }
+
+    .workshopsListTitle {
+        background: url("../assets/img/background2.png") no-repeat center center;
+        min-height: 200px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self:stretch;
+    }
+
+    .workshopsListTitle-text {
+        font-family: 'iransans';
+        color: white;
+    }
+
     .main-frame {
         background-color: white;
-        padding: 40px;
-        border-radius: 60px;
-        width: 600px;
-        margin: 0 auto;
+        padding: 30px;
+        border-radius: 30px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-
+        box-shadow: 0px 0 25px rgba(0,0,0,0.2);
+        width:calc(100% - 60px);
+        max-width: 1140px;
     }
-    .info-list{
+
+    .formHeader {
         display: flex;
-        flex-direction: column;
-        justify-content: right;
-        flex-wrap: wrap;
-    }
-    .info-list .input{
-        margin: 10px;
-        border: none;
-        background-color: #dddddd;
-        border-radius: 25px;
-        padding: 10px;
-        text-align: right;
+    align-items: center;
+    justify-content: space-between;
     }
 
-    .button {
-        text-align:center;
+
+    .formHeader-title {
+        display:flex;
+        align-items:center;
+        font-family: "iransans";
+        color : #521c34;
+        margin:10px;
     }
-    
-    .button button {
+
+    .formHeader-title-icon {
+        margin-left:5px;
+    }
+
+    .formHeader-line {
+        height:3px;
         background-color: #e4b22b;
+        width: calc(100% - 300px);
+    }
+
+    .formDescription {
+        color : #521c34;
+        margin:10px;
+        font-family : "iransans";
+    }
+
+    .formGroup {
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        margin-top:10px;
+    }
+
+    .formInputGroup {
+        display:flex;
+        flex-direction:column;
+        justify-content:flex-start;
+        align-items:flex-start;
+        width: calc(50% - 10px);
+    }
+
+    .formGroup button {
         font-family: 'iransans';
-        cursor: pointer;
-        border-radius: 25px;
+        background: #521c34;
         border: none;
-        padding: 10px 30px;;
-        font-size: 15px;
-        color: white;
-        transition:all 0.1s ease-in;
-        margin: 10px;
+        color: white;  
+        padding: 10px 30px;
+        border-radius: 10px;
+        margin: 10px auto;
+        cursor: pointer;
+        }
+
+    .input {
+        border:none;
+        border-radius:10px;
+        background-color : #e6e6e6dd;
+        padding:15px 5px;
+        margin:10px;
+        width: calc(100% - 20px);
+        font-family : 'iransans';
     }
-    .button button:hover {
-        background-color: #521c34;
+
+    label {
+        margin-right:10px;
+        font-family: 'iransans';
+        color : #521c34;
     }
-    .red{
-        color: darkred;
+
+    @media only screen and (max-width:576px) {
+        .formGroup {
+            flex-direction: column;
+        }
+
+        .formInputGroup {
+            width: 100%;
+        }
+
+        .formHeader-line {
+            display:none;
+        }
     }
+
 </style>

@@ -1,5 +1,8 @@
 <template>
     <div class="infoWrapper">
+        <div class="workshopsListTitle">
+            <h1 class="workshopsListTitle-text">حساب کاربری</h1>
+        </div>
         <div class="infoMiddleWrapper">
             
             <div class="userInfoBox">
@@ -104,19 +107,38 @@
 </script>
 
 <style scoped>
+
+
     .infoWrapper {
         display:flex;
-        align-items:flex-start;
-        justify-content:center;
+        align-items:center;
+        justify-content:flex-start;
         min-height:calc(100vh - 40px);
         background-color: #e8e8e8;
+        flex-direction:column;
+    }
+
+        .workshopsListTitle {
+        background: url("../assets/img/background2.png") no-repeat center center;
+        min-height: 200px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self:stretch;
+    }
+
+    .workshopsListTitle-text {
+        font-family: 'iransans';
+        color: white;
     }
 
     .infoMiddleWrapper {
-        width:1140px;
+        /* width:1140px; */
         display:flex;
         align-items:flex-start;
-        justify-content:space-between;
+        justify-content:space-evenly;
+        align-self:stretch;
         margin-top:40px;
     }
 
@@ -127,6 +149,7 @@
         display:flex;
         margin-left:20px;
         padding:10px;
+        box-shadow: 0px 0 25px rgba(0,0,0,0.5);
     }
 
     .infoItem {
@@ -193,6 +216,7 @@
         display:flex;
         padding:10px;
         width:calc(70% - 60px);
+        box-shadow: 0px 0 25px rgba(0,0,0,0.2);
     }
 
     .infoBoxHeader-title.dark {

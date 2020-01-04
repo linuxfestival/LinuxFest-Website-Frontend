@@ -84,6 +84,7 @@ router.beforeEach((to, from, next) => {
     } else {
         next()
     }
+    window.scroll(0,0);
 });
 
 
