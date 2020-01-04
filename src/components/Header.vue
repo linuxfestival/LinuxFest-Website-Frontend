@@ -84,8 +84,12 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 15px;
+        padding: 15px 0;
         box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.2);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
     }
 
     .registerLink {
@@ -105,10 +109,12 @@
 
     .mainMenu {
         display: flex;
+        margin-right:10px;
     }
 
     .profileMenu {
         display: flex;
+        margin-left:10px;
     }
 
     .mainMenu-link {
