@@ -5,12 +5,12 @@
         <form class="main-frame" @submit.prevent="editUser()">
             <h1>ویرایش اطلاعات</h1>
             <div class="info-list">
-                <input type="text" class="input" v-model="user.firstName"  :placeholder="this.currentUserData.firstName +'  (نام)'" >
-                <input type="text" class="input" v-model="user.lastName" :placeholder="this.currentUserData.lastName+'  (نام خانوادگی)'" >
-                <input type="email" class="input" v-model="user.email" :placeholder="this.currentUserData.email+'  (ایمیل)'" >
-                <input type="password" class="input" v-model="user.password" placeholder="رمز عبور">
-                <input type="text" class="input" v-model="user.phoneNumber" :placeholder="this.currentUserData.phoneNumber+'  (تلفن)'"  >
-                <input type="number" class="input" v-model="user.age" :placeholder="this.currentUserData.age+'  (سن)'">
+                <input type="text" class="input" v-model="$v.user.firstName.$model"  :placeholder="this.currentUserData.firstName +'  (نام)'" >
+                <input type="text" class="input" v-model="$v.user.lastName.$model" :placeholder="this.currentUserData.lastName+'  (نام خانوادگی)'" >
+                <input type="email" class="input" v-model="$v.user.email.$model" :placeholder="this.currentUserData.email+'  (ایمیل)'" >
+                <input type="password" class="input" v-model="$v.user.password.$model" placeholder="رمز عبور">
+                <input type="text" class="input" v-model="$v.user.phoneNumber.$model" :placeholder="this.currentUserData.phoneNumber+'  (تلفن)'"  >
+                <input type="number" class="input" v-model="$v.user.age.$model" :placeholder="this.currentUserData.age+'  (سن)'">
             </div>
             <div class="button">
                 <button>اعمال تغییرات</button>
@@ -21,8 +21,36 @@
 
 <script>
     import axios from 'axios'
+    import {numeric, between, email, helpers, minLength, maxLength} from 'vuelidate/lib/validators'
+    import persianRex from 'persian-rex'
+    const persianPhoneValidator = helpers.regex('persianPhoneValidator', /^(\+98?)?{?(0?9[0-9]{9,9}}?)$/gm);
+    const passwordRegexValidator = helpers.regex('passwordRegexValidator', /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/);
+    const booleanValidator = (value) => {
+        return value === false || value === true
+    };
+
+    const perisanRexValidator = (value) => {
+        for(let word of value.trim().split(" ")) {
+            if(!persianRex.letter.test(word)){
+                return false;
+            }
+        }
+        return true;
+    };
+
     export default {
         name: "EditUserInfoContent",
+        validations: {
+            user : {
+                firstName : {perisanRexValidator},
+                lastName : {perisanRexValidator},
+                email : {email},
+                phoneNumber : {numeric, persianPhoneValidator},
+                password : {passwordRegexValidator},
+                age : {numeric , between: between(15,100)}
+            }
+        },
+
         data: function () {
             return {
                 user: {
@@ -32,9 +60,7 @@
                     phoneNumber: '',
                     password: '',
                     age: '',
-                    studentNumber : '',
                 },
-                checked:'',
                 currentUserData: {}
             }
         },
@@ -127,29 +153,81 @@
                             });
                 })
             },
-            editUser:async function () {
-                var newUser=this.user
-                for (var propName in newUser) {
-                    if (newUser[propName] === null || newUser[propName] ==="" || newUser[propName] === undefined) {
-                        delete newUser[propName];
+            updatedFieldsAreValid: function(updatedUserPayload) {
+                for(let propName in updatedUserPayload) {
+                    if(this.$v.user[propName].$invalid) {
+                        return false;
                     }
                 }
-                console.log(newUser)
-                var success=await this.$store.dispatch('editUserInfo',newUser)
-                this.$wait.start('Wait to sign in');
-                if(success==true){
-                    this.$notify('ویرایش با موفقیت انجام شد')
-                    this.user = {
-                        firstName: '',
-                        lastName: '',
-                        email: '',
-                        studentNumber: '',
-                        phoneNumber: '',
-                        password: '',
-                    };
-                    await this.$router.push('/user/me')
-
+                return true;
+            },
+            editUser: async function () {
+                let updatedUserPayload = {};
+                for (let propName in this.user) {
+                    if (Boolean(this.user[propName])) {
+                        updatedUserPayload[propName] = this.user[propName];
+                    }
                 }
+
+                if(this.updatedFieldsAreValid(updatedUserPayload)) {
+                    console.log('remaining form is valid');
+                    axios({
+                        url : this.$store.getters.baseUrl + '/users/me',
+                        method : 'PATCH',
+                        data : updatedUserPayload,
+                        headers : this.$store.getters.httpHeaders 
+                    }).then(response => {
+                        this.$notify({
+                                group: "auth",
+                                title: "موفقیت",
+                                text: "اطلاعات حساب کاربری شما با موفقیت به روز رسانی شد. به پروفایل خود برده می شوید",
+                                type: "success"
+                            });
+                            this.$router.push("/user/me");
+                    }).catch(error => {
+                        this.$notify({
+                        group : 'auth',
+                        title : 'خطا',
+                        text : 'خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید',
+                        type : "error"
+                    })    
+                    })
+                } else {
+                    this.$notify({
+                        group : 'auth',
+                        title : 'خطا',
+                        text : 'لطفا ورودی های وارد شده خود را کنترل کنید',
+                        type : "error"
+                    })
+                }
+
+
+                console.log('updated user payload', updatedUserPayload)
+                console.log('after remove validatinos ', this.$v.user);
+                // console.log(newUser)
+                // let success = await axios({
+                    // url : this.$store.getters.baseUrl + '/users/me',
+                    // method : 'PATCH',
+                    // data : this.user,
+                    // headers : this.$store.getters.httpHeaders
+                // }).then(response => {
+
+                // }).catch(error => {
+
+                // })
+                // if(success==true){
+                //     this.$notify('ویرایش با موفقیت انجام شد')
+                //     this.user = {
+                //         firstName: '',
+                //         lastName: '',
+                //         email: '',
+                //         studentNumber: '',
+                //         phoneNumber: '',
+                //         password: '',
+                //     };
+                //     await this.$router.push('/user/me')
+
+                // }
 
             }
         }
