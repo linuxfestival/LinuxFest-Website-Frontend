@@ -20,7 +20,7 @@
                     <h3 class="infoItemTitle">‌‌شماره تماس :‌</h3>
                     <p class="infoItemContent">{{this.user.phoneNumber}}</p>
                 </div>
-                <div class="infoItem">
+                <div class="infoItem" v-if="user.age != undefined">
                     <h3 class="infoItemTitle">سن :</h3>
                     <p class="infoItemContent">{{this.user.age}}</p>
                 </div>
