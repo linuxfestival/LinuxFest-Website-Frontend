@@ -1,8 +1,6 @@
 <template>
     <div class="parent">
-            <div class="workshopTitleWrapper">
-                <h1 class="workshopTitle-text">{{workshop.title}}</h1>
-            </div>
+            <PartialHeader :title="workshop.title"></PartialHeader>
             <div class="workshopContentWrapper">
                 <div class="workshopContent">
                     <div class="workshopTeachersDescription">
@@ -43,8 +41,13 @@
 
 <script>
     import axios from 'axios';
+    import PartialHeader from '@/components/PartialHeader'
+
     export default {
         name: "WorkshopMoreContent",
+        components : {
+            PartialHeader,
+        },
         data() {
             return {
                 workshop : {},
@@ -74,7 +77,6 @@
             }).catch(error => {
                 console.log(error.response)
             })
-            // await this.$store.dispatch('getWorkshopMoreInfo', this.$route.params.id)
 
         }
     }
@@ -88,13 +90,6 @@
         display:flex;
         align-items:center;
         justify-content:center;
-    }
-
-    .workshopTitle-text {
-        font-family: 'iransans';
-        color:white;
-        font-weight:bold;
-        font-size:40px;
     }
 
     .workshopContentWrapper {
