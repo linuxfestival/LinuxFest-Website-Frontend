@@ -36,10 +36,11 @@
             <div class="workshopsInfoBox">
                 <div class="infoBoxHeader">
                     <div class="infoBoxHeader-line"></div>
-                    <div class="infoBoxHeader-title dark"><h4>لیست کارگاه های ثبت نام شده</h4></div>
+                    <div class="infoBoxHeader-title dark"><h4>لیست کارگاه های ثبت نام شده ({{workshops.length}})</h4></div>
                     <div class="infoBoxHeader-line"></div>
                 </div>
                 <WorkshopDoneRegisterItem :key="workshop._id" v-for="workshop in workshops" :workshop="workshop"></WorkshopDoneRegisterItem>
+                <router-link to="/registerworkshop" class="infoBox-link">مشاهده لیست کارگاه ها</router-link>
             </div>
         </div>
     </div>
@@ -196,6 +197,18 @@
 
     .infoBoxHeader-title.dark {
         color: #333;
+    }
+
+    .infoBox-link {
+        font-family : 'iransans';
+        text-align: center;
+        text-decoration: none;
+        margin-top:30px;
+        color:white;
+        background-color :#e4b22b;
+        align-self:center;
+        padding:5px 20px;
+        border-radius:25px;
     }
 
     @media only screen and (max-width: 876px) {

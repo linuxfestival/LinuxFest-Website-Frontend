@@ -1,9 +1,8 @@
 <template>
     <div class="parent">
-        <v-wait for="Wait to sign in"></v-wait>
-        <notifications position="top center" class="noti-style"/>
         <form class="main-frame" @submit.prevent="editUser()">
             <h1>ویرایش اطلاعات</h1>
+            <h5>برای ویرایش اطلاعات خود فیلد های مورد نظر را تغییر دهید. فیلد های خالی نادیده گرفته می شوند</h5>
             <div class="info-list">
                 <input type="text" class="input" v-model="$v.user.firstName.$model"  :placeholder="this.currentUserData.firstName +'  (نام)'" >
                 <input type="text" class="input" v-model="$v.user.lastName.$model" :placeholder="this.currentUserData.lastName+'  (نام خانوادگی)'" >
@@ -67,61 +66,7 @@
         created() {
             this.getUser();
         },
-        computed: {
-            // verifyEmail: function () {
-            //     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.user.email) || this.user.email === '') {
-            //         return true;
-            //     }
-            //     return false;
-            // },
-            // verifyEmail: function () {
-            //     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.user.email) || this.user.email === '') {
-            //         return true;
-            //     }
-            //     return false;
-            // },
-            // verifyFirstName: function () {
-            //     var p = /^[\u0600-\u06FF\s]+$/;
-
-            //     if (p.test(this.user.firstName) || this.user.firstName === '') {
-            //         return true
-            //     } else return false
-            // },
-            // verifyLastName: function (str) {
-            //     var p = /^[\u0600-\u06FF\s]+$/;
-
-            //     if (p.test(this.user.lastName) || this.user.lastName === '') {
-            //         return true
-            //     } else return false
-            // },
-
-            // verifyPhoneNumber: function () {
-            //     var p = /^\d+$/
-            //     if (this.user.phoneNumber == '' || (this.user.phoneNumber.length == 11 && p.test(this.user.studentNumber))) {
-            //         return true
-            //     } else {
-            //         return false
-            //     }
-            // },
-            // verifyAge: function () {
-            //     if (this.user.age == '' || (this.user.age < 100 && this.user.age > 15)) {
-            //         return true
-            //     } else {
-            //         return false
-            //     }
-
-            // },
-            // verifyPassword: function () {
-            //     var p = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/;
-            //     if (this.user.password == '' || (this.user.password.length > 5 && p.test(this.user.password))) {
-            //         return true;
-            //     } else {
-            //         return false;
-            //     }
-            // }
-        },
         methods:{
-
             getUser: function() {
                     this.$notify({
                         group : "auth",
@@ -136,7 +81,6 @@
                 }).then(response => {
                     console.log(response);
                     this.currentUserData = response.data.user;
-                    // this.user = JSON.parse(JSON.stringify(this.currentUserData));
                     this.$notify({
                                 group: "auth",
                                 title: "موفقیت",
@@ -200,35 +144,6 @@
                         type : "error"
                     })
                 }
-
-
-                console.log('updated user payload', updatedUserPayload)
-                console.log('after remove validatinos ', this.$v.user);
-                // console.log(newUser)
-                // let success = await axios({
-                    // url : this.$store.getters.baseUrl + '/users/me',
-                    // method : 'PATCH',
-                    // data : this.user,
-                    // headers : this.$store.getters.httpHeaders
-                // }).then(response => {
-
-                // }).catch(error => {
-
-                // })
-                // if(success==true){
-                //     this.$notify('ویرایش با موفقیت انجام شد')
-                //     this.user = {
-                //         firstName: '',
-                //         lastName: '',
-                //         email: '',
-                //         studentNumber: '',
-                //         phoneNumber: '',
-                //         password: '',
-                //     };
-                //     await this.$router.push('/user/me')
-
-                // }
-
             }
         }
     }
@@ -245,6 +160,11 @@
         font-family: 'iransans';
         text-align: center;
         margin: 5px 0 5px 0;
+    }
+    h5 {
+        font-family: 'iransans';
+        margin-top:10px;
+        margin-bottom:10px;
     }
     .parent{
         background-color: black;
@@ -280,13 +200,20 @@
         text-align: right;
     }
 
+    .button {
+        text-align:center;
+    }
+    
     .button button {
         background-color: #e4b22b;
+        font-family: 'iransans';
+        cursor: pointer;
         border-radius: 25px;
         border: none;
-        padding: 5px 30px 5px 30px;
+        padding: 10px 30px;;
         font-size: 15px;
         color: white;
+        transition:all 0.1s ease-in;
         margin: 10px;
     }
     .button button:hover {
@@ -294,33 +221,5 @@
     }
     .red{
         color: darkred;
-    }
-    .check-box {
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: right;
-        margin-top: 10px;
-    }
-
-     #checkbox {
-        justify-content: right;
-        position: relative;
-        top: -10px;
-    }
-
-    /*notification*/
-    .noti-style {
-        padding: 0px;
-        margin: 0px 5px 5px;
-        font-size: 15px;
-    }
-
-    .notVerified {
-        border: 1px solid red;
-        margin: 10px;
-        background-color: #dddddd;
-        border-radius: 25px;
-        padding: 10px;
-        text-align: right;
     }
 </style>
