@@ -26,7 +26,7 @@
                     <h3 class="infoItemTitle">سن :</h3>
                     <p class="infoItemContent">{{this.user.age}}</p>
                 </div>
-                <div class="infoItem" v-if="user.studentNumbe != undefined">
+                <div class="infoItem" v-if="user.studentNumber != undefined">
                     <h3 class="infoItemTitle">شماره دانشجویی :</h3>
                     <p class="infoItemContent">{{this.user.studentNumber}}</p>
                 </div>
