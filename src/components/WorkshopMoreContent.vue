@@ -4,7 +4,7 @@
             <div class="workshopContentWrapper">
                 <div class="workshopContent">
                     <div class="workshopTeachersDescription">
-                        <h2 class="workshopTeachersDesciption-title">
+                        <h2 class="workshopTeachersDescription-title">
                             <i class="material-icons">person</i>
                             توضیحات مدرسین کارگاه :
                         </h2>
@@ -29,9 +29,23 @@
                             <i class="material-icons rotate-180">double_arrow</i>
                                 در مورد این کارگاه :   
                         </h1>
-                        <p class="workshopContentDescripion-desc">
+                        <p class="workshopContentDescription-desc">
                             {{workshop.description}}
                         </p>
+
+                        <h3 class="timeline-title">جدول زمانی :</h3>
+                        <p class="timeline-description">
+                            تاریخ شروع :
+                            {{getJalali(workshop.startTime).utc().locale('fa').format("dddd YYYY/MM/D [ساعت] HH:mm")}}
+                        </p>
+                        <p class="timeline-description">
+                            تاریخ پایان :
+                            {{getJalali(workshop.endTime).utc().locale('fa').format("dddd YYYY/MM/D [ساعت] HH:mm")}}
+                        </p>
+
+                        <h3 class="timeline-title">آلبوم عکس ها :</h3>
+                        <Gallery :album="album"></Gallery>
+
                         <router-link :to="'/registerworkshop/?workshop=' + workshop._id" class="registerButton">ثبت نام</router-link>
                     </div>
                 </div>
@@ -41,29 +55,43 @@
 
 <script>
     import axios from 'axios';
+    // import Gallery from "vue-cover-gallery"
+    // import VueGallery from 'vue-gallery';
+    import Gallery from "@/components/WorkshopComponents/Gallery"
+    import jalali from 'jalali-moment'
     import PartialHeader from '@/components/PartialHeader'
 
     export default {
         name: "WorkshopMoreContent",
         components : {
             PartialHeader,
+            Gallery
+            // Gallery,VueGallery
         },
         data() {
             return {
                 workshop : {},
-                teachers : []
+                teachers : [],
+                album : [
+                    {
+                        title: "image1",
+                        description: "image1 desc",
+                        url: "https://scx1.b-cdn.net/csz/news/800/2019/2-nature.jpg"
+                    },{
+                        title : '',
+                        description : '',
+                        url : 'https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9'
+                    }
+                ]
+            }
+        },
+        methods : {
+            getJalali(date) {
+                return jalali(date);
             }
         },
         computed: {
-            getName: function () {
-                return this.$store.getters.getWorkshopMore.title;
-            },
-            getDescription: function () {
-                return this.$store.getters.getWorkshopMore.description;
-            },
-            getTeachers: function () {
-                return this.$store.getters.getWorkshopMore.teachers;
-            }
+
         },
         created() {
             console.log(this.$route.params.id);
@@ -83,14 +111,6 @@
 </script>
 
 <style scoped>
-    .workshopTitleWrapper {
-        width:100%;
-        background: url('../assets/img/background2.png') no-repeat center center;
-        min-height:300px;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-    }
 
     .workshopContentWrapper {
         width:100%;
@@ -119,6 +139,20 @@
         width:25%;
     }
 
+    .timeline-title {
+        font-family: 'iransans';
+        color : #e4b22b;
+        margin-right:10px;
+        margin-top:10px;
+    }
+
+    .timeline-description {
+        font-family : 'iransans';
+        color:white;
+        font-size:15px;
+        margin:5px 10px;
+    }
+
     .teacherDescriptionWrapper {
         display:flex;
         align-items:flex-start;
@@ -127,14 +161,14 @@
         margin:auto 0;
     }
 
-    .workshopTeachersDesciption-title {
+    .workshopTeachersDescription-title {
         /* margin-bottom:auto; */
         margin-top:10px;
         display:flex;
         align-items:center;
     }
 
-    .workshopTeachersDesciption-title i.material-icons {
+    .workshopTeachersDescription-title i.material-icons {
         margin-left:5px;
         margin-right:15px;
     }
@@ -160,7 +194,7 @@
         margin-bottom:10px;
     }
 
-    .workshopTeachersDesciption-title {
+    .workshopTeachersDescription-title {
         font-family: 'iransans';
         color :#e4b22b;
         position: absolute;
@@ -212,7 +246,6 @@
     .workshopContentDescription {
         width: 680px;
         min-height: 400px;
-        /* background-color: black; */
         border-radius: 30px 0 0 40px;
         display: flex;
         align-items: flex-start;
@@ -226,7 +259,7 @@
         color :#e4b22b;
     }
 
-    .workshopContentDescripion-desc {
+    .workshopContentDescription-desc {
         font-family : 'iransans';
         color:white;
         padding:15px;
@@ -265,11 +298,11 @@
             width: initial;
         }
 
-        .workshopContentDescripion-desc {
+        .workshopContentDescription-desc {
             line-height:30px;
         }
 
-        .workshopTeachersDesciption-title {
+        .workshopTeachersDescription-title {
             position:static;
         }
     }
