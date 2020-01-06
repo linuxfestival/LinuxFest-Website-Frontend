@@ -34,13 +34,14 @@
                         </p>
 
                         <h3 class="timeline-title">جدول زمانی :</h3>
-                        <p class="timeline-description">
-                            تاریخ شروع :
-                            {{getJalali(workshop.startTime).utc().locale('fa').format("dddd YYYY/MM/D [ساعت] HH:mm")}}
-                        </p>
-                        <p class="timeline-description">
-                            تاریخ پایان :
-                            {{getJalali(workshop.endTime).utc().locale('fa').format("dddd YYYY/MM/D [ساعت] HH:mm")}}
+
+                        <p class="timeline-description" v-for="timeSlot in workshop.times">
+                            {{workshop.times.indexOf(timeSlot) + 1}} :
+                            {{getJalali(timeSlot.startTime).utc().locale('fa').format("dddd YYYY/MM/DD")}}
+                            | ساعت :
+                            {{getJalali(timeSlot.startTime).utc().locale('fa').format("HH:mm")}}
+                            تا
+                            {{getJalali(timeSlot.endTime).utc().locale('fa').format("HH:mm")}}
                         </p>
 
                         <h3 class="timeline-title">آلبوم عکس ها :</h3>
@@ -55,8 +56,6 @@
 
 <script>
     import axios from 'axios';
-    // import Gallery from "vue-cover-gallery"
-    // import VueGallery from 'vue-gallery';
     import Gallery from "@/components/WorkshopComponents/Gallery"
     import jalali from 'jalali-moment'
     import PartialHeader from '@/components/PartialHeader'
@@ -66,7 +65,6 @@
         components : {
             PartialHeader,
             Gallery
-            // Gallery,VueGallery
         },
         data() {
             return {
@@ -77,7 +75,8 @@
                         title: "image1",
                         description: "image1 desc",
                         url: "https://scx1.b-cdn.net/csz/news/800/2019/2-nature.jpg"
-                    },{
+                    },
+                    {
                         title : '',
                         description : '',
                         url : 'https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9'

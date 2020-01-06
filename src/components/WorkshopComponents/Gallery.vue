@@ -16,8 +16,12 @@
         name: "Gallery",
         props : {
             album: [],
-            fullScreenImage : false,
-            selectedImageToFull : {}
+        },
+        data() {
+            return {
+                fullScreenImage : false,
+                selectedImageToFull : {}
+            }
         },
         methods : {
             makeMeBig: function(imageIndex) {
