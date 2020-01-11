@@ -9,6 +9,7 @@ import EditUserInfo from "../views/EditUserInfo";
 import store from '../store/store'
 import AllWorkshops from "../views/AllWorkshops";
 import ForgetPass  from '@/views/ForgetPass';
+import ConfirmPayment from "@/views/ConfirmPayment";
 
 Vue.use(VueRouter);
 
@@ -52,6 +53,11 @@ const routes = [
         path : '/user/forget/:forgetToken',
         name : 'forget',
         component : ForgetPass
+    },
+    {
+        path : '/payment/confirm/:paymentToken',
+        name : 'confirmPayment',
+        component : ConfirmPayment
     }
 
 ];
@@ -62,7 +68,7 @@ const router = new VueRouter({
 });
 
 
-const requiredAuth = ['userEdit', 'userProfile', 'workshopsRegister'];
+const requiredAuth = ['userEdit', 'userProfile', 'workshopsRegister', 'confirmPayment'];
 const notRequiredAuth = ['signin', 'signup' , 'forget'];
 router.beforeEach((to, from, next) => {
     console.log('from ', from);
