@@ -1,17 +1,19 @@
 <template>
     <div class="parent">
-        <PartialHeader title="ثبت نام در کارگاه ها" backgroundUrl="../assets/img/background2.png" ></PartialHeader>
+        <PartialHeader title="ثبت نام در کارگاه ها" backgroundUrl="../assets/img/background2.png"></PartialHeader>
 
         <div class="workshopsListWrapper">
             <div class="workshopsList">
                 <WorkshopRegisterItem @toggleSelect="toggleSelectMe(workshop._id)" :workshop="workshop"
-                                      v-for="workshop in workshops" :isSelected="isInSelectedWorkshopsForRegister(workshop._id)" :key="workshop._id"></WorkshopRegisterItem>
+                                      v-for="workshop in workshops"
+                                      :isSelected="isInSelectedWorkshopsForRegister(workshop._id)"
+                                      :key="workshop._id"></WorkshopRegisterItem>
             </div>
         </div>
 
         <div class="workshopsListFooter">
             <p>
-               تعداد
+                تعداد
                 {{selectedWorkshopsForRegister.length}}
                 ورکشاپ برای ثبت نام انتخاب شده است.
             </p>
@@ -33,7 +35,7 @@
         },
         created() {
             this.getWorkshops();
-            if(this.$route.query.workshop != undefined) {
+            if (this.$route.query.workshop != undefined) {
                 this.toggleSelectMe(this.$route.query.workshop)
             }
         },
@@ -51,6 +53,34 @@
         },
         methods: {
             register: function () {
+                console.log(this.selectedWorkshopsForRegister)
+                return new Promise((resolve, reject) => {
+                    axios({
+                        url: this.$store.getters.baseUrl + '/users/initPayment',
+                        method: 'post',
+                        data: this.selectedWorkshopsForRegister,
+                        headers: this.$store.getters.httpHeaders
+                    }).then(response => {
+                        this.$notify({
+                            group: "auth",
+                            title: "موفقیت",
+                            text: "کارگاه موردنظر اضافه شد",
+                            type: "success"
+                        });
+                        this.$router.push("/user/me");
+                        console.log(response)
+                        resolve();
+                    }).catch(error => {
+                        this.$notify({
+                            group: 'auth',
+                            title: 'خطا',
+                            text: 'خطایی هنگام ارتباط با سرور رخ داد. لطفا دوباره تلاش کنید',
+                            type: "error"
+                        })
+                        console.log(error)
+                        reject();
+                    })
+                })
 
             },
             toggleSelectMe(workshopId) {
@@ -87,7 +117,7 @@
 <style scoped>
 
     .parent {
-        min-height:calc(100vh - 40px);
+        min-height: calc(100vh - 40px);
     }
 
     .workshopsList {
@@ -110,30 +140,30 @@
     }
 
     .workshopsListFooter {
-        margin-top:10px;
-        margin-bottom:10px;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        flex-direction:column;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
         font-family: 'iransans';
     }
 
     .workshopsRegisterButton {
-        border:none;
-        font-size:15px;
-        margin-top:20px;
-        padding:5px 30px;
+        border: none;
+        font-size: 15px;
+        margin-top: 20px;
+        padding: 5px 30px;
         font-family: 'iransans';
-        background-color : #521c34;
-        color:white;
-        cursor:pointer;
-        border-radius:30px;
+        background-color: #521c34;
+        color: white;
+        cursor: pointer;
+        border-radius: 30px;
         transition: all 0.1s ease-in-out;
     }
 
     .workshopsRegisterButton:hover {
-        box-shadow:0 0 30px 5px rgba(0,0,0,0.3);
+        box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.3);
     }
 
 </style>
