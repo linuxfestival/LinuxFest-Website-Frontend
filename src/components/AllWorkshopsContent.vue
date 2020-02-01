@@ -51,6 +51,7 @@
                 return this.$store.getters.selectedWorkshopsForRegister;
             }
         },
+
         methods: {
             register: function () {
                 console.log(this.selectedWorkshopsForRegister)
