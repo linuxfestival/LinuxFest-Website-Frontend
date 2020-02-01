@@ -68,7 +68,6 @@
                             text: "کارگاه موردنظر اضافه شد",
                             type: "success"
                         });
-                        this.$router.push("/user/me");
                         console.log(response)
                         this.redirectForPayment(response);
                         resolve();
