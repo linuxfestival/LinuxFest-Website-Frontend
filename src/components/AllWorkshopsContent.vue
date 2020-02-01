@@ -69,6 +69,7 @@
                         });
                         this.$router.push("/user/me");
                         console.log(response)
+                        this.redirectForPayment(response);
                         resolve();
                     }).catch(error => {
                         this.$notify({
@@ -82,6 +83,19 @@
                     })
                 })
 
+            },
+            redirectForPayment: function(response){
+                return new Promise((resolve, reject) => {
+                    axios({
+                        url: 'https://sadad.shaparak.ir/VPG/Purchase' + response.data.token,
+                        method: 'get',
+                    }).then(response => {
+                        resolve();
+                    }).catch(error => {
+                        console.log(error)
+                        reject();
+                    })
+                })
             },
             toggleSelectMe(workshopId) {
                 console.log('click fired.')
