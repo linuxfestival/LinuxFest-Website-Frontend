@@ -12,7 +12,7 @@ export default new Vuex.Store({
         baseUrl: "http://45.147.76.80",
         workshopMore:{},
         allWorkshops: [],
-        selectedWorkshopsForRegister : [],
+        selectedWorkshopsForRegister : {workshopIds:[]},
         config: {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')

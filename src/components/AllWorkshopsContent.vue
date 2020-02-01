@@ -48,18 +48,21 @@
         },
         computed: {
             selectedWorkshopsForRegister: function () {
+                return this.$store.getters.selectedWorkshopsForRegister.workshopIds;
+            },
+            objectToPost: function () {
                 return this.$store.getters.selectedWorkshopsForRegister;
             }
         },
 
         methods: {
             register: function () {
-                console.log(this.selectedWorkshopsForRegister)
+                console.log(this.objectToPost)
                 return new Promise((resolve, reject) => {
                     axios({
                         url: this.$store.getters.baseUrl + '/users/initPayment',
                         method: 'post',
-                        data: this.selectedWorkshopsForRegister,
+                        data: this.objectToPost,
                         headers: this.$store.getters.httpHeaders
                     }).then(response => {
                         this.$notify({
@@ -87,7 +90,7 @@
             redirectForPayment: function(response){
                 return new Promise((resolve, reject) => {
                     axios({
-                        url: 'https://sadad.shaparak.ir/VPG/Purchase' + response.data.token,
+                        url: 'https://sadad.shaparak.ir/VPG/Purchase/' + response.data.token,
                         method: 'get',
                     }).then(response => {
                         resolve();
@@ -104,7 +107,7 @@
                 } else {
                     this.removeSelectedWorkshop(workshopId);
                 }
-                console.log('selected workshops :', this.selectedWorkshopsForRegister);
+                // console.log('selected workshops :', this.selectedWorkshopsForRegister);
             },
             removeSelectedWorkshop(workshopId) {
                 let workshopIndex = this.selectedWorkshopsForRegister.indexOf(workshopId);
