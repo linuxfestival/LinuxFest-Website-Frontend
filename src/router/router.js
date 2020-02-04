@@ -55,7 +55,7 @@ const routes = [
         component : ForgetPass
     },
     {
-        path : '/payment/confirm/:paymentToken',
+        path : '/payment/result/',
         name : 'confirmPayment',
         component : ConfirmPayment
     }
