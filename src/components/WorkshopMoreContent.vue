@@ -43,7 +43,6 @@
                         </p>
 
                         <h3 class="timeline-title">آلبوم عکس ها :</h3>
-                        <Gallery :album="album"></Gallery>
 
                         <router-link :to="'/registerworkshop/?workshop=' + workshop._id" class="registerButton">ثبت نام</router-link>
                     </div>
