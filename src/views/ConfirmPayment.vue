@@ -1,6 +1,15 @@
 <template>
     <div class="infoWrapper">
-        <h1>Payment token validation : {{$route.params.paymentToken}}</h1>
+        <h1 v-if="qData.status == 'GOOD'">پرداخت شما با موفقیت انجام شد</h1>
+        <h1 v-else>خطایی هنگام پرداخت رخ داد</h1>
+        <br>
+        <h2>
+           اطلاعات پرداخت :
+            <br>
+            کد 1 : {{qData.RetrivalRefNo}}
+            <br>
+            کد 2 : {{qData.SystemTraceNo}}
+        </h2>
     </div>
 </template>
 
@@ -9,20 +18,17 @@
     export default {
         name: "ConfirmPayment",
         methods : {
-            validatePaymentToken() {
-                axios({
-                    url : "http://www.google.com/" + this.$route.params.paymentToken,
-                    method : 'GET',
-                    headers : this.$store.getters.httpHeaders,
-                }).then(response => {
-                    console.log(response);
-                }).catch(error => {
-                    console.log(error.response)
-                })
-            }
+
         },
         created() {
-            this.validatePaymentToken();
+            console.log(this.$route);
+            console.log(this.$route.query.data);
+            console.log(JSON.parse(this.$route.query.data));
+        },
+        computed: {
+            qData : function() {
+                return JSON.parse(this.$route.query.data);
+            }
         }
     }
 </script>
