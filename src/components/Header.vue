@@ -8,10 +8,9 @@
             </button>
             <router-link to="/" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">خانه</router-link>
             <div class="divider"></div>
-            <router-link to="/" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">کارگاه ها</router-link>
+            <router-link to="/" v-scroll-to="'#workshops'" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">کارگاه ها</router-link>
             <div class="divider"></div>
-            <router-link to="/" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">تماس با ما
-            </router-link>
+            <router-link to="/" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">تماس با ما</router-link>
         </nav>
 
         <nav class="profileMenu">
@@ -65,6 +64,9 @@
             return {
                 showMobileMenu: false,
                 showMobileProfile: false,
+                desktopMenuList : [
+                    {name : "", path : '/'}
+                ]
             }
         },
         mounted() {
@@ -84,13 +86,13 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 15px 0;
         box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.2);
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         z-index: 999;
+        min-height:60px;
     }
 
     .registerLink {
