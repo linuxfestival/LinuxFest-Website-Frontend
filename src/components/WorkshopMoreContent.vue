@@ -42,8 +42,6 @@
                             {{getJalali(timeSlot.endTime).utc().locale('fa').format("HH:mm")}}
                         </p>
 
-                        <h3 class="timeline-title">آلبوم عکس ها :</h3>
-
                         <router-link :to="'/registerworkshop/?workshop=' + workshop._id" class="registerButton">ثبت نام</router-link>
                     </div>
                 </div>
