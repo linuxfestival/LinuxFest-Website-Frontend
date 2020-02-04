@@ -1,11 +1,9 @@
 <template>
-    <section class="workshops">
+    <section class="workshops" id="workshops">
         <div class="workshopsContainer">
             <h1 class="workshops-title">{{workshopsTitle}}</h1>
         <section class="workshops-list">
-            <WorkshopItem v-for="workshop in getWorkshops" :workshop="workshop" :key="getWorkshops.indexOf(workshop)">
-
-            </WorkshopItem>
+            <WorkshopItem v-for="(workshop, index) in getWorkshops" :workshop="workshop" :key="index" />
         </section>
         </div>
     </section>
@@ -97,6 +95,7 @@
         justify-content:flex-start;
         flex-direction:column;
     }
+
     .workshops-title {
         font-family: 'iransans';
         font-size:30px;
