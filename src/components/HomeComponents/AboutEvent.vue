@@ -26,15 +26,13 @@
 <style scoped>
     .aboutEventWrapper {
         width:100%;
-        margin-top:5px;
         border-bottom:5px solid rgb(242,169,56);
         display:flex;
         flex-direction:column;
         align-items:center;
         justify-content:center;
-        background: url("../../assets/img/pinguin.png") no-repeat left ;
-        background-size:50%;
-        background-color: #521c34;
+        min-height:500px;
+        background: #521c34 url("../../assets/img/pinguin.png") no-repeat left / 50%;
     }
 
     .aboutEventContainer {
@@ -48,7 +46,7 @@
     .aboutEvent-title {
         color:rgb(242,169,56);
         font-family: 'iransans';
-        font-size:23px;
+        font-size:25px;
         margin:15px 30px;
         display:flex;
         align-items:center;
@@ -58,9 +56,9 @@
     .aboutEvent-description {
         color:white;
         font-family: 'iransans';
-        margin:0 30px 30px;
-        margin-bottom:30px;
-        line-height:30px;
+        margin:0 30px 30px 30px;
+        line-height:50px;
         text-align:justify;
+        font-size:18px;
     }
 </style>
