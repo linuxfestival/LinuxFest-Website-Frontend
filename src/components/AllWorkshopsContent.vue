@@ -1,13 +1,13 @@
 <template>
     <div class="parent">
-        <PartialHeader title="ثبت نام در کارگاه ها" backgroundUrl="../assets/img/background2.png"></PartialHeader>
+        <PartialHeader title="ثبت نام در کارگاه ها" backgroundUrl="../assets/img/background2.png" />
 
         <div class="workshopsListWrapper">
             <div class="workshopsList">
                 <WorkshopRegisterItem @toggleSelect="toggleSelectMe(workshop._id)" :workshop="workshop"
                                       v-for="workshop in workshops"
                                       :isSelected="isInSelectedWorkshopsForRegister(workshop._id)"
-                                      :key="workshop._id"></WorkshopRegisterItem>
+                                      :key="workshop._id"/>
             </div>
         </div>
 
