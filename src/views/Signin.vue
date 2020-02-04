@@ -1,5 +1,5 @@
 <template>
-    <SigninContent></SigninContent>
+    <SigninContent />
 </template>
 
 <script>

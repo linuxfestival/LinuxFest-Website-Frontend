@@ -57,10 +57,10 @@
 
         methods: {
             register: function () {
-                console.log(this.objectToPost)
+                console.log(this.objectToPost);
                 return new Promise((resolve, reject) => {
                     axios({
-                        url: this.$store.getters.baseUrl + '/users/initPayment',
+                        url: this.$store.getters.baseUrl + 'users/initpayment',
                         method: 'post',
                         data: this.objectToPost,
                         headers: this.$store.getters.httpHeaders
@@ -68,10 +68,10 @@
                         this.$notify({
                             group: "auth",
                             title: "موفقیت",
-                            text: "کارگاه موردنظر اضافه شد",
+                            text: "به درگاه پرداخت برده می شوید",
                             type: "success"
                         });
-                        console.log(response)
+                        console.log(response);
                         this.redirectForPayment(response);
                         resolve();
                     }).catch(error => {
@@ -88,17 +88,18 @@
 
             },
             redirectForPayment: function(response){
-                return new Promise((resolve, reject) => {
-                    axios({
-                        url: 'https://sadad.shaparak.ir/VPG/Purchase/' + response.data.token,
-                        method: 'get',
-                    }).then(response => {
-                        resolve();
-                    }).catch(error => {
-                        console.log(error)
-                        reject();
-                    })
-                })
+                window.location = "https://sadad.shaparak.ir/VPG/Purchase?token=" + response.data;
+                // return new Promise((resolve, reject) => {
+                //     axios({
+                //         url: 'https://sadad.shaparak.ir/VPG/Purchase/' + response.data.token,
+                //         method: 'get',
+                //     }).then(response => {
+                //         resolve();
+                //     }).catch(error => {
+                //         console.log(error)
+                //         reject();
+                //     })
+                // })
             },
             toggleSelectMe(workshopId) {
                 console.log('click fired.')
@@ -118,7 +119,7 @@
             },
             getWorkshops() {
                 axios({
-                    url: this.$store.getters.baseUrl + '/workshops',
+                    url: this.$store.getters.baseUrl + 'workshops',
                     method: 'get'
                 }).then(response => {
                     this.workshops = response.data;

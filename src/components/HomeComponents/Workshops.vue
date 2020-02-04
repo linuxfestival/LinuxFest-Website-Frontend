@@ -83,7 +83,8 @@
     .workshops {
         width: 100%;
         display:flex;
-        align-items:center;
+        min-height:100vh;
+        align-items:flex-start;
         justify-content:center;
         padding-bottom:30px;
     }

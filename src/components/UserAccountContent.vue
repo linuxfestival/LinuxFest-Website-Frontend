@@ -73,7 +73,7 @@
                         type : "warn"
                     })
                 axios({
-                    url : this.$store.getters.baseUrl + '/users/me',
+                    url : this.$store.getters.baseUrl + 'users/me',
                     method : 'GET',
                     headers : this.$store.getters.httpHeaders,
                 }).then(response => {

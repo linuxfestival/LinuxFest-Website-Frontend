@@ -114,7 +114,7 @@
                         type : "warn"
                     })
                 axios({
-                    url : this.$store.getters.baseUrl + '/users/me',
+                    url : this.$store.getters.baseUrl + 'users/me',
                     method : 'GET',
                     headers : this.$store.getters.httpHeaders,
                 }).then(response => {
@@ -155,7 +155,7 @@
                 if(this.updatedFieldsAreValid(updatedUserPayload)) {
                     console.log('remaining form is valid');
                     axios({
-                        url : this.$store.getters.baseUrl + '/users/me',
+                        url : this.$store.getters.baseUrl + 'users/me',
                         method : 'PATCH',
                         data : updatedUserPayload,
                         headers : this.$store.getters.httpHeaders 

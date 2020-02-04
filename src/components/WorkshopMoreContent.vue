@@ -22,16 +22,14 @@
                         </div>
                     </div>
                     <div class="workshopTeachersImages">
-                        <img v-for="teacher in teachers" :key="teachers.indexOf(teacher)" :src="'http://45.147.76.80' + teacher.picUrl" draggable="false" class="workshopTeacherImages-image" :alt="teacher.fullName + ' image'">
+                        <img v-for="teacher in teachers" :key="teachers.indexOf(teacher)" :src="'http://skillcenter.aut.ac.ir/linuxfestapi' + teacher.picUrl.replace('/','')" draggable="false" class="workshopTeacherImages-image" :alt="teacher.fullName + ' image'">
                     </div>
                     <div class="workshopContentDescription">
                         <h1 class="workshopContentDescription-title">
                             <i class="material-icons rotate-180">double_arrow</i>
                                 در مورد این کارگاه :   
                         </h1>
-                        <p class="workshopContentDescription-desc">
-                            {{workshop.description}}
-                        </p>
+                        <p class="workshopContentDescription-desc" v-html="workshop.description"></p>
 
                         <h3 class="timeline-title">جدول زمانی :</h3>
 
@@ -95,7 +93,7 @@
         created() {
             console.log(this.$route.params.id);
             axios({
-                url : this.$store.getters.baseUrl + "/workshops/" + this.$route.params.id,
+                url : this.$store.getters.baseUrl + "workshops/" + this.$route.params.id,
                 method : 'get', 
             }).then(response => {
                 console.log(response);

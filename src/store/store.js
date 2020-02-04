@@ -9,7 +9,7 @@ export default new Vuex.Store({
     state: {
         token: localStorage.getItem('token') || '',
         loggedInUser: {},
-        baseUrl: "http://skillcenter.aut.ac.ir:7557",
+        baseUrl: "http://skillcenter.aut.ac.ir/linuxfestapi",
         workshopMore:{},
         allWorkshops: [],
         selectedWorkshopsForRegister : {workshopIds:[]},
@@ -20,6 +20,7 @@ export default new Vuex.Store({
         },
     },
     mutations: {
+
         setToken: function (state, newToken) {
             state.token = newToken;
             localStorage.setItem('token', newToken);
@@ -41,7 +42,7 @@ export default new Vuex.Store({
             state.workshopMore = {};
             state.allWorkshops = {};
             state.selectedWorkshopsForRegister = [];
-            state.config.headers.Authorization = ''
+            state.config.headers.Authorization = '';
             localStorage.clear();
         },
 
@@ -53,11 +54,12 @@ export default new Vuex.Store({
         }
     },
     actions: {
+
         login: function ({commit, state}, userToLogIn) {
             console.log('login called');
             return new Promise((resolve,reject) => {
                 axios({
-                    url : state.baseUrl + "/users/login",
+                    url : state.baseUrl + "users/login",
                     method : 'post',
                     data : userToLogIn
                 }).then(response => {
@@ -73,11 +75,12 @@ export default new Vuex.Store({
         logout: function ({state}) {
             this.commit('resetStats');         
         },
+
         signup : function({commit,state} , userToRegister) {
             console.log('sending signup request');
             return new Promise((resolve,reject) => {
                 axios({
-                    url : state.baseUrl + '/users',
+                    url : state.baseUrl + 'users',
                     method : 'post',
                     data : userToRegister,
                     headers : state.config.headers
@@ -97,7 +100,7 @@ export default new Vuex.Store({
 
         editUserInfo: async function ({commit, state}, user) {
             try{
-                const response = await axios.patch(state.baseUrl + '/users/me', user, state.config)
+                const response = await axios.patch(state.baseUrl + 'users/me', user, state.config)
                 console.log(response);
                 console.log(response.data)
                 return true
@@ -106,23 +109,23 @@ export default new Vuex.Store({
                 return false
             }
         },
+
         getWorkshopsFromServer: async function ({commit, state}) {
             console.log('workshop from server');
             try {
-                const response = await axios.get(state.baseUrl + '/workshops');
+                const response = await axios.get(state.baseUrl + 'workshops');
                 console.log(response);
-                commit('setAllWorkshops', response.data)
-                console.log(state.allWorkshops)
+                commit('setAllWorkshops', response.data);
+                console.log(state.allWorkshops);
                 return true
             } catch (e) {
                 console.log(e);
-
             }
-
         },
+
         getUserFromServer: function ({commit, state}) {
             console.log(state.config);
-            axios.get(state.baseUrl + '/users/me', state.config)
+            axios.get(state.baseUrl + 'users/me', state.config)
                 .then(function (response) {
                     // handle success
                     console.log(response);
@@ -137,10 +140,11 @@ export default new Vuex.Store({
                     // always executed
                 });
         },
+
         getWorkshopMoreInfo: async function ({commit, state}, id) {
-            console.log("STORE")
+            console.log("STORE");
             try {
-                const response = await axios.get(state.baseUrl + '/workshops/' + id);
+                const response = await axios.get(state.baseUrl + 'workshops/' + id);
                 console.log(response);
                 commit('setWorkshopMore', response.data);
             } catch (e) {
@@ -150,9 +154,7 @@ export default new Vuex.Store({
     },
     getters: {
         isLoggedIn: (state) => {
-            if (state.token == '') {
-                return false;
-            } else return true;
+            return state.token != '';
         },
 
         getLoggedInUser: (state) => {

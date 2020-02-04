@@ -64,7 +64,7 @@
             forgetPasswordRequest: function() {
                 console.log("forget password request");
                 axios({
-                    url : this.$store.getters.baseUrl + "/users/forget",
+                    url : this.$store.getters.baseUrl + "users/forget",
                     method : 'post',
                     data  : this.user
                 }).then(response => {

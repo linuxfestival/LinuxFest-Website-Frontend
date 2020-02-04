@@ -49,8 +49,6 @@
 
     .footer-map {
         border-radius:15px;
-        /*width:450px;*/
-        /*height:300px;*/
     }
 
     .footer-copyright {

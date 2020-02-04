@@ -2,10 +2,10 @@
     <section class="aboutEventWrapper">
         <div class="aboutEventContainer">
             <h1 class="aboutEvent-title">
-                <i class="material-icons">{{sponsorTitleIcon}}</i>
                 {{sponsorTitle}}
             </h1>
             <p class="aboutEvent-description">{{sponsorDescription}}</p>
+            <img src="../../assets/img/snapp.png" alt="Snapp Logo" class="aboutEvent-logo" draggable="false">
         </div>
     </section>
 </template>
@@ -33,6 +33,7 @@
         flex-direction:column;
         align-items:center;
         justify-content:center;
+        min-height: 500px;
         background: #521c34 url("../../assets/img/pinguin.png") no-repeat left / 50%;
     }
 
@@ -40,7 +41,7 @@
         max-width:1140px;
         display: flex;
         flex-direction : column;
-        align-items : flex-start;
+        align-items : center;
         justify-content : flex-start;
     }
 
@@ -48,7 +49,7 @@
         color:rgb(242,169,56);
         font-family: 'iransans';
         font-size:25px;
-        margin:15px 30px;
+        margin:20px 30px;
         display:flex;
         align-items:center;
 
@@ -58,8 +59,13 @@
         color:white;
         font-family: 'iransans';
         margin:0 30px 30px 30px;
-        line-height:34px;
+        line-height:50px;
         text-align:justify;
         font-size:18px;
+    }
+
+    .aboutEvent-logo {
+        width:50%;
+        margin-bottom: 20px;
     }
 </style>
