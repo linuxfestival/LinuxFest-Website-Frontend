@@ -1,6 +1,6 @@
 <template>
     <div>
-        <AllWorkshopsContent></AllWorkshopsContent>
+        <AllWorkshopsContent />
     </div>
 </template>
 
