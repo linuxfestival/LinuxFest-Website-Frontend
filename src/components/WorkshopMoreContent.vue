@@ -1,6 +1,6 @@
 <template>
     <div class="parent">
-            <PartialHeader :title="workshop.title"></PartialHeader>
+            <PartialHeader :title="workshop.title" />
             <div class="workshopContentWrapper">
                 <div class="workshopContent">
                     <div class="workshopTeachersDescription">
@@ -29,7 +29,7 @@
                             <i class="material-icons rotate-180">double_arrow</i>
                                 در مورد این کارگاه :   
                         </h1>
-                        <p class="workshopContentDescription-desc" v-html="workshop.description"></p>
+                        <p class="workshopContentDescription-desc" v-html="workshop.description" />
 
                         <h3 class="timeline-title">جدول زمانی :</h3>
 
@@ -51,8 +51,8 @@
 
 <script>
     import axios from 'axios';
-    import Gallery from "@/components/WorkshopComponents/Gallery"
     import jalali from 'jalali-moment'
+    import Gallery from "@/components/WorkshopComponents/Gallery"
     import PartialHeader from '@/components/PartialHeader'
 
     export default {
@@ -112,6 +112,7 @@
         align-items:center;
         justify-content:center;
         margin-top:30px;
+        margin-bottom:60px;
     }
 
     .workshopContent {
@@ -196,7 +197,7 @@
     }
 
     .parent {
-        min-height:100vh;
+        /*min-height:100vh;*/
         background-color:#f1f1f1;
         display:flex;
         align-items:center;
@@ -251,6 +252,9 @@
         margin-top:10px;
         font-family: 'iransans';
         color :#e4b22b;
+        display:flex;
+        align-items:center;
+
     }
 
     .workshopContentDescription-desc {
@@ -274,6 +278,7 @@
     @media only screen and (max-width:991.8px ) {
         .workshopContent {
             flex-direction: column-reverse;
+            border-radius:0;
         }
         
         .workshopTeachersImages {
@@ -282,7 +287,7 @@
 
         .workshopTeachersDescription {
             border-left:none;
-            padding-left:0;
+            padding:20px 0;
             border-radius:0;
             width:initial;
         }

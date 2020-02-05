@@ -1,9 +1,8 @@
 <template>
     <div class="infoWrapper">
-        <PartialHeader title="حساب کاربری" backgroundUrl="../assets/img/background2.png" ></PartialHeader>
+        <PartialHeader title="حساب کاربری" backgroundUrl="../assets/img/background2.png" />
 
         <div class="infoMiddleWrapper">
-            
             <div class="userInfoBox">
                 <div class="infoBoxHeader">
                     <div class="infoBoxHeader-line"></div>
@@ -133,8 +132,9 @@
         flex-flow: column wrap;
         display:flex;
         margin-left:20px;
+        margin-bottom:20px;
         padding:10px;
-        box-shadow: 0px 0 25px rgba(0,0,0,0.5);
+        box-shadow: 0 0 25px rgba(0,0,0,0.5);
     }
 
     .infoItem {

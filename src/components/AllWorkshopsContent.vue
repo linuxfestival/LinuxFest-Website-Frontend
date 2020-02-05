@@ -81,7 +81,7 @@
                             text: 'خطایی هنگام ارتباط با سرور رخ داد. لطفا دوباره تلاش کنید',
                             type: "error"
                         });
-                        console.log(error);
+                        console.log(error.response);
                         reject();
                     })
                 })

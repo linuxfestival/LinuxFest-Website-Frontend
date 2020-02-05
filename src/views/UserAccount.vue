@@ -1,6 +1,6 @@
 <template>
     <div>
-        <UserAccountContent></UserAccountContent>
+        <UserAccountContent />
     </div>
 </template>
 
