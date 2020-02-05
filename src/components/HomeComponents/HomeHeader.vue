@@ -13,7 +13,7 @@
         data() {
             return {
                 homeHeaderTitle : 'جشنواره <br> لینوکس <br> امیرکبیر',
-                homeHeaderTitleHorizontal: 'انجمن علمی دانشکده مهندسی کامپیوتر دانشگاه صنعتی امیرکبیر'
+                homeHeaderTitleHorizontal: 'انجمن علمی دانشکده مهندسی کامپیوتر دانشگاه صنعتی امیرکبیر با همکاری اسنپ برگزار می کند:'
             }
         }
     }
