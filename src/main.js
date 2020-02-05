@@ -6,6 +6,20 @@ import VueWait from 'vue-wait'
 import Notifications from 'vue-notification'
 import Vuelidate from 'vuelidate'
 import VueScrollTo from 'vue-scrollto';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faTwitter, faGoogle, faInstagram, faTelegram } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from '@fortawesome/vue-fontawesome'
+
+library.add(
+  faTwitter,
+  faGoogle, 
+  faInstagram, 
+  faTelegram
+)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('font-awesome-layers', FontAwesomeLayers)
+Vue.component('font-awesome-layers-text', FontAwesomeLayersText)
 
 let vueScrollToConfig = {
   container: "body",

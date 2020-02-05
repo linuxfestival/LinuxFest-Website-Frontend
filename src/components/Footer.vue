@@ -11,7 +11,7 @@
                 </a>
                 <div class="footer-social--items">
                     <a class="footer-social--item" :target="_blank" :href="socialItem.link" v-for="(socialItem, index) in socialLinks">
-                        {{socialItem.name}}
+                        <font-awesome-icon :icon="socialItem.icon" />
                     </a>
                 </div>
             </div>
@@ -30,10 +30,10 @@
         data() {
             return {
                 socialLinks: [
-                    {icon : "gmail", name : "gmail", link : "ceit.ssc94@gmail.com"},
-                    {icon : "telegram", name : "telegram", link : "https://t.me/ceit_ssc"},
-                    {icon : "twitter", name : "twitter", link : "https://twitter.com/ceit_ssc"},
-                    {icon : "instgaram", name : "instagram", link : "https://instagram.com/ceit_ssc"},
+                    {icon : ['fab', 'google'], name : "gmail", link : "mailto:ceit.ssc94@gmail.com"},
+                    {icon : ['fab', 'telegram'], name : "telegram", link : "https://t.me/ceit_ssc"},
+                    {icon : ['fab', 'twitter'], name : "twitter", link : "https://twitter.com/ceit_ssc"},
+                    {icon : ['fab', 'instagram'], name : "instagram", link : "https://instagram.com/ceit_ssc"},
                 ]
             }
         }
@@ -82,7 +82,7 @@
     }
 
     .footer-social--ceitlogo img {
-        width:500px;
+        width:400px;
         margin-bottom:20px;
     }
 
@@ -90,6 +90,7 @@
         width:100%;
         display:flex;
         align-items:center;
+        font-size: 40px;
         justify-content: space-evenly;
     }
 
@@ -108,6 +109,7 @@
         color: white;
         padding-top:10px;
         padding-bottom:10px;
+        text-align: center;
     }
 
     @media only screen and (max-width: 576px) {
@@ -117,6 +119,10 @@
 
         .footer-map {
             width:calc(100% - 20px);
+        }
+
+        .footer-social--ceitlogo {
+            margin-top:20px;
         }
     }
 </style>

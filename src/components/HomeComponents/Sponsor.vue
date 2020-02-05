@@ -5,7 +5,7 @@
                 {{sponsorTitle}}
             </h1>
             <p class="aboutEvent-description">{{sponsorDescription}}</p>
-            <img src="../../assets/img/snapp.png" alt="Snapp Logo" class="aboutEvent-logo" draggable="false">
+            <img src="../../assets/img/orange_snapp.png" alt="Snapp Logo" class="aboutEvent-logo" draggable="false">
         </div>
     </section>
 </template>
@@ -34,7 +34,7 @@
         align-items:center;
         justify-content:center;
         min-height: 500px;
-        background: #521c34 url("../../assets/img/pinguin.png") no-repeat left / 50%;
+        background: #521c34;
     }
 
     .aboutEventContainer {
