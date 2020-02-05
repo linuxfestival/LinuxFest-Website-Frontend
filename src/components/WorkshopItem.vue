@@ -80,6 +80,8 @@ export default {
         font-family :'iransans','Arial';
         font-size:18px;
         text-align: center;
+        padding-right:5px;
+        padding-left: 5px;
     }
 
     .workshop-item--info-teachTitle {

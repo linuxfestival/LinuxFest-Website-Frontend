@@ -6,13 +6,6 @@
                 <i class="material-icons rotate-180" >double_arrow</i>
                 {{workshop.title}}
             </h3>
-            <h3 class="workshopRegItemPrice" v-if="workshop.price != 0">
-                {{workshop.price}}
-                تومان
-            </h3>
-            <h3 class="workshopRegItemPrice" v-else>
-                رایگان
-            </h3>
             <router-link :to="'/workshops/' + workshop._id" class="workshopRegItemMoreButton">اطلاعات بیشتر...</router-link>
         </div>
     </div>
@@ -75,14 +68,6 @@
         margin-right:15px;
         margin-left:15px;
     }
-
-    .workshopRegItemPrice {
-        font-family : 'iransans';
-        display:flex;
-        align-items:center;
-        color:white;
-    }
-
     .material-icons.rotate-180 {
         transform: rotate(180deg);
     }
@@ -116,14 +101,6 @@
         border-left-color: #e4b22b;
     }
 
-    i.material-icons.selectedIcon {
-        position: absolute;
-        color: rgba(255,255,255,0.8);
-        font-weight: bold;
-        font-size: 50px;
-        margin-right: 7px;
-    }
-
     @media only screen and (max-width: 576px) {
         .workshopRegItemTitle i.material-icons {
             margin-right:5px;
@@ -134,10 +111,6 @@
         .workshopRegItemTitle {
             font-size:14px;
             font-weight:normal;
-        }
-
-        .workshopRegItemPrice {
-            font-size: 14px;
         }
 
         .workshopRegItemPrice i.material-icons {

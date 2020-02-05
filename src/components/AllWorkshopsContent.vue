@@ -66,12 +66,14 @@
                         data: this.objectToPost,
                         headers: this.$store.getters.httpHeaders
                     }).then(response => {
-                        this.$notify({
-                            group: "auth",
-                            title: "موفقیت",
-                            text: "به درگاه پرداخت برده می شوید",
-                            type: "success"
-                        });
+                        if(response.data != 'OK') {
+                            this.$notify({
+                                group: "auth",
+                                title: "موفقیت",
+                                text: "به درگاه پرداخت برده می شوید",
+                                type: "success"
+                            });
+                        }
                         console.log(response);
                         this.redirectForPayment(response);
                         resolve();
@@ -90,7 +92,17 @@
             },
 
             redirectForPayment: function (response) {
-                window.location = "https://sadad.shaparak.ir/VPG/Purchase?token=" + response.data;
+                if (response.data == 'OK') {
+                    this.$notify({
+                        group: "auth",
+                        title: "موفقیت",
+                        text: "با موفقیت در ورکشاپ های رایگان ثبت نام کردید.",
+                        type: "success"
+                    });
+                    this.$router.push('/user/me')
+                } else {
+                    window.location = "https://sadad.shaparak.ir/VPG/Purchase?token=" + response.data;
+                }
             },
 
             toggleSelectMe(workshopId) {
