@@ -86,7 +86,7 @@
                         در صورت داشتن حساب کاربری به حساب خود
                         <span>
               <router-link to="/signin" class="red">وارد</router-link>
-            </span>شوید
+            </span> شوید
                     </p>
                 </div>
             </form>
