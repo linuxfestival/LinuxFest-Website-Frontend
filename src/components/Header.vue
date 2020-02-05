@@ -131,6 +131,9 @@
         font-family: 'iransans';
         margin: 0 10px;
         text-decoration: none;
+		display:flex;
+		align-items:center;
+		justify-contnet:center;
     }
 
     .divider {
