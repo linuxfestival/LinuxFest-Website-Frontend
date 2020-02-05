@@ -52,12 +52,11 @@
 
     .footer-container {
         max-width:1140px;
-        width:100%;
         min-height:300px;
+        width:100%;
         display:flex;
         align-items:center;
         justify-content:space-evenly;
-        padding: 10px;
         flex-wrap: wrap;
         margin-top:30px;
         margin-bottom:30px;
@@ -111,7 +110,13 @@
         padding-bottom:10px;
     }
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 576px) {
+        .footer-social--ceitlogo img {
+            width:100%;
+        }
 
+        .footer-map {
+            width:calc(100% - 20px);
+        }
     }
 </style>

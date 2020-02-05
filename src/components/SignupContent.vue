@@ -1,6 +1,5 @@
 <template>
     <div class="back">
-        <v-wait for="Wait to sign in"></v-wait>
         <notifications position="top center" class="noti-style"/>
         <div class="main-frame">
             <div class="subject">

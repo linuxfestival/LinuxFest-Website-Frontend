@@ -112,4 +112,11 @@ export default {
         width:50%;
     }
 
+    @media only screen and (max-width: 405px) {
+        .workshop-item {
+            width:100%;
+            min-width:initial;
+        }
+    }
+
 </style>
