@@ -3,7 +3,7 @@
         <div class="workshopsContainer">
             <h1 class="workshops-title">{{workshopsTitle}}</h1>
         <section class="workshops-list">
-            <WorkshopItem v-for="(workshop, index) in getWorkshops" v-if="workshop.isRegOpen" :workshop="workshop" :key="index" />
+            <WorkshopItem v-for="(workshop, index) in getWorkshops" :workshop="workshop" :key="index" />
         </section>
         </div>
     </section>

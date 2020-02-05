@@ -42,7 +42,8 @@
                             {{getJalali(timeSlot.endTime).utc().locale('fa').format("HH:mm")}}
                         </p>
 
-                        <router-link :to="'/registerworkshop/?workshop=' + workshop._id" class="registerButton">ثبت نام</router-link>
+                        <router-link :to="'/registerworkshop/?workshop=' + workshop._id"  v-if="workshop.isRegOpen" class="registerButton">ثبت نام</router-link>
+                        <p v-else class="registerButton">ظرفیت این کارگاه تکمیل شده است.</p>
                     </div>
                 </div>
             </div>

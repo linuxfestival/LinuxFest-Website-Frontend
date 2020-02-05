@@ -76,7 +76,7 @@ export default {
 
     .workshop-item--info-title {
         margin-top:20px;
-        font-family :'Arial','iransans';
+        font-family :'iransans','Arial';
         font-size:20px;
     }
 

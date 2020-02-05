@@ -5,9 +5,9 @@
         <div class="workshopsListWrapper">
             <div class="workshopsList">
                 <WorkshopRegisterItem @toggleSelect="toggleSelectMe(workshop._id)" :workshop="workshop"
-                                      v-for="workshop in workshops"
+                                      v-for="(workshop, index) in workshops"
                                       :isSelected="isInSelectedWorkshopsForRegister(workshop._id)"
-                                      :key="workshop._id"/>
+                                      :key="index" v-if="workshop.isRegOpen" />
             </div>
         </div>
 
