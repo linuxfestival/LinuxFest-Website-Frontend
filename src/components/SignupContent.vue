@@ -34,7 +34,7 @@
                 <p v-if="$v.user.email.$error" class="red">*ایمیل معتبر نمی باشد(از کیبورد انگلیسی استفاده کنید)</p>
 
                 <div class="check-box">
-                    <input type="checkbox" id="checkbox" v-model="user.isAmirkabiri" checked="false"/>
+                    <input type="checkbox" class="aut_check" id="checkbox" v-model="user.isAmirkabiri" checked="false"/>
                     <label for="checkbox">امیرکبیری هستم </label>
                 </div>
 
@@ -339,5 +339,9 @@
 
     v-none {
         visibility: hidden;
+    }
+    
+    .aut_check {
+        margin: 3px;
     }
 </style>
