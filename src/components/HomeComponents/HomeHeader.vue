@@ -2,15 +2,21 @@
     <section class="homeHeaderWrapper">
         <h2 class="homeHeader-title-horizontal">{{homeHeaderTitleHorizontal}}</h2>
         <h1 class="homeHeader-title" >
-            <span class="homeHeader-title--sup">
-                یازدهمین دوره
+            <span class="homeHeader-title-yazdahomin">
+            یازدهمین دوره
             </span>
             <br>
+            <span class="homeHeader-title-jashnvareh">
             جشنواره
+            </span>
             <br>
+            <span class="homeHeader-title-linux">
             لینوکس
+            </span>
             <br>
-            امییرکبیر
+            <span class="homeHeader-title-amirkabir">
+            امیرکبیر
+            </span>
         </h1>
         <router-link to="/" v-scroll-to="'#workshops'" class="homeHeader--startButton">
             <i class="material-icons">keyboard_arrow_down</i>
@@ -42,9 +48,9 @@
 
     .homeHeader-title {
         font-family : 'iransans';
-        font-size: 120px;
+        font-size: 145px;
         font-weight:bolder;
-        line-height:160px;
+        line-height: 145px;
         color: rgb(242,169,56);
     }
 
@@ -52,7 +58,7 @@
         color:white;
         font-family: 'iransans';
         font-size:18px;
-        text-align:justify;
+        text-align:center;
         writing-mode: vertical-rl;
         text-orientation: mixed;
         height:390px;
@@ -75,33 +81,61 @@
         color: rgb(242,169,56);
     }
 
-    .homeHeader-title--sup {
-
+    .homeHeader-title-yazdahomin {
+        font-size: 86px;
+        word-spacing: -29px;
+    }
+    .homeHeader-title-jashnvareh {
+        font-size: 145px;
+    }
+    .homeHeader-title-linux {
+        font-size: 155px;
+    }
+    .homeHeader-title-amirkabir {
+        font-size: 155px;
     }
 
-    @media only screen and (max-width: 576px) {
-        .homeHeader-title {
-            font-size: 100px;
-            line-height:120px;
+    @media only screen and (max-width: 660px) {
+        .homeHeaderWrapper {
+            background-size: 140%;
         }
     }
 
-    @media only screen and (max-width : 500px) {
+    @media only screen and (max-width : 560px) {
         .homeHeaderWrapper {
             background-size: 200%;
             flex-direction: column-reverse;
         }
+
         .homeHeader-title {
+            line-height:80px;
+            text-align: center;
+            order: 1;
+        }
+
+        .homeHeader-title-yazdahomin {
             font-size: 50px;
-            line-height:70px;
+            word-spacing: -10px;
+        }
+        .homeHeader-title-jashnvareh {
+            font-size: 85px;
+        }
+        .homeHeader-title-linux {
+            font-size: 90px;
+        }
+        .homeHeader-title-amirkabir {
+            font-size: 90px;
         }
 
         .homeHeader-title-horizontal {
+            width: 300px;
+            text-align: center;
             writing-mode: initial;
             text-orientation: mixed;
             height: initial;
             margin:20px;
             font-size:15px;
+            order: 2;
         }
     }
 </style>
