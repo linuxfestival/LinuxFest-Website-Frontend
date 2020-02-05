@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="workshopTeachersImages">
-                        <img v-for="teacher in teachers" :key="teachers.indexOf(teacher)" :src="'http://skillcenter.aut.ac.ir/linuxfestapi' + teacher.picUrl.replace('/','')" draggable="false" class="workshopTeacherImages-image" :alt="teacher.fullName + ' image'">
+                        <img v-for="teacher in teachers" :key="teachers.indexOf(teacher)" :src="'http://skillcenter.aut.ac.ir/linuxfestapi/' + teacher.picUrl.replace('/','')" draggable="false" class="workshopTeacherImages-image" :alt="teacher.fullName + ' image'">
                     </div>
                     <div class="workshopContentDescription">
                         <h1 class="workshopContentDescription-title">
