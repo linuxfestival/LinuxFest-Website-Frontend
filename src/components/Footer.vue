@@ -10,7 +10,7 @@
                     <img src="http://aaiss.ceit.aut.ac.ir/img/ssc-logo-white-horizontal.ffc2a85c.png" alt="ceit logo">
                 </a>
                 <div class="footer-social--items">
-                    <a class="footer-social--item" :target="_blank" :href="socialItem.link" v-for="(socialItem, index) in socialLinks">
+                    <a class="footer-social--item" target="_blank" :href="socialItem.link" v-for="(socialItem, index) in socialLinks">
                         <font-awesome-icon :icon="socialItem.icon" />
                     </a>
                 </div>

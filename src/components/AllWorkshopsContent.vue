@@ -1,13 +1,14 @@
 <template>
     <div class="parent">
-        <PartialHeader title="ثبت نام در کارگاه ها" backgroundUrl="../assets/img/background2.png" />
+        <PartialHeader title="ثبت نام در کارگاه ها" backgroundUrl="../assets/img/background2.png"/>
 
         <div class="workshopsListWrapper">
             <div class="workshopsList">
-                <WorkshopRegisterItem @toggleSelect="toggleSelectMe(workshop._id)" :workshop="workshop"
+                <WorkshopRegisterItem @toggleSelect="toggleSelectMe(workshop._id)"
                                       v-for="(workshop, index) in workshops"
+                                      :workshop="workshop"
                                       :isSelected="isInSelectedWorkshopsForRegister(workshop._id)"
-                                      :key="index" v-if="workshop.isRegOpen" />
+                                      :key="index" v-if="workshop.isRegOpen"/>
             </div>
         </div>
 
@@ -87,20 +88,11 @@
                 })
 
             },
-            redirectForPayment: function(response){
+
+            redirectForPayment: function (response) {
                 window.location = "https://sadad.shaparak.ir/VPG/Purchase?token=" + response.data;
-                // return new Promise((resolve, reject) => {
-                //     axios({
-                //         url: 'https://sadad.shaparak.ir/VPG/Purchase/' + response.data.token,
-                //         method: 'get',
-                //     }).then(response => {
-                //         resolve();
-                //     }).catch(error => {
-                //         console.log(error)
-                //         reject();
-                //     })
-                // })
             },
+
             toggleSelectMe(workshopId) {
                 console.log('click fired.')
                 if (!this.isInSelectedWorkshopsForRegister(workshopId)) {
@@ -108,15 +100,17 @@
                 } else {
                     this.removeSelectedWorkshop(workshopId);
                 }
-                // console.log('selected workshops :', this.selectedWorkshopsForRegister);
             },
+
             removeSelectedWorkshop(workshopId) {
                 let workshopIndex = this.selectedWorkshopsForRegister.indexOf(workshopId);
                 this.selectedWorkshopsForRegister.splice(workshopIndex, 1);
             },
+
             isInSelectedWorkshopsForRegister(workshopId) {
                 return this.selectedWorkshopsForRegister.includes(workshopId);
             },
+
             getWorkshops() {
                 axios({
                     url: this.$store.getters.baseUrl + 'workshops',

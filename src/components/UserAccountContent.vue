@@ -40,7 +40,7 @@
                     <div class="infoBoxHeader-title dark"><h4>لیست کارگاه های ثبت نام شده ({{workshops.length}})</h4></div>
                     <div class="infoBoxHeader-line"></div>
                 </div>
-                <WorkshopDoneRegisterItem :key="workshop._id" v-for="workshop in workshops" :workshop="workshop"></WorkshopDoneRegisterItem>
+                <WorkshopDoneRegisterItem :key="index" v-for="(workshop, index) in workshops" :workshop="workshop" />
                 <router-link to="/registerworkshop" class="infoBox-link">مشاهده لیست کارگاه ها</router-link>
             </div>
         </div>

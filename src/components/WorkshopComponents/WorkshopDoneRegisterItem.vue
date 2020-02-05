@@ -6,9 +6,12 @@
                 <i class="material-icons rotate-180" >double_arrow</i>
                 {{workshop.title}}
             </h3>
-            <h3 class="workshopRegItemPrice">
-                <i class="material-icons">attach_money</i>
-                 تومان {{workshop.price}}
+            <h3 class="workshopRegItemPrice" v-if="workshop.price != 0">
+                {{workshop.price}}
+                تومان
+            </h3>
+            <h3 class="workshopRegItemPrice" v-else>
+                رایگان
             </h3>
             <router-link :to="'/workshops/' + workshop._id" class="workshopRegItemMoreButton">اطلاعات بیشتر...</router-link>
         </div>
@@ -19,7 +22,9 @@
     export default {
         name: "WorkshopDoneRegisterItem",
         props : {
-            workshop : {},
+            workshop : {
+                type : Object,
+            },
         },
         data() {
             return {

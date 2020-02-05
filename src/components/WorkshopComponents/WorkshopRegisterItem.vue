@@ -2,15 +2,18 @@
     <div class="workshopRegItemWrapper">
         <div class="workshopRegItemContent" :class="[{'selected' : isSelected}]" @click="$emit('toggleSelect')">
             <i class="material-icons selectedIcon" v-if="isSelected">done</i>
-            <img class="workshopRegItemImage" draggable="false" src="../../assets/img/workshop.png" :alt="'workshop ' + workshop.id + ' image'">
+            <img class="workshopRegItemImage" draggable="false" src="../../assets/img/workshop.png" :alt="'workshop ' + workshop._id + ' image'">
             <h3 class="workshopRegItemTitle">
                 <i class="material-icons" v-if="isSelected">done</i>
                 <i class="material-icons rotate-180" v-else>double_arrow</i>
                 {{workshop.title}}
             </h3>
-            <h3 class="workshopRegItemPrice">
-                <i class="material-icons">attach_money</i>
-                 تومان {{workshop.price}}
+            <h3 class="workshopRegItemPrice" v-if="workshop.price != 0">
+                {{workshop.price}}
+                تومان
+            </h3>
+            <h3 class="workshopRegItemPrice" v-else>
+                رایگان
             </h3>
             <router-link :to="'/workshops/' + workshop._id" class="workshopRegItemMoreButton">اطلاعات بیشتر...</router-link>
         </div>
@@ -21,7 +24,9 @@
     export default {
         name: "WorkshopRegisterItem",
         props : {
-            workshop : {},
+            workshop : {
+                type : Object
+            },
             isSelected : false,
         },
         data() {
@@ -67,6 +72,7 @@
         align-items:center;
         color:white;
         margin-left:auto;
+        width:300px;
     }
 
     .workshopRegItemTitle i.material-icons {
@@ -94,6 +100,7 @@
         font-family : 'iransans';
         padding:5px 10px;
         border-radius:30px;
+        text-align: center;
     }
 
     .workshopRegItemContent:hover {
@@ -122,16 +129,17 @@
         margin-right: 7px;
     }
 
-    @media only screen and (max-width: 576px) {
+    @media only screen and (max-width: 610px) {
         .workshopRegItemTitle i.material-icons {
-            margin-right:5px;
-            margin-left:5px;
-            font-size:14px;
+            display:none;
         }
 
         .workshopRegItemTitle {
-            font-size:14px;
+            font-size:15px;
+            margin-right:10px;
             font-weight:normal;
+            width:150px;
+            font-weight: bold;
         }
 
         .workshopRegItemPrice {

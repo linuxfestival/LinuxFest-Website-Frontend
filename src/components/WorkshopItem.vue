@@ -1,6 +1,7 @@
 <template>
     <div class="workshop-item" @click="showMore()">
         <img class="workshop-item--image" src="../assets/img/workshop.png" :alt="'workshop ' + workshop.id + ' image'">
+
         <div class="workshop-item--info">
             <h2 class="workshop-item--info-title">{{workshop.title}}</h2>
             <h3 v-if="workshop.teachers.length == 1" class="workshop-item--info-teachTitle">
@@ -11,7 +12,7 @@
                 <i class="material-icons">person</i>
                 مدرسین :
             </h3>
-            <p class="workshop-item--info-teachItem" v-for="teacher in workshop.teachers" :key=teacher.id>
+            <p class="workshop-item--info-teachItem" v-for="(teacher, index) in workshop.teachers" :key="index">
                 {{teacher.name}}
             </p>
             <button class="workshop-item--info-moreButton" @click="showMore(workshop)">
@@ -38,7 +39,7 @@ export default {
 
 <style scoped>
     .workshop-item {
-        border-radius:30px;
+        border-radius:15px;
         min-width:380px;
         min-height:200px;
         max-width:400px;
@@ -77,7 +78,8 @@ export default {
     .workshop-item--info-title {
         margin-top:20px;
         font-family :'iransans','Arial';
-        font-size:20px;
+        font-size:18px;
+        text-align: center;
     }
 
     .workshop-item--info-teachTitle {
@@ -85,12 +87,15 @@ export default {
         margin-right:10px;
         font-family: 'iransans';
         font-size:12px;
+        display:flex;
         align-self:flex-start;
+        align-items:center;
+        justify-content: center;
     }
 
     .workshop-item--info-teachItem {
-        margin-top:5px;
         margin-right:15px;
+        margin-bottom:10px;
         font-family: 'iransans';
         font-size:15px;
         align-self:flex-start;
@@ -99,17 +104,19 @@ export default {
 
     .workshop-item--info-moreButton{
         width:calc(100% - 20px);
-        border-radius:40px;
+        border-radius:5px;
         display:flex;
+        height:25px;
         align-items:center;
         justify-content: center;
-        margin:auto 10px 20px 10px;
+        margin:auto 10px 10px 10px;
         font-family: 'iransans';
         border:none;
         cursor: pointer;
     }
     .workshop-item--image {
         width:50%;
+        border-radius: 0 15px 15px 0;
     }
 
     @media only screen and (max-width: 405px) {

@@ -26,16 +26,15 @@
 
         async created() {
             await this.$store.dispatch('getWorkshopsFromServer')
-
         },
+
         mounted() {
             console.log("component mounted.");
-
         },
+
         computed:{
             getWorkshops:function () {
                 return this.$store.getters.getAllWorkshops;
-
             },
 
         }
@@ -47,13 +46,13 @@
         width: 100%;
         display:flex;
         min-height:100vh;
-        align-items:flex-start;
+        align-items:center;
         justify-content:center;
         padding-bottom:30px;
     }
 
     .workshopsContainer {
-        max-width:1140px;
+        max-width:1300px;
         display : flex;
         align-items:center;
         justify-content:flex-start;
@@ -72,7 +71,8 @@
         display:flex;
         flex-wrap: wrap;
         width:100%;
-        justify-content: center;
+        max-width:1300px;
+        justify-content: space-evenly;
     }
 
 </style>

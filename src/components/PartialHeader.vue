@@ -29,5 +29,8 @@ export default {
     .workshopsListTitle-text {
         font-family: 'iransans';
         color: white;
+        font-size:2rem;
+        text-align:center;
     }
+
 </style>

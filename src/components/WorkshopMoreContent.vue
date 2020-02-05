@@ -29,7 +29,7 @@
                             <i class="material-icons rotate-180">double_arrow</i>
                                 در مورد این کارگاه :   
                         </h1>
-                        <p class="workshopContentDescription-desc" v-html="workshop.description" />
+                        <div class="workshopContentDescription-desc" v-html="workshop.description" ></div>
 
                         <h3 class="timeline-title">جدول زمانی :</h3>
 
@@ -41,6 +41,18 @@
                             تا
                             {{getJalali(timeSlot.endTime).utc().locale('fa').format("HH:mm")}}
                         </p>
+
+                        <h3 class="timeline-title">
+                            هزینه ثبت نام :
+                        </h3>
+                        <p class="timeline-description" v-if="workshop.price != 0">
+                            {{workshop.price}}
+                            ریال
+                        </p>
+                        <p class="timeline-description" v-else>
+                            رایگان
+                        </p>
+
 
                         <router-link :to="'/registerworkshop/?workshop=' + workshop._id"  v-if="workshop.isRegOpen" class="registerButton">ثبت نام</router-link>
                         <p v-else class="registerButton">ظرفیت این کارگاه تکمیل شده است.</p>
@@ -158,14 +170,13 @@
     }
 
     .workshopTeachersDescription-title {
-        /* margin-bottom:auto; */
         margin-top:10px;
         display:flex;
         align-items:center;
     }
 
-    .workshopTeachersDescription-title i.material-icons {
-        margin-left:5px;
+    .workshopTeachersDescription-title i {
+        margin-left:15px;
         margin-right:15px;
     }
 
@@ -198,7 +209,6 @@
     }
 
     .parent {
-        /*min-height:100vh;*/
         background-color:#f1f1f1;
         display:flex;
         align-items:center;
@@ -255,14 +265,17 @@
         color :#e4b22b;
         display:flex;
         align-items:center;
+    }
 
+    .workshopContentDescription-title i.material-icons {
+        margin-left: 10px;
     }
 
     .workshopContentDescription-desc {
         font-family : 'iransans';
         color:white;
-        padding:15px;
         text-align:justify;
+        width:100%;
     }
 
     .registerButton {
