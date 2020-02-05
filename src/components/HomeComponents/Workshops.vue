@@ -3,7 +3,7 @@
         <div class="workshopsContainer">
             <h1 class="workshops-title">{{workshopsTitle}}</h1>
         <section class="workshops-list">
-            <WorkshopItem v-for="(workshop, index) in getWorkshops" :workshop="workshop" :key="index" />
+            <WorkshopItem v-for="(workshop, index) in getWorkshops" v-if="workshop.isRegOpen" :workshop="workshop" :key="index" />
         </section>
         </div>
     </section>
@@ -17,44 +17,7 @@
         data: function () {
             return {
                 workshopsTitle : 'کارگاه ها',
-                allWorkshops: [
-                    {
-                        name : 'linux test ws1',
-                        teachers : [{name : 'هادی طباطبایی'},{name : 'mahvash'}],
-                        image : "",
-                        id : '1'
-                    },
-                    {
-                        name : 'linux test ws2',
-                        teachers : [{name : 'mahvash'}],
-                        image : '',
-                        id : '2'
-                    },
-                                        {
-                        name : 'linux test ws2',
-                        teachers : [{name : 'mahvash'}],
-                        image : '',
-                        id : '3'
-                    },
-                    {
-                        name : 'linux test ws2',
-                        teachers : [{name : 'mahvash'}],
-                        image : '',
-                        id : '4'
-                    },
-                   {
-                        name : 'linux test ws2',
-                        teachers : [{name : 'mahvash'}],
-                        image : '',
-                        id : '5'
-                    },
-                    {
-                        name : 'linux test ws2',
-                        teachers : [{name : 'mahvash'}],
-                        image : '',
-                        id : '5'
-                    }
-                ]
+                allWorkshops: []
             }
         },
         methods: {
