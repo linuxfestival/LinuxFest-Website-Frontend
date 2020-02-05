@@ -11,7 +11,7 @@
 
                 <div class="formFormFooter">
                     <ul class="formOptionsList">
-                        <li>حساب کاربری ندارید ؟ <router-link to="/signup">اینجا</router-link> را کلیک کنید</li>
+                        <li>حساب کاربری ندارید؟ <router-link to="/signup">اینجا</router-link> را کلیک کنید</li>
                         <li><button @click="toggleForgetLoginForm()" type="button" class="optionButton">رمز عبور خود را فراموش کردم</button></li>
                     </ul>
                     <button class="loginButton">
