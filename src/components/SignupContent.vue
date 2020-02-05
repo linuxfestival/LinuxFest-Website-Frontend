@@ -35,7 +35,7 @@
 
                 <div class="check-box">
                     <input type="checkbox" id="checkbox" v-model="user.isAmirkabiri" checked="false"/>
-                    <label for="checkbox">امیرکبیری هستم</label>
+                    <label for="checkbox">امیرکبیری هستم </label>
                 </div>
 
                 <input
