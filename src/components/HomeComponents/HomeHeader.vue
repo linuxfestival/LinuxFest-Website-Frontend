@@ -1,7 +1,17 @@
 <template>
     <section class="homeHeaderWrapper">
         <h2 class="homeHeader-title-horizontal">{{homeHeaderTitleHorizontal}}</h2>
-        <h1 class="homeHeader-title" v-html="homeHeaderTitle"></h1>
+        <h1 class="homeHeader-title" >
+            <span class="homeHeader-title--sup">
+                یازدهمین دوره
+            </span>
+            <br>
+            جشنواره
+            <br>
+            لینوکس
+            <br>
+            امییرکبیر
+        </h1>
         <router-link to="/" v-scroll-to="'#workshops'" class="homeHeader--startButton">
             <i class="material-icons">keyboard_arrow_down</i>
         </router-link>
@@ -12,7 +22,6 @@
         name : "HomeHeader",
         data() {
             return {
-                homeHeaderTitle : 'جشنواره <br> لینوکس <br> امیرکبیر',
                 homeHeaderTitleHorizontal: 'انجمن علمی دانشکده مهندسی کامپیوتر دانشگاه صنعتی امیرکبیر با همکاری اسنپ برگزار می کند:'
             }
         }
@@ -64,6 +73,10 @@
 
     .homeHeader--startButton:hover {
         color: rgb(242,169,56);
+    }
+
+    .homeHeader-title--sup {
+
     }
 
     @media only screen and (max-width: 576px) {
