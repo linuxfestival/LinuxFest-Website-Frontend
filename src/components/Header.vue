@@ -6,7 +6,9 @@
                     class="material-icons">close</i></button>
             <button @click="toggleMobileMenu()" class="mobileMenuButton" v-else><i class="material-icons">menu</i>
             </button>
-            <router-link to="/" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">خانه</router-link>
+            <router-link to="/" v-scroll-to="'#homes'" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">خانه</router-link>
+            <div class="divider"></div>
+            <router-link to="/" v-scroll-to="'#abouts'" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">درباره جشنواره</router-link>
             <div class="divider"></div>
             <router-link to="/" v-scroll-to="'#workshops'" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">کارگاه ها</router-link>
             <div class="divider"></div>

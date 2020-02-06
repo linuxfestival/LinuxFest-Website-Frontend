@@ -1,5 +1,5 @@
 <template>
-    <section class="aboutEventWrapper">
+    <section class="aboutEventWrapper" id="abouts">
         <div class="aboutEventContainer">
             <h1 class="aboutEvent-title">
             <i class="material-icons">{{aboutThisEventTitleIcon}}</i>
@@ -7,6 +7,9 @@
         </h1>
         <p class="aboutEvent-description">{{aboutThisEventDescription}}</p>
         </div>
+        <router-link to="/" v-scroll-to="'#workshops'" class="about--startButton">
+            <i class="material-icons">keyboard_arrow_down</i>
+        </router-link>
     </section>
 </template>
 
@@ -46,7 +49,7 @@
     .aboutEvent-title {
         color:rgb(242,169,56);
         font-family: 'iransans';
-        font-size:25px;
+        font-size:28px;
         margin:15px 30px;
         display:flex;
         align-items:center;
@@ -59,6 +62,19 @@
         margin:0 30px 30px 30px;
         line-height:50px;
         text-align:justify;
-        font-size:18px;
+        font-size:20px;
+    }
+
+    .about--startButton {
+        color:white;
+        transition:all 0.2s ease-in;
+    }
+
+    .about--startButton i.material-icons {
+        font-size : 60px;
+    }
+
+    .about--startButton:hover {
+        color: rgb(242,169,56);
     }
 </style>

@@ -5,7 +5,7 @@
                 {{sponsorTitle}}
             </h1>
             <p class="aboutEvent-description">{{sponsorDescription}}</p>
-            <img src="../../assets/img/orange_snapp.png" alt="Snapp Logo" class="aboutEvent-logo" draggable="false">
+            <img src="../../assets/img/white_snapp.png" alt="Snapp Logo" class="aboutEvent-logo" draggable="false">
         </div>
     </section>
 </template>
@@ -65,7 +65,7 @@
     }
 
     .aboutEvent-logo {
-        width:50%;
+        width:40%;
         margin-bottom: 20px;
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <section class="homeHeaderWrapper">
+    <section class="homeHeaderWrapper" id="homes">
         <h2 class="homeHeader-title-horizontal">{{homeHeaderTitleHorizontal}}</h2>
         <h1 class="homeHeader-title" >
             <span class="homeHeader-title-yazdahomin">
@@ -18,7 +18,7 @@
             امیرکبیر
             </span>
         </h1>
-        <router-link to="/" v-scroll-to="'#workshops'" class="homeHeader--startButton">
+        <router-link to="/" v-scroll-to="'#abouts'" class="homeHeader--startButton">
             <i class="material-icons">keyboard_arrow_down</i>
         </router-link>
     </section>

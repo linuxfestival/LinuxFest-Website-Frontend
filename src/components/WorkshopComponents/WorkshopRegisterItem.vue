@@ -10,7 +10,7 @@
             </h3>
             <h3 class="workshopRegItemPrice" v-if="workshop.price != 0">
                 {{workshop.price}}
-                تومان
+                ریال
             </h3>
             <h3 class="workshopRegItemPrice" v-else>
                 رایگان
