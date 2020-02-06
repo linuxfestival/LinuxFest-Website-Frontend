@@ -202,7 +202,7 @@
     .main-frame {
         background-color: white;
         padding: 30px;
-        border-radius: 30px;
+        border-radius: 15px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -263,14 +263,14 @@
         border: none;
         color: white;  
         padding: 10px 30px;
-        border-radius: 10px;
+        border-radius: 5px;
         margin: 10px auto;
         cursor: pointer;
         }
 
     .input {
         border:none;
-        border-radius:10px;
+        border-radius:15px;
         background-color : #e6e6e6dd;
         padding:15px 5px;
         margin:10px;

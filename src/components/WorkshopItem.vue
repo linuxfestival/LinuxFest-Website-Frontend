@@ -66,7 +66,7 @@ export default {
 
     .workshop-item--info {
         width:calc(50% - 3px);
-        border-radius:30px 0 0 30px;
+        border-radius:15px 0 0 15px;
         border-right:3px solid white;
         display:flex;
         align-items:center;

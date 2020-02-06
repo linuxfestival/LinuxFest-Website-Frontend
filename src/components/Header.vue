@@ -98,7 +98,7 @@
 
     .registerLink {
         background-color: #e4b22b;
-        border-radius: 25px;
+        border-radius: 5px;
         border: none;
         padding: 5px 10px 5px 10px;
         font-size: 15px;
@@ -146,7 +146,7 @@
 
     .registerLink , .singoutLink{
         background-color: #e4b22b;
-        border-radius: 25px;
+        border-radius: 5px;
         border: none;
         padding: 5px 10px 5px 10px;
         font-size: 15px;

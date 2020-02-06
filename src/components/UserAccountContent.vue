@@ -128,7 +128,7 @@
 
     .userInfoBox {
         background-color: black;
-        border-radius:30px;
+        border-radius:15px;
         flex-flow: column wrap;
         display:flex;
         margin-left:20px;
@@ -167,7 +167,7 @@
         text-decoration: none;
         color:white;
         background-color: #e4b22b;
-        border-radius:15px;
+        border-radius:5px;
         padding:5px 25px;
     }
 
@@ -196,10 +196,10 @@
 
     .workshopsInfoBox {
         background-color: #f4f4f4;
-        border-radius:30px;
+        border-radius:15px;
         flex-flow: column wrap;
         display:flex;
-        padding:10px;
+        padding:20px;
         width:calc(70% - 60px);
         box-shadow: 0px 0 25px rgba(0,0,0,0.2);
     }
@@ -217,7 +217,7 @@
         background-color :#e4b22b;
         align-self:center;
         padding:5px 20px;
-        border-radius:25px;
+        border-radius:5px;
     }
 
     @media only screen and (max-width: 876px) {

@@ -37,7 +37,7 @@
     }
 
     .workshopRegItemContent {
-        border-radius:30px;
+        border-radius:15px;
         background-color: #191919;
         height:65px;
         width:calc(100%);
@@ -53,7 +53,7 @@
 
     .workshopRegItemImage {
         height:65px;
-        border-radius:0 30px 30px 0;
+        border-radius:0 15px 15px 0;
         border-left:3px solid #f9f9f9;
     }
     .workshopRegItemTitle {
@@ -80,7 +80,7 @@
         text-decoration: none;
         font-family : 'iransans';
         padding:5px 10px;
-        border-radius:30px;
+        border-radius:5px;
     }
 
     .workshopRegItemContent:hover {

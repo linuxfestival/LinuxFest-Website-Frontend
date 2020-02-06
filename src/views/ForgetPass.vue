@@ -95,7 +95,7 @@ export default {
 .formWrapper {
   width: 550px;
   background-color: white;
-  border-radius: 30px;
+  border-radius: 15px;
   padding: 50px;
   display: flex;
   align-items: center;
@@ -121,7 +121,7 @@ export default {
   width: 100%;
   margin-top: 5px;
   margin-bottom: 5px;
-  border-radius: 30px;
+  border-radius: 15px;
   background-color: #ddd;
   padding: 15px;
   color: #333;
@@ -139,7 +139,7 @@ export default {
 
 .loginButton {
   border: none;
-  border-radius: 30px;
+  border-radius: 5px;
   padding: 10px 20px;
   background-color: #521c34;
   color: white;

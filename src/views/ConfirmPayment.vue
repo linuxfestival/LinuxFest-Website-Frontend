@@ -78,7 +78,7 @@
     }
     .info-button {
         background-color: #e4b22b;
-        border-radius: 25px;
+        border-radius: 5px;
         border: none;
         margin-top:15px;
         padding: 5px 10px 5px 10px;

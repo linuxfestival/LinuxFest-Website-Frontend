@@ -182,7 +182,7 @@
         background-color: #521c34;
         color: white;
         cursor: pointer;
-        border-radius: 30px;
+        border-radius: 5px;
         transition: all 0.1s ease-in-out;
     }
 

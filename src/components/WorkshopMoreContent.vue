@@ -6,14 +6,13 @@
                     <div class="workshopTeachersDescription">
                         <h2 class="workshopTeachersDescription-title">
                             <i class="material-icons">person</i>
-                            توضیحات مدرسین کارگاه :
+                            توضیحات مدرسین کارگاه:
                         </h2>
                         <div class="teacherDescriptionWrapper">
                             <div class="teacherDescription" v-for="teacher in teachers" :key="teachers.indexOf(teacher)"> 
                                 <p class="teacherDescription-name">
                                     <i class="material-icons">person</i>
-                                    {{teacher.fullName}}
-                                    :
+                                    {{teacher.fullName}}:
                                 </p>
                                 <p class="teacherDescription-desc">
                                     {{teacher.description}}
@@ -27,23 +26,23 @@
                     <div class="workshopContentDescription">
                         <h1 class="workshopContentDescription-title">
                             <i class="material-icons rotate-180">double_arrow</i>
-                                در مورد این کارگاه :   
+                                در مورد این کارگاه:   
                         </h1>
                         <div class="workshopContentDescription-desc" v-html="workshop.description" ></div>
 
-                        <h3 class="timeline-title">جدول زمانی :</h3>
+                        <h3 class="timeline-title">جدول زمانی:</h3>
 
                         <p class="timeline-description" v-for="timeSlot in workshop.times">
-                            {{workshop.times.indexOf(timeSlot) + 1}} :
+                            {{workshop.times.indexOf(timeSlot) + 1}}.
                             {{getJalali(timeSlot.startTime).utc().locale('fa').format("dddd YYYY/MM/DD")}}
-                            | ساعت :
+                            | ساعت:
                             {{getJalali(timeSlot.startTime).utc().locale('fa').format("HH:mm")}}
                             تا
                             {{getJalali(timeSlot.endTime).utc().locale('fa').format("HH:mm")}}
                         </p>
 
                         <h3 class="timeline-title">
-                            هزینه ثبت نام :
+                            هزینه ثبت نام:
                         </h3>
                         <p class="timeline-description" v-if="workshop.price != 0">
                             {{workshop.price}}
@@ -132,13 +131,13 @@
         width:1140px;
         min-height:400px;
         background-color:#333;
-        border-radius:30px;
+        border-radius:15px;
         display:flex;
     }
 
     .workshopTeachersDescription {
         background-color : #521c34;
-        border-radius:0 30px 30px 0;
+        border-radius:0 15px 15px 0;
         border-left:3px solid #e4b22b;
         display:flex;
         justify-content:flex-start;
@@ -150,7 +149,7 @@
     .timeline-title {
         font-family: 'iransans';
         color : #e4b22b;
-        margin-right:10px;
+        margin-right:30px;
         margin-top:10px;
     }
 
@@ -158,7 +157,7 @@
         font-family : 'iransans';
         color:white;
         font-size:15px;
-        margin:5px 10px;
+        margin:5px 40px;
     }
 
     .teacherDescriptionWrapper {
@@ -166,7 +165,7 @@
         align-items:flex-start;
         justify-content:center;
         flex-direction:column;
-        margin:auto 0;
+        margin:auto 10px;
     }
 
     .workshopTeachersDescription-title {
@@ -193,8 +192,8 @@
     }
 
     .workshopTeacherImages-image {
-        width:100px;
-        height:100px;
+        width:140px;
+        height:140px;
         border-radius:50%;
         border:3px solid #e4b22b;
         margin-top:10px;
@@ -252,7 +251,7 @@
     .workshopContentDescription {
         width: 680px;
         min-height: 400px;
-        border-radius: 30px 0 0 40px;
+        border-radius: 15px 0 0 15px;
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
@@ -275,7 +274,8 @@
         font-family : 'iransans';
         color:white;
         text-align:justify;
-        width:100%;
+        width:95%;
+        margin-right:30px;
     }
 
     .registerButton {
@@ -285,11 +285,11 @@
        font-size:20px;
        padding:5px 30px;
        font-family: 'iransans';
-       border-radius:30px; 
+       border-radius:5px; 
        margin:auto auto 15px 10px;
     }
 
-    @media only screen and (max-width:991.8px ) {
+    @media only screen and (max-width:1100px ) {
         .workshopContent {
             flex-direction: column-reverse;
             border-radius:0;
@@ -313,6 +313,7 @@
 
         .workshopContentDescription-desc {
             line-height:30px;
+            margin-right:15px;
         }
 
         .workshopTeachersDescription-title {
@@ -320,4 +321,9 @@
         }
     }
 
+    @media only screen and (max-width:500px ) {
+        .workshopContentDescription-desc {
+            margin-right:5px;
+        }
+    }
 </style>

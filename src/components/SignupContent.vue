@@ -233,8 +233,8 @@
 
     .main-frame {
         background-color: white;
-        padding: 10px;
-        border-radius: 60px;
+        padding: 25px;
+        border-radius: 15px;
         width: 600px;
     }
 
@@ -250,7 +250,7 @@
 
     button {
         background-color: #521c34;
-        border-radius: 35px;
+        border-radius: 5px;
         border: none;
         padding: 0px 30px 0px 30px;
         font-size: 15px;
@@ -282,7 +282,7 @@
         margin: 10px;
         border: 1px solid #dddddd;
         background-color: #dddddd;
-        border-radius: 25px;
+        border-radius: 15px;
         padding: 10px;
         text-align: right;
     }
@@ -327,7 +327,7 @@
         border: 1px solid red;
         margin: 10px;
         background-color: #dddddd;
-        border-radius: 25px;
+        border-radius: 15px;
         padding: 10px;
         text-align: right;
     }
