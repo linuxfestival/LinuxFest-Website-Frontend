@@ -144,6 +144,7 @@
         flex-direction:column;
         padding-left: 70px;
         width:25%;
+        padding-bottom:110px;
     }
 
     .timeline-title {
@@ -184,7 +185,6 @@
         background-color:rgba(0,255,0,0);
         min-height:400px;
         margin-right:-50px;
-
         display:flex;
         align-items:center;
         justify-content:center;
@@ -196,7 +196,7 @@
         height:140px;
         border-radius:50%;
         border:3px solid #e4b22b;
-        margin-top:10px;
+        margin-top:100px;
         margin-bottom:10px;
     }
 
@@ -204,7 +204,6 @@
         font-family: 'iransans';
         color :#e4b22b;
         position: absolute;
-
     }
 
     .parent {
@@ -224,7 +223,7 @@
         align-items:flex-start;
         justify-content:center;
         flex-direction:column;
-        margin-top:10px;
+        margin-top:190px;
     }
 
     .teacherDescription-name {
@@ -297,6 +296,7 @@
         
         .workshopTeachersImages {
             display:none;
+            margin-bottom:0px;
         }
 
         .workshopTeachersDescription {
@@ -318,6 +318,14 @@
 
         .workshopTeachersDescription-title {
             position:static;
+        }
+
+        .workshopTeacherImages-image {
+            margin-top:10px;
+        }
+
+        .teacherDescription {
+            margin-top:10px;
         }
     }
 
