@@ -39,10 +39,7 @@ export default {
   methods: {
     sendResetPasswordConfirmationRequest: function() {
       axios({
-        url:
-          this.$store.getters.baseUrl +
-          "/users/forget/" +
-          this.$route.params.forgetToken,
+        url: this.$store.getters.baseUrl + "users/forget/" + this.$route.params.forgetToken,
         method: "patch",
         data: this.payload
       })

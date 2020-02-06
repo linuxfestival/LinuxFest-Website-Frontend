@@ -51,7 +51,7 @@
   }
 
   .iransans {
-    font-family : 'iransan';
+    font-family : 'iransans';
   }
 
 .material-icons {
