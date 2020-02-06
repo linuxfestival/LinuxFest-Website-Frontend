@@ -66,6 +66,6 @@
 
     .aboutEvent-logo {
         width:40%;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 </style>
