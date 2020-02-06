@@ -6,11 +6,11 @@
             <h2 class="workshop-item--info-title">{{workshop.title}}</h2>
             <h3 v-if="workshop.teachers.length == 1" class="workshop-item--info-teachTitle">
                 <i class="material-icons">person</i>
-                مدرس :
+                مدرس:
             </h3>
             <h3 v-else-if="workshop.teachers.length > 1" class="workshop-item--info-teachTitle">
                 <i class="material-icons">person</i>
-                مدرسین :
+                مدرسین:
             </h3>
             <p class="workshop-item--info-teachItem" v-for="(teacher, index) in workshop.teachers" :key="index">
                 {{teacher.name}}

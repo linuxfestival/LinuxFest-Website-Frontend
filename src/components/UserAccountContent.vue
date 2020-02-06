@@ -10,23 +10,23 @@
                     <div class="infoBoxHeader-line"></div>
                 </div>
                 <div class="infoItem">
-                    <h3 class="infoItemTitle">نام و نام خانوادگی ؛</h3>
+                    <h3 class="infoItemTitle">نام و نام خانوادگی:</h3>
                     <p class="infoItemContent">{{this.user.firstName + " " + this.user.lastName}}</p>
                 </div>
                 <div class="infoItem">
-                    <h3 class="infoItemTitle">ایمیل :</h3>
+                    <h3 class="infoItemTitle">ایمیل:</h3>
                     <p class="infoItemContent">{{this.user.email}}</p>
                 </div>
                 <div class="infoItem">
-                    <h3 class="infoItemTitle">‌‌شماره تماس :‌</h3>
+                    <h3 class="infoItemTitle">‌‌شماره تماس:‌</h3>
                     <p class="infoItemContent">{{this.user.phoneNumber}}</p>
                 </div>
                 <div class="infoItem" v-if="user.age != undefined">
-                    <h3 class="infoItemTitle">سن :</h3>
+                    <h3 class="infoItemTitle">سن:</h3>
                     <p class="infoItemContent">{{this.user.age}}</p>
                 </div>
                 <div class="infoItem" v-if="user.studentNumber != undefined">
-                    <h3 class="infoItemTitle">شماره دانشجویی :</h3>
+                    <h3 class="infoItemTitle">شماره دانشجویی:</h3>
                     <p class="infoItemContent">{{this.user.studentNumber}}</p>
                 </div>
                 <div class="infoItem">
