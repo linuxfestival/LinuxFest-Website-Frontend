@@ -4,9 +4,13 @@
             <div class="workshopContentWrapper">
                 <div class="workshopContent">
                     <div class="workshopTeachersDescription">
-                        <h2 class="workshopTeachersDescription-title">
+                        <h2 v-if="workshop.teachers.length == 1" class="workshopTeachersDescription-title">
                             <i class="material-icons">person</i>
-                            توضیحات مدرسین کارگاه:
+                            توضیحات مدرس:
+                        </h2>
+                        <h2 v-else class="workshopTeachersDescription-title">
+                            <i class="material-icons">person</i>
+                            توضیحات مدرسین:
                         </h2>
                         <div class="teacherDescriptionWrapper">
                             <div class="teacherDescription" v-for="teacher in teachers" :key="teachers.indexOf(teacher)"> 
@@ -24,7 +28,11 @@
                         <img v-for="teacher in teachers" :key="teachers.indexOf(teacher)" :src="'http://skillcenter.aut.ac.ir/linuxfestapi/' + teacher.picUrl.replace('/','')" draggable="false" class="workshopTeacherImages-image" :alt="teacher.fullName + ' image'">
                     </div>
                     <div class="workshopContentDescription">
-                        <h1 class="workshopContentDescription-title">
+                        <h1 v-if="workshop.price == 0" class="workshopContentDescription-title">
+                            <i class="material-icons rotate-180">double_arrow</i>
+                                در مورد این سخنرانی:   
+                        </h1>
+                        <h1 v-else class="workshopContentDescription-title">
                             <i class="material-icons rotate-180">double_arrow</i>
                                 در مورد این کارگاه:   
                         </h1>

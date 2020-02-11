@@ -10,8 +10,7 @@
             <div class="divider"></div>
             <router-link to="/" v-scroll-to="'#abouts'" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">درباره جشنواره</router-link>
             <div class="divider"></div>
-            <router-link to="/" v-scroll-to="'#workshops'" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">کارگاه ها</router-link>
-            <div class="divider"></div>
+            <router-link to="/" v-scroll-to="'#workshops'" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">کارگاه‌ها و سخنرانی‌ها</router-link>
         </nav>
 
         <nav class="profileMenu">
@@ -34,7 +33,7 @@
             </button>
             <div class="divider" v-if="isLoggedIn"></div>
             <router-link to="/registerworkshop" class="profileMenu-link registerLink"
-                         :class="[{'show' : showMobileProfile}]">ثبت نام کارگاه ها
+                         :class="[{'show' : showMobileProfile}]">ثبت نام کارگاه‌ها
             </router-link>
 
         </nav>

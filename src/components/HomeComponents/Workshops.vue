@@ -16,7 +16,7 @@
         components : {WorkshopItem},
         data: function () {
             return {
-                workshopsTitle : 'کارگاه ها',
+                workshopsTitle : 'کارگاه‌ها و سخنرانی‌ها',
                 allWorkshops: []
             }
         },

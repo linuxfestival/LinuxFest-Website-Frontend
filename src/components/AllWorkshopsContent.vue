@@ -1,6 +1,6 @@
 <template>
     <div class="parent">
-        <PartialHeader title="ثبت نام در کارگاه ها" backgroundUrl="../assets/img/background2.png"/>
+        <PartialHeader title="ثبت نام در کارگاه‌ها و سخنرانی‌ها" backgroundUrl="../assets/img/background2.png"/>
 
         <div class="workshopsListWrapper">
             <div class="workshopsList">
