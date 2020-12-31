@@ -20,8 +20,7 @@
                         type="text"
                         v-model="$v.user.lastName.$model"
                         v-bind:class="$v.user.lastName.$error ? 'notVerified' : 'input'"
-                        placeholder="نام خانوادگی"
-                />
+                        placeholder="نام خانوادگی"/>
                 <p v-if="$v.user.lastName.$error" class="red">*نام خانوادگی باید فقط شامل حروف فارسی باشد</p>
 
                 <input

@@ -34,13 +34,12 @@ let vueScrollToConfig = {
   x: false,
   y: true
 };
-
 Vue.config.productionTip = false;
-
 Vue.use(VueScrollTo, vueScrollToConfig);
 Vue.use(VueWait);
 Vue.use(Notifications);
 Vue.use(Vuelidate);
+
 
 new Vue({
   router,

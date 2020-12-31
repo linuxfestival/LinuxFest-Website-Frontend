@@ -3,7 +3,8 @@
         <HomeHeader/>
         <AboutEvent/>
         <Workshops/>
-        <Sponsor />
+        <calendar/>
+<!--        <Sponsor />-->
     </div>
 </template>
 
@@ -15,11 +16,12 @@
     import Workshops from "@/components/HomeComponents/Workshops";
     import HomeHeader from "@/components/HomeComponents/HomeHeader";
     import Sponsor from "@/components/HomeComponents/Sponsor";
+    import calendar from "@/components/calendar.vue";
 
     export default {
         name: 'home',
         components: {
-            HomeHeader, AboutEvent, Workshops, Sponsor
+            HomeHeader, AboutEvent, Workshops, Sponsor,calendar
         },
         mounted() {
             console.log("home route mounted.")

@@ -4,7 +4,7 @@
 
         <div class="workshop-item--info">
             <h2 class="workshop-item--info-title">{{workshop.title}}</h2>
-            <h3 v-if="workshop.teachers.length == 1" class="workshop-item--info-teachTitle">
+            <h3 v-if="workshop.teachers.length === 1" class="workshop-item--info-teachTitle">
                 <i class="material-icons">person</i>
                 مدرس:
             </h3>
