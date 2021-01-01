@@ -3,7 +3,7 @@
         <h2 class="homeHeader-title-horizontal">{{homeHeaderTitleHorizontal}}</h2>
         <h1 class="homeHeader-title" >
             <span class="homeHeader-title-yazdahomin">
-            یازدهمین دوره
+            دوازدهمین دوره
             </span>
             <br>
             <span class="homeHeader-title-jashnvareh">
