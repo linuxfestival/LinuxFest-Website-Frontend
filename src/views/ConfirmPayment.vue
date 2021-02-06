@@ -1,6 +1,6 @@
 <template>
     <div class="infoWrapper">
-        <h1 class="info-title" v-if="resultData.status && resultData.status == 'GOOD'">
+        <h1 class="info-title" v-if="status && status === 'GOOD'">
             <i class="material-icons">done</i>
             پرداخت شما با موفقیت انجام شد
         </h1>
@@ -9,12 +9,12 @@
             خطایی هنگام پرداخت رخ داد و یا توسط کاربر کنسل شد.
         </h1>
         <br>
-        <h2 class="info-codes" v-if="resultData.status && resultData.status == 'GOOD'">
-           اطلاعات پرداخت :
-            <br>
-            کد رهگیری : {{resultData.RetrivalRefNo}}
-        </h2>
-        <button class="info-button">مشاهده پروفایل</button>
+<!--        <h2 class="info-codes" v-if="status && status === 'GOOD'">-->
+<!--           اطلاعات پرداخت :-->
+<!--            <br>-->
+<!--            کد رهگیری : {{resultData.RetrivalRefNo}}-->
+<!--        </h2>-->
+        <button class="info-button" @click="showProfile">مشاهده پروفایل</button>
     </div>
 </template>
 
@@ -25,29 +25,34 @@
         data() {
             return {
                 wrongData: false,
-                resultData: {}
+                resultData: {},
+                status:""
             }
         },
         methods : {
-
+          showProfile(){
+            this.$router.push('/user/me');
+          }
         },
         created() {
+          console.log("confirmPayment:")
             try {
-                let parsedQueryJson = JSON.parse(this.$route.query.data);
-                if(parsedQueryJson == null) {
-                    this.$router.push('/user/me');
-                } else {
-                    this.resultData = parsedQueryJson;
-                }
+                    console.log("resultQuery")
+                    axios({
+                      url: this.$store.getters.baseUrl+"users/verifyPayment?order_id="+this.$route.query.order_id+"&amount="+this.$route.query.amount+"&Authority="+this.$route.query.Authority,
+                      method: 'get'
+                    }).then(response => {
+                      if(response.status === 200){
+                        console.log(response)
+                        this.status = "GOOD"
+                      }
+                    }).catch(error => {
+                      console.log(error.response);
+                    })
             } catch (e) {
                 this.$router.push('/user/me');
             }
-            },
-        computed: {
-            qData : function() {
-                return JSON.parse(this.$route.query.data);
-            }
-        }
+        },
     }
 </script>
 

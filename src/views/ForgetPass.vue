@@ -44,7 +44,7 @@ export default {
         data: this.payload
       })
         .then(response => {
-          console.log(resposne);
+          console.log(response);
           this.$notify({
             group: "auth",
             type: "success",

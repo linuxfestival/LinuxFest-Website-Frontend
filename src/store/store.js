@@ -9,7 +9,8 @@ export default new Vuex.Store({
     state: {
         token: localStorage.getItem('token') || '',
         loggedInUser: {},
-        baseUrl: "http://skillcenter.aut.ac.ir/linuxfestapi/",
+        baseUrl: "http://linux.ce.aut.ac.ir/",
+        // baseUrl : "https://HeartyHonoredDisk.ahmadforoughi.repl.co/",
         workshopMore:{},
         allWorkshops: [],
         selectedWorkshopsForRegister : {workshopIds:[]},
@@ -154,7 +155,7 @@ export default new Vuex.Store({
     },
     getters: {
         isLoggedIn: (state) => {
-            return state.token != '';
+            return state.token !== '';
         },
 
         getLoggedInUser: (state) => {

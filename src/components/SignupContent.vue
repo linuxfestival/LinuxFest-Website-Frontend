@@ -66,8 +66,8 @@
                         placeholder="سن"
                 />
                 <p v-if="$v.user.age.$error " class="red">سن شما معتبر نمی باشد.</p>
-
                 <input
+                      id="pass"
                         type="password"
                         v-model="$v.user.password.$model"
                         v-bind:class="$v.user.password.$error ? 'notVerified' : 'input'"

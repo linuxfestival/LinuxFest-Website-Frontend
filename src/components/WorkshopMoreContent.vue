@@ -4,7 +4,7 @@
             <div class="workshopContentWrapper">
                 <div class="workshopContent">
                     <div class="workshopTeachersDescription">
-                        <h2 v-if="workshop.teachers.length == 1" class="workshopTeachersDescription-title">
+                        <h2 v-if="workshop.teachers.length === 1" class="workshopTeachersDescription-title">
                             <i class="material-icons">person</i>
                             توضیحات مدرس:
                         </h2>
@@ -13,7 +13,7 @@
                             توضیحات مدرسین:
                         </h2>
                         <div class="teacherDescriptionWrapper">
-                            <div class="teacherDescription" v-for="teacher in teachers" :key="teachers.indexOf(teacher)"> 
+                            <div class="teacherDescription" v-for="teacher in teachers" :key="teachers.indexOf(teacher)">
                                 <p class="teacherDescription-name">
                                     <i class="material-icons">person</i>
                                     {{teacher.fullName}}:
@@ -24,17 +24,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="workshopTeachersImages">
-                        <img v-for="teacher in teachers" :key="teachers.indexOf(teacher)" :src="'http://skillcenter.aut.ac.ir/linuxfestapi/' + teacher.picUrl.replace('/','')" draggable="false" class="workshopTeacherImages-image" :alt="teacher.fullName + ' image'">
-                    </div>
+<!--                    <div class="workshopTeachersImages">-->
+<!--                        <img v-for="teacher in teachers" :key="teachers.indexOf(teacher)" :src="'http://linux.ce.aut.ac.ir/' + teacher.picUrl.replace('/','')" draggable="false" class="workshopTeacherImages-image" :alt="teacher.fullName + ' image'">-->
+<!--                    </div>-->
                     <div class="workshopContentDescription">
-                        <h1 v-if="workshop.price == 0" class="workshopContentDescription-title">
+                        <h1 v-if="workshop.price === 0" class="workshopContentDescription-title">
                             <i class="material-icons rotate-180">double_arrow</i>
-                                در مورد این سخنرانی:   
+                                در مورد این سخنرانی:
                         </h1>
                         <h1 v-else class="workshopContentDescription-title">
                             <i class="material-icons rotate-180">double_arrow</i>
-                                در مورد این کارگاه:   
+                                در مورد این ارائه:
                         </h1>
                         <div class="workshopContentDescription-desc" v-html="workshop.description" ></div>
 
@@ -48,21 +48,19 @@
                             تا
                             {{getJalali(timeSlot.endTime).utc().locale('fa').format("HH:mm")}}
                         </p>
-
                         <h3 class="timeline-title">
                             هزینه ثبت نام:
                         </h3>
-                        <p class="timeline-description" v-if="workshop.price != 0">
+                        <p class="timeline-description" v-if="workshop.price !== 0">
                             {{workshop.price}}
                             ریال
                         </p>
                         <p class="timeline-description" v-else>
                             رایگان
                         </p>
-
-
-                        <router-link :to="'/registerworkshop/?workshop=' + workshop._id"  v-if="workshop.isRegOpen" class="registerButton">ثبت نام</router-link>
-                        <p v-else class="registerButton">ظرفیت این کارگاه تکمیل شده است.</p>
+                        <router-link :to="'/registerworkshop/?workshop=' + workshop._id"
+                                     v-if="workshop.isRegOpen" class="registerButton">ثبت نام</router-link>
+                        <p v-else class="registerButton">ظرفیت ارائه تکمیل شده است.</p>
                     </div>
                 </div>
             </div>
@@ -108,7 +106,7 @@
 
         },
         created() {
-            console.log(this.$route.params.id);
+            console.log("start showing workshop");
             axios({
                 url : this.$store.getters.baseUrl + "workshops/" + this.$route.params.id,
                 method : 'get', 

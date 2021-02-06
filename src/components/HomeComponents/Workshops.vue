@@ -16,7 +16,7 @@
         components : {WorkshopItem},
         data: function () {
             return {
-                workshopsTitle : 'کارگاه‌ها و سخنرانی‌ها',
+                workshopsTitle : 'ارائه ها و سخنرانی‌ها',
                 allWorkshops: []
             }
         },
@@ -36,7 +36,6 @@
             getWorkshops:function () {
                 return this.$store.getters.getAllWorkshops;
             },
-
         }
     }
 </script>

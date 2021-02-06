@@ -90,6 +90,7 @@ export default {
     display: flex;
     flex-direction: column;
     background: #521c34;
+    font-size: 20px;
     font-family: 'iransans';
   }
   .panel{

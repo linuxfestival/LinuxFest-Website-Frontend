@@ -8,7 +8,7 @@
                 <i class="material-icons rotate-180" v-else>double_arrow</i>
                 {{workshop.title}}
             </h3>
-            <h3 class="workshopRegItemPrice" v-if="workshop.price != 0">
+            <h3 class="workshopRegItemPrice" v-if="workshop.price !== 0">
                 {{workshop.price}}
                 ریال
             </h3>

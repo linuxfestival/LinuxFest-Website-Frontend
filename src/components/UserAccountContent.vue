@@ -37,11 +37,11 @@
             <div class="workshopsInfoBox">
                 <div class="infoBoxHeader">
                     <div class="infoBoxHeader-line"></div>
-                    <div class="infoBoxHeader-title dark"><h4>لیست کارگاه‌ها و سخنرانی‌های ثبت نام شده ({{workshops.length}})</h4></div>
+                    <div class="infoBoxHeader-title dark"><h4>لیست ارائه‌ها و سخنرانی‌های ثبت نام شده ({{workshops.length}})</h4></div>
                     <div class="infoBoxHeader-line"></div>
                 </div>
                 <WorkshopDoneRegisterItem :key="index" v-for="(workshop, index) in workshops" :workshop="workshop" />
-                <router-link to="/registerworkshop" class="infoBox-link">مشاهده لیست کارگاه‌ها و سخنرانی‌ها</router-link>
+                <router-link to="/registerworkshop" class="infoBox-link">مشاهده لیست ارائه‌ها و سخنرانی‌ها</router-link>
             </div>
         </div>
     </div>

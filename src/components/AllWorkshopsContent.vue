@@ -1,6 +1,6 @@
 <template>
     <div class="parent">
-        <PartialHeader title="ثبت نام در کارگاه‌ها و سخنرانی‌ها" backgroundUrl="../assets/img/background2.png"/>
+        <PartialHeader title="ثبت نام در ارائه‌ها و سخنرانی‌ها" backgroundUrl="../assets/img/background2.png"/>
 
         <div class="workshopsListWrapper">
             <div class="workshopsList">
@@ -36,7 +36,7 @@
         },
         created() {
             this.getWorkshops();
-            if (this.$route.query.workshop != undefined) {
+            if (this.$route.query.workshop !== undefined) {
                 this.toggleSelectMe(this.$route.query.workshop)
             }
         },
@@ -61,12 +61,13 @@
                 console.log(this.objectToPost);
                 return new Promise((resolve, reject) => {
                     axios({
-                        url: this.$store.getters.baseUrl + 'users/initpayment',
+                        url: 'http://linux.ce.aut.ac.ir/users/initpayment',
                         method: 'post',
                         data: this.objectToPost,
                         headers: this.$store.getters.httpHeaders
                     }).then(response => {
-                        if(response.data != 'OK') {
+                      console.log("response:");
+                        if(response.data !== 'OK') {
                             this.$notify({
                                 group: "auth",
                                 title: "موفقیت",
@@ -78,12 +79,22 @@
                         this.redirectForPayment(response);
                         resolve();
                     }).catch(error => {
+                      if(error.response.status===400) {
                         this.$notify({
-                            group: 'auth',
-                            title: 'خطا',
-                            text: 'خطایی هنگام ارتباط با سرور رخ داد. لطفا دوباره تلاش کنید',
-                            type: "error"
+                          group: 'auth',
+                          title: 'خطا',
+                          text: 'در کارگاه ثبت نام کرده اید. ',
+                          type: "error"
                         });
+                      }
+                      else{
+                        this.$notify({
+                          group: 'auth',
+                          title: 'خطا',
+                          text: 'خطایی در سرور رخ داده است. مجددا تلاش کن',
+                          type: "error"
+                        });
+                      }
                         console.log(error.response);
                         reject();
                     })
@@ -92,7 +103,7 @@
             },
 
             redirectForPayment: function (response) {
-                if (response.data == 'OK') {
+                if (response.data === 'OK') {
                     this.$notify({
                         group: "auth",
                         title: "موفقیت",
@@ -101,7 +112,8 @@
                     });
                     this.$router.push('/user/me')
                 } else {
-                    window.location = "https://sadad.shaparak.ir/VPG/Purchase?token=" + response.data;
+                    console.log("go to payment")
+                    window.location = response.data;
                 }
             },
 

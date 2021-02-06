@@ -10,6 +10,7 @@ import store from '../store/store'
 import AllWorkshops from "../views/AllWorkshops";
 import ForgetPass  from '@/views/ForgetPass';
 import ConfirmPayment from "@/views/ConfirmPayment";
+import AllCareers from "../components/careers/AllCareers";
 
 Vue.use(VueRouter);
 
@@ -50,6 +51,11 @@ const routes = [
         component: AllWorkshops
     },
     {
+        path : '/careers',
+        name : 'careers',
+        component : AllCareers
+    },
+    {
         path : '/user/forget/:forgetToken',
         name : 'forget',
         component : ForgetPass
@@ -58,7 +64,7 @@ const routes = [
         path : '/payment/result/',
         name : 'confirmPayment',
         component : ConfirmPayment
-    }
+    },
 
 ];
 
