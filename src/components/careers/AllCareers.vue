@@ -3,7 +3,7 @@
     <div class="companiesContainer">
       <h1 class="companies-title">شرکت ها</h1>
       <section class="companies-list">
-        <CompanyItem  v-for="(company, index) in getCompanies"
+        <CompanyItem  v-for="(company, index) in companies"
                       :company="company"
                        :key="index" />
       </section>
@@ -14,26 +14,33 @@
 <script>
 
 import CompanyItem from "./companyItem";
-
+import axios from "axios";
 export default {
   name: "AllCareers",
   components:{
      CompanyItem
   },
-  computed:{
-    getCompanies(){
-      return [{
-        name: "digiKala",
-        description: "digi is ..."
-      },
-        {
-          name: "اسنپ",
-          description: "اسنپ یکی از اسپانسرهاای"
-        },
-      ]
+  data(){
+    return{
+      companies:[]
     }
+  },
+  methods:{
+    getCompanies(){
+      axios({
+        url : this.$store.getters.baseUrl+"companies/",
+        method : "GET",
+      }).then(response => {
+        console.log(response);
+        this.companies = response.data;
+      }).catch(error => {
+        console.log(error.response);
+      });
+    }
+  },
+  created() {
+    this.getCompanies();
   }
-
 }
 </script>
 

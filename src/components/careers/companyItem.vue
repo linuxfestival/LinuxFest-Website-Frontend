@@ -1,7 +1,7 @@
 <template>
   <div class="company-item" @click="showMore()">
     <img class="company-item--image"
-         src="https://pbs.twimg.com/profile_images/1321901188510552069/FhZKhfmq_400x400.jpg"
+         :src="imagesURL+ 'pic/' + company._id"
          :alt="'logo ' + company.id + ' logo'">
     <div class="company-item--info">
       <h2 class="company-item--info-name">{{ company.name }}</h2>
@@ -20,6 +20,11 @@
 <script>
 export default {
   name: "companyItem",
+  data(){
+    return{
+      imagesURL:''
+    }
+  },
   props: {
     company: {}
   },
@@ -27,6 +32,9 @@ export default {
     showMore: function () {
       this.$router.push('/companies/' + this.company._id)
     }
+  },
+  created() {
+    this.imagesURL= this.$store.getters.baseUrl+"companies/"
   }
 }
 </script>

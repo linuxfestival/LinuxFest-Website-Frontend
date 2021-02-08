@@ -52,9 +52,7 @@ export default {
             text: "رمز عبور شما با موفقیت تعویض شد. به صفحه ورود ریدایرکت می شوید...",
             duration: 6000
           });
-          setTimeout(function(){
-              this.$router.push('/signin')
-          }, 6000)
+          this.$router.push('/signin')
         })
         .catch(error => {
           this.$notify({

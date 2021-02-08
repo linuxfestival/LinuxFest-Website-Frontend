@@ -11,6 +11,7 @@ import AllWorkshops from "../views/AllWorkshops";
 import ForgetPass  from '@/views/ForgetPass';
 import ConfirmPayment from "@/views/ConfirmPayment";
 import AllCareers from "../components/careers/AllCareers";
+import Career from "@/components/careers/Career";
 
 Vue.use(VueRouter);
 
@@ -54,6 +55,11 @@ const routes = [
         path : '/careers',
         name : 'careers',
         component : AllCareers
+    },
+    {
+        path : '/companies/:id',
+        name : 'careers',
+        component : Career
     },
     {
         path : '/user/forget/:forgetToken',

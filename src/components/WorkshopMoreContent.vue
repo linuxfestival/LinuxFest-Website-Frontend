@@ -24,9 +24,13 @@
                             </div>
                         </div>
                     </div>
-<!--                    <div class="workshopTeachersImages">-->
-<!--                        <img v-for="teacher in teachers" :key="teachers.indexOf(teacher)" :src="'http://linux.ce.aut.ac.ir/' + teacher.picUrl.replace('/','')" draggable="false" class="workshopTeacherImages-image" :alt="teacher.fullName + ' image'">-->
-<!--                    </div>-->
+                    <div class="workshopTeachersImages">
+                        <img v-for="teacher in teachers"
+                             :key="teachers.indexOf(teacher)"
+                             :src="'http://linux.ce.aut.ac.ir/teachers/' + 'pic/' + teacher._id"
+                             draggable="false" class="workshopTeacherImages-image"
+                             :alt="teacher.fullName + ' image'">
+                    </div>
                     <div class="workshopContentDescription">
                         <h1 v-if="workshop.price === 0" class="workshopContentDescription-title">
                             <i class="material-icons rotate-180">double_arrow</i>
