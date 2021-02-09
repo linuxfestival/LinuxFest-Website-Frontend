@@ -57,8 +57,8 @@ export default {
   name: "Header",
   methods: {
     logout: function () {
+      this.$router.push("/")
       this.$store.dispatch('logout');
-      this.$router.push('/');
     },
     toggleMobileMenu: function () {
       console.log("toggle mobile menu");

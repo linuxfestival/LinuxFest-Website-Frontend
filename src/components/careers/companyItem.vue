@@ -6,9 +6,6 @@
     <div class="company-item--info">
       <h2 class="company-item--info-name">{{ company.name }}</h2>
       <br/>
-      <p class="company-item--info-description">
-        {{ company.description }}
-      </p>
       <button class="company-item--info-moreButton" @click="showMore(company)">
         مشاهده فرصت های شغلی
         <i class="material-icons">keyboard_arrow_left</i>
@@ -49,7 +46,7 @@ export default {
   display:flex;
   cursor:pointer;
   transition:all 0.1s ease-in;
-  margin:10px;
+  margin:20px;
 }
 
 .company-item:hover {
@@ -78,9 +75,9 @@ export default {
 }
 
 .company-item--info-name {
-  margin-top:20px;
+  margin-top:50px;
   font-family :'iransans','Arial';
-  font-size:18px;
+  font-size:25px;
   text-align: center;
   padding-right:5px;
   padding-left: 5px;

@@ -2,6 +2,7 @@
   <div class="parent">
     <PartialHeader :title="company.name"/>
     <div class="careerContentWrapper">
+      <span style="font-size: 25px;margin: 10px">توضیحات شرکت</span>
       <div class="careerContent">
         {{ company.description }}
       </div>
@@ -66,7 +67,7 @@ export default {
 }
 
 .careerContent {
-  padding: 70px;
+  padding: 25px 20px;
   width: 50%;
   min-height: 70px;
   background-color: #333;

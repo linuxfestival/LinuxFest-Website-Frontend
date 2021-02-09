@@ -41,7 +41,7 @@ export default new Vuex.Store({
             state.token = '';
             state.loggedInUser = {};
             state.workshopMore = {};
-            state.allWorkshops = {};
+            // state.allWorkshops = {};
             state.selectedWorkshopsForRegister = [];
             state.config.headers.Authorization = '';
             localStorage.clear();
