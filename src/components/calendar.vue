@@ -1,10 +1,11 @@
 <template>
   <div class="main">
     <div class="panel">
-      <h1>تقویم برگزاری</h1>
+      <h1 style="margin:10px 50px; font-family: 'iransans'">تقویم برگزاری</h1>
     <Timeline>
       <timeline-item v-for="item in timelineItems"
                      bg-color="#e4b22b"
+                     class="time"
                      font-color="#ddd">
               {{item.title}}
       <br/>
@@ -87,6 +88,7 @@ export default {
 
 <style scoped>
   .main{
+    padding: 30px;
     display: flex;
     flex-direction: column;
     background: #521c34;
@@ -96,5 +98,9 @@ export default {
   .panel{
     color: white;
     margin: auto;
+    font-family: 'iransans';
+  }
+  .time{
+    font-family: 'iransans';
   }
 </style>

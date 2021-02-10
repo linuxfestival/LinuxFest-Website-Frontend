@@ -64,7 +64,7 @@
         min-height:calc(100vh - 40px);
         margin-top:40px;
         flex-direction:column;
-        background: url("https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1007&q=80") no-repeat center / cover;
+        background: url("../assets/img/result.jpg") no-repeat center / cover;
         /*background-color:black;*/
     }
 

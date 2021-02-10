@@ -64,11 +64,12 @@ export default {
   align-items: center;
   justify-content: center;
   margin: 30px 70px 30px 30px;
+  font-family: 'iransans';
 }
 
 .careerContent {
   padding: 25px 20px;
-  width: 50%;
+  width: 70%;
   min-height: 70px;
   background-color: #333;
   border-radius: 15px;
@@ -81,7 +82,9 @@ export default {
 .jobOpportunity {
   margin-top: 30px;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width:1300px;
+  justify-content: center;
   align-items: center;
 }
 

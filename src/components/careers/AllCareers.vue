@@ -52,6 +52,7 @@ export default {
   align-items:center;
   justify-content:center;
   padding-bottom:30px;
+  font-family: 'iransans';
 }
 
 .companiesContainer {

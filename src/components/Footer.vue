@@ -7,7 +7,7 @@
             <div class="footer-social">
                 <!-- Footer CEIT CSS Linked Logo here -->
                 <a href="http://ceit-ssc.ir" class="footer-social--ceitlogo">
-                    <img src="../assets/img/Artboard-1-copy@4x-1200x1200.jpg" alt="ceit logo" style="width: 140px;height: 140px">
+                    <img src="../assets/img/anjo.png" alt="ceit logo" style="width: 140px;height: 140px">
 
                 </a>
                 <div class="footer-social--items">

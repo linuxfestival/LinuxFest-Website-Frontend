@@ -47,6 +47,7 @@ export default {
   cursor:pointer;
   transition:all 0.1s ease-in;
   margin:20px;
+  font-family: 'iransans';
 }
 
 .company-item:hover {
@@ -72,11 +73,12 @@ export default {
   justify-content:flex-start;
   flex-direction:column;
   color:white;
+  font-family: 'iransans';
 }
 
 .company-item--info-name {
   margin-top:50px;
-  font-family :'iransans','Arial';
+  font-family :'iransans';
   font-size:25px;
   text-align: center;
   padding-right:5px;
