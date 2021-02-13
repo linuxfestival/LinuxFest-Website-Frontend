@@ -27,7 +27,7 @@
                     <div class="workshopTeachersImages">
                         <img v-for="teacher in teachers"
                              :key="teachers.indexOf(teacher)"
-                             :src="'http://linux.ce.aut.ac.ir/teachers/' + 'pic/' + teacher._id"
+                             :src="'http://linuxfest.ceit.aut.ac.ir/teachers/' + 'pic/' + teacher._id"
                              draggable="false" class="workshopTeacherImages-image"
                              :alt="teacher.fullName + ' image'">
                     </div>

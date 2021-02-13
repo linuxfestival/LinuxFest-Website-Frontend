@@ -9,8 +9,7 @@ export default new Vuex.Store({
     state: {
         token: localStorage.getItem('token') || '',
         loggedInUser: {},
-        baseUrl: "http://linux.ce.aut.ac.ir/",
-        // baseUrl : "https://HeartyHonoredDisk.ahmadforoughi.repl.co/",
+        baseUrl: "http://linuxfest.ceit.aut.ac.ir/",
         workshopMore:{},
         allWorkshops: [],
         selectedWorkshopsForRegister : {workshopIds:[]},
