@@ -18,6 +18,10 @@
                 {{selectedWorkshopsForRegister.length}}
                 ورکشاپ برای ثبت نام انتخاب شده است.
             </p>
+          <div class="discount">
+            <label for="discount">کد تخفیف </label>
+            <input placeholder="code" id="discount" v-model="discountCode">
+          </div>
             <button @click="register()" class="workshopsRegisterButton">ثبت نام</button>
         </div>
     </div>
@@ -44,7 +48,8 @@
             return {
                 selectedWorkshop: 'empty',
                 checked: 'empty',
-                workshops: []
+                workshops: [],
+                discountCode:""
             }
         },
         computed: {
@@ -52,7 +57,14 @@
                 return this.$store.getters.selectedWorkshopsForRegister.workshopIds;
             },
             objectToPost: function () {
-                return this.$store.getters.selectedWorkshopsForRegister;
+              let data = []
+                for(let u of this.$store.getters.selectedWorkshopsForRegister.workshopIds){
+                  data.push(u);
+                }
+                return {
+                  workshopIds: data,
+                  discount:this.discountCode
+                }
             }
         },
 
@@ -83,7 +95,7 @@
                         this.$notify({
                           group: 'auth',
                           title: 'خطا',
-                          text: 'در کارگاه ثبت نام کرده اید. ',
+                          text: 'در کارگاه ثبت نام کرده اید و یا کارگاهی برای ثبت نام انتخاب نکرده اید ',
                           type: "error"
                         });
                       }
@@ -200,6 +212,18 @@
 
     .workshopsRegisterButton:hover {
         box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.3);
+    }
+    .discount{
+      margin: 20px;
+      font-family: 'iransans';
+    }
+    .discount input{
+      padding: 3px;
+      margin-right: 8px;
+      border-radius: 4px;
+      border: solid gray 1px;
+      text-align: center;
+      font-size: 16px;
     }
 
 </style>
