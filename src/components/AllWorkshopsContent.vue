@@ -74,7 +74,7 @@
                 console.log(this.objectToPost);
                 return new Promise((resolve, reject) => {
                     axios({
-                        url: this.baseURL + '/users/initpayment',
+                        url: this.baseURL + 'users/initpayment',
                         method: 'post',
                         data: this.objectToPost,
                         headers: this.$store.getters.httpHeaders
