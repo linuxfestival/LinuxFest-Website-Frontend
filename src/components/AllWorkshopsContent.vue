@@ -49,7 +49,8 @@
                 selectedWorkshop: 'empty',
                 checked: 'empty',
                 workshops: [],
-                discountCode:""
+                discountCode:"",
+                baseURL:this.$store.getters.baseUrl
             }
         },
         computed: {
@@ -73,7 +74,7 @@
                 console.log(this.objectToPost);
                 return new Promise((resolve, reject) => {
                     axios({
-                        url: 'http://linux.ce.aut.ac.ir/users/initpayment',
+                        url: this.baseURL + '/users/initpayment',
                         method: 'post',
                         data: this.objectToPost,
                         headers: this.$store.getters.httpHeaders

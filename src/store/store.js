@@ -18,6 +18,7 @@ export default new Vuex.Store({
                 Authorization: "Bearer " + localStorage.getItem('token')
             }
         },
+        signUpError:""
     },
     mutations: {
 
@@ -93,6 +94,7 @@ export default new Vuex.Store({
                     console.log(error);
                     console.log(error.response);
                     console.log('request catch')
+                    state.signUpError = error.response.data.message
                     reject();
                 })
             })
@@ -177,6 +179,9 @@ export default new Vuex.Store({
         },
         selectedWorkshopsForRegister :(state) => {
             return state.selectedWorkshopsForRegister;
+        },
+        signUpErrors : (state )=>{
+            return state.signUpError
         }
     }
 })

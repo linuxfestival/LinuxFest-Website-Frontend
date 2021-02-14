@@ -27,7 +27,7 @@
                     <div class="workshopTeachersImages">
                         <img v-for="teacher in teachers"
                              :key="teachers.indexOf(teacher)"
-                             :src="'http://linux.ce.aut.ac.ir/api/teachers/' + 'pic/' + teacher._id"
+                             :src="baseURL + '/api/teachers/' + 'pic/' + teacher._id"
                              draggable="false" class="workshopTeacherImages-image"
                              :alt="teacher.fullName + ' image'">
                     </div>
@@ -85,6 +85,7 @@
         },
         data() {
             return {
+                baseURL:this.$store.getters.baseUrl,
                 workshop : {},
                 teachers : [],
                 album : [

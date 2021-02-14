@@ -164,7 +164,6 @@
         },
         methods: {
             submitUser: function () {
-
                 if(!this.$v.$invalid) {
                     if(this.user.isAmirkabiri === false) {
                         delete this.user.studentNumber;
@@ -188,12 +187,12 @@
                             });
                             this.$router.push("/user/me");
                         })
-                        .catch(() => {
+                        .catch( ()=> {
                             console.log("sign up error");
                             this.$notify({
                                 group: "auth",
                                 title: "خطا",
-                                text: "خطایی هنگام ارتباط با سرور رخ داد. لطفا ورودی های خود را کنترل کنید",
+                                text: 'لطفا رورودی های خود را کنترل کنید-'+ this.$store.getters.signUpErrors,
                                 type: "error"
                             });
                         })
