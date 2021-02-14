@@ -27,7 +27,7 @@
                     <div class="workshopTeachersImages">
                         <img v-for="teacher in teachers"
                              :key="teachers.indexOf(teacher)"
-                             :src="baseURL + '/api/teachers/' + 'pic/' + teacher._id"
+                             :src="baseURL + 'teachers/' + 'pic/' + teacher._id"
                              draggable="false" class="workshopTeacherImages-image"
                              :alt="teacher.fullName + ' image'">
                     </div>
