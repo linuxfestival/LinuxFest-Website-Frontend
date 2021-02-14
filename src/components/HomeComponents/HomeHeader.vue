@@ -38,11 +38,11 @@
         width: 100%;
         padding-top:40px;
         padding-bottom:40px;
-        min-height:calc(100vh - 64px);
+        min-height:calc(100vh);
         display:flex;
         align-items:center;
         justify-content:center;
-        background: rgb(41, 41, 41) url("../../assets/img/linus-torvalds.svg") no-repeat center / 100%;
+        background: linear-gradient(0deg, rgba(41,41,41,0.9), rgba(41,41,41,0.9)), url("../../assets/img/withEye.png")  no-repeat top / 100%;
         border-bottom:10px solid rgb(242,169,56);
     }
 
