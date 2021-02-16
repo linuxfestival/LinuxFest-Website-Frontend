@@ -32,5 +32,10 @@ export default {
         font-size:2.5rem;
         text-align:center;
     }
+    @media (max-width: 500px) {
+      .workshopsListTitle-text{
+        margin-top: 50px;
+      }
+    }
 
 </style>

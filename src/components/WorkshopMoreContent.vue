@@ -4,14 +4,14 @@
             <div class="workshopContentWrapper">
                 <div class="workshopContent">
                     <div class="workshopTeachersDescription">
-                        <h2 v-if="workshop.teachers.length === 1" class="workshopTeachersDescription-title">
-                            <i class="material-icons">person</i>
-                            توضیحات مدرس:
-                        </h2>
-                        <h2 v-else class="workshopTeachersDescription-title">
-                            <i class="material-icons">person</i>
-                            توضیحات مدرسین:
-                        </h2>
+                      <h2 v-if="workshop.teachers.length === 1" class="workshopTeachersDescription-title">
+                        <i class="material-icons">person</i>
+                        توضیحات مدرس:
+                      </h2>
+                      <h2 v-else class="workshopTeachersDescription-title">
+                        <i class="material-icons">person</i>
+                        توضیحات مدرسین:
+                      </h2>
                         <div class="teacherDescriptionWrapper">
                             <div class="teacherDescription" v-for="teacher in teachers" :key="teachers.indexOf(teacher)">
                                 <p class="teacherDescription-name">
@@ -150,9 +150,10 @@
         background-color : #521c34;
         border-radius:0 15px 15px 0;
         border-left:3px solid #e4b22b;
-        display:flex;
-        justify-content:flex-start;
-        flex-direction:column;
+        /*display:flex;*/
+        /*justify-content:flex-start;*/
+        /*align-items: center;*/
+        /*flex-direction:column;*/
         padding-left: 70px;
         width:25%;
         padding-bottom:110px;
@@ -174,8 +175,8 @@
 
     .teacherDescriptionWrapper {
         display:flex;
-        align-items:flex-start;
-        justify-content:center;
+        /*align-items: ;*/
+        justify-content:space-between;
         flex-direction:column;
         margin:auto 10px;
     }
@@ -198,23 +199,28 @@
         margin-right:-50px;
         display:flex;
         align-items:center;
-        justify-content:center;
+        /*justify-content:space-between;*/
         flex-direction:column;
+        margin-top: 100px;
     }
 
     .workshopTeacherImages-image {
         width:140px;
         height:140px;
         border-radius:50%;
+        margin-right: -20px;
         border:3px solid #e4b22b;
-        margin-top:100px;
+        margin-top:30px;
         margin-bottom:10px;
+    }
+    .workshopTeacherImages-image:first-child{
+      margin-top: 0;
     }
 
     .workshopTeachersDescription-title {
         font-family: 'iransans';
         color :#e4b22b;
-        position: absolute;
+        /*position: absolute;*/
     }
 
     .parent {
@@ -232,9 +238,12 @@
     .teacherDescription {
         display:flex;
         align-items:flex-start;
-        justify-content:center;
+        justify-content:space-between;
         flex-direction:column;
-        margin-top:190px;
+        margin-top:100px;
+    }
+    .teacherDescription:first-child{
+      margin-top :50px;
     }
 
     .teacherDescription-name {
@@ -307,7 +316,7 @@
         
         .workshopTeachersImages {
             display:none;
-            margin-bottom:0px;
+            margin-bottom:0;
         }
 
         .workshopTeachersDescription {
@@ -336,7 +345,7 @@
         }
 
         .teacherDescription {
-            margin-top:10px;
+            margin-top:50px;
         }
     }
 
@@ -344,5 +353,8 @@
         .workshopContentDescription-desc {
             margin-right:5px;
         }
+      .teacherDescription-name{
+        /*margin-top: 0;*/
+      }
     }
 </style>
