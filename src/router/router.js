@@ -58,7 +58,7 @@ const routes = [
     },
     {
         path : '/companies/:id',
-        name : 'careers',
+        name : 'careersItem',
         component : Career
     },
     {

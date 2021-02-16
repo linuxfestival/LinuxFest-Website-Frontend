@@ -72,7 +72,7 @@
         align-items:center;
         color:white;
         margin-left:auto;
-        width:300px;
+        width:350px;
     }
 
     .workshopRegItemTitle i.material-icons {
