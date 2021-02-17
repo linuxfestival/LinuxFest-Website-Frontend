@@ -38,17 +38,18 @@
             WorkshopRegisterItem,
             PartialHeader
         },
-        created() {
-            this.getWorkshops();
-            if (this.$route.query.workshop !== undefined) {
-                this.toggleSelectMe(this.$route.query.workshop)
-            }
+     async created() {
+            // this.getWorkshops();
+            // if (this.$route.query.workshop !== undefined) {
+            //     this.toggleSelectMe(this.$route.query.workshop)
+            // }
+        await this.$store.dispatch('getWorkshopsFromServer')
         },
         data: function () {
             return {
                 selectedWorkshop: 'empty',
                 checked: 'empty',
-                workshops: [],
+                // workshops: [],
                 discountCode:"",
                 baseURL:this.$store.getters.baseUrl
             }
@@ -66,7 +67,10 @@
                   workshopIds: data,
                   discount:this.discountCode
                 }
-            }
+            },
+          workshops(){
+              return this.$store.getters.getAllWorkshops
+          }
         },
 
         methods: {
@@ -79,18 +83,11 @@
                         data: this.objectToPost,
                         headers: this.$store.getters.httpHeaders
                     }).then(response => {
-                      console.log("response:");
-                        if(response.data !== 'OK') {
-                            this.$notify({
-                                group: "auth",
-                                title: "موفقیت",
-                                text: "به درگاه پرداخت برده می شوید",
-                                type: "success"
-                            });
-                        }
-                        console.log(response);
-                        this.redirectForPayment(response);
-                        resolve();
+                      console.log("response:"+response);
+                          console.log(response);
+                          this.redirectForPayment(response);
+                          resolve();
+
                     }).catch(error => {
                       if(error.response.status===400) {
                         this.$notify({
@@ -112,11 +109,10 @@
                         reject();
                     })
                 })
-
             },
 
             redirectForPayment: function (response) {
-                if (response.data === 'OK') {
+                if (response.data === 'Paid') {
                     this.$notify({
                         group: "auth",
                         title: "موفقیت",
@@ -124,10 +120,26 @@
                         type: "success"
                     });
                     this.$router.push('/user/me')
-                } else {
+                }
+                else if(response.data === 'Error'){
+                  this.$notify({
+                    group: "auth",
+                    title: "موفقیت",
+                    text: "خطایی رخ داده است. لطفا مجددا تلاش کنید.",
+                    type: "success"
+                  });
+                }
+                else {
+                  this.$notify({
+                    group: "auth",
+                    title: "موفقیت",
+                    text: "به درگاه بانکی وارد می شوید.",
+                    type: "success"
+                  });
                     console.log("go to payment")
                     window.location = response.data;
                 }
+
             },
 
             toggleSelectMe(workshopId) {
