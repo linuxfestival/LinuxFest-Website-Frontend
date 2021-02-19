@@ -28,7 +28,7 @@
         name : "HomeHeader",
         data() {
             return {
-                homeHeaderTitleHorizontal: 'انجمن علمی دانشکده مهندسی کامپیوتر دانشگاه صنعتی امیرکبیر با همکاری اسنپ برگزار می کند:'
+                homeHeaderTitleHorizontal: 'انجمن علمی دانشکده مهندسی کامپیوتر دانشگاه صنعتی امیرکبیر برگزار می کند:'
             }
         }
     }
