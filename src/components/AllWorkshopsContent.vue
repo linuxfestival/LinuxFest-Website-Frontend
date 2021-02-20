@@ -112,7 +112,7 @@
             },
 
             redirectForPayment: function (response) {
-                if (response.data == 'Paid') {
+                if (response.data === 'Paid') {
                     this.$notify({
                         group: "auth",
                         title: "موفقیت",
@@ -121,7 +121,7 @@
                     });
                     this.$router.push('/user/me')
                 }
-                else if(response.data == 'Error'){
+                else if(response.data === 'Error'){
                   this.$notify({
                     group: "auth",
                     title: "موفقیت",

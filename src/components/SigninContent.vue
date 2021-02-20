@@ -76,12 +76,22 @@
                         text : 'ایمیل خود را برای ادامه مراحل چک کنید..' 
                     })
                 }).catch(error => {
+                  if(error.response.status===404){
                     this.$notify({
-                        group :'auth',
-                        type : 'error',
-                        title : 'خطا',
-                        text : 'خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید.' ,
+                      group: "auth",
+                      type: "error",
+                      title: "خطا",
+                      text: 'چنین کاربری وجود ندارد. از صحت ایمیل اطمینان حاصل کنید.'
+                    });
+                  }
+                  else {
+                    this.$notify({
+                      group: 'auth',
+                      type: 'error',
+                      title: 'خطا',
+                      text: 'خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید.',
                     })
+                  }
                     console.log(error.response);
                 })
             },

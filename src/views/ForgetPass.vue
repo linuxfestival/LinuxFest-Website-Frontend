@@ -55,12 +55,12 @@ export default {
           this.$router.push('/signin')
         })
         .catch(error => {
-          this.$notify({
-            group: "auth",
-            type: "error",
-            title: "خطا",
-            text : 'خطایی هنگام تعویض رمز عبور رخ داد.لطفا اتصال اینترنت خود را چک کنید'
-          });
+            this.$notify({
+              group: "auth",
+              type: "error",
+              title: "خطا",
+              text: 'خطایی هنگام تعویض رمز عبور رخ داد.لطفا اتصال اینترنت خود را چک کنید'
+            });
           console.log(error.response);
         });
     }
