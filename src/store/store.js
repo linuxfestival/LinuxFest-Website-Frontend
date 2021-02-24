@@ -86,7 +86,7 @@ export default new Vuex.Store({
                     data : userToRegister,
                     headers : state.config.headers
                 }).then(response => {
-                    console.log('request do ne')
+                    console.log('request done')
                     this.commit('setToken',response.data.token);
                     console.log(response);
                     resolve();

@@ -58,7 +58,9 @@ export default {
 .company-item:hover > .company-item--info {
   color: rgb(242,169,56);
 }
-
+.company-item--info-moreButton{
+  font-size: 12px;
+}
 .company-item:hover  .company-item--info-moreButton {
   background-color: rgb(242,169,56);
   color:white;
@@ -99,8 +101,10 @@ export default {
 }
 .company-item--image {
   width:50%;
+  padding: 8px;
   border-radius: 0 15px 15px 0;
 }
+
 
 @media only screen and (max-width: 405px) {
   .company-item {
