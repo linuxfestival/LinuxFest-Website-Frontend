@@ -105,12 +105,12 @@ export default {
   color: #e4b22b;
 }
 .careerDescription a {
-  position: absolute;
   left: 30px;
   bottom: 30px;
   margin-top: 10px;
   color: white;
   text-decoration: none;
+  float: left;
 }
 .careerDescription a:hover{
   color: #e4b22b;
