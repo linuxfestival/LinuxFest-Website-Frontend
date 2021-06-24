@@ -1,0 +1,11 @@
+export const home = '/'
+export const signUp = '/signup';
+export const signIn = '/signin';
+export const forgetPass = '/user/forget/:forgetToken';
+export const profile = '/user/me';
+export const profileEdit = '/user/edit';
+export const workshop = '/workshops/:id';
+export const registerWorkshops = '/registerworkshop';
+export const careers = '/careers'
+export const company = '/companies/:id';
+export const paymentResult = '/payment/result';

@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import {config} from "@fortawesome/fontawesome-svg-core";
 
 Vue.use(Vuex);
 
@@ -9,7 +8,7 @@ export default new Vuex.Store({
     state: {
         token: localStorage.getItem('token') || '',
         loggedInUser: {},
-        baseUrl: `${process.env.VUE_APP_API_BASE}/api/`,
+        // baseUrl: `${process.env.VUE_APP_API_BASE}/api/`,
         workshopMore:{},
         allWorkshops: [],
         selectedWorkshopsForRegister : {workshopIds:[]},

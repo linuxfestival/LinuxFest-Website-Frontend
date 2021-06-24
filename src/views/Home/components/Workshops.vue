@@ -1,42 +1,48 @@
 <template>
     <section class="workshops" id="workshops">
         <div class="workshopsContainer">
-            <h1 class="workshops-title">{{workshopsTitle}}</h1>
-        <section class="workshops-list">
-            <WorkshopItem v-for="(workshop, index) in getWorkshops" :workshop="workshop" :key="index" />
-        </section>
+            <h1 class="workshops-title">{{workshopsSectionTitle}}</h1>
+            <section class="workshops-list">
+                <WorkshopItem 
+                    v-for="workshop in workshops"
+                    :workshop="workshop"
+                    :key="workshop.id"
+                />
+            </section>
         </div>
     </section>
 </template>
 
 <script>
-    import WorkshopItem from "@/components/WorkshopItem";
+    import localization from '@/localization/index';
+
+    import WorkshopItem from "./WorkshopItem";    
+    import { getWorkshops } from '../requests';
+    
+    const {
+        workshopsSectionTitle
+    } = localization.farsi;
+
     export default {
         name: "Workshops",
-        components : {WorkshopItem},
-        data: function () {
+        components : { WorkshopItem },
+        data() {
             return {
-                workshopsTitle : 'ارائه ها و سخنرانی‌ها',
-                allWorkshops: []
+                workshopsSectionTitle,
+                workshops: []
             }
         },
-        methods: {
 
+        created() {
+            getWorkshops()
+                .then(workshops => {
+                    this.workshops = workshops;
+                    console.log(workshops)
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         },
-
-        async created() {
-            await this.$store.dispatch('getWorkshopsFromServer')
-        },
-
-        mounted() {
-            console.log("component mounted.");
-        },
-
-        computed:{
-            getWorkshops:function () {
-                return this.$store.getters.getAllWorkshops;
-            },
-        }
     }
 </script>
 

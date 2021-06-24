@@ -2,25 +2,33 @@
     <section class="aboutEventWrapper" id="abouts">
         <div class="aboutEventContainer">
             <h1 class="aboutEvent-title">
-            <i class="material-icons">{{aboutThisEventTitleIcon}}</i>
-            {{aboutThiSEventTitle}}
+            <i class="material-icons">keyboard_arrow_left</i>
+            {{aboutThisEventTitle}}
         </h1>
         <p class="aboutEvent-description">{{aboutThisEventDescription}}</p>
         </div>
-        <router-link to="/" v-scroll-to="'#workshops'" class="about--startButton">
+        <router-link :to="homePath" v-scroll-to="'#workshops'" class="about--startButton">
             <i class="material-icons">keyboard_arrow_down</i>
         </router-link>
     </section>
 </template>
 
 <script>
+import localization from '@/localization/index';
+import { home as homePath } from '@/configs/route-paths';
+
+const { 
+    aboutThisEventTitle,
+    aboutThisEventDescription
+} = localization.farsi;
+
     export default {
         name: "AboutEvent",
         data: function () {
             return {
-                aboutThiSEventTitle : 'درباره جشنواره لینوکس امیرکبیر',
-                aboutThisEventTitleIcon: 'keyboard_arrow_left',
-                aboutThisEventDescription: 'جشنواره‌ی لینوکس امیرکبیر معتبرترین رویداد سالانه‌ و دانشگاهی‌ مرتبط با لینوکس است که هر سال در دانشگاه صنعتی امیرکبیر برگزار می‌شود. این جشنواره شامل کارگاه‌ها و ارائه‌های متعددی در سطوح مبتدی و پیشرفته با موضوعات مرتبط با سیستم عامل متن‌باز لینوکس است. در این جشنواره مجموعه‌ای از ارائه‌ها و کارگاه‌ها ویژه‌ی کاربران مبتدی و حرفه‌ای لینوکس با موضوعاتی مانند مقدمات لینوکس، کرنل، امنیت، برنامه‌نویسی، شبکه، مدیریت سیستم لینوکس و... برگزار می‌شوند.'
+                aboutThisEventTitle,
+                aboutThisEventDescription,
+                homePath
             }
         }
     }
@@ -35,7 +43,7 @@
         align-items:center;
         justify-content:center;
         min-height:500px;
-        background: #521c34 url("../../assets/img/pinguin.png") no-repeat left / 50%;
+        background: #521c34 url("../../../assets/img/pinguin.png") no-repeat left / 50%;
     }
 
     .aboutEventContainer {

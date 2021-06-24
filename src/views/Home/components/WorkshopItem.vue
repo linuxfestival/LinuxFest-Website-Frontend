@@ -1,22 +1,29 @@
 <template>
-    <div class="workshop-item" @click="showMore()">
-        <img class="workshop-item--image" src="../assets/img/workshop.png" :alt="'workshop ' + workshop.id + ' image'">
+    <div class="workshop-item" @click="showMore">
+        <img 
+            class="workshop-item--image" 
+            src="@/assets/img/workshop.png" 
+            :alt="getWorkshopImageAlt(workshop)"
+        >
 
         <div class="workshop-item--info">
             <h2 class="workshop-item--info-title">{{workshop.title}}</h2>
             <h3 v-if="workshop.teachers.length === 1" class="workshop-item--info-teachTitle">
                 <i class="material-icons">person</i>
-                مدرس:
+                {{instructor}}:
             </h3>
             <h3 v-else-if="workshop.teachers.length > 1" class="workshop-item--info-teachTitle">
                 <i class="material-icons">person</i>
-                مدرسین:
+                {{instructors}}:
             </h3>
-            <p class="workshop-item--info-teachItem" v-for="(teacher, index) in workshop.teachers" :key="index">
-                {{teacher.name}}
+            <p class="workshop-item--info-teachItem" 
+                v-for="{ name: teacherName, id } in workshop.teachers"
+                :key="id"
+            >
+                {{teacherName}}
             </p>
-            <button class="workshop-item--info-moreButton" @click="showMore(workshop)">
-                توضیحات
+            <button class="workshop-item--info-moreButton" :to="showMore">
+                {{showMoreButtonText}}
                 <i class="material-icons">keyboard_arrow_left</i>    
             </button>    
         </div>
@@ -24,14 +31,37 @@
 </template>
 
 <script>
+import localization from '@/localization/index';
+
+import { generateWorkshopRoute } from '../utils';
+
+const {
+    instructor,
+    instructors,
+    showMoreButtonText,
+} = localization.farsi;
+
 export default {
     name : "WorkshopItem",
-    props : {
-        workshop : {}
+    data() {
+        return {
+            instructor,
+            instructors,
+            showMoreButtonText,
+        }
     },
-    methods:{
-        showMore:function () {
-            this.$router.push('/workshops/'+this.workshop._id)
+    props: {
+        workshop : {
+            type: Object,
+        }
+    },
+    methods: {
+        getWorkshopImageAlt({ title }) {
+            return `workshop ${title}'s image`
+        },
+
+        showMore() {
+            this.$router.push(generateWorkshopRoute(this.workshop))
         }
     }
 }

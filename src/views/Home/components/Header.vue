@@ -3,32 +3,48 @@
         <h2 class="homeHeader-title-horizontal">{{homeHeaderTitleHorizontal}}</h2>
         <h1 class="homeHeader-title" >
             <span class="homeHeader-title-yazdahomin">
-            دوازدهمین دوره
+            {{twelveEvent}}
             </span>
             <br>
             <span class="homeHeader-title-jashnvareh">
-            جشنواره
+            {{campaign}}
             </span>
             <br>
             <span class="homeHeader-title-linux">
-            لینوکس
+            {{linux}}
             </span>
             <br>
             <span class="homeHeader-title-amirkabir">
-            امیرکبیر
+            {{aut}}
             </span>
         </h1>
-        <router-link to="/" v-scroll-to="'#abouts'" class="homeHeader--startButton">
+        <router-link :to="homePath" v-scroll-to="'#abouts'" class="homeHeader--startButton">
             <i class="material-icons">keyboard_arrow_down</i>
         </router-link>
     </section>
 </template>
 <script>
-    export default {
-        name : "HomeHeader",
+import localization from '@/localization';
+import { home as homePath } from '@/configs/route-paths';
+
+const {
+    homeHeaderTitleHorizontal,
+    twelveEvent,
+    campaign,
+    linux,
+    aut,
+} = localization.farsi;
+
+export default {
+        name : "Header",
         data() {
             return {
-                homeHeaderTitleHorizontal: 'انجمن علمی دانشکده مهندسی کامپیوتر دانشگاه صنعتی امیرکبیر برگزار می کند:'
+                homeHeaderTitleHorizontal,
+                twelveEvent,
+                campaign,
+                linux,
+                aut,
+                homePath
             }
         }
     }
@@ -42,7 +58,9 @@
         display:flex;
         align-items:center;
         justify-content:center;
-        background: linear-gradient(0deg, rgba(41,41,41,0.9), rgba(41,41,41,0.9)), url("../../assets/img/withEye.png")  no-repeat top / 100%;
+        background: linear-gradient(0deg, rgba(41,41,41,0.9), rgba(41,41,41,0.9)),
+                    url("../../../assets/img/withEye.png")
+                    no-repeat top / 100%;
         border-bottom:10px solid rgb(242,169,56);
     }
 

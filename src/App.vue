@@ -1,24 +1,30 @@
 <template>
   <div>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-    <notifications group="auth" position="top center"></notifications>
-    <Header></Header>
+    <link 
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    >
+    <notifications group="auth" position="top center" />
+    <Header />
       <transition
         name="fade"
         mode="out-in"
       >
-        <router-view></router-view>
+        <router-view />
       </transition>
-    <Footer></Footer>
+    <Footer />
   </div>
 </template>
 
 <script>
   import Header from "@/components/Header";
   import Footer from "@/components/Footer";
+
   export default {
-    components: {Footer, Header}
+    components: {
+      Footer,
+      Header,
+    }
   }
 </script>
 

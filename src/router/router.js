@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+
+import Home from '@/views/Home/index.vue'
 import Signup from "../views/Signup";
 import Signin from "../views/Signin";
 import UserAccount from "../views/UserAccount";
@@ -12,63 +13,65 @@ import ForgetPass  from '@/views/ForgetPass';
 import ConfirmPayment from "@/views/ConfirmPayment";
 import AllCareers from "../components/careers/AllCareers";
 import Career from "@/components/careers/Career";
+import * as paths from '@/configs/route-paths';
+import * as names from '@/configs/route-names';
 
 Vue.use(VueRouter);
 
 const routes = [
     {
-        path: '/',
-        name: 'home',
+        path: paths.home,
+        name: names.home,
         component: Home
     },
     {
-        path: '/signup',
-        name: 'signup',
+        path: paths.signUp,
+        name: names.signUp,
         component: Signup
     },
     {
-        path: '/signin',
-        name: 'signin',
+        path: paths.signIn,
+        name: names.signIn,
         component: Signin
     },
     {
-        path: '/user/me',
-        name: 'userProfile',
+        path: paths.profile,
+        name: names.profile,
         component: UserAccount
     },
     {
-        path: '/workshops/:id',
-        name: 'workshopInfo',
+        path: paths.workshop,
+        name: names.workshop,
         component: WorkshopMore
     },
     {
-        path: '/user/edit',
-        name: 'userEdit',
+        path: paths.profileEdit,
+        name: names.profileEdit,
         component: EditUserInfo
     },
     {
-        path: '/registerworkshop',
-        name: 'workshopsRegister',
+        path: paths.registerWorkshops,
+        name: names.registerWorkshops,
         component: AllWorkshops
     },
     {
-        path : '/careers',
-        name : 'careers',
+        path : paths.careers,
+        name : names.careers,
         component : AllCareers
     },
     {
-        path : '/companies/:id',
-        name : 'careersItem',
+        path : paths.company,
+        name : names.company,
         component : Career
     },
     {
-        path : '/user/forget/:forgetToken',
-        name : 'forget',
+        path : paths.forgetPass,
+        name : names.forgetPass,
         component : ForgetPass
     },
     {
-        path : '/payment/result/',
-        name : 'confirmPayment',
+        path : paths.paymentResult,
+        name : names.paymentResult,
         component : ConfirmPayment
     },
 
@@ -80,28 +83,29 @@ const router = new VueRouter({
 });
 
 
-const requiredAuth = ['userEdit', 'userProfile', 'workshopsRegister', 'confirmPayment'];
-const notRequiredAuth = ['signin', 'signup' , 'forget'];
+const requiredAuth = [names.profileEdit, names.profile, names.registerWorkshops, names.paymentResult];
+const notRequiredAuth = [names.signIn, names.signUp , names.forgetPass];
+
 router.beforeEach((to, from, next) => {
-    console.log('from ', from);
-    console.log('to ', to);
-    console.log(store.getters.isLoggedIn)
-    if (requiredAuth.includes(to.name)) {
-        //check if user is logged in
-        if (store.getters.isLoggedIn) {
+    const { name: destinationName } = to;
+    const { getters: { isLoggedIn } } = store;
+
+    if (requiredAuth.includes(destinationName)) {
+        if (isLoggedIn) {
             next()
         } else {
-            next('/signin');
+            next(paths.signIn);
         }
-    } else if (notRequiredAuth.includes(to.name)) {
-      if(store.getters.isLoggedIn){
-        next('/')
-      }else{
-            next()
+    } else if (notRequiredAuth.includes(destinationName)) {
+      if (isLoggedIn){
+        next(paths.home)
+      } else {
+        next()
       }
     } else {
         next()
     }
+
     window.scroll(0,0);
 });
 

@@ -1,0 +1,11 @@
+export const home = 'home'
+export const signUp = 'signup';
+export const signIn = 'signin';
+export const forgetPass = 'forget';
+export const profile = 'userProfile';
+export const profileEdit = 'userEdit';
+export const workshop = 'workshopInfo';
+export const registerWorkshops = 'workshopsRegister';
+export const careers = 'careers'
+export const company = 'careersItem';
+export const paymentResult = 'confirmPayment';
