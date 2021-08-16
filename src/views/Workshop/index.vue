@@ -94,9 +94,5 @@ i.material-icons.rotate-180 {
     flex-direction: column-reverse;
     border-radius: 0;
   }
-
-  .workshopTeacherImages-image {
-    margin-top: 10px;
-  }
 }
 </style>

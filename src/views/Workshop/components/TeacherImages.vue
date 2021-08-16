@@ -51,5 +51,9 @@ export default {
     display: none;
     margin-bottom: 0;
   }
+
+  .workshopTeacherImages-image {
+    margin-top: 10px;
+  }
 }
 </style>
