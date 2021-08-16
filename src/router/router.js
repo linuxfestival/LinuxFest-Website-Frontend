@@ -4,7 +4,7 @@ import Home from '@/views/Home/index.vue'
 import Signup from "../views/Signup";
 import Signin from "../views/Signin";
 import UserAccount from "../views/UserAccount";
-import WorkshopMore from "../views/WorkshopMore";
+import Workshop from "@/views/Workshop/index.vue";
 import EditUserInfo from "../views/EditUserInfo";
 import store from '../store/store'
 import AllWorkshops from "../views/AllWorkshops";
@@ -38,8 +38,8 @@ const routes = [
     },
     {
         path: '/workshops/:id',
-        name: 'workshopInfo',
-        component: WorkshopMore
+        name: 'workshop',
+        component: Workshop,
     },
     {
         path: '/user/edit',

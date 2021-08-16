@@ -20,5 +20,19 @@
     "calendar": {
       "calendar": "تقویم برگزاری"
     }
+  },
+  "workshop": {
+    "description": {
+      "aboutThisTalk": "در مورد این سخنرانی:",
+      "aboutThisWorkshop": "در مورد این کارگاه:",
+      "timeTable": "جدول زمانی:",
+      "free": "رایگان",
+      "priceInRials": "{price} ریال",
+      "registrationFee": "هزینه ثبت نام:",
+      "capacityIsFull": "ظرفیت ارائه تکمیل شده است.",
+      "register": "ثبت نام",
+      "teacherDescription": "توضیحات مدرس:" ,
+      "teachersDescription": "توضیحات مدرسین:"
+    }
   }
 }
