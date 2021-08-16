@@ -21,6 +21,7 @@
     "vue-cover-gallery": "^1.0.7",
     "vue-cute-timeline": "^1.2.8",
     "vue-gallery": "^2.0.1",
+    "vue-i18n": "^8.25.0",
     "vue-loader": "^15.8.3",
     "vue-notification": "latest",
     "vue-router": "^3.1.3",

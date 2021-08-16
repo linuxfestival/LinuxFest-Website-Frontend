@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import {config} from "@fortawesome/fontawesome-svg-core";
+import { API } from '@/configs/urls';
 
 Vue.use(Vuex);
 
@@ -32,11 +32,11 @@ export default new Vuex.Store({
         setLoggedInUser: function (state, user) {
             state.loggedInUser = user;
         },
-        
+
         setUsers: function (state, items) {
             state.allUsers = items;
         },
-        
+
         resetStats: function(state) {
             state.token = '';
             state.loggedInUser = {};
@@ -67,14 +67,14 @@ export default new Vuex.Store({
                     commit('setToken', response.data.token);
                     resolve();
                 }).catch(error => {
-                    console.log(error.response);        
+                    console.log(error.response);
                     reject();
                 })
             })
         },
 
         logout: function ({state}) {
-            this.commit('resetStats');         
+            this.commit('resetStats');
         },
 
         signup : function({commit,state} , userToRegister) {
@@ -115,7 +115,7 @@ export default new Vuex.Store({
         getWorkshopsFromServer: async function ({commit, state}) {
             console.log('workshop from server');
             try {
-                const response = await axios.get(state.baseUrl + 'workshops');
+                const response = await axios.get(`${API}/workshops`);
                 console.log(response);
                 commit('setAllWorkshops', response.data);
                 console.log(state.allWorkshops);

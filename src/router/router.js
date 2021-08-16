@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '@/views/Home/index.vue'
 import Signup from "../views/Signup";
 import Signin from "../views/Signin";
 import UserAccount from "../views/UserAccount";
@@ -71,7 +71,6 @@ const routes = [
         name : 'confirmPayment',
         component : ConfirmPayment
     },
-
 ];
 
 const router = new VueRouter({
@@ -83,9 +82,6 @@ const router = new VueRouter({
 const requiredAuth = ['userEdit', 'userProfile', 'workshopsRegister', 'confirmPayment'];
 const notRequiredAuth = ['signin', 'signup' , 'forget'];
 router.beforeEach((to, from, next) => {
-    console.log('from ', from);
-    console.log('to ', to);
-    console.log(store.getters.isLoggedIn)
     if (requiredAuth.includes(to.name)) {
         //check if user is logged in
         if (store.getters.isLoggedIn) {
@@ -97,7 +93,7 @@ router.beforeEach((to, from, next) => {
       if(store.getters.isLoggedIn){
         next('/')
       }else{
-            next()
+        next()
       }
     } else {
         next()

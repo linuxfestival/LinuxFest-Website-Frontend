@@ -14,7 +14,7 @@ function withToken(reqConfig) {
 
     const token = authService.getToken()
     otherReqConfig.headers['Authorization'] = `Bearer ${token}`;
-    
+
     return otherReqConfig;
 }
 
@@ -27,7 +27,7 @@ class HttpService {
     }
 
     static injectRequestResponseInspectors(instance, interceptors) {
-        interceptors.forEach(instance.interceptors.request.use);
+        interceptors.forEach((interceptor) => instance.interceptors.request.use(interceptor));
     }
 
     get(url, config) {
