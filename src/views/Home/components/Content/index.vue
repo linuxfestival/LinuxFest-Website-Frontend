@@ -6,28 +6,28 @@
 </template>
 
 <script>
-import Workshops from './components/Workshops.vue';
-import Calendar from './components/Calendar.vue';
-import { fetchWorkshops } from './requests';
+import Workshops from "./components/Workshops.vue";
+import Calendar from "./components/Calendar.vue";
+import { fetchWorkshops } from "./requests";
 
 export default {
-  name: 'Content',
+  name: "Content",
   components: { Workshops, Calendar },
   data() {
     return {
       isLoading: true,
       workshops: [],
-    }
+    };
   },
 
   created() {
     fetchWorkshops()
-      .then(workshops => {
-        this.workshops = workshops
+      .then((workshops) => {
+        this.workshops = workshops;
       })
       .finally(() => {
         this.isLoading = false;
-      })
+      });
   },
-}
+};
 </script>

@@ -1,48 +1,48 @@
 <template>
-        <div class="workshopTeachersDescription">
-          <h2 class="workshopTeachersDescription-title">
-            <i class="material-icons">person</i>
-            {{getTitle()}}
-          </h2>
-          <div class="teacherDescriptionWrapper">
-            <div
-             class="teacherDescription"
-             v-for="teacher in teachers"
-             :key="teacher.id"
-            >
-              <p class="teacherDescription-name">
-                <i class="material-icons">person</i>
-                {{ teacher.fullName }}:
-              </p>
-              <p class="teacherDescription-desc">
-                {{ teacher.description }}
-              </p>
-            </div>
-          </div>
-        </div>
+  <div class="workshopTeachersDescription">
+    <h2 class="workshopTeachersDescription-title">
+      <i class="material-icons">person</i>
+      {{ getTitle() }}
+    </h2>
+    <div class="teacherDescriptionWrapper">
+      <div
+        class="teacherDescription"
+        v-for="teacher in teachers"
+        :key="teacher.id"
+      >
+        <p class="teacherDescription-name">
+          <i class="material-icons">person</i>
+          {{ teacher.fullName }}:
+        </p>
+        <p class="teacherDescription-desc">
+          {{ teacher.description }}
+        </p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'TeachersDescription',
+  name: "TeachersDescription",
   props: {
     teachers: Array,
   },
   computed: {
     isMoreThanOne() {
       return this.teachers && this.teachers.length > 1;
-    }
+    },
   },
   methods: {
     getTitle() {
-      if(this.isMoreThanOne) {
-        return this.$t('workshop.description.teachersDescription')
+      if (this.isMoreThanOne) {
+        return this.$t("workshop.description.teachersDescription");
       } else {
-        return this.$t('workshop.description.teacherDescription')
+        return this.$t("workshop.description.teacherDescription");
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -74,7 +74,7 @@ export default {
 }
 
 .workshopTeachersDescription-title {
-  font-family: 'iransans';
+  font-family: "iransans";
   color: #e4b22b;
 }
 
@@ -93,7 +93,7 @@ export default {
 .teacherDescription-name {
   color: #e4b22b;
   font-weight: bold;
-  font-family: 'iransans';
+  font-family: "iransans";
   display: flex;
   align-items: center;
   margin-right: 10px;
@@ -105,7 +105,7 @@ export default {
 
 .teacherDescription-desc {
   color: white;
-  font-family: 'iransans';
+  font-family: "iransans";
   text-align: justify;
   padding: 5px 5px 5px 10px;
   margin-right: 15px;

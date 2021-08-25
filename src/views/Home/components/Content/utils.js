@@ -1,6 +1,6 @@
 function generateTeachersName(teachers = []) {
   let title = 'مدرس';
-  if(teachers.length > 1) {
+  if (teachers.length > 1) {
     title = 'مدرسین'
   }
 
@@ -35,7 +35,7 @@ function generateTimelineObjectFromWorkshop({
     id,
     title,
     teacherNames: generateTeachersName(teachers),
-    readableDate: generateReadableDate({startTime, endTime})
+    readableDate: generateReadableDate({ startTime, endTime })
   }
 }
 

@@ -1,9 +1,6 @@
 <template>
   <p v-if="isLoading">Loading...</p>
-  <div
-    class="parent"
-    v-else
-  >
+  <div class="parent" v-else>
     <PartialHeader :title="workshop.title" />
     <div class="workshopContentWrapper">
       <div class="workshopContent">
@@ -22,12 +19,12 @@
 </template>
 
 <script>
-import PartialHeader from '@/components/PartialHeader'
+import PartialHeader from "@/components/PartialHeader";
 
-import TeachersDescription from './components/TeachersDescription.vue';
-import TeacherImages from './components/TeacherImages.vue';
-import Description from './components/Description.vue';
-import { fetchWorkshopById } from './requests';
+import TeachersDescription from "./components/TeachersDescription.vue";
+import TeacherImages from "./components/TeacherImages.vue";
+import Description from "./components/Description.vue";
+import { fetchWorkshopById } from "./requests";
 
 export default {
   name: "WorkshopMoreContent",
@@ -35,27 +32,25 @@ export default {
     PartialHeader,
     TeacherImages,
     Description,
-    TeachersDescription
+    TeachersDescription,
   },
   data() {
     return {
       workshop: {},
       isLoading: true,
-    }
+    };
   },
   created() {
-    const {
-      id
-    } = this.$route.params;
+    const { id } = this.$route.params;
     fetchWorkshopById(id)
-      .then(workshop => {
+      .then((workshop) => {
         this.workshop = workshop;
       })
       .finally(() => {
         this.isLoading = false;
-      })
-  }
-}
+      });
+  },
+};
 </script>
 
 <style scoped>
@@ -88,7 +83,7 @@ i.material-icons.rotate-180 {
   transform: rotate(180deg);
 }
 
-@media only screen and (max-width: 1100px ) {
+@media only screen and (max-width: 1100px) {
   .workshopContent {
     flex-direction: column-reverse;
     border-radius: 0;

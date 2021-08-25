@@ -1,22 +1,24 @@
 <template>
-      <router-link
-      :to="`/registerworkshop/?workshop=${id}`"
-      v-if="isRegOpen"
-      class="registerButton"
-    >
-      {{$t('workshop.description.register')}}
-    </router-link>
-    <p v-else class="registerButton">{{$t('workshop.description.capacityIsFull')}}</p>
+  <router-link
+    :to="`/registerworkshop/?workshop=${id}`"
+    v-if="isRegOpen"
+    class="registerButton"
+  >
+    {{ $t("workshop.description.register") }}
+  </router-link>
+  <p v-else class="registerButton">
+    {{ $t("workshop.description.capacityIsFull") }}
+  </p>
 </template>
 
 <script>
 export default {
-  name: 'RegisterButton',
+  name: "RegisterButton",
   props: {
     isRegOpen: Boolean,
     id: String,
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -26,7 +28,7 @@ export default {
   text-decoration: none;
   font-size: 20px;
   padding: 5px 30px;
-  font-family: 'iransans';
+  font-family: "iransans";
   border-radius: 5px;
   margin: auto auto 15px 10px;
 }

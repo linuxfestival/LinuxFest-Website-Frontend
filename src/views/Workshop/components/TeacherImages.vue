@@ -13,11 +13,11 @@
 
 <script>
 export default {
-  name: 'TeacherImages',
+  name: "TeacherImages",
   props: {
     teachers: Array,
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
