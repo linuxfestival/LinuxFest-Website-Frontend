@@ -7,9 +7,6 @@
 <script>
 export default {
   name: "RegisterButton",
-  props: {
-    onRegister: Function,
-  },
 };
 </script>
 
