@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home/index.vue'
 import Signup from "../views/Signup";
-import Signin from "../views/Signin";
+import SignIn from "@/views/SignIn/index.vue";
 import UserAccount from "../views/UserAccount";
 import Workshop from "@/views/Workshop/index.vue";
 import EditUserInfo from "../views/EditUserInfo";
@@ -26,11 +26,11 @@ const routes = [
     //     name: 'signup',
     //     component: Signup
     // },
-    // {
-    //     path: '/signin',
-    //     name: 'signin',
-    //     component: Signin
-    // },
+    {
+        path: '/signin',
+        name: 'signin',
+        component: SignIn
+    },
     // {
     //     path: '/user/me',
     //     name: 'userProfile',
