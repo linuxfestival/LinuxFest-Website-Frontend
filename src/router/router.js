@@ -7,7 +7,7 @@ import UserAccount from "../views/UserAccount";
 import Workshop from "@/views/Workshop/index.vue";
 import EditUserInfo from "../views/EditUserInfo";
 import store from '../store/store'
-import AllWorkshops from "../views/AllWorkshops";
+import BulkWorkshopsRegister from "@/views/BulkWorkshopsRegister/index.vue";
 import ForgetPass  from '@/views/ForgetPass';
 import ConfirmPayment from "@/views/ConfirmPayment";
 import AllCareers from "../components/careers/AllCareers";
@@ -46,11 +46,11 @@ const routes = [
     //     name: 'userEdit',
     //     component: EditUserInfo
     // },
-    // {
-    //     path: '/registerworkshop',
-    //     name: 'workshopsRegister',
-    //     component: AllWorkshops
-    // },
+    {
+        path: '/registerworkshop',
+        name: 'workshopsRegister',
+        component: BulkWorkshopsRegister
+    },
     // {
     //     path : '/careers',
     //     name : 'careers',
@@ -79,7 +79,9 @@ const router = new VueRouter({
 });
 
 
-const requiredAuth = ['userEdit', 'userProfile', 'workshopsRegister', 'confirmPayment'];
+const requiredAuth = ['userEdit', 'userProfile',
+// 'workshopsRegister',
+'confirmPayment'];
 const notRequiredAuth = ['signin', 'signup' , 'forget'];
 router.beforeEach((to, from, next) => {
     if (requiredAuth.includes(to.name)) {
