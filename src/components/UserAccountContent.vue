@@ -40,7 +40,7 @@
                     <div class="infoBoxHeader-title dark"><h4>لیست ارائه‌ها و سخنرانی‌های ثبت نام شده ({{workshops.length}})</h4></div>
                     <div class="infoBoxHeader-line"></div>
                 </div>
-                <WorkshopDoneRegisterItem :key="index" v-for="(workshop, index) in workshops" :workshop="workshop" />
+                <!-- <WorkshopDoneRegisterItem :key="index" v-for="(workshop, index) in workshops" :workshop="workshop" /> -->
                 <router-link to="/registerworkshop" class="infoBox-link">مشاهده لیست ارائه‌ها و سخنرانی‌ها</router-link>
             </div>
         </div>
@@ -49,12 +49,12 @@
 
 <script>
     import axios from 'axios'
-    import WorkshopDoneRegisterItem from '@/components/WorkshopComponents/WorkshopDoneRegisterItem'
+    // import WorkshopDoneRegisterItem from '@/components/WorkshopComponents/WorkshopDoneRegisterItem'
     import PartialHeader from '@/components/PartialHeader'
     export default {
         name: "UserAccountContent",
         components : {
-            WorkshopDoneRegisterItem,
+            // WorkshopDoneRegisterItem,
             PartialHeader
         },
         data: function () {
@@ -98,7 +98,7 @@
         },
         created() {
             console.log("component created");
-            this.getUser(); 
+            this.getUser();
         },
         mounted() {
             console.log("component mounted.");
@@ -223,16 +223,16 @@
     @media only screen and (max-width: 876px) {
         .infoMiddleWrapper {
             flex-direction:column;
-            align-items:stretch;            
+            align-items:stretch;
         }
         .userInfoBox {
             margin:10px;
-        }  
+        }
 
         .workshopsInfoBox {
             margin: 10px;
             width: initial;
         }
     }
-    
+
 </style>

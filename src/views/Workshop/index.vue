@@ -10,9 +10,9 @@
         <TeachersDescription :teachers="workshop.teachers" />
         <TeacherImages :teachers="workshop.teachers" />
         <Description
-          :id="workshop.id"
-          :desciption="workshop.description"
-          :is-reg-open="workshop.isRegOpen"
+          :registerButtonId="workshop.id"
+          :description="workshop.description"
+          :isRegOpen="workshop.isRegOpen"
           :price="workshop.price"
           :times="workshop.times"
         />
@@ -49,7 +49,6 @@ export default {
     } = this.$route.params;
     fetchWorkshopById(id)
       .then(workshop => {
-        console.log(workshop)
         this.workshop = workshop;
       })
       .finally(() => {

@@ -11,7 +11,11 @@
 
     <h3 class="timeline-title">{{$t('workshop.description.timeTable')}}</h3>
 
-    <p class="timeline-description" v-for="(timeSlot, index) in times" :key="timeSlot">
+    <p
+      class="timeline-description"
+      v-for="(timeSlot, index) in times"
+     :key="timeSlot.id"
+    >
       {{getTimeTableText(timeSlot, index)}}
     </p>
     <h3 class="timeline-title">
@@ -20,7 +24,7 @@
     <p class="timeline-description">
       {{this.getPriceText()}}
     </p>
-    <RegisterButton :isRegOpen={isRegOpen} :id={id} />
+    <RegisterButton :isRegOpen="isRegOpen" :id="registerButtonId" />
   </div>
 </template>
 
@@ -37,9 +41,9 @@ export default {
   props: {
     price: Number,
     description: String,
-    isRegOpen: Boolean,
+    isRegOpen: Boolean ,
     times: Array,
-    id: String,
+    registerButtonId: String,
   },
   computed: {
     isFree() {
@@ -62,7 +66,7 @@ export default {
       }
     },
     getTimeTableText(timeSlot, index) {
-      getTimeTable(timeSlot, index);
+      return getTimeTable(timeSlot, index);
     }
   }
 }

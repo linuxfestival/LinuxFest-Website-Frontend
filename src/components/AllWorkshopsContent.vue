@@ -28,14 +28,14 @@
 </template>
 
 <script>
-    import WorkshopRegisterItem from '@/components/WorkshopComponents/WorkshopRegisterItem'
+    // import WorkshopRegisterItem from '@/components/WorkshopComponents/WorkshopRegisterItem'
     import PartialHeader from '@/components/PartialHeader'
     import axios from 'axios'
 
     export default {
         name: "AllWorkshopsContent",
         components: {
-            WorkshopRegisterItem,
+            // WorkshopRegisterItem,
             PartialHeader
         },
      async created() {

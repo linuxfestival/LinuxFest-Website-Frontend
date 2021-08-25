@@ -21,56 +21,56 @@ const routes = [
         name: 'home',
         component: Home
     },
-    {
-        path: '/signup',
-        name: 'signup',
-        component: Signup
-    },
-    {
-        path: '/signin',
-        name: 'signin',
-        component: Signin
-    },
-    {
-        path: '/user/me',
-        name: 'userProfile',
-        component: UserAccount
-    },
+    // {
+    //     path: '/signup',
+    //     name: 'signup',
+    //     component: Signup
+    // },
+    // {
+    //     path: '/signin',
+    //     name: 'signin',
+    //     component: Signin
+    // },
+    // {
+    //     path: '/user/me',
+    //     name: 'userProfile',
+    //     component: UserAccount
+    // },
     {
         path: '/workshops/:id',
         name: 'workshop',
         component: Workshop,
     },
-    {
-        path: '/user/edit',
-        name: 'userEdit',
-        component: EditUserInfo
-    },
-    {
-        path: '/registerworkshop',
-        name: 'workshopsRegister',
-        component: AllWorkshops
-    },
-    {
-        path : '/careers',
-        name : 'careers',
-        component : AllCareers
-    },
-    {
-        path : '/companies/:id',
-        name : 'careersItem',
-        component : Career
-    },
-    {
-        path : '/user/forget/:forgetToken',
-        name : 'forget',
-        component : ForgetPass
-    },
-    {
-        path : '/payment/result/',
-        name : 'confirmPayment',
-        component : ConfirmPayment
-    },
+    // {
+    //     path: '/user/edit',
+    //     name: 'userEdit',
+    //     component: EditUserInfo
+    // },
+    // {
+    //     path: '/registerworkshop',
+    //     name: 'workshopsRegister',
+    //     component: AllWorkshops
+    // },
+    // {
+    //     path : '/careers',
+    //     name : 'careers',
+    //     component : AllCareers
+    // },
+    // {
+    //     path : '/companies/:id',
+    //     name : 'careersItem',
+    //     component : Career
+    // },
+    // {
+    //     path : '/user/forget/:forgetToken',
+    //     name : 'forget',
+    //     component : ForgetPass
+    // },
+    // {
+    //     path : '/payment/result/',
+    //     name : 'confirmPayment',
+    //     component : ConfirmPayment
+    // },
 ];
 
 const router = new VueRouter({
