@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '@/views/Home/index.vue'
 import SignUp from "../views/SignUp/index.vue";
 import SignIn from "@/views/SignIn/index.vue";
-import UserAccount from "../views/UserAccount";
+import UserAccount from "@/views/UserAccount/index.vue";
 import Workshop from "@/views/Workshop/index.vue";
 import EditUserInfo from "../views/EditUserInfo";
 import store from '../store/store'
@@ -31,21 +31,21 @@ const routes = [
     name: 'signin',
     component: SignIn
   },
-  // {
-  //     path: '/user/me',
-  //     name: 'userProfile',
-  //     component: UserAccount
-  // },
   {
-    path: '/workshops/:id',
-    name: 'workshop',
-    component: Workshop,
+      path: '/user/me',
+      name: 'userProfile',
+      component: UserAccount
   },
   // {
   //     path: '/user/edit',
   //     name: 'userEdit',
   //     component: EditUserInfo
   // },
+  {
+    path: '/workshops/:id',
+    name: 'workshop',
+    component: Workshop,
+  },
   {
     path: '/registerworkshop',
     name: 'workshopsRegister',

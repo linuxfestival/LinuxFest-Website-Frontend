@@ -126,17 +126,6 @@ export default new Vuex.Store({
           // always executed
         });
     },
-
-    getWorkshopMoreInfo: async function ({ commit, state }, id) {
-      console.log("STORE");
-      try {
-        const response = await axios.get(state.baseUrl + 'workshops/' + id);
-        console.log(response);
-        commit('setWorkshopMore', response.data);
-      } catch (e) {
-        console.log(e);
-      }
-    }
   },
   getters: {
     isLoggedIn: (state) => {
