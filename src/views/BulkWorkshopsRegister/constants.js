@@ -3,3 +3,5 @@ export const REGISTER_STATUS = {
   ERROR: 'Error',
   REQUEST_PAYMENT: 'RequestPayment'
 }
+
+export const SELECTED_WORKSHOPS_STORAGE_KEY = 'SELECTED_WORKSHOPS_STORAGE_KEY'

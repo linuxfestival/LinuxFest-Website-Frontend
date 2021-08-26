@@ -12,7 +12,7 @@
           @select="handleSelect"
           v-for="workshop in workshops"
           :workshop="workshop"
-          :isSelected="selectedWorkshops.includes(workshop)"
+          :isSelected="selectedWorkshops.some(({ id }) => id === workshop.id)"
           :key="workshop.id"
         />
       </div>
@@ -35,6 +35,7 @@ import DiscountCard from "./components/DiscountCard.vue";
 import RegisterButton from "./components/RegisterButton.vue";
 import { REGISTER_STATUS } from "./constants";
 import { fetchWorkshops, registerWorkshops } from "./requests";
+import { selectedWorkshopsStorageManager } from "./utils";
 
 export default {
   name: "BulkWorkshopsRegister",
@@ -57,6 +58,13 @@ export default {
     fetchWorkshops()
       .then((workshops) => {
         this.workshops = workshops.filter(({ isRegOpen }) => true);
+
+        selectedWorkshopsStorageManager.removeBadSelectedWorkshops(
+          this.workshops
+        );
+        this.selectedWorkshops =
+          selectedWorkshopsStorageManager.getPersistedWorkshops();
+
         const {
           query: { workshop: workshopId },
         } = this.$route;
@@ -91,6 +99,8 @@ export default {
                 text: "با موفقیت در ورکشاپ های رایگان ثبت نام کردید.",
                 type: "success",
               });
+              selectedWorkshopsStorageManager.clearSelectedWorkshops();
+              this.selectedWorkshops = [];
               this.$router.push("/user/me");
             case REGISTER_STATUS.ERROR:
               this.$notify({
@@ -107,6 +117,8 @@ export default {
                 text: "به درگاه بانکی وارد می شوید.",
                 type: "success",
               });
+              selectedWorkshopsStorageManager.clearSelectedWorkshops();
+              this.selectedWorkshops = [];
               window.location = paymentUrl;
           }
         })
@@ -140,12 +152,15 @@ export default {
         ({ id }) => id === workshopId
       );
       if (!foundWorkshop) {
-        this.selectedWorkshops.push(workshop);
+        selectedWorkshopsStorageManager.persistSelectedWorkshop(workshop);
+        this.selectedWorkshops =
+          selectedWorkshopsStorageManager.getPersistedWorkshops();
         return;
       }
 
-      const workshopIndex = this.selectedWorkshops.indexOf(foundWorkshop);
-      this.selectedWorkshops.splice(workshopIndex, 1);
+      selectedWorkshopsStorageManager.unPersistSelectedWorkshop(foundWorkshop);
+      this.selectedWorkshops =
+        selectedWorkshopsStorageManager.getPersistedWorkshops();
     },
   },
 };
