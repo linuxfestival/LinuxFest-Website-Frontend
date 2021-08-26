@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
 
 import authService from '@/services/auth';
 
@@ -11,7 +10,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     token: authService.getToken(),
-    loggedInUser: {},
     signUp: {
       isLoading: false,
       error: '',
@@ -21,18 +19,6 @@ export default new Vuex.Store({
     setToken(state, token) {
       state.token = token;
       authService.setToken(token);
-    },
-
-    setLoggedInUser(state, user) {
-      state.loggedInUser = user;
-    },
-
-    resetStats(state) {
-      state.token = '';
-      state.loggedInUser = {};
-      state.selectedWorkshopsForRegister = [];
-      state.config.headers.Authorization = '';
-      localStorage.clear();
     },
 
     setSignUpLoading(state, isLoading) {
@@ -91,18 +77,6 @@ export default new Vuex.Store({
             commit('setSignUpLoading', false);
           })
       })
-    },
-
-    editUserInfo: async function ({ commit, state }, user) {
-      try {
-        const response = await axios.patch(state.baseUrl + 'users/me', user, state.config)
-        console.log(response);
-        console.log(response.data)
-        return true
-      } catch (e) {
-        console.log(e);
-        return false
-      }
     },
   },
   getters: {
