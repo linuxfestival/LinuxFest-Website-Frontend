@@ -143,6 +143,7 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
       user: {
         firstName: "",
         lastName: "",
@@ -155,57 +156,50 @@ export default {
       },
     };
   },
-  created() {
-    console.log("component created");
-  },
-  mounted() {
-    console.log("component mounted.");
-  },
   methods: {
     submitUser: function () {
-      if (!this.$v.$invalid) {
-        if (this.user.isAmirkabiri === false) {
-          delete this.user.studentNumber;
-        }
-        console.log("user to send ", this.user);
-        this.$notify({
-          group: "auth",
-          title: "صبر کنید",
-          text: "چند لحظه صبر کنید...",
-          type: "warn",
-        });
-        this.$store
-          .dispatch("signup", this.user)
-          .then(() => {
-            console.log("sign up success");
-            this.$notify({
-              group: "auth",
-              title: "موفقیت",
-              text: "حساب کاربری شما با موفقیت ساخته شد. به پروفایل خود برده می شوید",
-              type: "success",
-            });
-            this.$router.push("/user/me");
-          })
-          .catch(() => {
-            console.log("sign up error");
-            this.$notify({
-              group: "auth",
-              title: "خطا",
-              text:
-                "لطفا رورودی های خود را کنترل کنید-" +
-                this.$store.getters.signUpErrors,
-              type: "error",
-            });
-          })
-          .finally(() => {});
-      } else {
+      if (this.$v.$invalid) {
         this.$notify({
           group: "auth",
           title: "خطا",
           text: " لطفا ورودی های خود را کنترل کنید",
           type: "error",
         });
+        return;
       }
+
+      if (!this.user.isAmirkabiri) {
+        delete this.user.studentNumber;
+      }
+      this.isLoading = true;
+      console.log("user to send ", this.user);
+      this.$notify({
+        group: "auth",
+        title: "صبر کنید",
+        text: "چند لحظه صبر کنید...",
+        type: "warn",
+      });
+      this.$store
+        .dispatch("signUp", this.user)
+        .then(() => {
+          this.$notify({
+            group: "auth",
+            title: "موفقیت",
+            text: "حساب کاربری شما با موفقیت ساخته شد. به پروفایل خود برده می شوید",
+            type: "success",
+          });
+          this.$router.push("/user/me");
+        })
+        .catch(() => {
+          this.$notify({
+            group: "auth",
+            title: "خطا",
+            text:
+              "لطفا رورودی های خود را کنترل کنید-" +
+              this.$store.getters.signUpErrors,
+            type: "error",
+          });
+        })
     },
   },
   computed: {},
