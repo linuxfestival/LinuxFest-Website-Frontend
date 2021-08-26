@@ -1,54 +1,95 @@
 <template>
   <header class="header">
-
     <nav class="mainMenu">
-      <button @click="toggleMobileMenu()" class="mobileMenuButton" v-if="showMobileMenu"><i
-          class="material-icons">close</i></button>
-      <button @click="toggleMobileMenu()" class="mobileMenuButton" v-else><i class="material-icons">menu</i>
+      <button
+        @click="toggleMobileMenu()"
+        class="mobileMenuButton"
+        v-if="showMobileMenu"
+      >
+        <i class="material-icons">close</i>
       </button>
-      <router-link to="/" v-scroll-to="'#homes'" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">خانه
+      <button @click="toggleMobileMenu()" class="mobileMenuButton" v-else>
+        <i class="material-icons">menu</i>
+      </button>
+      <router-link
+        to="/"
+        v-scroll-to="'#homes'"
+        class="mainMenu-link"
+        :class="[{ show: showMobileMenu }]"
+        >خانه
       </router-link>
       <div class="divider"></div>
-      <router-link to="/" v-scroll-to="'#abouts'" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">درباره
-        جشنواره
+      <router-link
+        to="/"
+        v-scroll-to="'#abouts'"
+        class="mainMenu-link"
+        :class="[{ show: showMobileMenu }]"
+        >درباره جشنواره
       </router-link>
       <div class="divider"></div>
-      <router-link to="/" v-scroll-to="'#workshops'" class="mainMenu-link" :class="[{'show' : showMobileMenu}]">ارائه‌ها
-        و سخنرانی‌ها
+      <router-link
+        to="/"
+        v-scroll-to="'#workshops'"
+        class="mainMenu-link"
+        :class="[{ show: showMobileMenu }]"
+        >ارائه‌ها و سخنرانی‌ها
       </router-link>
       <div class="divider"></div>
-      <router-link to="/careers"
-                   class="link profileMenu-link"
-                   :class="[{'show' : showMobileMenu}]"> فرصت های شغلی
+      <router-link
+        to="/careers"
+        class="link profileMenu-link"
+        :class="[{ show: showMobileMenu }]"
+      >
+        فرصت های شغلی
       </router-link>
     </nav>
 
     <nav class="profileMenu">
-      <button @click="toggleMobileProfile()" class="mobileMenuButton" v-if="showMobileProfile"><i
-          class="material-icons">close</i></button>
-      <button @click="toggleMobileProfile()" class="mobileMenuButton" v-else><i class="material-icons">
-        account_circle
-      </i></button>
-      <router-link to="/signin" class="profileMenu-link" v-if="!isLoggedIn"
-                   :class="[{'show' : showMobileProfile}]">ورود به حساب کاربری
+      <button
+        @click="toggleMobileProfile()"
+        class="mobileMenuButton"
+        v-if="showMobileProfile"
+      >
+        <i class="material-icons">close</i>
+      </button>
+      <button @click="toggleMobileProfile()" class="mobileMenuButton" v-else>
+        <i class="material-icons"> account_circle </i>
+      </button>
+      <router-link
+        to="/signin"
+        class="profileMenu-link"
+        v-if="!isLoggedIn"
+        :class="[{ show: showMobileProfile }]"
+        >ورود به حساب کاربری
       </router-link>
       <div class="divider" v-if="!isLoggedIn"></div>
 
-      <router-link to="/user/me" class="link profileMenu-link" v-if="isLoggedIn"
-                   :class="[{'show' : showMobileProfile}]"> حساب من
+      <router-link
+        to="/user/me"
+        class="link profileMenu-link"
+        v-if="isLoggedIn"
+        :class="[{ show: showMobileProfile }]"
+      >
+        حساب من
       </router-link>
 
       <div class="divider" v-if="isLoggedIn"></div>
-      <button class="profileMenu-link singoutLink" v-if="isLoggedIn" @click="logout()"
-              :class="[{'show' : showMobileProfile}]">خروج
+      <button
+        class="profileMenu-link singoutLink"
+        v-if="isLoggedIn"
+        @click="logout()"
+        :class="[{ show: showMobileProfile }]"
+      >
+        خروج
       </button>
       <div class="divider" v-if="isLoggedIn"></div>
-      <router-link to="/registerworkshop" class="profileMenu-link registerLink"
-                   :class="[{'show' : showMobileProfile}]">ثبت نام ارائه‌ها
+      <router-link
+        to="/registerworkshop"
+        class="profileMenu-link registerLink"
+        :class="[{ show: showMobileProfile }]"
+        >ثبت نام ارائه‌ها
       </router-link>
-
     </nav>
-
   </header>
 </template>
 
@@ -57,8 +98,8 @@ export default {
   name: "Header",
   methods: {
     logout: function () {
-      this.$router.push("/")
-      this.$store.dispatch('logout');
+      this.$router.push("/");
+      this.$store.dispatch("logout");
     },
     toggleMobileMenu: function () {
       console.log("toggle mobile menu");
@@ -69,26 +110,24 @@ export default {
       console.log("Toggle Mobile Profile");
       this.showMobileProfile = !this.showMobileProfile;
       console.log(this.showMobileProfile);
-    }
+    },
   },
   data() {
     return {
       showMobileMenu: false,
       showMobileProfile: false,
-      desktopMenuList: [
-        {name: "", path: '/'}
-      ]
-    }
+      desktopMenuList: [{ name: "", path: "/" }],
+    };
   },
   mounted() {
-    console.log('is logged in :', this.isLoggedIn)
+    console.log("is logged in :", this.isLoggedIn);
   },
   computed: {
-    isLoggedIn: function () {
+    isLoggedIn () {
       return this.$store.getters.isLoggedIn;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -118,7 +157,7 @@ export default {
 .link {
   color: white;
   text-decoration: none;
-  font-family: 'iransans';
+  font-family: "iransans";
 }
 
 .mainMenu {
@@ -133,14 +172,14 @@ export default {
 
 .mainMenu-link {
   color: white;
-  font-family: 'iransans';
+  font-family: "iransans";
   margin: 0 10px;
   text-decoration: none;
 }
 
 .profileMenu-link {
   color: white;
-  font-family: 'iransans';
+  font-family: "iransans";
   margin: 0 10px;
   text-decoration: none;
   display: flex;
@@ -154,7 +193,8 @@ export default {
   margin: 0 3px 0 3px;
 }
 
-.registerLink, .singoutLink {
+.registerLink,
+.singoutLink {
   background-color: #e4b22b;
   border-radius: 5px;
   border: none;
@@ -172,7 +212,6 @@ export default {
 
 /*med*/
 @media only screen and (max-width: 768px) {
-
   .mainMenu {
     flex-direction: column;
   }
@@ -204,6 +243,5 @@ export default {
     margin: 5px;
     font-size: 10px;
   }
-
 }
 </style>

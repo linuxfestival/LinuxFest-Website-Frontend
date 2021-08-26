@@ -1,19 +1,23 @@
 import Vue from 'vue'
-import App from './App.vue'
-import router from './router/router'
-import store from './store/store'
+import VueI18n from 'vue-i18n'
 import VueWait from 'vue-wait'
-import Notifications from 'vue-notification'
 import Vuelidate from 'vuelidate'
 import VueScrollTo from 'vue-scrollto';
+import Notifications from 'vue-notification'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTwitter, faGoogle, faInstagram, faTelegram } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from '@fortawesome/vue-fontawesome'
 
+import App from './App.vue'
+import router from './router/router'
+import store from './store/store'
+
+import fa from './locales/fa.json';
+
 library.add(
   faTwitter,
-  faGoogle, 
-  faInstagram, 
+  faGoogle,
+  faInstagram,
   faTelegram
 )
 
@@ -39,11 +43,17 @@ Vue.use(VueScrollTo, vueScrollToConfig);
 Vue.use(VueWait);
 Vue.use(Notifications);
 Vue.use(Vuelidate);
+Vue.use(VueI18n);
 
+const i18n = new VueI18n({
+  locale: 'fa',
+  messages: { fa },
+})
 
 new Vue({
   router,
   store,
+  i18n,
   render: h => h(App),
 
   wait: new VueWait({

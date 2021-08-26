@@ -1,35 +1,34 @@
 <template>
   <div>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <notifications group="auth" position="top center"></notifications>
     <Header></Header>
-      <transition
-        name="fade"
-        mode="out-in"
-      >
-        <router-view></router-view>
-      </transition>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
-  import Header from "@/components/Header";
-  import Footer from "@/components/Footer";
-  export default {
-    components: {Footer, Header}
-  }
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+export default {
+  components: { Footer, Header },
+};
 </script>
 
 <style>
-  * {
-    margin : 0;
-    padding : 0;
-    direction: rtl;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+}
 
-  .fade-enter-active,
+.fade-enter-active,
 .fade-leave-active {
   transition-duration: 0.3s;
   transition-property: opacity;
@@ -38,27 +37,27 @@
 
 .fade-enter,
 .fade-leave-active {
-  opacity: 0
+  opacity: 0;
 }
 
-  body {
-    direction: rtl;
-  }
+body {
+  direction: rtl;
+}
 
-  @font-face {
-    font-family: 'iransans';
-    src : url('assets/fonts/iranSansFarsiNumber.ttf') format('truetype');
-  }
+@font-face {
+  font-family: "iransans";
+  src: url("assets/fonts/iranSansFarsiNumber.ttf") format("truetype");
+}
 
-  .iransans {
-    font-family : 'iransans';
-  }
+.iransans {
+  font-family: "iransans";
+}
 
 .material-icons {
-  font-family: 'Material Icons';
+  font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
+  font-size: 24px; /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -76,7 +75,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Support for IE. */
-  font-feature-settings: 'liga';
+  font-feature-settings: "liga";
 }
 
 /* .vue-notification {
@@ -85,15 +84,14 @@
 } */
 
 .notification-title {
-  font-family : 'iransans' !important;
+  font-family: "iransans" !important;
   direction: rtl !important;
-  text-align:right;
+  text-align: right;
 }
 
 .notification-content {
-  font-family : 'iransans' !important;
+  font-family: "iransans" !important;
   direction: rtl !important;
-  text-align:right;
+  text-align: right;
 }
-
 </style>
