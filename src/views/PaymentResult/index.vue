@@ -63,7 +63,7 @@ export default {
   min-height: calc(100vh - 40px);
   margin-top: 40px;
   flex-direction: column;
-  background: url("../assets/img/result.jpg") no-repeat center / cover;
+  background: url("../../assets/img/result.jpg") no-repeat center / cover;
 }
 
 .info-title {

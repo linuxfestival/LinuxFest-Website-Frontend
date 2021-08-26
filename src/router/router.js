@@ -9,10 +9,10 @@ import UserAccount from "@/views/UserAccount/index.vue";
 import Workshop from "@/views/Workshop/index.vue";
 import UserEdit from "@/views/UserEdit/index.vue";
 import BulkWorkshopsRegister from "@/views/BulkWorkshopsRegister/index.vue";
-import PaymenResult from "@/views/PaymenResult/index.vue";
+import PaymenResult from "@/views/PaymentResult/index.vue";
 import ForgetPass from '@/views/ForgetPass/index.vue';
-import AllCareers from "../components/careers/AllCareers";
-import Career from "@/components/careers/Career";
+import Careers from "@/views/Careers/index.vue";
+import Career from "@/views/Career/index.vue";
 
 Vue.use(VueRouter);
 
@@ -52,16 +52,16 @@ const routes = [
     name: 'workshopsRegister',
     component: BulkWorkshopsRegister
   },
-  // {
-  //     path : '/careers',
-  //     name : 'careers',
-  //     component : AllCareers
-  // },
-  // {
-  //     path : '/companies/:id',
-  //     name : 'careersItem',
-  //     component : Career
-  // },
+  {
+    path: '/careers',
+    name: 'careers',
+    component: Careers
+  },
+  {
+    path: '/careers/:id',
+    name: 'careersItem',
+    component: Career
+  },
   {
     path: '/user/forget/:forgetToken',
     name: 'forget',

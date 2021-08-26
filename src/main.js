@@ -1,15 +1,16 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import App from './App.vue'
-import router from './router/router'
-import store from './store/store'
 import VueWait from 'vue-wait'
-import Notifications from 'vue-notification'
 import Vuelidate from 'vuelidate'
 import VueScrollTo from 'vue-scrollto';
+import Notifications from 'vue-notification'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTwitter, faGoogle, faInstagram, faTelegram } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from '@fortawesome/vue-fontawesome'
+
+import App from './App.vue'
+import router from './router/router'
+import store from './store/store'
 
 import fa from './locales/fa.json';
 

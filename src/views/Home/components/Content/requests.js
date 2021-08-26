@@ -11,5 +11,5 @@ function transformWorkshopsResponse({ data: workshops }) {
 }
 
 export function fetchWorkshops() {
-  return http.get(`${API}/workshops`, config.then(transformWorkshopsResponse));
+  return http.get(`${API}/workshops`, config).then(transformWorkshopsResponse);
 }

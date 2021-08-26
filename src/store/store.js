@@ -23,15 +23,11 @@ export default new Vuex.Store({
       authService.setToken(token);
     },
 
-    setLoggedInUser (state, user) {
+    setLoggedInUser(state, user) {
       state.loggedInUser = user;
     },
 
-    setUsers(state, items) {
-      state.allUsers = items;
-    },
-
-    resetStats (state) {
+    resetStats(state) {
       state.token = '';
       state.loggedInUser = {};
       state.selectedWorkshopsForRegister = [];
@@ -48,19 +44,19 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    login ({ commit }, userToLogIn) {
+    login({ commit }, userToLogIn) {
       return new Promise((resolve, reject) => {
         signInRequest(userToLogIn).then((token) => {
           commit('setToken', token)
           resolve()
         })
-        .catch(err => {
-          reject(err);
-        })
+          .catch(err => {
+            reject(err);
+          })
       })
     },
 
-    logout ({ commit }) {
+    logout({ commit }) {
       commit('setToken', null);
     },
 
@@ -108,51 +104,12 @@ export default new Vuex.Store({
         return false
       }
     },
-
-    getUserFromServer: function ({ commit, state }) {
-      console.log(state.config);
-      axios.get(state.baseUrl + 'users/me', state.config)
-        .then(function (response) {
-          // handle success
-          console.log(response);
-          commit('setLoggedInUser', response.data);
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-          console.log(error.response)
-        })
-        .finally(function () {
-          // always executed
-        });
-    },
   },
   getters: {
     isLoggedIn: (state) => {
       return state.token && authService.isLoggedIn();
     },
 
-    getLoggedInUser: (state) => {
-      return state.loggedInUser;
-    },
-    getAllUsers: (state) => {
-      return state.allUsers;
-    },
-    getAllWorkshops: (state) => {
-      return state.allWorkshops;
-    },
-    getWorkshopMore: state => {
-      return state.workshopMore;
-    },
-    baseUrl: (state) => {
-      return state.baseUrl;
-    },
-    httpHeaders: (state) => {
-      return state.config.headers;
-    },
-    selectedWorkshopsForRegister: (state) => {
-      return state.selectedWorkshopsForRegister;
-    },
     signUpErrors: (state) => {
       return state.signUpError
     }
