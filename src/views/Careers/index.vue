@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import { showErrorNotif } from '@/utils/notifs';
+
 import CompanyItem from "./components/CompanyItem.vue";
 import { fetchCompanies } from "./requests";
 
@@ -34,7 +36,7 @@ export default {
         this.companies = companies;
       })
       .catch(err => {
-
+        showErrorNotif();
       })
       .finally(() => {
         this.isLoading = false;

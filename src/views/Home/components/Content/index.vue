@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import { showErrorNotif } from '@/utils/notifs';
+
 import Workshops from "./components/Workshops.vue";
 import Calendar from "./components/Calendar.vue";
 import { fetchWorkshops } from "./requests";
@@ -24,6 +26,9 @@ export default {
     fetchWorkshops()
       .then((workshops) => {
         this.workshops = workshops;
+      })
+      .catch(() => {
+        showErrorNotif();
       })
       .finally(() => {
         this.isLoading = false;

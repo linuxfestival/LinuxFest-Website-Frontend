@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import { showErrorNotif } from '@/utils/notifs';
+
 import { verifyPayment } from "./requests";
 import { PAYMENT_RESULT } from "./constants";
 
@@ -47,7 +49,9 @@ export default {
           this.status = status;
         }
       })
-      .catch((err) => {})
+      .catch((err) => {
+        showErrorNotif()
+      })
       .finally(() => {
         this.isLoading = false;
       });

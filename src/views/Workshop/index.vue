@@ -20,6 +20,7 @@
 
 <script>
 import PartialHeader from "@/components/PartialHeader";
+import { showErrorNotif } from "@/utils/notifs";
 
 import TeachersDescription from "./components/TeachersDescription.vue";
 import TeacherImages from "./components/TeacherImages.vue";
@@ -45,6 +46,9 @@ export default {
     fetchWorkshopById(id)
       .then((workshop) => {
         this.workshop = workshop;
+      })
+      .catch(() => {
+        showErrorNotif()
       })
       .finally(() => {
         this.isLoading = false;

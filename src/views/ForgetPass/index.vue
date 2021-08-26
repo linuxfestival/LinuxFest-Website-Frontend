@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import { showErrorNotif, showSuccessNotif } from '@/utils/notifs';
+
 import { confirmPassword } from "./requests";
 
 export default {
@@ -43,22 +45,11 @@ export default {
 
       confirmPassword({ token, password: this.password })
         .then(() => {
-          this.$notify({
-            group: "auth",
-            type: "success",
-            title: "موفقیت",
-            text: "رمز عبور شما با موفقیت تعویض شد. به صفحه ورود ریدایرکت می شوید...",
-            duration: 6000,
-          });
+          showSuccessNotif("رمز عبور شما با موفقیت تعویض شد. به صفحه ورود ریدایرکت می شوید...")
           this.$router.push("/signin");
         })
         .catch(() => {
-          this.$notify({
-            group: "auth",
-            type: "error",
-            title: "خطا",
-            text: "خطایی هنگام تعویض رمز عبور رخ داد.لطفا اتصال اینترنت خود را چک کنید",
-          });
+          showErrorNotif("خطایی هنگام تعویض رمز عبور رخ داد.لطفا اتصال اینترنت خود را چک کنید")
         });
     },
   },

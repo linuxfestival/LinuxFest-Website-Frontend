@@ -29,6 +29,7 @@
 <script>
 import WorkshopRegisterItem from "@/components/WorkshopRegisterItem";
 import PartialHeader from "@/components/PartialHeader";
+import { showErrorNotif, showSuccessNotif } from '@/utils/notifs';
 
 import SelectedWorkshops from "./components/SelectedWorkshops.vue";
 import DiscountCard from "./components/DiscountCard.vue";
@@ -93,30 +94,15 @@ export default {
         .then(({ status, paymentUrl }) => {
           switch (status) {
             case REGISTER_STATUS.PAID:
-              this.$notify({
-                group: "auth",
-                title: "موفقیت",
-                text: "با موفقیت در ورکشاپ های رایگان ثبت نام کردید.",
-                type: "success",
-              });
+              showSuccessNotif("با موفقیت در ورکشاپ های رایگان ثبت نام کردید.")
               selectedWorkshopsStorageManager.clearSelectedWorkshops();
               this.selectedWorkshops = [];
               this.$router.push("/user/me");
             case REGISTER_STATUS.ERROR:
-              this.$notify({
-                group: "auth",
-                title: "موفقیت",
-                text: "خطایی رخ داده است. لطفا مجددا تلاش کنید.",
-                type: "success",
-              });
+              showErrorNotif()
               this.$router.push("/user/me");
             case REGISTER_STATUS.REQUEST_PAYMENT:
-              this.$notify({
-                group: "auth",
-                title: "موفقیت",
-                text: "به درگاه بانکی وارد می شوید.",
-                type: "success",
-              });
+              showSuccessNotif("به درگاه بانکی وارد می شوید.")
               selectedWorkshopsStorageManager.clearSelectedWorkshops();
               this.selectedWorkshops = [];
               window.location = paymentUrl;
@@ -125,19 +111,9 @@ export default {
         .catch(({ response: { status } }) => {
           switch (status) {
             case 400:
-              this.$notify({
-                group: "auth",
-                title: "خطا",
-                text: "در کارگاه ثبت نام کرده اید و یا کارگاهی برای ثبت نام انتخاب نکرده اید ",
-                type: "error",
-              });
+              showErrorNotif("در کارگاه ثبت نام کرده اید و یا کارگاهی برای ثبت نام انتخاب نکرده اید ")
             default:
-              this.$notify({
-                group: "auth",
-                title: "خطا",
-                text: "خطایی در سرور رخ داده است. مجددا تلاش کن",
-                type: "error",
-              });
+              showErrorNotif();
           }
         })
         .finally(() => {

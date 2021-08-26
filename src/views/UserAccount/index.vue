@@ -42,6 +42,7 @@
 <script>
 import WorkshopRegisterItem from "@/components/WorkshopRegisterItem.vue";
 import PartialHeader from "@/components/PartialHeader";
+import { showErrorNotif } from "@/utils/notifs";
 
 import InfoBox from "./components/InfoBox.vue";
 import InfoItem from "./components/InfoItem.vue";
@@ -71,21 +72,9 @@ export default {
     fetchUser()
       .then((user) => {
         this.user = user;
-        console.log("user:", this.user);
-        this.$notify({
-          group: "auth",
-          title: "موفقیت",
-          text: "اطلاعات شما دریافت شد.",
-          type: "success",
-        });
       })
       .catch(() => {
-        this.$notify({
-          group: "auth",
-          title: "خطا",
-          text: "خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید",
-          type: "error",
-        });
+        showErrorNotif("خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید")
       })
       .finally(() => {
         this.isLoading = false;

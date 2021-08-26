@@ -69,6 +69,7 @@
 import { numeric, between, email } from "vuelidate/lib/validators";
 
 import PartialHeader from "@/components/PartialHeader";
+import { showErrorNotif, showSuccessNotif } from "@/utils/notifs";
 
 import InputGroup from "./components/InputGroup.vue";
 import TextInput from "./components/TextInput.vue";
@@ -119,12 +120,7 @@ export default {
         this.currentUserData = user;
       })
       .catch((err) => {
-        this.$notify({
-          group: "auth",
-          title: "خطا",
-          text: "خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید",
-          type: "error",
-        });
+        showErrorNotif("خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید")
       })
       .finally(() => {
         this.isLoading = false;
@@ -145,33 +141,18 @@ export default {
       );
 
       if (!this.updatedFieldsAreValid(updatedUserPayload)) {
-        this.$notify({
-          group: "auth",
-          title: "خطا",
-          text: "لطفا ورودی های وارد شده خود را کنترل کنید.",
-          type: "error",
-        });
+        showErrorNotif("لطفا ورودی های وارد شده خود را کنترل کنید.")
         return;
       }
 
       this.isLoading = true;
       editUserRequest(updatedUserPayload)
         .then(() => {
-          this.$notify({
-            group: "auth",
-            title: "موفقیت",
-            text: "اطلاعات حساب کاربری شما با موفقیت به روز رسانی شد. به پروفایل خود برده می شوید",
-            type: "success",
-          });
+          showSuccessNotif("اطلاعات حساب کاربری شما با موفقیت به روز رسانی شد. به پروفایل خود برده می شوید")
           this.$router.push("/user/me");
         })
         .catch(() => {
-          this.$notify({
-            group: "auth",
-            title: "خطا",
-            text: "خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید",
-            type: "error",
-          });
+          showErrorNotif("خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید")
         })
         .finally(() => {
           this.isLoading = false;

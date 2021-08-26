@@ -22,6 +22,7 @@
 
 <script>
 import PartialHeader from "@/components/PartialHeader";
+import { showErrorNotif } from '@/utils/notifs';
 
 import Opportunity from "./components/Opportunity.vue";
 import { fetchCompany } from "./requests";
@@ -48,7 +49,9 @@ export default {
       .then((company) => {
         this.company = company;
       })
-      .catch((err) => {})
+      .catch((err) => {
+        showErrorNotif();
+      })
       .finally(() => {
         this.isLoading = false;
       });

@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import { showErrorNotif, showSuccessNotif } from '@/utils/notifs';
+
 import FormTemplate from "./FormTemplate.vue";
 export default {
   name: "LoginForm",
@@ -53,21 +55,11 @@ export default {
       this.$store
         .dispatch("login", this.user)
         .then(() => {
+          showSuccessNotif("با موفقیت وارد شدید. به صفحه پروفایل برده می شوید.")
           this.$router.push("/user/me");
-          this.$notify({
-            group: "auth",
-            type: "success",
-            title: "موفقیت",
-            text: "با موفقیت وارد شدید. به صفحه پروفایل برده می شوید.",
-          });
         })
         .catch(() => {
-          this.$notify({
-            group: "auth",
-            type: "error",
-            title: "خطا",
-            text: "خطایی هنگاه ورود رخ داد. لطفا ورودی های خود را کنترل کنید",
-          });
+          showErrorNotif("خطایی هنگاه ورود رخ داد. لطفا ورودی های خود را کنترل کنید")
         });
     },
   },

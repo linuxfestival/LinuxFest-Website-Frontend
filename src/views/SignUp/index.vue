@@ -87,8 +87,9 @@ import {
   minLength,
   maxLength,
 } from "vuelidate/lib/validators";
-
 import persianRex from "persian-rex";
+
+import { showErrorNotif, showSuccessNotif } from "@/utils/notifs";
 
 import TextInput from "./components/TextInput.vue";
 import CheckboxInput from "./components/CheckboxInput.vue";
@@ -157,14 +158,9 @@ export default {
     };
   },
   methods: {
-    submitUser: function () {
+    submitUser() {
       if (this.$v.$invalid) {
-        this.$notify({
-          group: "auth",
-          title: "خطا",
-          text: " لطفا ورودی های خود را کنترل کنید",
-          type: "error",
-        });
+        showErrorNotif("لطفا ورودی های خود را کنترل کنید");
         return;
       }
 
@@ -172,7 +168,6 @@ export default {
         delete this.user.studentNumber;
       }
       this.isLoading = true;
-      console.log("user to send ", this.user);
       this.$notify({
         group: "auth",
         title: "صبر کنید",
@@ -182,27 +177,16 @@ export default {
       this.$store
         .dispatch("signUp", this.user)
         .then(() => {
-          this.$notify({
-            group: "auth",
-            title: "موفقیت",
-            text: "حساب کاربری شما با موفقیت ساخته شد. به پروفایل خود برده می شوید",
-            type: "success",
-          });
+          showSuccessNotif(
+            "حساب کاربری شما با موفقیت ساخته شد. به پروفایل خود برده می شوید"
+          );
           this.$router.push("/user/me");
         })
         .catch(() => {
-          this.$notify({
-            group: "auth",
-            title: "خطا",
-            text:
-              "لطفا رورودی های خود را کنترل کنید-" +
-              this.$store.getters.signUpErrors,
-            type: "error",
-          });
-        })
+          showErrorNotif("لطفا رورودی های خود را کنترل کنید");
+        });
     },
   },
-  computed: {},
 };
 </script>
 
