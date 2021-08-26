@@ -1,6 +1,6 @@
 <template>
   <div class="bottom">
-    <button>ایجاد حساب کاربری</button>
+    <button :disabled="disabled">ایجاد حساب کاربری</button>
     <p>
       در صورت داشتن حساب کاربری به حساب خود
       <span>
@@ -14,6 +14,12 @@
 <script>
 export default {
   name: "Actions",
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
 

@@ -1,12 +1,13 @@
 <template>
-  <div>
+  <ContentWithLoader :isLoading="isLoading">
     <Workshops :workshops="workshops" />
     <Calendar :workshops="workshops" />
-  </div>
+  </ContentWithLoader>
 </template>
 
 <script>
 import { showErrorNotif } from '@/utils/notifs';
+import ContentWithLoader from '@/components/ContentWithLoader.vue';
 
 import Workshops from "./components/Workshops.vue";
 import Calendar from "./components/Calendar.vue";
@@ -14,7 +15,7 @@ import { fetchWorkshops } from "./requests";
 
 export default {
   name: "Content",
-  components: { Workshops, Calendar },
+  components: { Workshops, Calendar, ContentWithLoader },
   data() {
     return {
       isLoading: true,

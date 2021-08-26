@@ -59,7 +59,7 @@
         </InputGroup>
       </FormGroup>
       <FormGroup>
-        <button>اعمال تغییرات</button>
+        <button :disabled="isLoading">اعمال تغییرات</button>
       </FormGroup>
     </form>
   </div>
@@ -120,7 +120,9 @@ export default {
         this.currentUserData = user;
       })
       .catch((err) => {
-        showErrorNotif("خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید")
+        showErrorNotif(
+          "خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید"
+        );
       })
       .finally(() => {
         this.isLoading = false;
@@ -141,18 +143,22 @@ export default {
       );
 
       if (!this.updatedFieldsAreValid(updatedUserPayload)) {
-        showErrorNotif("لطفا ورودی های وارد شده خود را کنترل کنید.")
+        showErrorNotif("لطفا ورودی های وارد شده خود را کنترل کنید.");
         return;
       }
 
       this.isLoading = true;
       editUserRequest(updatedUserPayload)
         .then(() => {
-          showSuccessNotif("اطلاعات حساب کاربری شما با موفقیت به روز رسانی شد. به پروفایل خود برده می شوید")
+          showSuccessNotif(
+            "اطلاعات حساب کاربری شما با موفقیت به روز رسانی شد. به پروفایل خود برده می شوید"
+          );
           this.$router.push("/user/me");
         })
         .catch(() => {
-          showErrorNotif("خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید")
+          showErrorNotif(
+            "خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید"
+          );
         })
         .finally(() => {
           this.isLoading = false;

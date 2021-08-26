@@ -70,7 +70,7 @@
           error="رمز عبور باید بیش از ۸ کاراکتر و شامل حروف کوچک و بزرگ و اعداد باشد"
         />
 
-        <Actions />
+        <Actions :disabled="isLoading" />
       </form>
     </div>
   </div>
@@ -184,6 +184,9 @@ export default {
         })
         .catch(() => {
           showErrorNotif("لطفا رورودی های خود را کنترل کنید");
+        })
+        .finally(() => {
+          this.isLoading = false;
         });
     },
   },

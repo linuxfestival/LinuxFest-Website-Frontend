@@ -4,20 +4,29 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <notifications group="auth" position="top center"></notifications>
-    <Header></Header>
-    <transition name="fade" mode="out-in">
-      <router-view></router-view>
-    </transition>
-    <Footer></Footer>
+    <NotificationsContainer />
+    <!-- <FullPageLoading /> -->
+    <Header />
+    <RoutesWithTransition />
+    <Footer />
   </div>
 </template>
 
 <script>
+import RoutesWithTransition from "@/router/RoutesWithTransition.vue";
+import NotificationsContainer from '@/components/NotificationsContainer.vue';
+import FullPageLoading from "@/components/FullPageLoading";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
 export default {
-  components: { Footer, Header },
+  components: {
+    RoutesWithTransition,
+    NotificationsContainer,
+    Footer,
+    Header,
+    FullPageLoading,
+  },
 };
 </script>
 
@@ -26,18 +35,6 @@ export default {
   margin: 0;
   padding: 0;
   direction: rtl;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition-duration: 0.3s;
-  transition-property: opacity;
-  transition-timing-function: ease;
-}
-
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
 }
 
 body {
@@ -82,16 +79,4 @@ body {
   font-family : 'iransans';
   direction: rtl;
 } */
-
-.notification-title {
-  font-family: "iransans" !important;
-  direction: rtl !important;
-  text-align: right;
-}
-
-.notification-content {
-  font-family: "iransans" !important;
-  direction: rtl !important;
-  text-align: right;
-}
 </style>

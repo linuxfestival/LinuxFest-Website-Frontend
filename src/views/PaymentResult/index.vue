@@ -1,5 +1,6 @@
 <template>
   <div class="infoWrapper">
+    <FulLPageLoading v-if="isLoading" />
     <h1 class="info-title" v-if="isPaymentGood">
       <i class="material-icons">done</i>
       پرداخت شما با موفقیت انجام شد
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+import FulLPageLoading from '@/components/FullPageLoading.vue';
 import { showErrorNotif } from '@/utils/notifs';
 
 import { verifyPayment } from "./requests";
@@ -26,6 +28,9 @@ import { PAYMENT_RESULT } from "./constants";
 
 export default {
   name: "PaymentResult",
+  components: {
+    FulLPageLoading
+  },
   data() {
     return {
       isLoading: true,

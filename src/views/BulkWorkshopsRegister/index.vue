@@ -21,7 +21,7 @@
     <div class="workshopsListFooter">
       <SelectedWorkshops :count="selectedWorkshops.length" />
       <DiscountCard v-model="discountCode" />
-      <RegisterButton @register="register" />
+      <RegisterButton @register="register" :disabled="isLoading" />
     </div>
   </div>
 </template>
@@ -29,7 +29,7 @@
 <script>
 import WorkshopRegisterItem from "@/components/WorkshopRegisterItem";
 import PartialHeader from "@/components/PartialHeader";
-import { showErrorNotif, showSuccessNotif } from '@/utils/notifs';
+import { showErrorNotif, showSuccessNotif } from "@/utils/notifs";
 
 import SelectedWorkshops from "./components/SelectedWorkshops.vue";
 import DiscountCard from "./components/DiscountCard.vue";
@@ -94,15 +94,15 @@ export default {
         .then(({ status, paymentUrl }) => {
           switch (status) {
             case REGISTER_STATUS.PAID:
-              showSuccessNotif("با موفقیت در ورکشاپ های رایگان ثبت نام کردید.")
+              showSuccessNotif("با موفقیت در ورکشاپ های رایگان ثبت نام کردید.");
               selectedWorkshopsStorageManager.clearSelectedWorkshops();
               this.selectedWorkshops = [];
               this.$router.push("/user/me");
             case REGISTER_STATUS.ERROR:
-              showErrorNotif()
+              showErrorNotif();
               this.$router.push("/user/me");
             case REGISTER_STATUS.REQUEST_PAYMENT:
-              showSuccessNotif("به درگاه بانکی وارد می شوید.")
+              showSuccessNotif("به درگاه بانکی وارد می شوید.");
               selectedWorkshopsStorageManager.clearSelectedWorkshops();
               this.selectedWorkshops = [];
               window.location = paymentUrl;
@@ -111,7 +111,9 @@ export default {
         .catch(({ response: { status } }) => {
           switch (status) {
             case 400:
-              showErrorNotif("در کارگاه ثبت نام کرده اید و یا کارگاهی برای ثبت نام انتخاب نکرده اید ")
+              showErrorNotif(
+                "در کارگاه ثبت نام کرده اید و یا کارگاهی برای ثبت نام انتخاب نکرده اید "
+              );
             default:
               showErrorNotif();
           }

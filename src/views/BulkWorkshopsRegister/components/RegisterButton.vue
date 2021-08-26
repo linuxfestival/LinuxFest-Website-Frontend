@@ -1,5 +1,9 @@
 <template>
-  <button @click="$emit('register')" class="workshopsRegisterButton">
+  <button
+    @click="$emit('register')"
+    class="workshopsRegisterButton"
+    :disabled="disabled"
+  >
     ثبت نام
   </button>
 </template>
@@ -7,6 +11,12 @@
 <script>
 export default {
   name: "RegisterButton",
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
 

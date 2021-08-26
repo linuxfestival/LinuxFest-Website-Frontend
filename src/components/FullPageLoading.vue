@@ -1,9 +1,6 @@
 <template>
   <div class="full-page-loading">
-    <div class="full-page-loading__content">
-      <Loader v-if="withIcon" />
-      <p class="full-page-loading__text" v-if="text">{{ text }}</p>
-    </div>
+    <Loader v-if="withIcon" :text="text" />
   </div>
 </template>
 
@@ -18,7 +15,6 @@ export default {
   props: {
     text: {
       type: String,
-      default: () => "صبر کنید...",
     },
     withIcon: {
       type: Boolean,
@@ -45,16 +41,5 @@ export default {
   justify-content: center;
 
   z-index: 1030;
-}
-
-.full-page-loading__content {
-  display: flex;
-  flex-direction: column;
-}
-
-.full-page-loading__text {
-  font-family: 'iransans';
-  text-align: center;
-  font-size: 1.2rem;
 }
 </style>

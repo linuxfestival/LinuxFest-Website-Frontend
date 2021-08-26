@@ -1,6 +1,5 @@
 <template>
-  <p v-if="isLoading">Loading...</p>
-  <div class="parent" v-else>
+  <ContentWithLoader class="parent" :isLoading="isLoading">
     <PartialHeader :title="workshop.title" />
     <div class="workshopContentWrapper">
       <div class="workshopContent">
@@ -15,11 +14,12 @@
         />
       </div>
     </div>
-  </div>
+  </ContentWithLoader>
 </template>
 
 <script>
 import PartialHeader from "@/components/PartialHeader";
+import ContentWithLoader from "@/components/ContentWithLoader";
 import { showErrorNotif } from "@/utils/notifs";
 
 import TeachersDescription from "./components/TeachersDescription.vue";
@@ -34,6 +34,7 @@ export default {
     TeacherImages,
     Description,
     TeachersDescription,
+    ContentWithLoader,
   },
   data() {
     return {
@@ -48,7 +49,7 @@ export default {
         this.workshop = workshop;
       })
       .catch(() => {
-        showErrorNotif()
+        showErrorNotif();
       })
       .finally(() => {
         this.isLoading = false;
