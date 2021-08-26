@@ -1,15 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
+import store from '@/store/store'
 import Home from '@/views/Home/index.vue'
 import SignUp from "../views/SignUp/index.vue";
 import SignIn from "@/views/SignIn/index.vue";
 import UserAccount from "@/views/UserAccount/index.vue";
 import Workshop from "@/views/Workshop/index.vue";
 import UserEdit from "@/views/UserEdit/index.vue";
-import store from '@/store/store'
 import BulkWorkshopsRegister from "@/views/BulkWorkshopsRegister/index.vue";
+import PaymenResult from "@/views/PaymenResult/index.vue";
 import ForgetPass from '@/views/ForgetPass';
-import ConfirmPayment from "@/views/ConfirmPayment";
 import AllCareers from "../components/careers/AllCareers";
 import Career from "@/components/careers/Career";
 
@@ -32,14 +33,14 @@ const routes = [
     component: SignIn
   },
   {
-      path: '/user/me',
-      name: 'userProfile',
-      component: UserAccount
+    path: '/user/me',
+    name: 'userProfile',
+    component: UserAccount
   },
   {
-      path: '/user/edit',
-      name: 'userEdit',
-      component: UserEdit
+    path: '/user/edit',
+    name: 'userEdit',
+    component: UserEdit
   },
   {
     path: '/workshops/:id',
@@ -66,11 +67,11 @@ const routes = [
   //     name : 'forget',
   //     component : ForgetPass
   // },
-  // {
-  //     path : '/payment/result/',
-  //     name : 'confirmPayment',
-  //     component : ConfirmPayment
-  // },
+  {
+    path: '/payment/result/',
+    name: 'confirmPayment',
+    component: PaymenResult
+  },
 ];
 
 const router = new VueRouter({
@@ -80,8 +81,9 @@ const router = new VueRouter({
 
 
 const requiredAuth = ['userEdit', 'userProfile',
-  // 'workshopsRegister',
-  'confirmPayment'];
+  'workshopsRegister',
+  // 'confirmPayment'
+];
 const notRequiredAuth = ['signin', 'signup', 'forget'];
 router.beforeEach((to, from, next) => {
   if (requiredAuth.includes(to.name)) {
