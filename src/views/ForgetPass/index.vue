@@ -2,9 +2,9 @@
   <div class="loginWrapper">
     <div class="formWrapper">
       <h1 class="formTitle">ایجاد رمز عبور جدید</h1>
-      <form action class="formForm" @submit.prevent="sendResetPasswordConfirmationRequest()">
+      <form action class="formForm" @submit.prevent="handleSubmit()">
         <input
-          v-model="payload.password"
+          v-model="password"
           type="password"
           class="formFormInput"
           placeholder="رمز عبور خود را وارد کنید"
@@ -13,9 +13,9 @@
         <div class="formFormFooter">
           <ul class="formOptionsList">
             <li>
-                برای ورود 
-                <router-link to="/signin">اینجا</router-link>
-                را کلیک کنید.
+              برای ورود
+              <router-link to="/signin">اینجا</router-link>
+              را کلیک کنید.
             </li>
           </ul>
           <button class="loginButton">تغییر رمز عبور</button>
@@ -26,48 +26,42 @@
 </template>
 
 <script>
-import axios from "axios";
+import { confirmPassword } from "./requests";
+
 export default {
   name: "ForgetPass",
   data() {
     return {
-      payload: {
-        password: ""
-      }
+      password: ""
     };
   },
   methods: {
-    sendResetPasswordConfirmationRequest: function() {
-      axios({
-        url: this.$store.getters.baseUrl + "users/forget/" + this.$route.params.forgetToken,
-        method: "patch",
-        data: this.payload
-      })
-        .then(response => {
-          console.log(response);
+    handleSubmit() {
+      const {
+        params: { forgetToken: token },
+      } = this.$route;
+
+      confirmPassword({ token, password: this.password })
+        .then(() => {
           this.$notify({
             group: "auth",
             type: "success",
             title: "موفقیت",
             text: "رمز عبور شما با موفقیت تعویض شد. به صفحه ورود ریدایرکت می شوید...",
-            duration: 6000
+            duration: 6000,
           });
-          this.$router.push('/signin')
+          this.$router.push("/signin");
         })
-        .catch(error => {
-            this.$notify({
-              group: "auth",
-              type: "error",
-              title: "خطا",
-              text: 'خطایی هنگام تعویض رمز عبور رخ داد.لطفا اتصال اینترنت خود را چک کنید'
-            });
-          console.log(error.response);
+        .catch(() => {
+          this.$notify({
+            group: "auth",
+            type: "error",
+            title: "خطا",
+            text: "خطایی هنگام تعویض رمز عبور رخ داد.لطفا اتصال اینترنت خود را چک کنید",
+          });
         });
-    }
+    },
   },
-  created() {
-    console.log("password token to send : ", this.$route.params.forgetToken);
-  }
 };
 </script>
 

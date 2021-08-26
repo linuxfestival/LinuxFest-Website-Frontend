@@ -10,7 +10,7 @@ import Workshop from "@/views/Workshop/index.vue";
 import UserEdit from "@/views/UserEdit/index.vue";
 import BulkWorkshopsRegister from "@/views/BulkWorkshopsRegister/index.vue";
 import PaymenResult from "@/views/PaymenResult/index.vue";
-import ForgetPass from '@/views/ForgetPass';
+import ForgetPass from '@/views/ForgetPass/index.vue';
 import AllCareers from "../components/careers/AllCareers";
 import Career from "@/components/careers/Career";
 
@@ -62,11 +62,11 @@ const routes = [
   //     name : 'careersItem',
   //     component : Career
   // },
-  // {
-  //     path : '/user/forget/:forgetToken',
-  //     name : 'forget',
-  //     component : ForgetPass
-  // },
+  {
+    path: '/user/forget/:forgetToken',
+    name: 'forget',
+    component: ForgetPass
+  },
   {
     path: '/payment/result/',
     name: 'confirmPayment',
@@ -82,7 +82,7 @@ const router = new VueRouter({
 
 const requiredAuth = ['userEdit', 'userProfile',
   'workshopsRegister',
-  // 'confirmPayment'
+  'confirmPayment'
 ];
 const notRequiredAuth = ['signin', 'signup', 'forget'];
 router.beforeEach((to, from, next) => {
