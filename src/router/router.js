@@ -5,8 +5,8 @@ import SignUp from "../views/SignUp/index.vue";
 import SignIn from "@/views/SignIn/index.vue";
 import UserAccount from "@/views/UserAccount/index.vue";
 import Workshop from "@/views/Workshop/index.vue";
-import EditUserInfo from "../views/EditUserInfo";
-import store from '../store/store'
+import UserEdit from "@/views/UserEdit/index.vue";
+import store from '@/store/store'
 import BulkWorkshopsRegister from "@/views/BulkWorkshopsRegister/index.vue";
 import ForgetPass from '@/views/ForgetPass';
 import ConfirmPayment from "@/views/ConfirmPayment";
@@ -36,11 +36,11 @@ const routes = [
       name: 'userProfile',
       component: UserAccount
   },
-  // {
-  //     path: '/user/edit',
-  //     name: 'userEdit',
-  //     component: EditUserInfo
-  // },
+  {
+      path: '/user/edit',
+      name: 'userEdit',
+      component: UserEdit
+  },
   {
     path: '/workshops/:id',
     name: 'workshop',
