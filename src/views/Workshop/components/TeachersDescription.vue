@@ -74,7 +74,7 @@ export default {
 }
 
 .workshopTeachersDescription-title {
-  font-family: "iransans";
+
   color: #e4b22b;
 }
 
@@ -93,7 +93,7 @@ export default {
 .teacherDescription-name {
   color: #e4b22b;
   font-weight: bold;
-  font-family: "iransans";
+
   display: flex;
   align-items: center;
   margin-right: 10px;
@@ -105,7 +105,7 @@ export default {
 
 .teacherDescription-desc {
   color: white;
-  font-family: "iransans";
+
   text-align: justify;
   padding: 5px 5px 5px 10px;
   margin-right: 15px;

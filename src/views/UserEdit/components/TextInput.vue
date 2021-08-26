@@ -32,7 +32,7 @@ export default {
   padding: 15px 5px;
   margin: 10px;
   width: calc(100% - 20px);
-  font-family: "iransans";
+
   outline: none;
 }
 </style>

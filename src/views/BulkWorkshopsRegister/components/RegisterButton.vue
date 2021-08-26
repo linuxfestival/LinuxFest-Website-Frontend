@@ -26,7 +26,7 @@ export default {
   font-size: 15px;
   margin-top: 20px;
   padding: 5px 30px;
-  font-family: "iransans";
+
   background-color: #521c34;
   color: white;
   cursor: pointer;

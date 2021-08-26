@@ -10,13 +10,11 @@ export default {
 
 <style scoped>
 .notification-title {
-  font-family: "iransans" !important;
   direction: rtl !important;
   text-align: right;
 }
 
 .notification-content {
-  font-family: "iransans" !important;
   direction: rtl !important;
   text-align: right;
 }

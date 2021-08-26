@@ -24,7 +24,7 @@ export default {
 .formHeader-title {
   display: flex;
   align-items: center;
-  font-family: "iransans";
+
   color: #521c34;
   margin: 10px;
 }

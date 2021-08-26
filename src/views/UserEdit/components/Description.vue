@@ -15,7 +15,7 @@ export default {
 .formDescription {
   color: #521c34;
   margin: 10px;
-  font-family: "iransans";
+
 }
 
 </style>

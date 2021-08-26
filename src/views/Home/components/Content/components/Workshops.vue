@@ -46,7 +46,7 @@ export default {
 }
 
 .workshops-title {
-  font-family: "iransans";
+
   font-size: 30px;
   margin-top: 30px;
   margin-bottom: 30px;

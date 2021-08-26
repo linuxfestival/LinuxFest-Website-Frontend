@@ -157,7 +157,7 @@ export default {
 .link {
   color: white;
   text-decoration: none;
-  font-family: "iransans";
+
 }
 
 .mainMenu {
@@ -172,19 +172,19 @@ export default {
 
 .mainMenu-link {
   color: white;
-  font-family: "iransans";
+
   margin: 0 10px;
   text-decoration: none;
 }
 
 .profileMenu-link {
   color: white;
-  font-family: "iransans";
+
   margin: 0 10px;
   text-decoration: none;
   display: flex;
   align-items: center;
-  justify-contnet: center;
+  justify-content: center;
 }
 
 .divider {

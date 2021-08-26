@@ -39,7 +39,7 @@ button {
   padding: 12px 32px 12px 32px;
   font-size: 15px;
   color: white;
-  font-family: "iransans";
+
   cursor: pointer;
 }
 
@@ -48,7 +48,7 @@ button:hover {
 }
 
 p {
-  font-family: "iransans";
+
 }
 
 .bottom p {

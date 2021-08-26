@@ -53,7 +53,7 @@ export default {
   align-items: center;
   justify-content: center;
   padding-bottom: 30px;
-  font-family: "iransans";
+
 }
 
 .companiesContainer {
@@ -65,7 +65,7 @@ export default {
 }
 
 .companies-title {
-  font-family: "iransans";
+
   font-size: 30px;
   margin-top: 30px;
   margin-bottom: 30px;

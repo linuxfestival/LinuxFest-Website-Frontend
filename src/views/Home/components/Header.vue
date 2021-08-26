@@ -49,7 +49,7 @@ export default {
 }
 
 .homeHeader-title {
-  font-family: "iransans";
+
   font-size: 145px;
   font-weight: bolder;
   line-height: 145px;
@@ -58,7 +58,7 @@ export default {
 
 .homeHeader-title-horizontal {
   color: white;
-  font-family: "iransans";
+
   font-size: 18px;
   text-align: center;
   writing-mode: vertical-rl;

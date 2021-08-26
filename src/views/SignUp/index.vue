@@ -219,7 +219,7 @@ export default {
 .subject h1 {
   text-align: center;
   color: #521c34;
-  font-family: "iransans";
+
 
   margin-bottom: 32px;
 }

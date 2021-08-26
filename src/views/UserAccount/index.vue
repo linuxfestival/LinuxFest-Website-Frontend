@@ -115,7 +115,7 @@ export default {
 .infoItemButton {
   margin: auto;
   margin-bottom: 10px;
-  font-family: "iransans";
+
   text-decoration: none;
   color: white;
   background-color: #e4b22b;
@@ -134,7 +134,7 @@ export default {
 }
 
 .infoBox-link {
-  font-family: "iransans";
+
   text-align: center;
   text-decoration: none;
   margin-top: 30px;

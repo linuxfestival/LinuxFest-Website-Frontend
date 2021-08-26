@@ -28,7 +28,7 @@ export default {
 .infoItemTitle {
   color: white;
   font-size: 14px;
-  font-family: "iransans";
+
 }
 
 .infoItemContent {
@@ -37,6 +37,6 @@ export default {
   font-weight: bold;
   margin-right: 5px;
   margin-top: 5px;
-  font-family: "iransans";
+
 }
 </style>

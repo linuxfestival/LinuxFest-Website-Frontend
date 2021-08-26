@@ -175,6 +175,6 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  font-family: "iransans";
+
 }
 </style>

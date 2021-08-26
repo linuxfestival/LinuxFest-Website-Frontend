@@ -105,7 +105,6 @@ export default {
 
 .workshop-item--info-title {
   margin-top: 20px;
-  font-family: "iransans", "Arial";
   font-size: 18px;
   text-align: center;
   padding-right: 5px;
@@ -115,7 +114,7 @@ export default {
 .workshop-item--info-teachTitle {
   margin-top: 10px;
   margin-right: 10px;
-  font-family: "iransans";
+
   font-size: 12px;
   display: flex;
   align-self: flex-start;
@@ -126,7 +125,7 @@ export default {
 .workshop-item--info-teachItem {
   margin-right: 15px;
   margin-bottom: 10px;
-  font-family: "iransans";
+
   font-size: 15px;
   align-self: flex-start;
   font-weight: bolder;
@@ -140,7 +139,7 @@ export default {
   align-items: center;
   justify-content: center;
   margin: auto 10px 10px 10px;
-  font-family: "iransans";
+
   border: none;
   cursor: pointer;
 }

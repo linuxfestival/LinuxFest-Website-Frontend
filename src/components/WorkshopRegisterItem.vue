@@ -92,7 +92,7 @@ export default {
   border-left: 3px solid #f9f9f9;
 }
 .workshopRegItemTitle {
-  font-family: "iransans";
+
   display: flex;
   align-items: center;
   color: white;
@@ -104,7 +104,7 @@ export default {
   margin-left: 15px;
 }
 .workshopRegItemPrice {
-  font-family: "iransans";
+
   display: flex;
   align-items: center;
   color: white;
@@ -118,7 +118,7 @@ export default {
   background-color: #ddd;
   color: #333;
   text-decoration: none;
-  font-family: "iransans";
+
   padding: 5px 10px;
   border-radius: 5px;
   text-align: center;

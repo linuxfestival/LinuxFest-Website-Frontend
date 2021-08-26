@@ -42,7 +42,7 @@ export default {
   color: white;
   font-weight: bold;
   text-align: center;
-  font-family: "iransans";
+
 }
 
 .infoBoxHeader-title.dark {

@@ -26,7 +26,7 @@ export default {
 
 label {
   margin-right: 10px;
-  font-family: "iransans";
+
   color: #521c34;
 }
 

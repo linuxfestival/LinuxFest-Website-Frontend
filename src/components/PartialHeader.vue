@@ -10,7 +10,7 @@ export default {
     props : {
         backgroundUrl : '',
         title : ''
-    }    
+    }
 }
 </script>
 
@@ -27,7 +27,7 @@ export default {
     }
 
     .workshopsListTitle-text {
-        font-family: 'iransans';
+
         color: white;
         font-size:2.5rem;
         text-align:center;

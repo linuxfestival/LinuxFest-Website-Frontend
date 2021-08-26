@@ -52,14 +52,14 @@ export default {
   flex-direction: column;
   background: #521c34;
   font-size: 20px;
-  font-family: "iransans";
+
 }
 .panel {
   color: white;
   margin: auto;
-  font-family: "iransans";
+
 }
 .time {
-  font-family: "iransans";
+
 }
 </style>

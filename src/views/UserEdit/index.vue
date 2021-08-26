@@ -192,7 +192,7 @@ export default {
 }
 
 .formGroup button {
-  font-family: "iransans";
+
   background: #521c34;
   border: none;
   color: white;

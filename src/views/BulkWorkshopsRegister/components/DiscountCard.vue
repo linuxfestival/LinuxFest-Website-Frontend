@@ -22,7 +22,7 @@ export default {
 <style scoped>
 .discount {
   margin: 20px;
-  font-family: "iransans";
+
 }
 .discount input {
   padding: 3px;

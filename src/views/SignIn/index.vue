@@ -70,7 +70,7 @@ export default {
   padding: 15px;
   color: #333;
   border: none;
-  font-family: "iransans";
+
 }
 
 .loginButton {
@@ -80,12 +80,12 @@ export default {
   background-color: #521c34;
   color: white;
   cursor: pointer;
-  font-family: "iransans";
+
 }
 
 .optionButton {
   border: none;
-  font-family: "iransans";
+
   background: none;
   cursor: pointer;
 }

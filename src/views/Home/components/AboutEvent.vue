@@ -43,7 +43,7 @@ export default {
 
 .aboutEvent-title {
   color: rgb(242, 169, 56);
-  font-family: "iransans";
+
   font-size: 28px;
   margin: 15px 30px;
   display: flex;
@@ -52,7 +52,7 @@ export default {
 
 .aboutEvent-description {
   color: white;
-  font-family: "iransans";
+
   margin: 0 30px 30px 30px;
   line-height: 50px;
   text-align: justify;

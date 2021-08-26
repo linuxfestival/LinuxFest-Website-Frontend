@@ -67,7 +67,7 @@ export default {
   align-items: center;
   justify-content: center;
   margin: 30px 70px 30px 30px;
-  font-family: "iransans";
+
 }
 
 .careerContent {

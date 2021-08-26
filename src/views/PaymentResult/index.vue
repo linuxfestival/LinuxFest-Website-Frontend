@@ -76,7 +76,7 @@ export default {
 }
 
 .info-title {
-  font-family: "iransans";
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,7 +97,7 @@ export default {
   color: white;
   cursor: pointer;
   font-size: 20px;
-  font-family: "iransans";
+
 }
 
 .info-codes {

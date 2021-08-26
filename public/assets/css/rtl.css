@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'iransans';
+  src: url("assets/fonts/iranSansFarsiNumber.ttf") format("truetype");
+}
+
+* {
+  font-family: 'iransans';
+}
+
+body {
+  direction: rtl;
+  font-family: 'iransans';
+}

@@ -84,7 +84,7 @@ export default {
 
 .workshopContentDescription-title {
   margin-top: 10px;
-  font-family: "iransans";
+
   color: #e4b22b;
   display: flex;
   align-items: center;
@@ -95,7 +95,7 @@ export default {
 }
 
 .workshopContentDescription-desc {
-  font-family: "iransans";
+
   color: white;
   text-align: justify;
   width: 95%;
@@ -103,14 +103,14 @@ export default {
 }
 
 .timeline-title {
-  font-family: "iransans";
+
   color: #e4b22b;
   margin-right: 30px;
   margin-top: 10px;
 }
 
 .timeline-description {
-  font-family: "iransans";
+
   color: white;
   font-size: 15px;
   margin: 5px 40px;

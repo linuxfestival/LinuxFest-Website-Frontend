@@ -31,25 +31,6 @@ export default {
 </script>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  direction: rtl;
-}
-
-body {
-  direction: rtl;
-}
-
-@font-face {
-  font-family: "iransans";
-  src: url("assets/fonts/iranSansFarsiNumber.ttf") format("truetype");
-}
-
-.iransans {
-  font-family: "iransans";
-}
-
 .material-icons {
   font-family: "Material Icons";
   font-weight: normal;
@@ -74,9 +55,4 @@ body {
   /* Support for IE. */
   font-feature-settings: "liga";
 }
-
-/* .vue-notification {
-  font-family : 'iransans';
-  direction: rtl;
-} */
 </style>

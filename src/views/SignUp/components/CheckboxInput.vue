@@ -33,6 +33,6 @@ export default {
 label {
   font-size: 13px;
   text-align: right;
-  font-family: "iransans";
+
 }
 </style>

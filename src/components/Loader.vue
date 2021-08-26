@@ -33,7 +33,7 @@ export default {
 }
 
 .loader__text {
-  font-family: 'iransans';
+
   text-align: center;
   font-size: 1.2rem;
 }

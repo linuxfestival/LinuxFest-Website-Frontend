@@ -28,7 +28,7 @@ export default {
   text-decoration: none;
   font-size: 20px;
   padding: 5px 30px;
-  font-family: "iransans";
+
   border-radius: 5px;
   margin: auto auto 15px 10px;
 }

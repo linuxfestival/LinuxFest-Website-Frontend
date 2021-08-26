@@ -49,7 +49,7 @@ export default {
   display: flex;
   flex-direction: column;
 
-  font-family: "iransans";
+
 
   margin-bottom: 16px;
 }
@@ -62,7 +62,7 @@ export default {
   text-align: right;
   outline: none;
 
-  font-family: "iransans";
+
 }
 
 .input__message {

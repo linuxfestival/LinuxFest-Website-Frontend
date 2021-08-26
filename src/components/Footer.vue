@@ -105,7 +105,6 @@ export default {
 .footer-social--ceitlogo {
   display: flex;
   flex-direction: column;
-  font-family: "iransans";
 }
 
 .footer-social--ceitlogo img {
@@ -133,7 +132,7 @@ export default {
 }
 
 .footer-copyright--text {
-  font-family: "iransans";
+
   color: white;
   padding-top: 10px;
   padding-bottom: 10px;

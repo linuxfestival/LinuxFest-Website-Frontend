@@ -87,7 +87,7 @@ export default {
 }
 
 .formTitle {
-  font-family: "iransans";
+
   margin-bottom: 10px;
   color: #521c34;
 }
@@ -109,7 +109,7 @@ export default {
   padding: 15px;
   color: #333;
   border: none;
-  font-family: "iransans";
+
 }
 
 .formFormFooter {
@@ -127,11 +127,11 @@ export default {
   background-color: #521c34;
   color: white;
   cursor: pointer;
-  font-family: "iransans";
+
 }
 
 .formOptionsList {
-  font-family: "iransans";
+
   list-style-type: disc;
   font-size: 15px;
 }

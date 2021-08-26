@@ -35,7 +35,7 @@ export default {
 }
 
 .formTitle {
-  font-family: "iransans";
+
   margin-bottom: 10px;
   color: #521c34;
 }
@@ -57,7 +57,7 @@ export default {
 }
 
 .formOptionsList {
-  font-family: "iransans";
+
   list-style-type: disc;
   font-size: 15px;
 }
