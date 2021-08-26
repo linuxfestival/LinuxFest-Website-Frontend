@@ -22,7 +22,10 @@
 
 <script>
 import PartialHeader from "@/components/PartialHeader";
+<<<<<<< HEAD
 import { showErrorNotif } from '@/utils/notifs';
+=======
+>>>>>>> 7b20d965382ff1f5ed03ecac8df55f017e4a278a
 
 import Opportunity from "./components/Opportunity.vue";
 import { fetchCompany } from "./requests";
