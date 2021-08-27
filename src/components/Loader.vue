@@ -11,13 +11,13 @@ export default {
   props: {
     text: {
       type: String,
-      default: 'صبر کنید...'
+      default: 'صبر کنید...',
     },
     color: {
       type: String,
-    }
-  }
-};
+    },
+  },
+}
 </script>
 
 <style scoped>

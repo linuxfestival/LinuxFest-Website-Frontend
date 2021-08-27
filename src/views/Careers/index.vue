@@ -14,13 +14,13 @@
 </template>
 
 <script>
-import { showErrorNotif } from '@/utils/notifs';
+import { showErrorNotif } from '@/utils/notifs'
 
-import CompanyItem from "./components/CompanyItem.vue";
-import { fetchCompanies } from "./requests";
+import CompanyItem from './components/CompanyItem.vue'
+import { fetchCompanies } from './requests'
 
 export default {
-  name: "AllCareers",
+  name: 'AllCareers',
   components: {
     CompanyItem,
   },
@@ -28,21 +28,21 @@ export default {
     return {
       isLoading: true,
       companies: [],
-    };
+    }
   },
   created() {
     fetchCompanies()
-      .then(companies => {
-        this.companies = companies;
+      .then((companies) => {
+        this.companies = companies
       })
-      .catch(err => {
-        showErrorNotif();
+      .catch(() => {
+        showErrorNotif()
       })
       .finally(() => {
-        this.isLoading = false;
+        this.isLoading = false
       })
   },
-};
+}
 </script>
 
 <style scoped>

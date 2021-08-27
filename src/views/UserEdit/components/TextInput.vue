@@ -18,10 +18,10 @@ export default {
     placeholder: String,
     type: {
       type: String,
-      default: () => 'text'
+      default: () => 'text',
     },
-  }
-};
+  },
+}
 </script>
 
 <style scoped>

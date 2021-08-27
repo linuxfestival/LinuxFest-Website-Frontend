@@ -13,11 +13,11 @@
 
 <script>
 export default {
-  name: "Opportunity",
+  name: 'Opportunity',
   props: {
     opportunity: Object,
   },
-};
+}
 </script>
 
 <style scoped>

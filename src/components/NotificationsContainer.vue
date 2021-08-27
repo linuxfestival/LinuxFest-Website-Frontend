@@ -4,8 +4,8 @@
 
 <script>
 export default {
-  name: "NotificationsContainer",
-};
+  name: 'NotificationsContainer',
+}
 </script>
 
 <style scoped>

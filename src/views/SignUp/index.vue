@@ -81,48 +81,43 @@ import {
   required,
   email,
   numeric,
-  requiredIf,
   helpers,
   between,
   minLength,
   maxLength,
-} from "vuelidate/lib/validators";
-import persianRex from "persian-rex";
+} from 'vuelidate/lib/validators'
+import persianRex from 'persian-rex'
 
-import { showErrorNotif, showSuccessNotif } from "@/utils/notifs";
+import { showErrorNotif, showSuccessNotif } from '@/utils/notifs'
 
-import TextInput from "./components/TextInput.vue";
-import CheckboxInput from "./components/CheckboxInput.vue";
-import Actions from "./components/Actions.vue";
+import TextInput from './components/TextInput.vue'
+import CheckboxInput from './components/CheckboxInput.vue'
+import Actions from './components/Actions.vue'
 
 const persianPhoneValidator = helpers.regex(
-  "persianPhoneValidator",
-  /^(\+98?)?{?(0?9[0-9]{9,9}}?)$/gm
-);
+  'persianPhoneValidator',
+  /^(\+98?)?{?(0?9[0-9]{9,9}}?)$/gm,
+)
 const passwordRegexValidator = helpers.regex(
-  "passwordRegexValidator",
-  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/
-);
-const booleanValidator = (value) => {
-  return value === false || value === true;
-};
+  'passwordRegexValidator',
+  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/,
+)
 
 const perisanRexValidator = (value) => {
-  for (let word of value.trim().split(" ")) {
+  for (const word of value.trim().split(' ')) {
     if (!persianRex.letter.test(word)) {
-      return false;
+      return false
     }
   }
-  return true;
-};
+  return true
+}
 
-const validateIf = (prop, validator) =>
-  helpers.withParams({ type: "validatedIf", prop }, function (value, parentVm) {
-    return helpers.ref(prop, this, parentVm) ? validator(value) : true;
-  });
+const validateIf = (prop, validator) => helpers.withParams({ type: 'validatedIf', prop }, function (value, parentVm) {
+  return helpers.ref(prop, this, parentVm) ? validator(value) : true
+})
 
 export default {
-  name: "SignUp",
+  name: 'SignUp',
   components: {
     TextInput,
     CheckboxInput,
@@ -137,8 +132,8 @@ export default {
       password: { required, passwordRegexValidator },
       age: { required, between: between(15, 100) },
       studentNumber: {
-        minLength: validateIf("isAmirkabiri", minLength(7)),
-        maxLength: validateIf("isAmirkabiri", maxLength(10)),
+        minLength: validateIf('isAmirkabiri', minLength(7)),
+        maxLength: validateIf('isAmirkabiri', maxLength(10)),
       },
     },
   },
@@ -146,51 +141,51 @@ export default {
     return {
       isLoading: false,
       user: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        phoneNumber: "",
-        password: "",
-        age: "",
-        studentNumber: "",
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+        password: '',
+        age: '',
+        studentNumber: '',
         isAmirkabiri: false,
       },
-    };
+    }
   },
   methods: {
     submitUser() {
       if (this.$v.$invalid) {
-        showErrorNotif("لطفا ورودی های خود را کنترل کنید");
-        return;
+        showErrorNotif('لطفا ورودی های خود را کنترل کنید')
+        return
       }
 
       if (!this.user.isAmirkabiri) {
-        delete this.user.studentNumber;
+        delete this.user.studentNumber
       }
-      this.isLoading = true;
+      this.isLoading = true
       this.$notify({
-        group: "auth",
-        title: "صبر کنید",
-        text: "چند لحظه صبر کنید...",
-        type: "warn",
-      });
+        group: 'auth',
+        title: 'صبر کنید',
+        text: 'چند لحظه صبر کنید...',
+        type: 'warn',
+      })
       this.$store
-        .dispatch("signUp", this.user)
+        .dispatch('signUp', this.user)
         .then(() => {
           showSuccessNotif(
-            "حساب کاربری شما با موفقیت ساخته شد. به پروفایل خود برده می شوید"
-          );
-          this.$router.push("/user/me");
+            'حساب کاربری شما با موفقیت ساخته شد. به پروفایل خود برده می شوید',
+          )
+          this.$router.push('/user/me')
         })
         .catch(() => {
-          showErrorNotif("لطفا رورودی های خود را کنترل کنید");
+          showErrorNotif('لطفا رورودی های خود را کنترل کنید')
         })
         .finally(() => {
-          this.isLoading = false;
-        });
+          this.isLoading = false
+        })
     },
   },
-};
+}
 </script>
 
 <style scoped>
@@ -219,7 +214,6 @@ export default {
 .subject h1 {
   text-align: center;
   color: #521c34;
-
 
   margin-bottom: 32px;
 }

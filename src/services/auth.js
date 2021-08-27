@@ -1,10 +1,10 @@
-import LocalStorageManager from './storage';
+import LocalStorageManager from './storage'
 
-const tokenStorageManager = new LocalStorageManager('token');
+const tokenStorageManager = new LocalStorageManager('token')
 
 class AuthService {
   constructor(storage) {
-    this.storage = storage;
+    this.storage = storage
   }
 
   getToken() {
@@ -12,8 +12,8 @@ class AuthService {
   }
 
   setToken(token) {
-    if(!token) {
-      this.removeToken();
+    if (!token) {
+      this.removeToken()
     }
     return this.storage.set(token)
   }
@@ -23,8 +23,8 @@ class AuthService {
   }
 
   isLoggedIn() {
-    return Boolean(this.storage.get());
+    return Boolean(this.storage.get())
   }
 }
 
-export default new AuthService(tokenStorageManager);
+export default new AuthService(tokenStorageManager)

@@ -6,8 +6,8 @@
 
 <script>
 export default {
-  name: "RoutesWithTransition",
-};
+  name: 'RoutesWithTransition',
+}
 </script>
 
 <style scoped>

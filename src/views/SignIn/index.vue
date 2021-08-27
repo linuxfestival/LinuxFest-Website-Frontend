@@ -14,32 +14,30 @@
 </template>
 
 <script>
-import FormTemplate from "./components/FormTemplate.vue";
-import LoginForm from "./components/LoginForm.vue";
-import ResetPasswordForm from "./components/ResetPasswordForm.vue";
+import LoginForm from './components/LoginForm.vue'
+import ResetPasswordForm from './components/ResetPasswordForm.vue'
 
 export default {
-  name: "SignIn",
+  name: 'SignIn',
   components: {
     LoginForm,
     ResetPasswordForm,
-    FormTemplate,
   },
 
   data() {
     return {
-      resetPasswordEmail: "",
+      resetPasswordEmail: '',
       isLoginFormShown: true,
-    };
+    }
   },
 
   methods: {
     toggleForgetLoginForm(forgetPassEmail) {
-      this.resetPasswordEmail = forgetPassEmail;
-      this.isLoginFormShown = !this.isLoginFormShown;
+      this.resetPasswordEmail = forgetPassEmail
+      this.isLoginFormShown = !this.isLoginFormShown
     },
   },
-};
+}
 </script>
 
 <style>

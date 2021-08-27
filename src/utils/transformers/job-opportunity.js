@@ -1,13 +1,13 @@
-export default function({
+export default function ({
   jlink: link,
   jobDescription: description,
   jobName: name,
-  _id: id
+  _id: id,
 }) {
   return {
     id,
     name,
     description,
-    link
+    link,
   }
 }

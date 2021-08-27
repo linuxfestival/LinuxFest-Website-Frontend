@@ -8,12 +8,12 @@
 
 <script>
 export default {
-  name: "InfoItem",
+  name: 'InfoItem',
   props: {
     title: String,
     content: String,
   },
-};
+}
 </script>
 
 <style scoped>

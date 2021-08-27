@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import Loader from "./Loader.vue";
+import Loader from './Loader.vue'
 
 export default {
-  name: "FullPageLoading",
+  name: 'FullPageLoading',
   components: {
     Loader,
   },
@@ -21,7 +21,7 @@ export default {
       default: () => true,
     },
   },
-};
+}
 </script>
 
 <style scoped>

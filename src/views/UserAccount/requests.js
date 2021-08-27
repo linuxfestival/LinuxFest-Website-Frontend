@@ -1,16 +1,16 @@
-import http from '@/services/http';
-import { API } from '@/configs/urls';
-import transformUser from '@/utils/transformers/user';
+import http from '@/services/http'
+import { API } from '@/configs/urls'
+import transformUser from '@/utils/transformers/user'
 
-const usersGateway = `${API}/users`;
+const usersGateway = `${API}/users`
 const config = {
-  withToken: true
+  withToken: true,
 }
 
 function transformUserResponse({
   data: {
-    user
-  }
+    user,
+  },
 }) {
   return transformUser(user)
 }

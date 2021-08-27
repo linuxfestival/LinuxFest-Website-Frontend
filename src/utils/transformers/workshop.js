@@ -1,5 +1,5 @@
-import transformTeacher from './teacher';
-import transformTime from './time';
+import transformTeacher from './teacher'
+import transformTime from './time'
 
 export default function transformWorkshop({
   capacity,
@@ -8,7 +8,7 @@ export default function transformWorkshop({
   teachers,
   times,
   title,
-  _id: id
+  _id: id,
 }) {
   return {
     id,
@@ -17,6 +17,6 @@ export default function transformWorkshop({
     price,
     title,
     teachers: teachers.map(transformTeacher),
-    times: times.map(transformTime)
+    times: times.map(transformTime),
   }
 }

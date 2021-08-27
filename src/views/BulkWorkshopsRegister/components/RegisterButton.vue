@@ -10,14 +10,14 @@
 
 <script>
 export default {
-  name: "RegisterButton",
+  name: 'RegisterButton',
   props: {
     disabled: {
       type: Boolean,
       default: false,
     },
   },
-};
+}
 </script>
 
 <style scoped>

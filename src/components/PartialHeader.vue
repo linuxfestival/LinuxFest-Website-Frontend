@@ -6,11 +6,11 @@
 
 <script>
 export default {
-    name : "PartialHeader",
-    props : {
-        backgroundUrl : '',
-        title : ''
-    }
+  name: 'PartialHeader',
+  props: {
+    backgroundUrl: String,
+    title: String,
+  },
 }
 </script>
 

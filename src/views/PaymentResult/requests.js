@@ -1,14 +1,14 @@
-import http from '@/services/http';
-import { API } from '@/configs/urls';
+import http from '@/services/http'
+import { API } from '@/configs/urls'
 
 const config = {
-  withToken: true
+  withToken: true,
 }
 
 function transformPaymentResult({
-  data:{
-    status
-  }
+  data: {
+    status,
+  },
 }) {
   return status
 }
@@ -16,8 +16,8 @@ function transformPaymentResult({
 export function verifyPayment({
   orderId,
   amount,
-  authority
+  authority,
 }) {
   const url = `${API}/users/verifyPayment?order_id=${orderId}&Authority=${authority}&amount=${amount}`
-  return http.get(url, config).then(transformPaymentResult);
+  return http.get(url, config).then(transformPaymentResult)
 }

@@ -1,13 +1,13 @@
-import http from '@/services/http';
-import { API } from '@/configs/urls';
+import http from '@/services/http'
+import { API } from '@/configs/urls'
 
 const config = {
-  withToken: true
+  withToken: true,
 }
 
 function transformTeacher({
   name,
-  _id: id
+  _id: id,
 }) {
   return { name, id }
 }
@@ -15,9 +15,9 @@ function transformTeacher({
 function transformTime({
   startTime,
   endTime,
-  _id: id
+  _id: id,
 }) {
-  return { startTime, endTime, id}
+  return { startTime, endTime, id }
 }
 
 function transformWorkshop({
@@ -27,7 +27,7 @@ function transformWorkshop({
   teachers,
   times,
   title,
-  _id: id
+  _id: id,
 }) {
   return {
     id,
@@ -36,7 +36,7 @@ function transformWorkshop({
     price,
     title,
     teachers: teachers.map(transformTeacher),
-    times: times.map(transformTime)
+    times: times.map(transformTime),
   }
 }
 
@@ -45,5 +45,9 @@ function transformWorkshopsResponse({ data: workshops }) {
 }
 
 export function fetchWorkshops() {
-  return http.get(`${API}/workshops`, config).then(transformWorkshopsResponse);
+  return http.get(`${API}/workshops`, config).then(transformWorkshopsResponse)
+}
+
+export function sendResetPasswordRequest(user) {
+  return http.post(`${API}/users/forget`, user)
 }

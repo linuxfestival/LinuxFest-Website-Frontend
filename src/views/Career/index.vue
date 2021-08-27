@@ -21,42 +21,42 @@
 </template>
 
 <script>
-import PartialHeader from "@/components/PartialHeader";
-import { showErrorNotif } from '@/utils/notifs';
+import PartialHeader from '@/components/PartialHeader'
+import { showErrorNotif } from '@/utils/notifs'
 
-import Opportunity from "./components/Opportunity.vue";
-import { fetchCompany } from "./requests";
+import Opportunity from './components/Opportunity.vue'
+import { fetchCompany } from './requests'
 
 export default {
-  name: "Career",
+  name: 'Career',
   components: {
     PartialHeader,
-    Opportunity
+    Opportunity,
   },
   data() {
     return {
       isLoading: true,
       company: {},
-    };
+    }
   },
   created() {
     const {
       params: { id },
-    } = this.$route;
+    } = this.$route
 
     console.log('id:', id)
     fetchCompany(id)
       .then((company) => {
-        this.company = company;
+        this.company = company
       })
-      .catch((err) => {
-        showErrorNotif();
+      .catch(() => {
+        showErrorNotif()
       })
       .finally(() => {
-        this.isLoading = false;
-      });
+        this.isLoading = false
+      })
   },
-};
+}
 </script>
 
 <style scoped>

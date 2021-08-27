@@ -1,7 +1,7 @@
 export default function transformTime({
   startTime,
   endTime,
-  _id: id
+  _id: id,
 }) {
-  return { startTime, endTime, id}
+  return { startTime, endTime, id }
 }

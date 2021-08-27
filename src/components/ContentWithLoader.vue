@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Loader from './Loader.vue';
+import Loader from './Loader.vue'
 
 export default {
   name: 'ContentWithLoader',
@@ -15,7 +15,7 @@ export default {
     isLoading: {
       type: Boolean,
       default: false,
-    }
-  }
+    },
+  },
 }
 </script>

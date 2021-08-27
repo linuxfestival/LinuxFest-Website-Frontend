@@ -13,12 +13,12 @@
 
 <script>
 export default {
-  name: "RegisterButton",
+  name: 'RegisterButton',
   props: {
     isRegOpen: Boolean,
     id: String,
   },
-};
+}
 </script>
 
 <style scoped>

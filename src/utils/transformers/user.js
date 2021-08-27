@@ -1,4 +1,4 @@
-import transformWorkshop from "./workshop"
+import transformWorkshop from './workshop'
 
 export default function transformUserResponse({
   email,
@@ -8,7 +8,7 @@ export default function transformUserResponse({
   orders,
   phoneNumber,
   workshops,
-  _id: id
+  _id: id,
 }) {
   return {
     email,
@@ -19,6 +19,6 @@ export default function transformUserResponse({
     orders,
     phone: phoneNumber,
     workshops: workshops.map(transformWorkshop),
-    id
+    id,
   }
 }

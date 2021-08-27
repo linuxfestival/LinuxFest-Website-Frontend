@@ -12,11 +12,11 @@
 
 <script>
 export default {
-  name: "DiscountCard",
+  name: 'DiscountCard',
   props: {
     value: { type: String },
   },
-};
+}
 </script>
 
 <style scoped>

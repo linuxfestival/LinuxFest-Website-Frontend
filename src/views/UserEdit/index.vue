@@ -66,21 +66,21 @@
 </template>
 
 <script>
-import { numeric, between, email } from "vuelidate/lib/validators";
+import { numeric, between, email } from 'vuelidate/lib/validators'
 
-import PartialHeader from "@/components/PartialHeader";
-import { showErrorNotif, showSuccessNotif } from "@/utils/notifs";
+import PartialHeader from '@/components/PartialHeader'
+import { showErrorNotif, showSuccessNotif } from '@/utils/notifs'
 
-import InputGroup from "./components/InputGroup.vue";
-import TextInput from "./components/TextInput.vue";
-import FormGroup from "./components/FormGroup.vue";
-import Header from "./components/Header.vue";
-import Description from "./components/Description.vue";
-import { fetchUser, editUserRequest } from "./requests";
-import { isPersian, isPasswordValid, isPhoneValid } from "./utils";
+import InputGroup from './components/InputGroup.vue'
+import TextInput from './components/TextInput.vue'
+import FormGroup from './components/FormGroup.vue'
+import Header from './components/Header.vue'
+import Description from './components/Description.vue'
+import { fetchUser, editUserRequest } from './requests'
+import { isPersian, isPasswordValid, isPhoneValid } from './utils'
 
 export default {
-  name: "UserEdit",
+  name: 'UserEdit',
   components: {
     PartialHeader,
     FormGroup,
@@ -104,68 +104,66 @@ export default {
     return {
       isLoading: true,
       user: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        phoneNumber: "",
-        password: "",
-        age: "",
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+        password: '',
+        age: '',
       },
       currentUserData: {},
-    };
+    }
   },
   created() {
     fetchUser()
       .then((user) => {
-        this.currentUserData = user;
+        this.currentUserData = user
       })
-      .catch((err) => {
+      .catch(() => {
         showErrorNotif(
-          "خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید"
-        );
+          'خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید',
+        )
       })
       .finally(() => {
-        this.isLoading = false;
-      });
+        this.isLoading = false
+      })
   },
   methods: {
     updatedFieldsAreValid(updatedUserPayload) {
       return Object.keys(updatedUserPayload).every(
-        (key) => !this.$v.user[key].$invalid
-      );
+        (key) => !this.$v.user[key].$invalid,
+      )
     },
 
     editUser() {
       const updatedUserPayload = Object.fromEntries(
-        Object.entries(this.user).filter(([key, value]) =>
-          Boolean(this.user[key])
-        )
-      );
+        Object.entries(this.user).filter(([key]) => Boolean(this.user[key])),
+      )
 
       if (!this.updatedFieldsAreValid(updatedUserPayload)) {
-        showErrorNotif("لطفا ورودی های وارد شده خود را کنترل کنید.");
-        return;
+        showErrorNotif('لطفا ورودی های وارد شده خود را کنترل کنید.')
+        return
       }
 
-      this.isLoading = true;
+      this.isLoading = true
       editUserRequest(updatedUserPayload)
         .then(() => {
           showSuccessNotif(
-            "اطلاعات حساب کاربری شما با موفقیت به روز رسانی شد. به پروفایل خود برده می شوید"
-          );
-          this.$router.push("/user/me");
+            'اطلاعات حساب کاربری شما با موفقیت به روز رسانی شد. به پروفایل خود برده می شوید',
+          )
+          this.$router.push('/user/me')
         })
         .catch(() => {
           showErrorNotif(
-            "خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید"
-          );
+            'خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید',
+          )
         })
         .finally(() => {
-          this.isLoading = false;
-        });
+          this.isLoading = false
+        })
     },
   },
-};
+}
 </script>
 
 <style scoped>

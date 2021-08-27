@@ -20,48 +20,48 @@
 </template>
 
 <script>
-import FulLPageLoading from '@/components/FullPageLoading.vue';
-import { showErrorNotif } from '@/utils/notifs';
+import FulLPageLoading from '@/components/FullPageLoading.vue'
+import { showErrorNotif } from '@/utils/notifs'
 
-import { verifyPayment } from "./requests";
-import { PAYMENT_RESULT } from "./constants";
+import { verifyPayment } from './requests'
+import { PAYMENT_RESULT } from './constants'
 
 export default {
-  name: "PaymentResult",
+  name: 'PaymentResult',
   components: {
-    FulLPageLoading
+    FulLPageLoading,
   },
   data() {
     return {
       isLoading: true,
       wrongData: false,
       resultData: {},
-      status: "",
-    };
+      status: '',
+    }
   },
   computed: {
     isPaymentGood() {
-      return this.status && this.status === PAYMENT_RESULT.GOOD;
+      return this.status && this.status === PAYMENT_RESULT.GOOD
     },
   },
   created() {
     const {
       query: { order_id: orderId, Authority: authority, amount },
-    } = this.$route;
+    } = this.$route
     verifyPayment({ orderId, authority, amount })
       .then((status) => {
         if (status === PAYMENT_RESULT.GOOD) {
-          this.status = status;
+          this.status = status
         }
       })
-      .catch((err) => {
+      .catch(() => {
         showErrorNotif()
       })
       .finally(() => {
-        this.isLoading = false;
-      });
+        this.isLoading = false
+      })
   },
-};
+}
 </script>
 
 <style scoped>

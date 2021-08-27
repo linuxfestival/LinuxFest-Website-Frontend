@@ -40,16 +40,16 @@
 </template>
 
 <script>
-import WorkshopRegisterItem from "@/components/WorkshopRegisterItem.vue";
-import PartialHeader from "@/components/PartialHeader";
-import { showErrorNotif } from "@/utils/notifs";
+import WorkshopRegisterItem from '@/components/WorkshopRegisterItem.vue'
+import PartialHeader from '@/components/PartialHeader'
+import { showErrorNotif } from '@/utils/notifs'
 
-import InfoBox from "./components/InfoBox.vue";
-import InfoItem from "./components/InfoItem.vue";
-import { fetchUser } from "./requests";
+import InfoBox from './components/InfoBox.vue'
+import InfoItem from './components/InfoItem.vue'
+import { fetchUser } from './requests'
 
 export default {
-  name: "UserAccount",
+  name: 'UserAccount',
   components: {
     WorkshopRegisterItem,
     PartialHeader,
@@ -61,26 +61,26 @@ export default {
       isLoading: true,
       user: {},
       workshops: [],
-    };
+    }
   },
   computed: {
     workshopsTitle() {
-      return `لیست ارائه‌ها و سخنرانی‌های ثبت نام شده ${this.workshops.length}`;
+      return `لیست ارائه‌ها و سخنرانی‌های ثبت نام شده ${this.workshops.length}`
     },
   },
   created() {
     fetchUser()
       .then((user) => {
-        this.user = user;
+        this.user = user
       })
       .catch(() => {
-        showErrorNotif("خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید")
+        showErrorNotif('خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید')
       })
       .finally(() => {
-        this.isLoading = false;
-      });
+        this.isLoading = false
+      })
   },
-};
+}
 </script>
 
 <style scoped>

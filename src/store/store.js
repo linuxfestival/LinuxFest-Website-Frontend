@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import authService from '@/services/auth';
+import authService from '@/services/auth'
 
 import { signUpRequest, signInRequest } from './requests'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
@@ -13,21 +13,21 @@ export default new Vuex.Store({
     signUp: {
       isLoading: false,
       error: '',
-    }
+    },
   },
   mutations: {
     setToken(state, token) {
-      state.token = token;
-      authService.setToken(token);
+      state.token = token
+      authService.setToken(token)
     },
 
     setSignUpLoading(state, isLoading) {
-      state.signUp.isLoading = isLoading;
+      state.signUp.isLoading = isLoading
     },
 
     setSignUpError(state, message) {
-      state.signUp.error = message;
-    }
+      state.signUp.error = message
+    },
   },
   actions: {
     login({ commit }, userToLogIn) {
@@ -36,56 +36,52 @@ export default new Vuex.Store({
           commit('setToken', token)
           resolve()
         })
-          .catch(err => {
-            reject(err);
+          .catch((err) => {
+            reject(err)
           })
       })
     },
 
     logout({ commit }) {
-      commit('setToken', null);
+      commit('setToken', null)
     },
 
     signUp({ commit }, userToRegister) {
       return new Promise((resolve, reject) => {
-        commit('setSignUpLoading', true);
+        commit('setSignUpLoading', true)
         signUpRequest(userToRegister)
           .then((token) => {
-            commit('setToken', token);
-            resolve();
+            commit('setToken', token)
+            resolve()
           })
           .catch((err) => {
             const {
-              response
-            } = err;
+              response,
+            } = err
 
             if (!response) {
               commit('setSignUpError', 'خطایی هنگام ثبت نام رخ داد')
-              return;
+              return
             }
 
             const {
               data: {
-                message
-              }
+                message,
+              },
             } = response
 
-            commit('setSignUpError', message);
-            reject();
+            commit('setSignUpError', message)
+            reject()
           })
           .finally(() => {
-            commit('setSignUpLoading', false);
+            commit('setSignUpLoading', false)
           })
       })
     },
   },
   getters: {
-    isLoggedIn: (state) => {
-      return state.token && authService.isLoggedIn();
-    },
+    isLoggedIn: (state) => state.token && authService.isLoggedIn(),
 
-    signUpErrors: (state) => {
-      return state.signUpError
-    }
-  }
+    signUpErrors: (state) => state.signUpError,
+  },
 })

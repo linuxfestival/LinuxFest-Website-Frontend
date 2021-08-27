@@ -17,8 +17,8 @@
 
 <script>
 export default {
-  name: "AboutEvent",
-};
+  name: 'AboutEvent',
+}
 </script>
 
 <style scoped>

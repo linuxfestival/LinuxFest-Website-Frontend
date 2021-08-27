@@ -37,34 +37,34 @@
 
 <script>
 export default {
-  name: "Footer",
+  name: 'Footer',
   data() {
     return {
       socialLinks: [
         {
-          icon: ["fab", "google"],
-          name: "gmail",
-          link: "mailto:ceit.ssc94@gmail.com",
+          icon: ['fab', 'google'],
+          name: 'gmail',
+          link: 'mailto:ceit.ssc94@gmail.com',
         },
         {
-          icon: ["fab", "telegram"],
-          name: "telegram",
-          link: "https://t.me/ceit_ssc",
+          icon: ['fab', 'telegram'],
+          name: 'telegram',
+          link: 'https://t.me/ceit_ssc',
         },
         {
-          icon: ["fab", "twitter"],
-          name: "twitter",
-          link: "https://twitter.com/ceit_ssc",
+          icon: ['fab', 'twitter'],
+          name: 'twitter',
+          link: 'https://twitter.com/ceit_ssc',
         },
         {
-          icon: ["fab", "instagram"],
-          name: "instagram",
-          link: "https://instagram.com/ceit_ssc",
+          icon: ['fab', 'instagram'],
+          name: 'instagram',
+          link: 'https://instagram.com/ceit_ssc',
         },
       ],
-    };
+    }
   },
-};
+}
 </script>
 
 <style scoped>

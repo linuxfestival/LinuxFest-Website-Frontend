@@ -10,15 +10,15 @@
 
 <script>
 export default {
-  name: "InfoBox",
+  name: 'InfoBox',
   props: {
     title: String,
     isDark: {
       type: Boolean,
-      default: () => false
-    }
+      default: () => false,
+    },
   },
-};
+}
 </script>
 
 <style scoped>

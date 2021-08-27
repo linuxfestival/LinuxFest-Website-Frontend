@@ -8,12 +8,12 @@
 
 <script>
 export default {
-  name: "BulkWorkshopsRegister",
+  name: 'BulkWorkshopsRegister',
   props: {
     count: {
       type: Number,
       default: () => 0,
     },
   },
-};
+}
 </script>

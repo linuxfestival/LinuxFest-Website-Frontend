@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import { Timeline, TimelineItem } from "vue-cute-timeline";
-import { generateWorkshopsTimeline } from "../utils";
+import { Timeline, TimelineItem } from 'vue-cute-timeline'
+import { generateWorkshopsTimeline } from '../utils'
 
 export default {
   components: {
@@ -39,10 +39,10 @@ export default {
   },
   computed: {
     timeline() {
-      return generateWorkshopsTimeline(this.workshops);
+      return generateWorkshopsTimeline(this.workshops)
     },
   },
-};
+}
 </script>
 
 <style scoped>
@@ -57,9 +57,6 @@ export default {
 .panel {
   color: white;
   margin: auto;
-
-}
-.time {
 
 }
 </style>

@@ -13,11 +13,10 @@
 </template>
 
 <script>
-import RoutesWithTransition from "@/router/RoutesWithTransition.vue";
-import NotificationsContainer from '@/components/NotificationsContainer.vue';
-import FullPageLoading from "@/components/FullPageLoading";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import RoutesWithTransition from '@/router/RoutesWithTransition.vue'
+import NotificationsContainer from '@/components/NotificationsContainer.vue'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 export default {
   components: {
@@ -25,9 +24,8 @@ export default {
     NotificationsContainer,
     Footer,
     Header,
-    FullPageLoading,
   },
-};
+}
 </script>
 
 <style>

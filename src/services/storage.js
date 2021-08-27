@@ -1,11 +1,11 @@
 class LocalStorageManager {
   constructor(key, isJson = false) {
     if (!key) {
-      throw new Error('`key` property is required for LocalStorageManager');
+      throw new Error('`key` property is required for LocalStorageManager')
     }
 
-    this.key = key;
-    this.isJson = isJson;
+    this.key = key
+    this.isJson = isJson
   }
 
   get() {
@@ -15,16 +15,15 @@ class LocalStorageManager {
 
   set(item) {
     if (!item) {
-      return;
+      return
     }
-    const toSet = this.isJson ? JSON.stringify(item) : item;
-    localStorage.setItem(this.key, toSet);
+    const toSet = this.isJson ? JSON.stringify(item) : item
+    localStorage.setItem(this.key, toSet)
   }
 
   remove() {
-    localStorage.removeItem(this.key);
+    localStorage.removeItem(this.key)
   }
-
 }
 
-export default LocalStorageManager;
+export default LocalStorageManager

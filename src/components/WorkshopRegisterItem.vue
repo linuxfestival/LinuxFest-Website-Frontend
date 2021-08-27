@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: "WorkshopRegisterItem",
+  name: 'WorkshopRegisterItem',
   props: {
     workshop: Object,
     isSelected: {
@@ -47,22 +47,22 @@ export default {
   },
   computed: {
     isPriceShown() {
-      return !this.isRegistered;
+      return !this.isRegistered
     },
     isFree() {
-      return this.workshop.price == 0;
+      return this.workshop.price == 0
     },
   },
   methods: {
     handleClick() {
       if (this.isRegistered) {
-        return;
+        return
       }
 
-      this.$emit("select", this.workshop);
+      this.$emit('select', this.workshop)
     },
   },
-};
+}
 </script>
 
 <style scoped>

@@ -26,12 +26,12 @@
 </template>
 
 <script>
-import { getTimeTable } from "../utils";
+import { getTimeTable } from '../utils'
 
-import RegisterButton from "./RegisterButton.vue";
+import RegisterButton from './RegisterButton.vue'
 
 export default {
-  name: "Description",
+  name: 'Description',
   components: {
     RegisterButton,
   },
@@ -44,31 +44,29 @@ export default {
   },
   computed: {
     isFree() {
-      return this.price === 0;
+      return this.price === 0
     },
   },
   methods: {
     getTitle() {
       if (this.isFree) {
-        return this.$t("workshop.description.aboutThisTalk");
-      } else {
-        return this.$t("workshop.description.aboutThisWorkshop");
+        return this.$t('workshop.description.aboutThisTalk')
       }
+      return this.$t('workshop.description.aboutThisWorkshop')
     },
     getPriceText() {
       if (this.isFree) {
-        return this.$t("workshop.description.free");
-      } else {
-        return this.$t("workshop.description.priceInRials", {
-          price: this.price,
-        });
+        return this.$t('workshop.description.free')
       }
+      return this.$t('workshop.description.priceInRials', {
+        price: this.price,
+      })
     },
     getTimeTableText(timeSlot, index) {
-      return getTimeTable(timeSlot, index);
+      return getTimeTable(timeSlot, index)
     },
   },
-};
+}
 </script>
 
 <style scoped>

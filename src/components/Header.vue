@@ -95,39 +95,39 @@
 
 <script>
 export default {
-  name: "Header",
+  name: 'Header',
   methods: {
-    logout: function () {
-      this.$router.push("/");
-      this.$store.dispatch("logout");
+    logout() {
+      this.$router.push('/')
+      this.$store.dispatch('logout')
     },
-    toggleMobileMenu: function () {
-      console.log("toggle mobile menu");
-      this.showMobileMenu = !this.showMobileMenu;
-      console.log(this.showMobileMenu);
+    toggleMobileMenu() {
+      console.log('toggle mobile menu')
+      this.showMobileMenu = !this.showMobileMenu
+      console.log(this.showMobileMenu)
     },
-    toggleMobileProfile: function () {
-      console.log("Toggle Mobile Profile");
-      this.showMobileProfile = !this.showMobileProfile;
-      console.log(this.showMobileProfile);
+    toggleMobileProfile() {
+      console.log('Toggle Mobile Profile')
+      this.showMobileProfile = !this.showMobileProfile
+      console.log(this.showMobileProfile)
     },
   },
   data() {
     return {
       showMobileMenu: false,
       showMobileProfile: false,
-      desktopMenuList: [{ name: "", path: "/" }],
-    };
+      desktopMenuList: [{ name: '', path: '/' }],
+    }
   },
   mounted() {
-    console.log("is logged in :", this.isLoggedIn);
+    console.log('is logged in :', this.isLoggedIn)
   },
   computed: {
-    isLoggedIn () {
-      return this.$store.getters.isLoggedIn;
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn
     },
   },
-};
+}
 </script>
 
 <style scoped>

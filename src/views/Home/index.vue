@@ -7,16 +7,16 @@
 </template>
 
 <script>
-import AboutEvent from "./components/AboutEvent.vue";
-import Header from "./components/Header.vue";
-import Content from "./components/Content/index.vue";
+import AboutEvent from './components/AboutEvent.vue'
+import Header from './components/Header.vue'
+import Content from './components/Content/index.vue'
 
 export default {
-  name: "home",
+  name: 'home',
   components: {
     Header,
     AboutEvent,
     Content,
   },
-};
+}
 </script>

@@ -1,12 +1,12 @@
-import http from '@/services/http';
-import { API } from '@/configs/urls';
+import http from '@/services/http'
+import { API } from '@/configs/urls'
 
-const usersGateway = `${API}/users`;
+const usersGateway = `${API}/users`
 
 function transformAuthResponse({
   data: {
-    token
-  }
+    token,
+  },
 }) {
   return token
 }

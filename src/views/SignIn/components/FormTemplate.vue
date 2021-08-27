@@ -15,11 +15,11 @@
 
 <script>
 export default {
-  name: "FormTemplate",
+  name: 'FormTemplate',
   props: {
     title: String,
   },
-};
+}
 </script>
 
 <style scoped>

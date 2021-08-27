@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  name: "WorkshopItem",
+  name: 'WorkshopItem',
   props: {
     workshop: {
       type: Object,
@@ -40,29 +40,29 @@ export default {
   },
   computed: {
     hasTeachers() {
-      return this.workshop.teachers && this.workshop.teachers.length > 0;
+      return this.workshop.teachers && this.workshop.teachers.length > 0
     },
     hasOnlyOneTeacher() {
-      return this.hasTeachers && this.workshop.teachers.length === 1;
+      return this.hasTeachers && this.workshop.teachers.length === 1
     },
     teachersTitle() {
       if (!this.hasTeachers) {
-        return null;
+        return null
       }
 
       if (this.hasOnlyOneTeacher) {
-        return this.$t("home.workshops.teacher");
+        return this.$t('home.workshops.teacher')
       }
 
-      return this.$t("home.workshops.teachers");
+      return this.$t('home.workshops.teachers')
     },
   },
   methods: {
     showMore() {
-      this.$router.push("/workshops/" + this.workshop.id);
+      this.$router.push(`/workshops/${this.workshop.id}`)
     },
   },
-};
+}
 </script>
 
 <style scoped>

@@ -13,14 +13,14 @@
 
 <script>
 export default {
-  name: "Actions",
+  name: 'Actions',
   props: {
     disabled: {
       type: Boolean,
       default: false,
     },
   },
-};
+}
 </script>
 
 <style scoped>
@@ -45,10 +45,6 @@ button {
 
 button:hover {
   background-color: rgb(242, 169, 56);
-}
-
-p {
-
 }
 
 .bottom p {

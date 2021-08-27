@@ -36,32 +36,33 @@
 </template>
 
 <script>
-import { showErrorNotif, showSuccessNotif } from '@/utils/notifs';
+import { showErrorNotif, showSuccessNotif } from '@/utils/notifs'
 
-import FormTemplate from "./FormTemplate.vue";
+import FormTemplate from './FormTemplate.vue'
+
 export default {
-  name: "LoginForm",
+  name: 'LoginForm',
   components: { FormTemplate },
   data() {
     return {
       user: {
-        email: "",
-        password: "",
+        email: '',
+        password: '',
       },
-    };
+    }
   },
   methods: {
     login() {
       this.$store
-        .dispatch("login", this.user)
+        .dispatch('login', this.user)
         .then(() => {
-          showSuccessNotif("با موفقیت وارد شدید. به صفحه پروفایل برده می شوید.")
-          this.$router.push("/user/me");
+          showSuccessNotif('با موفقیت وارد شدید. به صفحه پروفایل برده می شوید.')
+          this.$router.push('/user/me')
         })
         .catch(() => {
-          showErrorNotif("خطایی هنگاه ورود رخ داد. لطفا ورودی های خود را کنترل کنید")
-        });
+          showErrorNotif('خطایی هنگاه ورود رخ داد. لطفا ورودی های خود را کنترل کنید')
+        })
     },
   },
-};
+}
 </script>

@@ -1,8 +1,8 @@
-import LocalStorageManager from '@/services/storage';
+import LocalStorageManager from '@/services/storage'
 
-import { SELECTED_WORKSHOPS_STORAGE_KEY } from './constants';
+import { SELECTED_WORKSHOPS_STORAGE_KEY } from './constants'
 
-const storage = new LocalStorageManager(SELECTED_WORKSHOPS_STORAGE_KEY, true);
+const storage = new LocalStorageManager(SELECTED_WORKSHOPS_STORAGE_KEY, true)
 
 class SelectedWorkshopsStorageManager {
   constructor(storage) {
@@ -14,42 +14,42 @@ class SelectedWorkshopsStorageManager {
   }
 
   removeBadSelectedWorkshops(originalWorkshops) {
-    const selectedWorkshops = this.getPersistedWorkshops();
+    const selectedWorkshops = this.getPersistedWorkshops()
 
     const availableSelectedWorkshops = selectedWorkshops.filter((selectedWorkshop) => {
       const {
-        id: selectedWorkshopId
-      } = selectedWorkshop;
-      const isSelectedWorkshopInOriginalWorkshops = originalWorkshops.some(({ id }) => id === selectedWorkshopId);
+        id: selectedWorkshopId,
+      } = selectedWorkshop
+      const isSelectedWorkshopInOriginalWorkshops = originalWorkshops.some(({ id }) => id === selectedWorkshopId)
 
-      return isSelectedWorkshopInOriginalWorkshops;
+      return isSelectedWorkshopInOriginalWorkshops
     })
 
-    this.storage.set(availableSelectedWorkshops);
+    this.storage.set(availableSelectedWorkshops)
   }
 
   persistSelectedWorkshop(selectedWorkshop) {
-    const selectedWorkshops = this.getPersistedWorkshops();
-    const isDuplicate = selectedWorkshops.some(({ id }) => id === selectedWorkshop.id);
+    const selectedWorkshops = this.getPersistedWorkshops()
+    const isDuplicate = selectedWorkshops.some(({ id }) => id === selectedWorkshop.id)
 
     if (isDuplicate) {
-      return;
+      return
     }
 
     selectedWorkshops.push(selectedWorkshop)
-    this.storage.set(selectedWorkshops);
+    this.storage.set(selectedWorkshops)
   }
 
   unPersistSelectedWorkshop(selectedWorkshop) {
-    const selectedWorkshops = this.storage.get();
-    const filteredSelectedWorkshops = selectedWorkshops.filter(({ id }) => id !== selectedWorkshop.id);
+    const selectedWorkshops = this.storage.get()
+    const filteredSelectedWorkshops = selectedWorkshops.filter(({ id }) => id !== selectedWorkshop.id)
 
-    this.storage.set(filteredSelectedWorkshops);
+    this.storage.set(filteredSelectedWorkshops)
   }
 
   clearSelectedWorkshops() {
-    this.storage.remove();
+    this.storage.remove()
   }
 }
 
-export const selectedWorkshopsStorageManager = new SelectedWorkshopsStorageManager(storage);
+export const selectedWorkshopsStorageManager = new SelectedWorkshopsStorageManager(storage)

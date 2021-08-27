@@ -7,12 +7,12 @@
 
 <script>
 export default {
-  name: "InputGroup",
+  name: 'InputGroup',
   props: {
     label: String,
     id: String,
   },
-};
+}
 </script>
 
 <style scoped>

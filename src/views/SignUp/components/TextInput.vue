@@ -16,13 +16,13 @@
 
 <script>
 export default {
-  name: "TextInput",
+  name: 'TextInput',
   props: {
     value: String,
     placeholder: String,
     type: {
       type: String,
-      default: () => "text",
+      default: () => 'text',
     },
     hasError: {
       type: Boolean,
@@ -30,26 +30,24 @@ export default {
     },
     error: {
       type: String,
-      default: () => "این ورودی را کنترل کنید",
+      default: () => 'این ورودی را کنترل کنید',
     },
     isPersian: Boolean,
   },
   computed: {
     inputClass() {
-      return `${this.hasError ? "input__controller--error" : ""} ${
-        this.isPersian ? "persian" : ""
-      }`;
+      return `${this.hasError ? 'input__controller--error' : ''} ${
+        this.isPersian ? 'persian' : ''
+      }`
     },
   },
-};
+}
 </script>
 
 <style scoped>
 .input {
   display: flex;
   flex-direction: column;
-
-
 
   margin-bottom: 16px;
 }
@@ -61,7 +59,6 @@ export default {
   padding: 10px;
   text-align: right;
   outline: none;
-
 
 }
 

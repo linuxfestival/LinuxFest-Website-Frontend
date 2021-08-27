@@ -18,17 +18,17 @@
 </template>
 
 <script>
-import PartialHeader from "@/components/PartialHeader";
-import ContentWithLoader from "@/components/ContentWithLoader";
-import { showErrorNotif } from "@/utils/notifs";
+import PartialHeader from '@/components/PartialHeader'
+import ContentWithLoader from '@/components/ContentWithLoader'
+import { showErrorNotif } from '@/utils/notifs'
 
-import TeachersDescription from "./components/TeachersDescription.vue";
-import TeacherImages from "./components/TeacherImages.vue";
-import Description from "./components/Description.vue";
-import { fetchWorkshopById } from "./requests";
+import TeachersDescription from './components/TeachersDescription.vue'
+import TeacherImages from './components/TeacherImages.vue'
+import Description from './components/Description.vue'
+import { fetchWorkshopById } from './requests'
 
 export default {
-  name: "WorkshopMoreContent",
+  name: 'WorkshopMoreContent',
   components: {
     PartialHeader,
     TeacherImages,
@@ -40,22 +40,22 @@ export default {
     return {
       workshop: {},
       isLoading: true,
-    };
+    }
   },
   created() {
-    const { id } = this.$route.params;
+    const { id } = this.$route.params
     fetchWorkshopById(id)
       .then((workshop) => {
-        this.workshop = workshop;
+        this.workshop = workshop
       })
       .catch(() => {
-        showErrorNotif();
+        showErrorNotif()
       })
       .finally(() => {
-        this.isLoading = false;
-      });
+        this.isLoading = false
+      })
   },
-};
+}
 </script>
 
 <style scoped>

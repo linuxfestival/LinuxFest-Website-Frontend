@@ -1,6 +1,6 @@
-import http from '@/services/http';
+import http from '@/services/http'
 
-import { API, BASE_URL } from '@/configs/urls';
+import { API, BASE_URL } from '@/configs/urls'
 
 const config = {
   withToken: true,
@@ -10,18 +10,20 @@ function transformTeacher({
   fullName,
   description,
   picUrl,
-  _id: id
+  _id: id,
 }) {
-  const avatar = `${BASE_URL}${picUrl}`;
-  return { fullName, description, avatar, id }
+  const avatar = `${BASE_URL}${picUrl}`
+  return {
+    fullName, description, avatar, id,
+  }
 }
 
 function transformTime({
   startTime,
   endTime,
-  _id: id
+  _id: id,
 }) {
-  return { startTime, endTime, id}
+  return { startTime, endTime, id }
 }
 
 function transformWorkshopResponse({
@@ -34,9 +36,9 @@ function transformWorkshopResponse({
       times,
       title,
       isRegOpen,
-      _id: id
-    }
-  }
+      _id: id,
+    },
+  },
 }) {
   return {
     id,
@@ -46,7 +48,7 @@ function transformWorkshopResponse({
     isRegOpen,
     title,
     teachers: teachers.map(transformTeacher),
-    times: times.map(transformTime)
+    times: times.map(transformTime),
   }
 }
 

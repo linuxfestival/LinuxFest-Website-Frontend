@@ -26,34 +26,34 @@
 </template>
 
 <script>
-import { showErrorNotif, showSuccessNotif } from '@/utils/notifs';
+import { showErrorNotif, showSuccessNotif } from '@/utils/notifs'
 
-import { confirmPassword } from "./requests";
+import { confirmPassword } from './requests'
 
 export default {
-  name: "ForgetPass",
+  name: 'ForgetPass',
   data() {
     return {
-      password: ""
-    };
+      password: '',
+    }
   },
   methods: {
     handleSubmit() {
       const {
         params: { forgetToken: token },
-      } = this.$route;
+      } = this.$route
 
       confirmPassword({ token, password: this.password })
         .then(() => {
-          showSuccessNotif("رمز عبور شما با موفقیت تعویض شد. به صفحه ورود ریدایرکت می شوید...")
-          this.$router.push("/signin");
+          showSuccessNotif('رمز عبور شما با موفقیت تعویض شد. به صفحه ورود ریدایرکت می شوید...')
+          this.$router.push('/signin')
         })
         .catch(() => {
-          showErrorNotif("خطایی هنگام تعویض رمز عبور رخ داد.لطفا اتصال اینترنت خود را چک کنید")
-        });
+          showErrorNotif('خطایی هنگام تعویض رمز عبور رخ داد.لطفا اتصال اینترنت خود را چک کنید')
+        })
     },
   },
-};
+}
 </script>
 
 <style scoped>

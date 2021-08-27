@@ -1,9 +1,9 @@
-import http from '@/services/http';
-import { API } from '@/configs/urls';
-import transformWorkshop from '@/utils/transformers/workshop';
+import http from '@/services/http'
+import { API } from '@/configs/urls'
+import transformWorkshop from '@/utils/transformers/workshop'
 
 const config = {
-  withToken: true
+  withToken: true,
 }
 
 function transformWorkshopsResponse({ data: workshops }) {
@@ -11,5 +11,5 @@ function transformWorkshopsResponse({ data: workshops }) {
 }
 
 export function fetchWorkshops() {
-  return http.get(`${API}/workshops`, config).then(transformWorkshopsResponse);
+  return http.get(`${API}/workshops`, config).then(transformWorkshopsResponse)
 }

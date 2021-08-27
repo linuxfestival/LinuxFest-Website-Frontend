@@ -23,14 +23,11 @@
 
 <script>
 export default {
-  name: "companyItem",
+  name: 'companyItem',
   props: {
     company: Object,
   },
-  props: {
-    company: {},
-  },
-};
+}
 </script>
 
 <style scoped>

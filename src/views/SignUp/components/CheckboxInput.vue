@@ -19,7 +19,7 @@ export default {
     value: Boolean,
     label: String,
   },
-};
+}
 </script>
 
 <style scoped>

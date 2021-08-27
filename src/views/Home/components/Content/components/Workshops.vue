@@ -16,15 +16,15 @@
 </template>
 
 <script>
-import WorkshopItem from "./WorkshopItem.vue";
+import WorkshopItem from './WorkshopItem.vue'
 
 export default {
-  name: "Workshops",
+  name: 'Workshops',
   components: { WorkshopItem },
   props: {
     workshops: { type: Array, default: () => [] },
   },
-};
+}
 </script>
 
 <style scoped>

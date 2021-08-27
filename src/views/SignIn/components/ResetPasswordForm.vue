@@ -22,43 +22,50 @@
 </template>
 
 <script>
-import { showErrorNotif, showSuccessNotif } from '@/utils/notifs';
+import { showErrorNotif, showSuccessNotif } from '@/utils/notifs'
 
-import FormTemplate from "./FormTemplate.vue";
+import { sendResetPasswordRequest } from '../requests'
+import FormTemplate from './FormTemplate.vue'
+
 export default {
-  name: "ResetPasswordForm",
+  name: 'ResetPasswordForm',
   components: { FormTemplate },
   props: {
     initialEmail: String,
   },
   data() {
     return {
-      email: "",
-    };
+      email: '',
+    }
   },
   created() {
-    this.email = this.initialEmail;
+    this.email = this.initialEmail
   },
   methods: {
     forgetPasswordRequest() {
-      console.log("forget password request");
-      axios({
-        url: this.$store.getters.baseUrl + "users/forget",
-        method: "post",
-        data: this.user,
-      })
-        .then((response) => {
-          console.log(response);
-          showSuccessNotif("ایمیل خود را برای ادامه مراحل چک کنید..")
+      console.log('forget password request')
+      sendResetPasswordRequest(this.user)
+        .then(() => {
+          showSuccessNotif('ایمیل خود را برای ادامه مراحل چک کنید..')
         })
         .catch((error) => {
-          if (error.response.status === 404) {
-            showErrorNotif("چنین کاربری وجود ندارد. از صحت ایمیل اطمینان حاصل کنید.")
-          } else {
-            showErrorNotif("خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید.")
+          const {
+            response: {
+              status
+            }
+          } = error
+
+          if (status === 404) {
+            showErrorNotif(
+              'چنین کاربری وجود ندارد. از صحت ایمیل اطمینان حاصل کنید.'
+            )
+            return
           }
-        });
+          showErrorNotif(
+            'خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید.'
+          )
+        })
     },
   },
-};
+}
 </script>

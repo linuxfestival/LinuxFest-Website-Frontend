@@ -24,25 +24,24 @@
 
 <script>
 export default {
-  name: "TeachersDescription",
+  name: 'TeachersDescription',
   props: {
     teachers: Array,
   },
   computed: {
     isMoreThanOne() {
-      return this.teachers && this.teachers.length > 1;
+      return this.teachers && this.teachers.length > 1
     },
   },
   methods: {
     getTitle() {
       if (this.isMoreThanOne) {
-        return this.$t("workshop.description.teachersDescription");
-      } else {
-        return this.$t("workshop.description.teacherDescription");
+        return this.$t('workshop.description.teachersDescription')
       }
+      return this.$t('workshop.description.teacherDescription')
     },
   },
-};
+}
 </script>
 
 <style scoped>
