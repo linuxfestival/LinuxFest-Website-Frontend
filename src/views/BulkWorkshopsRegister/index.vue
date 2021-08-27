@@ -20,7 +20,7 @@
 
     <div class="workshopsListFooter">
       <SelectedWorkshops :count="selectedWorkshops.length" />
-      <DiscountCard v-model="discountCode" />
+      <DiscountCard @input="(newValue ) => discountCode = newValue" />
       <RegisterButton @register="register" :disabled="isLoading" />
     </div>
   </div>

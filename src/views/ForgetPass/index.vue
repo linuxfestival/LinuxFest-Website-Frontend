@@ -3,13 +3,11 @@
     <div class="formWrapper">
       <h1 class="formTitle">ایجاد رمز عبور جدید</h1>
       <form action class="formForm" @submit.prevent="handleSubmit()">
-        <input
-          v-model="password"
+        <TextInput
+         v-model="password"
           type="password"
-          class="formFormInput"
           placeholder="رمز عبور خود را وارد کنید"
-        />
-
+         />
         <div class="formFormFooter">
           <ul class="formOptionsList">
             <li>
@@ -27,11 +25,13 @@
 
 <script>
 import { showErrorNotif, showSuccessNotif } from '@/utils/notifs'
+import TextInput from '@/components/TextInput.vue'
 
 import { confirmPassword } from './requests'
 
 export default {
   name: 'ForgetPass',
+  components: { TextInput },
   data() {
     return {
       password: '',
@@ -87,7 +87,6 @@ export default {
 }
 
 .formTitle {
-
   margin-bottom: 10px;
   color: #521c34;
 }
@@ -98,18 +97,6 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-
-.formFormInput {
-  width: 100%;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-radius: 15px;
-  background-color: #ddd;
-  padding: 15px;
-  color: #333;
-  border: none;
-
 }
 
 .formFormFooter {
@@ -127,11 +114,9 @@ export default {
   background-color: #521c34;
   color: white;
   cursor: pointer;
-
 }
 
 .formOptionsList {
-
   list-style-type: disc;
   font-size: 15px;
 }

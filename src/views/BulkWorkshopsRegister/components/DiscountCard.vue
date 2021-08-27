@@ -1,29 +1,40 @@
 <template>
   <div class="discount">
-    <label for="discount">کد تخفیف </label>
-    <input
+    <TextInput
+      label="کد تخفیف"
+      v-model="value"
       placeholder="code"
       id="discount"
-      @input="$emit('input', $event.target.value)"
-      :value="value"
     />
   </div>
 </template>
 
 <script>
+import TextInput from '@/components/TextInput.vue'
+
 export default {
   name: 'DiscountCard',
-  props: {
-    value: { type: String },
+  components: {
+    TextInput,
   },
+  data() {
+    return {
+      value: ''
+    }
+  },
+  watch: {
+    value(newValue) {
+      this.$emit('input', newValue)
+    }
+  }
 }
 </script>
 
 <style scoped>
 .discount {
   margin: 20px;
-
 }
+
 .discount input {
   padding: 3px;
   margin-right: 8px;
