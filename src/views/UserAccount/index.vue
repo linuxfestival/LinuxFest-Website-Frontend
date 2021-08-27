@@ -46,7 +46,7 @@ import { showErrorNotif } from '@/utils/notifs'
 
 import InfoBox from './components/InfoBox.vue'
 import InfoItem from './components/InfoItem.vue'
-import { fetchUser } from './requests'
+import { fetchUserAndWorkshops } from './requests'
 
 export default {
   name: 'UserAccount',
@@ -69,9 +69,10 @@ export default {
     },
   },
   created() {
-    fetchUser()
-      .then((user) => {
+    fetchUserAndWorkshops()
+      .then(({ user, workshops }) => {
         this.user = user
+        this.workshops = workshops
       })
       .catch(() => {
         showErrorNotif('خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید')

@@ -1,10 +1,10 @@
 <template>
   <FormTemplate title="ورود به حساب کاربری" @submit="forgetPasswordRequest">
     <template v-slot:form>
-      <input
+      <TextInput
         v-model="email"
         type="email"
-        class="formFormInput"
+        id="email"
         placeholder="ایمیل خود را وارد کنید"
       />
     </template>
@@ -23,13 +23,14 @@
 
 <script>
 import { showErrorNotif, showSuccessNotif } from '@/utils/notifs'
+import TextInput from '@/components/TextInput'
 
 import { sendResetPasswordRequest } from '../requests'
 import FormTemplate from './FormTemplate.vue'
 
 export default {
   name: 'ResetPasswordForm',
-  components: { FormTemplate },
+  components: { FormTemplate, TextInput },
   props: {
     initialEmail: String,
   },
@@ -50,9 +51,7 @@ export default {
         })
         .catch((error) => {
           const {
-            response: {
-              status
-            }
+            response: { status },
           } = error
 
           if (status === 404) {

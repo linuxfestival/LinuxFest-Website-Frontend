@@ -1,13 +1,12 @@
-import transformWorkshop from './workshop'
+import transformOrder from './order'
 
-export default function transformUserResponse({
+export default function transformUser({
   email,
   firstName,
   lastName,
-  orderIDs,
+  orderIDs: orderIds,
   orders,
   phoneNumber,
-  workshops,
   _id: id,
 }) {
   return {
@@ -15,10 +14,9 @@ export default function transformUserResponse({
     firstName,
     lastName,
     fullName: `${firstName} ${lastName}`,
-    orderIDs,
+    orderIds: orderIds.map(transformOrder),
     orders,
     phone: phoneNumber,
-    workshops: workshops.map(transformWorkshop),
     id,
   }
 }

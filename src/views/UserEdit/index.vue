@@ -8,55 +8,49 @@
       <Header />
       <Description />
       <FormGroup>
-        <InputGroup label="نام :" id="firstName">
-          <TextInput
-            id="firstName"
-            v-model="$v.user.firstName.$model"
-            :placeholder="this.currentUserData.firstName"
-          />
-        </InputGroup>
-        <InputGroup label="نام خانوادگی :" id="lastName">
-          <TextInput
-            id="lastName"
-            v-model="$v.user.lastName.$model"
-            :placeholder="this.currentUserData.lastName"
-          />
-        </InputGroup>
+        <TextInput
+          id="firstName"
+          v-model="$v.user.firstName.$model"
+          :placeholder="this.currentUserData.firstName"
+          label="نام :"
+        />
+        <TextInput
+          label="نام خانوادگی :"
+          id="lastName"
+          v-model="$v.user.lastName.$model"
+          :placeholder="this.currentUserData.lastName"
+        />
       </FormGroup>
       <FormGroup>
-        <InputGroup label="ایمیل :" id="email">
-          <TextInput
-            type="email"
-            id="email"
-            v-model="$v.user.email.$model"
-            :placeholder="this.currentUserData.email"
-          />
-        </InputGroup>
-        <InputGroup label="شماره تماس :" id="phoneNumber">
-          <TextInput
-            id="phoneNumber"
-            v-model="$v.user.phoneNumber.$model"
-            :placeholder="this.currentUserData.phone"
-          />
-        </InputGroup>
+        <TextInput
+          type="email"
+          id="email"
+          v-model="$v.user.email.$model"
+          :placeholder="this.currentUserData.email"
+          label="ایمیل :"
+        />
+        <TextInput
+          id="phoneNumber"
+          label="شماره تماس :"
+          v-model="$v.user.phoneNumber.$model"
+          :placeholder="this.currentUserData.phone"
+        />
       </FormGroup>
       <FormGroup>
-        <InputGroup label="رمز عبور :" id="password">
-          <TextInput
-            type="password"
-            id="password"
-            v-model="$v.user.password.$model"
-            placeholder="رمز عبور"
-          />
-        </InputGroup>
-        <InputGroup label="سن :" id="age">
-          <TextInput
-            type="number"
-            id="age"
-            v-model="$v.user.age.$model"
-            :placeholder="this.currentUserData.age"
-          />
-        </InputGroup>
+        <TextInput
+          type="password"
+          id="password"
+          label="رمز عبور :"
+          v-model="$v.user.password.$model"
+          placeholder="رمز عبور"
+        />
+        <TextInput
+          type="number"
+          id="age"
+          v-model="$v.user.age.$model"
+          :placeholder="this.currentUserData.age"
+          label="سن :"
+        />
       </FormGroup>
       <FormGroup>
         <button :disabled="isLoading">اعمال تغییرات</button>
@@ -68,11 +62,10 @@
 <script>
 import { numeric, between, email } from 'vuelidate/lib/validators'
 
+import TextInput from '@/components/TextInput.vue'
 import PartialHeader from '@/components/PartialHeader'
 import { showErrorNotif, showSuccessNotif } from '@/utils/notifs'
 
-import InputGroup from './components/InputGroup.vue'
-import TextInput from './components/TextInput.vue'
 import FormGroup from './components/FormGroup.vue'
 import Header from './components/Header.vue'
 import Description from './components/Description.vue'
@@ -84,7 +77,6 @@ export default {
   components: {
     PartialHeader,
     FormGroup,
-    InputGroup,
     TextInput,
     Header,
     Description,
@@ -121,7 +113,7 @@ export default {
       })
       .catch(() => {
         showErrorNotif(
-          'خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید',
+          'خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید'
         )
       })
       .finally(() => {
@@ -131,13 +123,13 @@ export default {
   methods: {
     updatedFieldsAreValid(updatedUserPayload) {
       return Object.keys(updatedUserPayload).every(
-        (key) => !this.$v.user[key].$invalid,
+        (key) => !this.$v.user[key].$invalid
       )
     },
 
     editUser() {
       const updatedUserPayload = Object.fromEntries(
-        Object.entries(this.user).filter(([key]) => Boolean(this.user[key])),
+        Object.entries(this.user).filter(([key]) => Boolean(this.user[key]))
       )
 
       if (!this.updatedFieldsAreValid(updatedUserPayload)) {
@@ -149,13 +141,13 @@ export default {
       editUserRequest(updatedUserPayload)
         .then(() => {
           showSuccessNotif(
-            'اطلاعات حساب کاربری شما با موفقیت به روز رسانی شد. به پروفایل خود برده می شوید',
+            'اطلاعات حساب کاربری شما با موفقیت به روز رسانی شد. به پروفایل خود برده می شوید'
           )
           this.$router.push('/user/me')
         })
         .catch(() => {
           showErrorNotif(
-            'خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید',
+            'خطایی هنگام ارتباط با سرور رخ داد. لطفا اتصال اینترنت خود را بررسی کنید'
           )
         })
         .finally(() => {
@@ -190,7 +182,6 @@ export default {
 }
 
 .formGroup button {
-
   background: #521c34;
   border: none;
   color: white;

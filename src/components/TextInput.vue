@@ -1,12 +1,14 @@
 <template>
   <div class="input">
+    <label :v-for="id" v-if="label" class="input__label">{{label}}</label>
     <input
+      class="input__controller"
       :type="type"
       :value="value"
       :placeholder="placeholder"
-      @input="$emit('input', $event.target.value)"
-      class="input__controller"
+      :id="id"
       :class="inputClass"
+      @input="$emit('input', $event.target.value)"
     />
     <p v-if="hasError" class="input__message input__message--error">
       {{ error }}
@@ -32,13 +34,19 @@ export default {
       type: String,
       default: () => 'این ورودی را کنترل کنید',
     },
-    isPersian: Boolean,
+    customInputClass: {
+      type: String
+    },
+    label: {
+      type: String
+    },
+    id: {
+      type: String
+    }
   },
   computed: {
     inputClass() {
-      return `${this.hasError ? 'input__controller--error' : ''} ${
-        this.isPersian ? 'persian' : ''
-      }`
+      return `${this.hasError ? 'input__controller--error' : ''} ${this.customInputClass}`
     },
   },
 }
@@ -49,6 +57,7 @@ export default {
   display: flex;
   flex-direction: column;
 
+  width: 100%;
   margin-bottom: 16px;
 }
 
@@ -60,6 +69,11 @@ export default {
   text-align: right;
   outline: none;
 
+  box-sizing: border-box;
+}
+
+.input__label {
+  margin-bottom: 6px;
 }
 
 .input__message {

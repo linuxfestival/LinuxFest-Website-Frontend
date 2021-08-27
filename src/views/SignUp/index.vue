@@ -7,7 +7,6 @@
       </div>
       <form class="top" @submit.prevent="submitUser()">
         <TextInput
-          :isPersian="true"
           v-model="$v.user.firstName.$model"
           placeholder="نام"
           :hasError="$v.user.firstName.$error"
@@ -15,7 +14,6 @@
         />
 
         <TextInput
-          :isPersian="true"
           v-model="$v.user.lastName.$model"
           placeholder="نام خانوادگی"
           :hasError="$v.user.lastName.$error"
@@ -89,8 +87,8 @@ import {
 import persianRex from 'persian-rex'
 
 import { showErrorNotif, showSuccessNotif } from '@/utils/notifs'
+import TextInput from '@/components/TextInput.vue'
 
-import TextInput from './components/TextInput.vue'
 import CheckboxInput from './components/CheckboxInput.vue'
 import Actions from './components/Actions.vue'
 

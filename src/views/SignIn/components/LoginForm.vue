@@ -1,17 +1,17 @@
 <template>
   <FormTemplate title="ورود به حساب کاربری" @submit="login">
     <template v-slot:form>
-      <input
+      <TextInput
         v-model="user.email"
         type="email"
-        class="formFormInput"
         placeholder="ایمیل خود را وارد کنید"
+        id="email"
       />
-      <input
+      <TextInput
         v-model="user.password"
         type="password"
-        class="formFormInput"
         placeholder="رمز عبور خود را وارد کنید"
+        id="password"
       />
     </template>
     <template v-slot:options>
@@ -37,12 +37,13 @@
 
 <script>
 import { showErrorNotif, showSuccessNotif } from '@/utils/notifs'
+import TextInput from '@/components/TextInput.vue'
 
 import FormTemplate from './FormTemplate.vue'
 
 export default {
   name: 'LoginForm',
-  components: { FormTemplate },
+  components: { FormTemplate, TextInput },
   data() {
     return {
       user: {
@@ -56,11 +57,15 @@ export default {
       this.$store
         .dispatch('login', this.user)
         .then(() => {
-          showSuccessNotif('با موفقیت وارد شدید. به صفحه پروفایل برده می شوید.')
+          showSuccessNotif(
+            'با موفقیت وارد شدید. به صفحه پروفایل برده می شوید.'
+          )
           this.$router.push('/user/me')
         })
         .catch(() => {
-          showErrorNotif('خطایی هنگاه ورود رخ داد. لطفا ورودی های خود را کنترل کنید')
+          showErrorNotif(
+            'خطایی هنگاه ورود رخ داد. لطفا ورودی های خود را کنترل کنید'
+          )
         })
     },
   },
