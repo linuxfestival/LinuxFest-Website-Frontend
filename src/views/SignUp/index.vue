@@ -28,7 +28,7 @@
           error="*ایمیل معتبر نمی باشد(از کیبورد انگلیسی استفاده کنید)"
         />
 
-        <CheckboxInput
+        <Checkbox
           id="checkbox"
           v-model="user.isAmirkabiri"
           label="امیرکبیری هستم"
@@ -79,55 +79,32 @@ import {
   required,
   email,
   numeric,
-  helpers,
   between,
   minLength,
   maxLength,
 } from 'vuelidate/lib/validators'
-import persianRex from 'persian-rex'
 
 import { showErrorNotif, showSuccessNotif } from '@/utils/notifs'
+import { isPersian, isPhoneValid, isPasswordValid, validateIf } from '@/utils/validators'
 import TextInput from '@/components/TextInput.vue'
+import Checkbox from '@/components/Checkbox.vue'
 
-import CheckboxInput from './components/CheckboxInput.vue'
 import Actions from './components/Actions.vue'
-
-const persianPhoneValidator = helpers.regex(
-  'persianPhoneValidator',
-  /^(\+98?)?{?(0?9[0-9]{9,9}}?)$/gm,
-)
-const passwordRegexValidator = helpers.regex(
-  'passwordRegexValidator',
-  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/,
-)
-
-const perisanRexValidator = (value) => {
-  for (const word of value.trim().split(' ')) {
-    if (!persianRex.letter.test(word)) {
-      return false
-    }
-  }
-  return true
-}
-
-const validateIf = (prop, validator) => helpers.withParams({ type: 'validatedIf', prop }, function (value, parentVm) {
-  return helpers.ref(prop, this, parentVm) ? validator(value) : true
-})
 
 export default {
   name: 'SignUp',
   components: {
     TextInput,
-    CheckboxInput,
+    Checkbox,
     Actions,
   },
   validations: {
     user: {
-      firstName: { required, perisanRexValidator },
-      lastName: { required, perisanRexValidator },
+      firstName: { required, isPersian },
+      lastName: { required, isPersian },
       email: { required, email },
-      phoneNumber: { required, numeric, persianPhoneValidator },
-      password: { required, passwordRegexValidator },
+      phoneNumber: { required, numeric, isPhoneValid },
+      password: { required, isPasswordValid },
       age: { required, between: between(15, 100) },
       studentNumber: {
         minLength: validateIf('isAmirkabiri', minLength(7)),

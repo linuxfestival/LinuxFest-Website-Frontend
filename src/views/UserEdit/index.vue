@@ -65,12 +65,12 @@ import { numeric, between, email } from 'vuelidate/lib/validators'
 import TextInput from '@/components/TextInput.vue'
 import PartialHeader from '@/components/PartialHeader'
 import { showErrorNotif, showSuccessNotif } from '@/utils/notifs'
+import { isPersian, isPasswordValid, isPhoneValid } from '@/utils/validators'
 
 import FormGroup from './components/FormGroup.vue'
 import Header from './components/Header.vue'
 import Description from './components/Description.vue'
 import { fetchUser, editUserRequest } from './requests'
-import { isPersian, isPasswordValid, isPhoneValid } from './utils'
 
 export default {
   name: 'UserEdit',

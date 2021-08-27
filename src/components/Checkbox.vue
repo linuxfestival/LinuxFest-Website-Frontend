@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  name: 'Checkbox',
   props: {
     id: String,
     checkboxClass: String,
