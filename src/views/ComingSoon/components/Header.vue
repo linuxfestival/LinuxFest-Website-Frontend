@@ -1,25 +1,25 @@
 <template>
   <section class="homeHeaderWrapper" id="homes">
-    <h2 class="homeHeader-title-horizontal">
-      {{ $t("home.header.sscPresents") }}
-    </h2>
-    <h1 class="homeHeader-title">
-      <span class="homeHeader-title-yazdahomin">
-        {{ $t("home.header.12thPeriod") }}
-      </span>
-      <br />
-      <span class="homeHeader-title-jashnvareh">
-        {{ $t("home.header.festival") }}
-      </span>
-      <br />
-      <span class="homeHeader-title-linux">
-        {{ $t("home.header.linux") }}
-      </span>
-      <br />
-      <span class="homeHeader-title-amirkabir">
-        {{ $t("home.header.amirkabir") }}
-      </span>
-    </h1>
+<!--    <h2 class="homeHeader-title-horizontal">-->
+<!--      {{ $t("home.header.sscPresents") }}-->
+<!--    </h2>-->
+<!--    <h1 class="homeHeader-title">-->
+<!--      <span class="homeHeader-title-yazdahomin">-->
+<!--        {{ $t("home.header.12thPeriod") }}-->
+<!--      </span>-->
+<!--      <br />-->
+<!--      <span class="homeHeader-title-jashnvareh">-->
+<!--        {{ $t("home.header.festival") }}-->
+<!--      </span>-->
+<!--      <br />-->
+<!--      <span class="homeHeader-title-linux">-->
+<!--        {{ $t("home.header.linux") }}-->
+<!--      </span>-->
+<!--      <br />-->
+<!--      <span class="homeHeader-title-amirkabir">-->
+<!--        {{ $t("home.header.amirkabir") }}-->
+<!--      </span>-->
+<!--    </h1>-->
     <router-link to="/" v-scroll-to="'#abouts'" class="homeHeader--startButton">
       <i class="material-icons">keyboard_arrow_down</i>
     </router-link>
@@ -39,17 +39,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    0deg,
-    rgba(41, 41, 41, 0.9),
-    rgba(41, 41, 41, 0.9)
-  ),
-  url("../../../assets/img/withEye.png") no-repeat top / 100%;
+  background: url("../../../assets/img/coming-soon.jpg") no-repeat top / 100%;
   border-bottom: 10px solid rgb(242, 169, 56);
 }
 
 .homeHeader-title {
-
   font-size: 145px;
   font-weight: bolder;
   line-height: 145px;
@@ -58,7 +52,6 @@ export default {
 
 .homeHeader-title-horizontal {
   color: white;
-
   font-size: 18px;
   text-align: center;
   writing-mode: vertical-rl;
