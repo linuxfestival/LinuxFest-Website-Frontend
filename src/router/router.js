@@ -13,6 +13,7 @@ import PaymenResult from '@/views/PaymentResult/index.vue'
 import ForgetPass from '@/views/ForgetPass/index.vue'
 import Careers from '@/views/Careers/index.vue'
 import Career from '@/views/Career/index.vue'
+import ComingSoon from '@/views/ComingSoon/index.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home,
+  },
+  {
+    path: '/coming-soon',
+    name: 'comingSoon',
+    component: ComingSoon,
   },
   {
     path: '/signup',
