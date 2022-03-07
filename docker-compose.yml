@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+
+  my-app:
+    container_name: vue-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - '8080:8080'
