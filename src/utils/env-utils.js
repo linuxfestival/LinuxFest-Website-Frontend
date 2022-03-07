@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 export function getEnv(key) {
-  const {
-    env,
-  } = process
+  // const {
+  //   env,
+  // } = process
 
-  return env[key]
+  return process.env[key]
 }
