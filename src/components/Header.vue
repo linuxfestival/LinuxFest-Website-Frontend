@@ -1,96 +1,97 @@
 <template>
-  <header class="header">
-    <nav class="mainMenu">
-      <button
-        @click="toggleMobileMenu()"
-        class="mobileMenuButton"
-        v-if="showMobileMenu"
-      >
-        <i class="material-icons">close</i>
-      </button>
-      <button @click="toggleMobileMenu()" class="mobileMenuButton" v-else>
-        <i class="material-icons">menu</i>
-      </button>
-      <router-link
-        to="/"
-        v-scroll-to="'#homes'"
-        class="mainMenu-link"
-        :class="[{ show: showMobileMenu }]"
-        >خانه
-      </router-link>
-      <div class="divider"></div>
-      <router-link
-        to="/"
-        v-scroll-to="'#abouts'"
-        class="mainMenu-link"
-        :class="[{ show: showMobileMenu }]"
-        >درباره جشنواره
-      </router-link>
-      <div class="divider"></div>
-      <router-link
-        to="/"
-        v-scroll-to="'#workshops'"
-        class="mainMenu-link"
-        :class="[{ show: showMobileMenu }]"
-        >ارائه‌ها و سخنرانی‌ها
-      </router-link>
-      <div class="divider"></div>
-      <router-link
-        to="/careers"
-        class="link profileMenu-link"
-        :class="[{ show: showMobileMenu }]"
-      >
-        فرصت های شغلی
-      </router-link>
-    </nav>
+  <span></span>
+<!--  <header class="header">-->
+<!--    <nav class="mainMenu">-->
+<!--      <button-->
+<!--        @click="toggleMobileMenu()"-->
+<!--        class="mobileMenuButton"-->
+<!--        v-if="showMobileMenu"-->
+<!--      >-->
+<!--        <i class="material-icons">close</i>-->
+<!--      </button>-->
+<!--      <button @click="toggleMobileMenu()" class="mobileMenuButton" v-else>-->
+<!--        <i class="material-icons">menu</i>-->
+<!--      </button>-->
+<!--      <router-link-->
+<!--        to="/"-->
+<!--        v-scroll-to="'#homes'"-->
+<!--        class="mainMenu-link"-->
+<!--        :class="[{ show: showMobileMenu }]"-->
+<!--        >خانه-->
+<!--      </router-link>-->
+<!--      <div class="divider"></div>-->
+<!--      <router-link-->
+<!--        to="/"-->
+<!--        v-scroll-to="'#abouts'"-->
+<!--        class="mainMenu-link"-->
+<!--        :class="[{ show: showMobileMenu }]"-->
+<!--        >درباره جشنواره-->
+<!--      </router-link>-->
+<!--      <div class="divider"></div>-->
+<!--      <router-link-->
+<!--        to="/"-->
+<!--        v-scroll-to="'#workshops'"-->
+<!--        class="mainMenu-link"-->
+<!--        :class="[{ show: showMobileMenu }]"-->
+<!--        >ارائه‌ها و سخنرانی‌ها-->
+<!--      </router-link>-->
+<!--      <div class="divider"></div>-->
+<!--      <router-link-->
+<!--        to="/careers"-->
+<!--        class="link profileMenu-link"-->
+<!--        :class="[{ show: showMobileMenu }]"-->
+<!--      >-->
+<!--        فرصت های شغلی-->
+<!--      </router-link>-->
+<!--    </nav>-->
 
-    <nav class="profileMenu">
-      <button
-        @click="toggleMobileProfile()"
-        class="mobileMenuButton"
-        v-if="showMobileProfile"
-      >
-        <i class="material-icons">close</i>
-      </button>
-      <button @click="toggleMobileProfile()" class="mobileMenuButton" v-else>
-        <i class="material-icons"> account_circle </i>
-      </button>
-      <router-link
-        to="/signin"
-        class="profileMenu-link"
-        v-if="!isLoggedIn"
-        :class="[{ show: showMobileProfile }]"
-        >ورود به حساب کاربری
-      </router-link>
-      <div class="divider" v-if="!isLoggedIn"></div>
+<!--    <nav class="profileMenu">-->
+<!--      <button-->
+<!--        @click="toggleMobileProfile()"-->
+<!--        class="mobileMenuButton"-->
+<!--        v-if="showMobileProfile"-->
+<!--      >-->
+<!--        <i class="material-icons">close</i>-->
+<!--      </button>-->
+<!--      <button @click="toggleMobileProfile()" class="mobileMenuButton" v-else>-->
+<!--        <i class="material-icons"> account_circle </i>-->
+<!--      </button>-->
+<!--      <router-link-->
+<!--        to="/signin"-->
+<!--        class="profileMenu-link"-->
+<!--        v-if="!isLoggedIn"-->
+<!--        :class="[{ show: showMobileProfile }]"-->
+<!--        >ورود به حساب کاربری-->
+<!--      </router-link>-->
+<!--      <div class="divider" v-if="!isLoggedIn"></div>-->
 
-      <router-link
-        to="/user/me"
-        class="link profileMenu-link"
-        v-if="isLoggedIn"
-        :class="[{ show: showMobileProfile }]"
-      >
-        حساب من
-      </router-link>
+<!--      <router-link-->
+<!--        to="/user/me"-->
+<!--        class="link profileMenu-link"-->
+<!--        v-if="isLoggedIn"-->
+<!--        :class="[{ show: showMobileProfile }]"-->
+<!--      >-->
+<!--        حساب من-->
+<!--      </router-link>-->
 
-      <div class="divider" v-if="isLoggedIn"></div>
-      <button
-        class="profileMenu-link singoutLink"
-        v-if="isLoggedIn"
-        @click="logout()"
-        :class="[{ show: showMobileProfile }]"
-      >
-        خروج
-      </button>
-      <div class="divider" v-if="isLoggedIn"></div>
-      <router-link
-        to="/registerworkshop"
-        class="profileMenu-link registerLink"
-        :class="[{ show: showMobileProfile }]"
-        >ثبت نام ارائه‌ها
-      </router-link>
-    </nav>
-  </header>
+<!--      <div class="divider" v-if="isLoggedIn"></div>-->
+<!--      <button-->
+<!--        class="profileMenu-link singoutLink"-->
+<!--        v-if="isLoggedIn"-->
+<!--        @click="logout()"-->
+<!--        :class="[{ show: showMobileProfile }]"-->
+<!--      >-->
+<!--        خروج-->
+<!--      </button>-->
+<!--      <div class="divider" v-if="isLoggedIn"></div>-->
+<!--      <router-link-->
+<!--        to="/registerworkshop"-->
+<!--        class="profileMenu-link registerLink"-->
+<!--        :class="[{ show: showMobileProfile }]"-->
+<!--        >ثبت نام ارائه‌ها-->
+<!--      </router-link>-->
+<!--    </nav>-->
+<!--  </header>-->
 </template>
 
 <script>
