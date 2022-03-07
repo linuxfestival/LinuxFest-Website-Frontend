@@ -40,7 +40,7 @@ export default {
   align-items: center;
   justify-content: center;
   min-height: 500px;
-  background: #521c34;
+  background: #252040;
 }
 
 .aboutEventContainer {

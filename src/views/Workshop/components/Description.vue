@@ -83,7 +83,7 @@ export default {
 .workshopContentDescription-title {
   margin-top: 10px;
 
-  color: #e4b22b;
+  color: #fcc113;
   display: flex;
   align-items: center;
 }
@@ -102,7 +102,7 @@ export default {
 
 .timeline-title {
 
-  color: #e4b22b;
+  color: #fcc113;
   margin-right: 30px;
   margin-top: 10px;
 }

@@ -33,7 +33,7 @@ export default {
 
 .infoBoxHeader-line {
   height: 4px;
-  background-color: #e4b22b;
+  background-color: #fcc113;
   justify-self: stretch;
   width: 100px;
 }

@@ -24,12 +24,12 @@ export default {
 .careerDescription {
   position: relative;
   color: white;
-  background-color: #521c34;
+  background-color: #252040;
   border-radius: 15px;
   min-width: 300px;
   min-height: 200px;
   max-width: 400px;
-  border: 3px solid #e4b22b;
+  border: 3px solid #fcc113;
   padding: 20px;
   font-size: 20px;
   margin: 20px;

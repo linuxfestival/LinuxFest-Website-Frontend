@@ -30,7 +30,7 @@ export default {
   align-items: center;
   justify-content: center;
   min-height: 500px;
-  background: #521c34 url(../../../assets/img/pinguin.png) no-repeat left / 50%;
+  background: #252040 url(../../../assets/img/pinguin.png) no-repeat left / 50%;
 }
 
 .aboutEventContainer {

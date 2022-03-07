@@ -182,7 +182,7 @@ export default {
 }
 
 .formGroup button {
-  background: #521c34;
+  background: #252040;
   border: none;
   color: white;
   padding: 10px 30px;

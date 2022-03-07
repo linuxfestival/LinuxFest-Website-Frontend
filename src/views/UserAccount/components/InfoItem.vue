@@ -32,7 +32,7 @@ export default {
 }
 
 .infoItemContent {
-  color: #e4b22b;
+  color: #fcc113;
   font-size: 17px;
   font-weight: bold;
   margin-right: 5px;

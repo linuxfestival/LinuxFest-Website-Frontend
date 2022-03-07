@@ -53,9 +53,9 @@ export default {
 }
 
 .workshopTeachersDescription {
-  background-color: #521c34;
+  background-color: #252040;
   border-radius: 0 15px 15px 0;
-  border-left: 3px solid #e4b22b;
+  border-left: 3px solid #fcc113;
   padding-left: 70px;
   width: 25%;
   padding-bottom: 110px;
@@ -74,7 +74,7 @@ export default {
 
 .workshopTeachersDescription-title {
 
-  color: #e4b22b;
+  color: #fcc113;
 }
 
 .teacherDescription {
@@ -90,7 +90,7 @@ export default {
 }
 
 .teacherDescription-name {
-  color: #e4b22b;
+  color: #fcc113;
   font-weight: bold;
 
   display: flex;

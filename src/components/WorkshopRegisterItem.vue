@@ -84,7 +84,7 @@ export default {
   cursor: default;
 }
 .workshopRegItemContent.selected {
-  background-color: #e4b22b;
+  background-color: #fcc113;
 }
 .workshopRegItemImage {
   height: 65px;
@@ -124,18 +124,18 @@ export default {
   text-align: center;
 }
 .workshopRegItemContent:hover {
-  background-color: #521c34;
+  background-color: #252040;
 }
 .workshopRegItemContent:hover .workshopRegItemTitle,
 .workshopRegItemContent:hover .workshopRegItemPrice {
-  color: #e4b22b;
+  color: #fcc113;
 }
 .workshopRegItemContent:hover .workshopRegItemMoreButton {
-  background-color: #e4b22b;
+  background-color: #fcc113;
   color: white;
 }
 .workshopRegItemContent:hover .workshopRegItemImage {
-  border-left-color: #e4b22b;
+  border-left-color: #fcc113;
 }
 i.material-icons.selectedIcon {
   position: absolute;

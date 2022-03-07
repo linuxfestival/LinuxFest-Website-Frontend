@@ -13,7 +13,7 @@ export default {
 
 <style scoped>
 .formDescription {
-  color: #521c34;
+  color: #252040;
   margin: 10px;
 
 }

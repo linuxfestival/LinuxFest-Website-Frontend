@@ -37,7 +37,7 @@ export default {
   height: 140px;
   border-radius: 50%;
   margin-right: -20px;
-  border: 3px solid #e4b22b;
+  border: 3px solid #fcc113;
   margin-top: 30px;
   margin-bottom: 10px;
 }

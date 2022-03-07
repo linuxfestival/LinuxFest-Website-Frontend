@@ -119,7 +119,7 @@ export default {
 
   text-decoration: none;
   color: white;
-  background-color: #e4b22b;
+  background-color: #fcc113;
   border-radius: 5px;
   padding: 5px 25px;
 }
@@ -140,7 +140,7 @@ export default {
   text-decoration: none;
   margin-top: 30px;
   color: white;
-  background-color: #e4b22b;
+  background-color: #fcc113;
   align-self: center;
   padding: 5px 20px;
   border-radius: 5px;

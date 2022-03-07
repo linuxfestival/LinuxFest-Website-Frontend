@@ -25,7 +25,7 @@ export default {
   display: flex;
   align-items: center;
 
-  color: #521c34;
+  color: #252040;
   margin: 10px;
 }
 
@@ -35,7 +35,7 @@ export default {
 
 .formHeader-line {
   height: 3px;
-  background-color: #e4b22b;
+  background-color: #fcc113;
   width: calc(100% - 300px);
 }
 

@@ -89,7 +89,7 @@ export default {
   font-size: 30px;
 }
 .info-button {
-  background-color: #e4b22b;
+  background-color: #fcc113;
   border-radius: 5px;
   border: none;
   margin-top: 15px;

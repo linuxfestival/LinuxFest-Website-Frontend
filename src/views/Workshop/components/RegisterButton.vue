@@ -23,7 +23,7 @@ export default {
 
 <style scoped>
 .registerButton {
-  background-color: #e4b22b;
+  background-color: #fcc113;
   color: white;
   text-decoration: none;
   font-size: 20px;

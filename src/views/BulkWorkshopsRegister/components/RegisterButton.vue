@@ -27,7 +27,7 @@ export default {
   margin-top: 20px;
   padding: 5px 30px;
 
-  background-color: #521c34;
+  background-color: #252040;
   color: white;
   cursor: pointer;
   border-radius: 5px;
