@@ -3,15 +3,12 @@
     <div class="aboutEventContainer">
       <h1 class="aboutEvent-title">
         <i class="material-icons">keyboard_arrow_left</i>
-        {{ $t("home.about.linuxFest") }}
+        {{ $t('home.about.linuxFest') }}
       </h1>
       <p class="aboutEvent-description">
-        {{ $t("home.about.linuxFestFull") }}
+        {{ $t('home.about.linuxFestFull') }}
       </p>
     </div>
-    <router-link to="/" v-scroll-to="'#workshops'" class="about--startButton">
-      <i class="material-icons">keyboard_arrow_down</i>
-    </router-link>
   </section>
 </template>
 

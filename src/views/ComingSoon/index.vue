@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Header />
-    <AboutEvent />
+    <Header/>
+    <AboutEvent/>
   </div>
 </template>
 
