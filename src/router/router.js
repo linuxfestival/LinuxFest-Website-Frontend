@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import store from '@/store/store'
-import Home from '@/views/Home/index.vue'
+// import Home from '@/views/Home/index.vue'
 import SignUp from '../views/SignUp/index.vue'
 import SignIn from '@/views/SignIn/index.vue'
 import UserAccount from '@/views/UserAccount/index.vue'
@@ -18,13 +18,13 @@ import ComingSoon from '@/views/ComingSoon/index.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  // {
+  //   path: '/',
+  //   name: 'home',
+  //   component: Home,
+  // },
   {
     path: '/',
-    name: 'home',
-    component: Home,
-  },
-  {
-    path: '/coming-soon',
     name: 'comingSoon',
     component: ComingSoon,
   },
