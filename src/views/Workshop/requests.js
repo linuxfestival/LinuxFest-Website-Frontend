@@ -1,6 +1,6 @@
 import http from '@/services/http'
 
-import { API, BASE_URL } from '@/configs/urls'
+import { API } from '@/configs/urls'
 
 const config = {
   withToken: true,
@@ -9,10 +9,10 @@ const config = {
 function transformTeacher({
   fullName,
   description,
-  picUrl,
   _id: id,
 }) {
-  const avatar = `${BASE_URL}${picUrl}`
+  // const avatar = `${BASE_URL}${picUrl}`
+  const avatar = `${API}/teachers/pic/${id}`
   return {
     fullName, description, avatar, id,
   }
