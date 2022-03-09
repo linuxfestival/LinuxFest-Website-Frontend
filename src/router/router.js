@@ -3,81 +3,81 @@ import VueRouter from 'vue-router'
 
 import store from '@/store/store'
 // import Home from '@/views/Home/index.vue'
-import SignUp from '../views/SignUp/index.vue'
-import SignIn from '@/views/SignIn/index.vue'
-import UserAccount from '@/views/UserAccount/index.vue'
-import Workshop from '@/views/Workshop/index.vue'
-import UserEdit from '@/views/UserEdit/index.vue'
-import BulkWorkshopsRegister from '@/views/BulkWorkshopsRegister/index.vue'
-import PaymenResult from '@/views/PaymentResult/index.vue'
-import ForgetPass from '@/views/ForgetPass/index.vue'
-import Careers from '@/views/Careers/index.vue'
-import Career from '@/views/Career/index.vue'
+// import SignUp from '../views/SignUp/index.vue'
+// import SignIn from '@/views/SignIn/index.vue'
+// import UserAccount from '@/views/UserAccount/index.vue'
+// import Workshop from '@/views/Workshop/index.vue'
+// import UserEdit from '@/views/UserEdit/index.vue'
+// import BulkWorkshopsRegister from '@/views/BulkWorkshopsRegister/index.vue'
+// import PaymenResult from '@/views/PaymentResult/index.vue'
+// import ForgetPass from '@/views/ForgetPass/index.vue'
+// import Careers from '@/views/Careers/index.vue'
+// import Career from '@/views/Career/index.vue'
 import ComingSoon from '@/views/ComingSoon/index.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: Home,
-  // },
   {
     path: '/',
     name: 'comingSoon',
     component: ComingSoon,
   },
-  {
-    path: '/signup',
-    name: 'signup',
-    component: SignUp,
-  },
-  {
-    path: '/signin',
-    name: 'signin',
-    component: SignIn,
-  },
-  {
-    path: '/user/me',
-    name: 'userProfile',
-    component: UserAccount,
-  },
-  {
-    path: '/user/edit',
-    name: 'userEdit',
-    component: UserEdit,
-  },
-  {
-    path: '/workshops/:id',
-    name: 'workshop',
-    component: Workshop,
-  },
-  {
-    path: '/registerworkshop',
-    name: 'workshopsRegister',
-    component: BulkWorkshopsRegister,
-  },
-  {
-    path: '/careers',
-    name: 'careers',
-    component: Careers,
-  },
-  {
-    path: '/careers/:id',
-    name: 'careersItem',
-    component: Career,
-  },
-  {
-    path: '/user/forget/:forgetToken',
-    name: 'forget',
-    component: ForgetPass,
-  },
-  {
-    path: '/payment/result/',
-    name: 'confirmPayment',
-    component: PaymenResult,
-  },
+  // {
+  //   path: '/',
+  //   name: 'home',
+  //   component: Home,
+  // },
+  // {
+  //   path: '/signup',
+  //   name: 'signup',
+  //   component: SignUp,
+  // },
+  // {
+  //   path: '/signin',
+  //   name: 'signin',
+  //   component: SignIn,
+  // },
+  // {
+  //   path: '/user/me',
+  //   name: 'userProfile',
+  //   component: UserAccount,
+  // },
+  // {
+  //   path: '/user/edit',
+  //   name: 'userEdit',
+  //   component: UserEdit,
+  // },
+  // {
+  //   path: '/workshops/:id',
+  //   name: 'workshop',
+  //   component: Workshop,
+  // },
+  // {
+  //   path: '/registerworkshop',
+  //   name: 'workshopsRegister',
+  //   component: BulkWorkshopsRegister,
+  // },
+  // {
+  //   path: '/careers',
+  //   name: 'careers',
+  //   component: Careers,
+  // },
+  // {
+  //   path: '/careers/:id',
+  //   name: 'careersItem',
+  //   component: Career,
+  // },
+  // {
+  //   path: '/user/forget/:forgetToken',
+  //   name: 'forget',
+  //   component: ForgetPass,
+  // },
+  // {
+  //   path: '/payment/result/',
+  //   name: 'confirmPayment',
+  //   component: PaymenResult,
+  // },
 ]
 
 const router = new VueRouter({
