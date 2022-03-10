@@ -34,6 +34,17 @@
         :class="[{ show: showMobileMenu }]"
         >ارائه‌ها و سخنرانی‌ها
       </router-link>
+
+      <!-- teachers section -->
+      <div class="divider"></div>
+      <router-link
+        to="/teachers"
+        class="mainMenu-link"
+        :class="[{ show: showMobileMenu }]"
+        >
+        ارائه‌دهندگان
+      </router-link>
+
       <div class="divider"></div>
       <router-link
         to="/careers"
