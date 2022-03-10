@@ -189,7 +189,7 @@ function toggle_btn_text(ele, index) {
   icon_element = document.getElementById(icon_element);
 
   // console.log('area element id = ' + ele.innerHTML);
-  if (String(detail_element?.innerHTML).trim() === "توضیحات بیشتر") {
+  if (String(detail_element.innerHTML).trim() === "توضیحات بیشتر") {
     detail_element.innerHTML = "بستن";
     icon_element.classList.remove("bx-chevron-down");
     icon_element.classList.add("bx-chevron-up");
