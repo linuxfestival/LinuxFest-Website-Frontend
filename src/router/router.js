@@ -7,7 +7,7 @@ import SignUp from '../views/SignUp/index.vue'
 import SignIn from '@/views/SignIn/index.vue'
 import UserAccount from '@/views/UserAccount/index.vue'
 import Workshop from '@/views/Workshop/index.vue'
-import Teacher from '@/views/Teacher/index.vue'
+import Teachers from '@/views/Teachers/index.vue'
 import UserEdit from '@/views/UserEdit/index.vue'
 import BulkWorkshopsRegister from '@/views/BulkWorkshopsRegister/index.vue'
 import PaymenResult from '@/views/PaymentResult/index.vue'
@@ -51,7 +51,7 @@ const routes = [
   {
     path: '/teachers/',
     name: 'teachers',
-    component: Teacher,
+    component: Teachers,
   },
   {
     path: '/registerworkshop',
