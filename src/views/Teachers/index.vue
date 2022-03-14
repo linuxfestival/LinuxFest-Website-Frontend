@@ -45,6 +45,7 @@ export default {
   border-radius: 12px;
   /* max-width: 900px; */
   margin: 20px;
+  margin-top:80px;
 }
 
 .top {
