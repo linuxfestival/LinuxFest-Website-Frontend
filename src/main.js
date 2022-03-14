@@ -13,7 +13,7 @@ import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from '@fort
 import App from './App.vue'
 import router from './router/router'
 import store from './store/store'
-
+import Teacher from '@/views/Teachers/components/Teacher.vue'
 import fa from './locales/fa.json'
 
 library.add(
@@ -26,6 +26,8 @@ library.add(
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('font-awesome-layers', FontAwesomeLayers)
 Vue.component('font-awesome-layers-text', FontAwesomeLayersText)
+
+Vue.component('Teacher', Teacher)
 
 const vueScrollToConfig = {
   container: 'body',
