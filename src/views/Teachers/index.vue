@@ -27,8 +27,8 @@
 // } from 'vuelidate/lib/validators'
 
 import Teacher from './components/Teacher.vue'
-import {showErrorNotif} from '@/utils/notifs'
-import {fetchTeachers} from '@/views/Teachers/requests'
+// import {showErrorNotif} from '@/utils/notifs'
+// import {fetchTeachers} from '@/views/Teachers/requests'
 
 export default {
   name: 'Teachers',
@@ -36,22 +36,41 @@ export default {
   data() {
     return {
       isLoading: true,
-      teachers: [],
+      teachers: [
+        {
+          'teacher': {
+            '_id': '622a4d9edaf9ef56668c3971',
+            'fullName': 'علی نوروزیییییهه',
+            'fullName_en': 'new teacher',
+            'description': 'توضحات نورزیه۲',
+            'description_en': 'In english',
+            'affiliation': 'دانشگاه صنعتی امیرکبیر',
+            'affiliation_en': 'AUT',
+            'field': 'ریاضی فیزیک',
+            'field_en': 'MATH',
+            'createdAt': '2022-03-10T19:12:30.151Z',
+            'updatedAt': '2022-03-10T19:12:41.541Z',
+            '__v': 0,
+            'picUrl': '/api/teachers/pic/622a4d9edaf9ef56668c3971'
+          },
+          'workshops': []
+        }
+      ],
     }
   },
 
-  created() {
-    fetchTeachers()
-      .then((teachers) => {
-        this.teachers = teachers
-      })
-      .catch(() => {
-        showErrorNotif()
-      })
-      .finally(() => {
-        this.isLoading = false
-      })
-  },
+  // created() {
+  //   fetchTeachers()
+  //     .then((teachers) => {
+  //       this.teachers = teachers
+  //     })
+  //     .catch(() => {
+  //       showErrorNotif()
+  //     })
+  //     .finally(() => {
+  //       this.isLoading = false
+  //     })
+  // },
 }
 </script>
 
