@@ -143,7 +143,7 @@ export default {
 
 <style scoped>
 .header {
-  background-color: #521c34;
+  background-color: #252040;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -157,7 +157,7 @@ export default {
 }
 
 .registerLink {
-  background-color: #e4b22b;
+  background-color: #fcc113;
   border-radius: 5px;
   border: none;
   padding: 5px 10px 5px 10px;
@@ -199,14 +199,14 @@ export default {
 }
 
 .divider {
-  border-left: 2px solid #e4b22b;
+  border-left: 2px solid #fcc113;
   width: 1px;
   margin: 0 3px 0 3px;
 }
 
 .registerLink,
 .singoutLink {
-  background-color: #e4b22b;
+  background-color: #fcc113;
   border-radius: 5px;
   border: none;
   padding: 5px 10px 5px 10px;

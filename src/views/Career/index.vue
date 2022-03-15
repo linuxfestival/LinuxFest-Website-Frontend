@@ -6,7 +6,7 @@
       <div class="careerContent">
         {{ company.description }}
       </div>
-      <h1 style="border-bottom: #521c34 solid 1px; padding-bottom: 4px">
+      <h1 style="border-bottom: #252040 solid 1px; padding-bottom: 4px">
         فرصت های شغلی این شرکت
       </h1>
       <div class="jobOpportunity">
@@ -92,7 +92,7 @@ export default {
 }
 
 .title {
-  color: #e4b22b;
+  color: #fcc113;
 }
 .careerDescription a {
   left: 30px;
@@ -103,6 +103,6 @@ export default {
   float: left;
 }
 .careerDescription a:hover {
-  color: #e4b22b;
+  color: #fcc113;
 }
 </style>

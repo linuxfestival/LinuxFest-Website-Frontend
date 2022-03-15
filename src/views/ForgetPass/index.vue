@@ -88,7 +88,7 @@ export default {
 
 .formTitle {
   margin-bottom: 10px;
-  color: #521c34;
+  color: #252040;
 }
 
 .formForm {
@@ -111,7 +111,7 @@ export default {
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
-  background-color: #521c34;
+  background-color: #252040;
   color: white;
   cursor: pointer;
 }

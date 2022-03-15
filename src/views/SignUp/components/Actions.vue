@@ -33,7 +33,7 @@ export default {
 }
 
 button {
-  background-color: #521c34;
+  background-color: #252040;
   border-radius: 5px;
   border: none;
   padding: 12px 32px 12px 32px;
@@ -48,7 +48,7 @@ button:hover {
 }
 
 .bottom p {
-  color: #521c34;
+  color: #252040;
   text-align: right;
   font-size: 13px;
 }

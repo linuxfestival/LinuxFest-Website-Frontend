@@ -80,7 +80,7 @@ export default {
 
 .workshop-item:hover {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-  background-color: #521c34;
+  background-color: #252040;
 }
 
 .workshop-item:hover > .workshop-item--info {

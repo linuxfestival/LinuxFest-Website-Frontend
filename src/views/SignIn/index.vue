@@ -75,7 +75,7 @@ export default {
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
-  background-color: #521c34;
+  background-color: #252040;
   color: white;
   cursor: pointer;
 
@@ -89,6 +89,6 @@ export default {
 }
 
 .optionButton:hover {
-  color: #521c34;
+  color: #252040;
 }
 </style>

@@ -188,7 +188,7 @@ export default {
 
 .subject h1 {
   text-align: center;
-  color: #521c34;
+  color: #252040;
 
   margin-bottom: 32px;
 }

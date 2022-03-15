@@ -7,7 +7,7 @@
       <Timeline>
         <TimelineItem
           v-for="item in timeline"
-          bg-color="#e4b22b"
+          bg-color="#fcc113"
           class="time"
           :key="item.id"
           font-color="#ddd"
@@ -50,7 +50,7 @@ export default {
   padding: 30px;
   display: flex;
   flex-direction: column;
-  background: #521c34;
+  background: #252040;
   font-size: 20px;
 
 }

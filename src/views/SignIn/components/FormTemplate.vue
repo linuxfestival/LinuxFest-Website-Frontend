@@ -37,7 +37,7 @@ export default {
 .formTitle {
 
   margin-bottom: 10px;
-  color: #521c34;
+  color: #252040;
 }
 
 .formForm {
