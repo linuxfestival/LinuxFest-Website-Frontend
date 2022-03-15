@@ -98,34 +98,12 @@
 
 <script>
 export default {
-  name: 'Teacher'
+  name: 'Teacher',
+  props: ['teacher']
 }
 </script>
 
 <style scoped>
-.back {
-  background-color: rgb(216, 206, 206);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - 50px);
-}
-
-.main-frame {
-  background-color: white;
-  padding: 24px;
-  border-radius: 12px;
-  /* max-width: 900px; */
-  margin: 20px;
-}
-
-.top {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: right;
-}
-
 .lecture-subject h1 {
   text-align: center;
   color: #521c34;
@@ -133,28 +111,7 @@ export default {
   font-size: 30px;
 }
 
-/*notification*/
-.noti-style {
-  padding: 0px;
-  margin: 0px 5px 5px;
-  font-size: 15px;
-}
-
-.d-none {
-  display: none;
-}
-
 v-none {
   visibility: hidden;
-}
-
-.aut_check {
-  margin: 3px;
-}
-
-.lecture-header {
-  font-size: 30px;
-  text-align: center;
-  margin-bottom: 30px;
 }
 </style>
