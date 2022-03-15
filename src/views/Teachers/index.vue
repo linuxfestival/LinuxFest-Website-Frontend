@@ -10,7 +10,11 @@
         <div class="container">
           <!-- TODO set data-aos="slide-left" after test -->
           <div id="accordion-0" class="shadow-sm mb-5" data-aos="fade-out">
-            <Teacher/>
+            <Teacher
+              v-for="teacher in teachers"
+              :teacher="teacher"
+              :key="teacher.id"
+            />
           </div>
         </div>
       </div>
@@ -23,10 +27,31 @@
 // } from 'vuelidate/lib/validators'
 
 import Teacher from './components/Teacher.vue'
+import {showErrorNotif} from '@/utils/notifs'
+import {fetchTeachers} from '@/views/Teachers/requests'
 
 export default {
   name: 'Teachers',
   components: {Teacher},
+  data() {
+    return {
+      isLoading: true,
+      teachers: [],
+    }
+  },
+
+  created() {
+    fetchTeachers()
+      .then((teachers) => {
+        this.teachers = teachers
+      })
+      .catch(() => {
+        showErrorNotif()
+      })
+      .finally(() => {
+        this.isLoading = false
+      })
+  },
 }
 </script>
 
@@ -45,7 +70,7 @@ export default {
   border-radius: 12px;
   /* max-width: 900px; */
   margin: 20px;
-  margin-top:80px;
+  margin-top: 80px;
 }
 
 .top {
