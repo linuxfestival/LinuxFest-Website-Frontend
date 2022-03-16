@@ -12,8 +12,8 @@
           <div id="accordion-0" class="shadow-sm mb-5" data-aos="fade-out">
             <Teacher
               v-for="teacher in teachers"
-              :teacher="teacher"
-              :key="teacher.id"
+              :teacher="teacher.teacher"
+              :key="teacher.teacher.id"
             />
           </div>
         </div>
@@ -27,8 +27,8 @@
 // } from 'vuelidate/lib/validators'
 
 import Teacher from './components/Teacher.vue'
-// import {showErrorNotif} from '@/utils/notifs'
-// import {fetchTeachers} from '@/views/Teachers/requests'
+import {showErrorNotif} from '@/utils/notifs'
+import {fetchTeachers} from '@/views/Teachers/requests'
 
 export default {
   name: 'Teachers',
@@ -36,41 +36,22 @@ export default {
   data() {
     return {
       isLoading: true,
-      teachers: [
-        {
-          'teacher': {
-            '_id': '622a4d9edaf9ef56668c3971',
-            'fullName': 'علی نوروزیییییهه',
-            'fullName_en': 'new teacher',
-            'description': 'توضحات نورزیه۲',
-            'description_en': 'In english',
-            'affiliation': 'دانشگاه صنعتی امیرکبیر',
-            'affiliation_en': 'AUT',
-            'field': 'ریاضی فیزیک',
-            'field_en': 'MATH',
-            'createdAt': '2022-03-10T19:12:30.151Z',
-            'updatedAt': '2022-03-10T19:12:41.541Z',
-            '__v': 0,
-            'picUrl': '/api/teachers/pic/622a4d9edaf9ef56668c3971'
-          },
-          'workshops': []
-        }
-      ],
+      teachers: [],
     }
   },
-
-  // created() {
-  //   fetchTeachers()
-  //     .then((teachers) => {
-  //       this.teachers = teachers
-  //     })
-  //     .catch(() => {
-  //       showErrorNotif()
-  //     })
-  //     .finally(() => {
-  //       this.isLoading = false
-  //     })
-  // },
+  created() {
+    fetchTeachers()
+      .then((teachers) => {
+        console.log(teachers)
+        this.teachers = teachers
+      })
+      .catch(() => {
+        showErrorNotif()
+      })
+      .finally(() => {
+        this.isLoading = false
+      })
+  },
 }
 </script>
 
@@ -131,28 +112,3 @@ v-none {
   margin-bottom: 30px;
 }
 </style>
-<script>
-function openInNewTab(url) {
-  window.open(url, '_blank').focus()
-}
-
-function toggle_btn_text(ele, index) {
-  let detail_element = 'btn-collapse-detail-' + index
-  detail_element = document.getElementById(detail_element)
-
-  let icon_element = 'btn-collapse-icon-' + index
-  icon_element = document.getElementById(icon_element)
-
-  // console.log('area element id = ' + ele.innerHTML);
-  if (String(detail_element.innerHTML).trim() === 'توضیحات بیشتر') {
-    detail_element.innerHTML = 'بستن'
-    icon_element.classList.remove('bx-chevron-down')
-    icon_element.classList.add('bx-chevron-up')
-  } else {
-    detail_element.innerHTML = 'توضیحات بیشتر'
-    icon_element.classList.remove('bx-chevron-up')
-    icon_element.classList.add('bx-chevron-down')
-  }
-}
-</script>
-
