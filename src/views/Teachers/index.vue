@@ -27,8 +27,8 @@
 // } from 'vuelidate/lib/validators'
 
 import Teacher from './components/Teacher.vue'
-// import {showErrorNotif} from '@/utils/notifs'
-// import {fetchTeachers} from '@/views/Teachers/requests'
+import {showErrorNotif} from '@/utils/notifs'
+import {fetchTeachers} from '@/views/Teachers/requests'
 
 export default {
   name: 'Teachers',
@@ -59,18 +59,18 @@ export default {
     }
   },
 
-  // created() {
-  //   fetchTeachers()
-  //     .then((teachers) => {
-  //       this.teachers = teachers
-  //     })
-  //     .catch(() => {
-  //       showErrorNotif()
-  //     })
-  //     .finally(() => {
-  //       this.isLoading = false
-  //     })
-  // },
+  created() {
+    fetchTeachers()
+      .then((teachers) => {
+        this.teachers = teachers
+      })
+      .catch(() => {
+        showErrorNotif()
+      })
+      .finally(() => {
+        this.isLoading = false
+      })
+  },
 }
 
 // eslint-disable-next-line no-unused-vars
