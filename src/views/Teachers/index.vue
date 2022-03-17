@@ -9,13 +9,12 @@
       <div>
         <div class="container">
           <!-- TODO set data-aos="slide-left" after test -->
-          <div id="accordion-0" class="shadow-sm mb-5" data-aos="fade-out">
             <Teacher
               v-for="teacher in teachers"
               :teacher="teacher.teacher"
               :key="teacher.teacher.id"
             />
-          </div>
+          <!-- </div> -->
         </div>
       </div>
     </div>
@@ -42,6 +41,7 @@ export default {
   created() {
     fetchTeachers()
       .then((teachers) => {
+        console.log(teachers)
         this.teachers = teachers
       })
       .catch(() => {
