@@ -5,7 +5,7 @@
     </h2>
     <h1 class="homeHeader-title">
       <span class="homeHeader-title-yazdahomin">
-        {{ $t("home.header.12thPeriod") }}
+        {{ $t("home.header.13thPeriod") }}
       </span>
       <br />
       <span class="homeHeader-title-jashnvareh">
