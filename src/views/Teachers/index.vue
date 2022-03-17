@@ -12,7 +12,7 @@
           <div id="accordion-0" class="shadow-sm mb-5" data-aos="fade-out">
             <Teacher
               v-for="teacher in teachers"
-              :teacher="teacher"
+              :teacher="teacher.teacher"
               :key="teacher.id"
             />
           </div>
@@ -71,6 +71,31 @@ export default {
   //       this.isLoading = false
   //     })
   // },
+}
+
+// eslint-disable-next-line no-unused-vars
+function openInNewTab(url) {
+  window.open(url, '_blank').focus()
+}
+
+// eslint-disable-next-line no-unused-vars
+function toggle_btn_text(ele, index) {
+  let detail_element = 'btn-collapse-detail-' + index
+  detail_element = document.getElementById(detail_element)
+
+  let icon_element = 'btn-collapse-icon-' + index
+  icon_element = document.getElementById(icon_element)
+
+  // console.log('area element id = ' + ele.innerHTML);
+  if (String(detail_element.innerHTML).trim() === 'توضیحات بیشتر') {
+    detail_element.innerHTML = 'بستن'
+    icon_element.classList.remove('bx-chevron-down')
+    icon_element.classList.add('bx-chevron-up')
+  } else {
+    detail_element.innerHTML = 'توضیحات بیشتر'
+    icon_element.classList.remove('bx-chevron-up')
+    icon_element.classList.add('bx-chevron-down')
+  }
 }
 </script>
 
@@ -131,28 +156,3 @@ v-none {
   margin-bottom: 30px;
 }
 </style>
-<script>
-function openInNewTab(url) {
-  window.open(url, '_blank').focus()
-}
-
-function toggle_btn_text(ele, index) {
-  let detail_element = 'btn-collapse-detail-' + index
-  detail_element = document.getElementById(detail_element)
-
-  let icon_element = 'btn-collapse-icon-' + index
-  icon_element = document.getElementById(icon_element)
-
-  // console.log('area element id = ' + ele.innerHTML);
-  if (String(detail_element.innerHTML).trim() === 'توضیحات بیشتر') {
-    detail_element.innerHTML = 'بستن'
-    icon_element.classList.remove('bx-chevron-down')
-    icon_element.classList.add('bx-chevron-up')
-  } else {
-    detail_element.innerHTML = 'توضیحات بیشتر'
-    icon_element.classList.remove('bx-chevron-up')
-    icon_element.classList.add('bx-chevron-down')
-  }
-}
-</script>
-
