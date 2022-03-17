@@ -42,7 +42,6 @@ export default {
   created() {
     fetchTeachers()
       .then((teachers) => {
-        console.log(teachers)
         this.teachers = teachers
       })
       .catch(() => {
@@ -52,6 +51,7 @@ export default {
         this.isLoading = false
       })
   },
+
 }
 </script>
 
