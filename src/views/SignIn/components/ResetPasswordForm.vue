@@ -45,7 +45,8 @@ export default {
   methods: {
     forgetPasswordRequest() {
       console.log('forget password request')
-      sendResetPasswordRequest(this.user)
+      console.log(this.email)
+      sendResetPasswordRequest(this.email)
         .then(() => {
           showSuccessNotif('ایمیل خود را برای ادامه مراحل چک کنید..')
         })

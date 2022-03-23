@@ -48,6 +48,6 @@ export function fetchWorkshops() {
   return http.get(`${API}/workshops`, config).then(transformWorkshopsResponse)
 }
 
-export function sendResetPasswordRequest(user) {
-  return http.post(`${API}/users/forget`, user)
+export function sendResetPasswordRequest(email) {
+  return http.post(`${API}/users/forget`, {email: email})
 }
