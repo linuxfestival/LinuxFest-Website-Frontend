@@ -1,15 +1,15 @@
 <template>
-  <div class="back" dir="ltr">
+  <div class="back">
     <!-- <notifications position="top center" class="noti-style" /> -->
     <div class="main-frame col-lg-8">
       <div class="lecture-subject">
-        <h1>Lecturers</h1>
+        <h1>ارائه دهندگان</h1>
       </div>
       <hr/>
       <div>
         <div class="container">
           <!-- TODO set data-aos="slide-left" after test -->
-            <TeacherEN
+            <Teacher
               v-for="teacher in teachers"
               :teacher="teacher.teacher"
               :key="teacher.teacher.id"
@@ -25,13 +25,13 @@
 // import {
 // } from 'vuelidate/lib/validators'
 
-import TeacherEN from './components/TeacherEN.vue'
+import Teacher from './components/Teacher.vue'
 import {showErrorNotif} from '@/utils/notifs'
 import {fetchTeachers} from '@/views/Teachers/requests'
 
 export default {
-  name: 'Teachers_en',
-  components: {TeacherEN},
+  name: 'Teachers',
+  components: {Teacher},
   data() {
     return {
       isLoading: true,

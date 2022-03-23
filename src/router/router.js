@@ -8,6 +8,7 @@ import SignIn from '@/views/SignIn/index.vue'
 import UserAccount from '@/views/UserAccount/index.vue'
 import Workshop from '@/views/Workshop/index.vue'
 import Teachers from '@/views/Teachers/index.vue'
+import Teachers_fa from '@/views/Teachers/index_fa.vue'
 import UserEdit from '@/views/UserEdit/index.vue'
 import BulkWorkshopsRegister from '@/views/BulkWorkshopsRegister/index.vue'
 import PaymenResult from '@/views/PaymentResult/index.vue'
@@ -52,6 +53,11 @@ const routes = [
     path: '/teachers/',
     name: 'teachers',
     component: Teachers,
+  },
+  {
+    path: '/teachers_fa/',
+    name: 'teachers_fa',
+    component: Teachers_fa,
   },
   {
     path: '/registerworkshop',
