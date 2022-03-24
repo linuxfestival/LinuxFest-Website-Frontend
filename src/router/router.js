@@ -40,6 +40,11 @@ const routes = [
     component: UserAccount,
   },
   {
+    path: '/user/undefined',
+    name: 'userProfile',
+    component: UserAccount,
+  },
+  {
     path: '/user/edit',
     name: 'userEdit',
     component: UserEdit,
