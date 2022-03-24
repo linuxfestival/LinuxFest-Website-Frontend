@@ -20,7 +20,7 @@
 
     <div class="workshopsListFooter">
       <SelectedWorkshops :count="selectedWorkshops.length" />
-      <DiscountCard @input="(newValue ) => discountCode = newValue" />
+<!--      <DiscountCard @input="(newValue ) => discountCode = newValue" />-->
       <RegisterButton @register="register" :disabled="isLoading" />
     </div>
   </div>
@@ -32,7 +32,7 @@ import PartialHeader from '@/components/PartialHeader'
 import { showErrorNotif, showSuccessNotif } from '@/utils/notifs'
 
 import SelectedWorkshops from './components/SelectedWorkshops.vue'
-import DiscountCard from './components/DiscountCard.vue'
+// import DiscountCard from './components/DiscountCard.vue'
 import RegisterButton from './components/RegisterButton.vue'
 import { REGISTER_STATUS } from './constants'
 import { fetchWorkshops, registerWorkshops } from './requests'
@@ -44,7 +44,7 @@ export default {
     WorkshopRegisterItem,
     PartialHeader,
     SelectedWorkshops,
-    DiscountCard,
+    // DiscountCard,
     RegisterButton,
   },
   data() {
