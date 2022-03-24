@@ -65,7 +65,8 @@ export default {
   },
   computed: {
     workshopsTitle() {
-      return `لیست ارائه‌ها و سخنرانی‌های ثبت نام شده ${this.workshops.length}`
+      return `لیست ارائه‌ها و سخنرانی‌های ثبت نام شده`
+      // return `لیست ارائه‌ها و سخنرانی‌های ثبت نام شده ${this.workshops.length}`
     },
   },
   created() {
