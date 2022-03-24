@@ -24,15 +24,25 @@
   "workshop": {
     "description": {
       "aboutThisTalk": "در مورد این سخنرانی:",
+      "aboutThisTalk_en": "About this talk",
       "aboutThisWorkshop": "در مورد این کارگاه:",
+      "aboutThisWorkshop_en": "About this workshop",
       "timeTable": "جدول زمانی:",
+      "timeTable_en": "Time table:",
       "free": "رایگان",
+      "free_en": "Free",
       "priceInRials": "{price} ریال",
+      "priceInRials_en": "{price} Rials",
       "registrationFee": "هزینه ثبت نام:",
+      "registrationFee_en": "Registration fee:",
       "capacityIsFull": "ظرفیت ارائه تکمیل شده است.",
+      "capacityIsFull_en": "Capacity is full",
       "register": "ثبت نام",
+      "register_en": "Register",
       "teacherDescription": "توضیحات مدرس:" ,
-      "teachersDescription": "توضیحات مدرسین:"
+      "teacherDescription_en": "Lecturer Description" ,
+      "teachersDescription": "توضیحات مدرسین:",
+      "teachersDescription_en": "Lecturers Description:"
     }
   }
 }

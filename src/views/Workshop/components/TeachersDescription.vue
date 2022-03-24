@@ -12,10 +12,10 @@
       >
         <p class="teacherDescription-name">
           <i class="material-icons">person</i>
-          {{ teacher.fullName }}:
+          {{ teacher.fullName_en }}:
         </p>
         <p class="teacherDescription-desc">
-          {{ teacher.description }}
+          {{ teacher.description_en }}
         </p>
       </div>
     </div>
@@ -36,9 +36,9 @@ export default {
   methods: {
     getTitle() {
       if (this.isMoreThanOne) {
-        return this.$t('workshop.description.teachersDescription')
+        return this.$t('workshop.description.teachersDescription_en')
       }
-      return this.$t('workshop.description.teacherDescription')
+      return this.$t('workshop.description.teacherDescription_en')
     },
   },
 }
@@ -54,9 +54,9 @@ export default {
 
 .workshopTeachersDescription {
   background-color: #252040;
-  border-radius: 0 15px 15px 0;
-  border-left: 3px solid #fcc113;
-  padding-left: 70px;
+  border-radius: 15px 0 0 15px;
+  border-right: 3px solid #fcc113;
+  padding-right: 60px;
   width: 25%;
   padding-bottom: 110px;
 }
@@ -99,7 +99,7 @@ export default {
 }
 
 .teacherDescription-name i.material-icons {
-  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .teacherDescription-desc {
@@ -107,12 +107,12 @@ export default {
 
   text-align: justify;
   padding: 5px 5px 5px 10px;
-  margin-right: 15px;
+  margin-left: 10px;
 }
 
 @media only screen and (max-width: 1100px) {
   .workshopTeachersDescription {
-    border-left: none;
+    border-right: none;
     padding: 20px 0;
     border-radius: 0;
     width: initial;

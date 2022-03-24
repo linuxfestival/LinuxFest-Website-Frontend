@@ -6,7 +6,7 @@
     </h1>
     <div class="workshopContentDescription-desc" v-html="description" />
 
-    <h3 class="timeline-title">{{ $t("workshop.description.timeTable") }}</h3>
+    <h3 class="timeline-title">{{ $t("workshop.description.timeTable_en") }}</h3>
 
     <p
       class="timeline-description"
@@ -16,7 +16,7 @@
       {{ getTimeTableText(timeSlot, index) }}
     </p>
     <h3 class="timeline-title">
-      {{ $t("workshop.description.registrationFee") }}
+      {{ $t("workshop.description.registrationFee_en") }}
     </h3>
     <p class="timeline-description">
       {{ this.getPriceText() }}
@@ -50,15 +50,15 @@ export default {
   methods: {
     getTitle() {
       if (this.isFree) {
-        return this.$t('workshop.description.aboutThisTalk')
+        return this.$t('workshop.description.aboutThisTalk_en')
       }
-      return this.$t('workshop.description.aboutThisWorkshop')
+      return this.$t('workshop.description.aboutThisWorkshop_en')
     },
     getPriceText() {
       if (this.isFree) {
-        return this.$t('workshop.description.free')
+        return this.$t('workshop.description.free_en')
       }
-      return this.$t('workshop.description.priceInRials', {
+      return this.$t('workshop.description.priceInRials_en', {
         price: this.price,
       })
     },
@@ -70,10 +70,15 @@ export default {
 </script>
 
 <style scoped>
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
 .workshopContentDescription {
   width: 680px;
   min-height: 400px;
-  border-radius: 15px 0 0 15px;
+  border-radius: 0 15px 15px 0;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -89,7 +94,7 @@ export default {
 }
 
 .workshopContentDescription-title i.material-icons {
-  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .workshopContentDescription-desc {
@@ -97,13 +102,13 @@ export default {
   color: white;
   text-align: justify;
   width: 95%;
-  margin-right: 30px;
+  margin-left: 30px;
 }
 
 .timeline-title {
 
   color: #fcc113;
-  margin-right: 30px;
+  margin-left: 30px;
   margin-top: 10px;
 }
 
@@ -122,13 +127,13 @@ export default {
 
   .workshopContentDescription-desc {
     line-height: 30px;
-    margin-right: 15px;
+    margin-left: 15px;
   }
 }
 
 @media only screen and (max-width: 500px) {
   .workshopContentDescription-desc {
-    margin-right: 5px;
+    margin-left: 5px;
   }
 }
 </style>

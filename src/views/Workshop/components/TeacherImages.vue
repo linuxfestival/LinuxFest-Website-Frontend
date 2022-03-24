@@ -4,7 +4,7 @@
       v-for="teacher in teachers"
       :key="teacher.id"
       :src="teacher.avatar"
-      :alt="teacher.fullName"
+      :alt="teacher.fullName_en"
       draggable="false"
       class="workshopTeacherImages-image"
     />
@@ -25,7 +25,7 @@ export default {
   width: 100px;
   background-color: rgba(0, 255, 0, 0);
   min-height: 400px;
-  margin-right: -50px;
+  margin-left: -50px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -36,7 +36,7 @@ export default {
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  margin-right: -20px;
+  margin-left: 0px;
   border: 3px solid #fcc113;
   margin-top: 30px;
   margin-bottom: 10px;

@@ -8,13 +8,15 @@ const config = {
 
 function transformTeacher({
   fullName,
+  fullName_en,
   description,
+  description_en,
   _id: id,
 }) {
   // const avatar = `${BASE_URL}${picUrl}`
   const avatar = `${API}/teachers/pic/${id}`
   return {
-    fullName, description, avatar, id,
+    fullName, fullName_en, description, description_en, avatar, id,
   }
 }
 

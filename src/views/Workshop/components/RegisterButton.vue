@@ -4,10 +4,10 @@
     v-if="isRegOpen"
     class="registerButton"
   >
-    {{ $t("workshop.description.register") }}
+    {{ $t("workshop.description.register_en") }}
   </router-link>
   <p v-else class="registerButton">
-    {{ $t("workshop.description.capacityIsFull") }}
+    {{ $t("workshop.description.capacityIsFull_en") }}
   </p>
 </template>
 
@@ -30,6 +30,6 @@ export default {
   padding: 5px 30px;
 
   border-radius: 5px;
-  margin: auto auto 15px 10px;
+  margin: auto 10px 15px auto;
 }
 </style>

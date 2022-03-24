@@ -1,7 +1,7 @@
 <template>
   <ContentWithLoader class="parent" :isLoading="isLoading">
     <PartialHeader :title="workshop.title" />
-    <div class="workshopContentWrapper">
+    <div class="workshopContentWrapper" dir="ltr">
       <div class="workshopContent">
         <TeachersDescription :teachers="workshop.teachers" />
         <TeacherImages :teachers="workshop.teachers" />
