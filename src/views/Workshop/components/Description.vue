@@ -1,7 +1,7 @@
 <template>
   <div class="workshopContentDescription">
     <h1 class="workshopContentDescription-title">
-      <i class="material-icons rotate-180">double_arrow</i>
+      <i class="material-icons">double_arrow</i>
       {{ getTitle() }}
     </h1>
     <div class="workshopContentDescription-desc" v-html="description" />
@@ -71,9 +71,7 @@ export default {
 
 <style scoped>
 
-.rotate-180 {
-  transform: rotate(180deg);
-}
+
 
 .workshopContentDescription {
   width: 680px;
