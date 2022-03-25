@@ -1,11 +1,11 @@
 <template>
   <router-link :to="`careers/${company.id}`">
-    <div class="company-item">
-      <img
-        class="company-item--image"
-        :src="company.avatar"
-        :alt="company.name"
-      />
+    <div class="company-item" dir="ltr">
+        <img
+          class="company-item--image"
+          :src="company.avatar"
+          :alt="company.name"
+        />
       <div class="company-item--info">
         <h2 class="company-item--info-name">{{ company.name }}</h2>
         <br />
@@ -13,7 +13,7 @@
           class="company-item--info-moreButton"
           :to="`careers/${company.id}`"
         >
-          مشاهده فرصت های شغلی
+          See job opportunities
           <i class="material-icons">keyboard_arrow_left</i>
         </router-link>
       </div>
@@ -41,7 +41,6 @@ export default {
   cursor: pointer;
   transition: all 0.1s ease-in;
   margin: 20px;
-
 }
 
 .company-item:hover {
@@ -62,8 +61,8 @@ export default {
 
 .company-item--info {
   width: calc(50% - 3px);
-  border-radius: 15px 0 0 15px;
-  border-right: 3px solid white;
+  border-radius: 0 15px 15px 0;
+  border-left: 3px solid white;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -93,10 +92,14 @@ export default {
   border: none;
   cursor: pointer;
 }
+
 .company-item--image {
   width: 50%;
-  padding: 8px;
-  border-radius: 0 15px 15px 0;
+  height: 100%;
+  padding: 30px;
+  border-radius: 15px 0 0 15px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 @media only screen and (max-width: 405px) {

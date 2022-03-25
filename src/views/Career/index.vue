@@ -1,13 +1,13 @@
 <template>
-  <div class="parent">
+  <div class="parent" dir="ltr">
     <PartialHeader :title="company.name" />
     <div class="careerContentWrapper">
-      <span style="font-size: 25px; margin: 10px">توضیحات شرکت</span>
+      <span style="font-size: 25px; margin: 10px">About company</span>
       <div class="careerContent">
         {{ company.description }}
       </div>
       <h1 style="border-bottom: #252040 solid 1px; padding-bottom: 4px">
-        فرصت های شغلی این شرکت
+        Job opportunities of this company
       </h1>
       <div class="jobOpportunity">
         <Opportunity
