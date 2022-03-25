@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { getTimeTable } from '../utils'
+import { getTimeTable_en } from '../utils'
 
 import RegisterButton from './RegisterButton.vue'
 
@@ -63,7 +63,7 @@ export default {
       })
     },
     getTimeTableText(timeSlot, index) {
-      return getTimeTable(timeSlot, index)
+      return getTimeTable_en(timeSlot, index)
     },
   },
 }

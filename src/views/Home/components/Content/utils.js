@@ -40,7 +40,8 @@ function generateTimelineObjectFromWorkshop({
 }
 
 export function generateWorkshopsTimeline(workshops = []) {
-  return workshops.sort(
+  const filtered_workshop = workshops.filter(w => w.times.length > 0)
+  return filtered_workshop.sort(
     ({ times: sourceTimes }, { times: targetTimes }) => {
       const {
         startTime: sourceWorkshopStartDate,
