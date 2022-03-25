@@ -13,9 +13,13 @@
         :alt="'workshop ' + workshop._id + ' image'"
       />
       <h3 class="workshopRegItemTitle">
-        <i class="material-icons" v-if="isRegistered || isSelected">done</i>
-        <i class="material-icons rotate-180" v-else-if="!isRegistered && !isSelected">double_arrow</i>
-        {{ workshop.title }}
+          <div>
+            <i class="material-icons" v-if="isRegistered || isSelected">done</i>
+            <i class="material-icons rotate-180"  v-else-if="!isRegistered && !isSelected">double_arrow</i>
+          </div>
+          <div class="col-10 p-0 m-0 textLimit">
+            {{ workshop.title }}
+          </div>
       </h3>
       <h3 class="workshopRegItemPrice" v-if="isPriceShown && isFree">رایگان</h3>
       <h3 class="workshopRegItemPrice" v-else-if="isPriceShown && !isFree">
@@ -76,7 +80,7 @@ export default {
 .workshopRegItemContent {
   border-radius: 15px;
   background-color: #191919;
-  height: 65px;
+  height: 70px;
   width: calc(100%);
   display: flex;
   align-items: center;
@@ -87,7 +91,7 @@ export default {
   background-color: #fcc113;
 }
 .workshopRegItemImage {
-  height: 65px;
+  height: 70px;
   border-radius: 0 15px 15px 0;
   border-left: 3px solid #f9f9f9;
 }
@@ -99,6 +103,16 @@ export default {
   margin-left: auto;
   width: 350px;
 }
+
+.workshopRegItemTitle .textLimit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+          line-clamp: 2; 
+  -webkit-box-orient: vertical;
+}
+
 .workshopRegItemTitle i.material-icons {
   margin-right: 15px;
   margin-left: 15px;
