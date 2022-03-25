@@ -108,6 +108,8 @@ export default {
   text-align: justify;
   padding: 5px 5px 5px 10px;
   margin-left: 10px;
+  overflow-wrap: break-word;
+  width:95%;
 }
 
 @media only screen and (max-width: 1100px) {
