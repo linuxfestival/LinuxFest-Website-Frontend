@@ -6,7 +6,7 @@
           <!-- order-md-1 -->
           <div class="col-12 col-md-3 mb-2">
             <div class="p-2">
-              <img style="width: 100%" class="rounded" :src="teacher.profile" />
+              <img style="width: 100%" class="rounded" :src="teacher.profile" loading="lazy"/>
               <!-- src="https://toppng.com/uploads/preview/person-png-11553989513mzkt4ocbrv.png" -->
             </div>
           </div>
@@ -75,9 +75,9 @@
         </button>
       </div>
     </div>
-    
+
   </div>
-  
+
 </template>
 
 <script>
