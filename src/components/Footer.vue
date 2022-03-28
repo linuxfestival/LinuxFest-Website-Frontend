@@ -6,11 +6,18 @@
 
       <div class="footer-social">
         <!-- Footer CEIT CSS Linked Logo here -->
-        <a href="http://ceit-ssc.ir" class="footer-social--ceitlogo">
+        <a class="footer-social--ceitlogo">
           <img
-            src="../assets/img/anjo.png"
+            src="../assets/img/AUT-CEIT-SSC.png"
             alt="ceit logo"
             style="width: 140px; height: 140px"
+          />
+        </a>
+        <a class="footer-social--ceitlogo">
+          <img
+            src="../assets/img/snapp.png"
+            alt="snapp logo"
+            style="width: 140px"
           />
         </a>
         <div class="footer-social--items">
