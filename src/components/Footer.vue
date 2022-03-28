@@ -51,22 +51,22 @@ export default {
         {
           icon: ['fab', 'google'],
           name: 'gmail',
-          link: 'mailto:ceit.ssc94@gmail.com',
+          link: 'mailto:CElinuxfest@gmail.com',
         },
         {
           icon: ['fab', 'telegram'],
           name: 'telegram',
-          link: 'https://t.me/ceit_ssc',
+          link: 'https://t.me/LinuxFest',
         },
         {
           icon: ['fab', 'twitter'],
           name: 'twitter',
-          link: 'https://twitter.com/ceit_ssc',
+          link: 'https://twitter.com/LinuxFestival',
         },
         {
           icon: ['fab', 'instagram'],
           name: 'instagram',
-          link: 'https://instagram.com/ceit_ssc',
+          link: 'https://instagram.com/linuxfest.aut',
         },
       ],
     }
