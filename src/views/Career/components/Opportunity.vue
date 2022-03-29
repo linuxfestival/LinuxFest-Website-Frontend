@@ -1,12 +1,12 @@
 <template>
   <div class="careerDescription">
     <p style="margin: 10px">
-      <span class="title">عنوان شغلی: </span> {{ opportunity.name }}
+      <span class="title h5">Job title:</span> {{ opportunity.name }}
     </p>
-    <span class="title" style="margin-right: 10px">توضیحات:</span>
+    <span class="title h5" style="margin-left: 10px">Description:</span>
     <p style="margin: 10px">{{ opportunity.description }}</p>
-    <div>
-      <a :href="opportunity.link" target="_blank">توضیحات بیشتر</a>
+    <div style="margin: 10px">
+      <a class="text-decoration-none h5" :href="opportunity.link" target="_blank">More info</a>
     </div>
   </div>
 </template>
@@ -21,6 +21,11 @@ export default {
 </script>
 
 <style scoped>
+
+.title {
+  color: #fcc113;
+}
+
 .careerDescription {
   position: relative;
   color: white;
