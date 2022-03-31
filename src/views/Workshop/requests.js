@@ -34,6 +34,7 @@ function transformWorkshopResponse({
     workshop: {
       capacity,
       description,
+      prerequisites,
       price,
       times,
       title,
@@ -46,6 +47,7 @@ function transformWorkshopResponse({
     id,
     capacity,
     description,
+    prerequisites,
     price,
     isRegOpen,
     title,

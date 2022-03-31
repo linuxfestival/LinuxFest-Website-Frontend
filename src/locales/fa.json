@@ -42,7 +42,9 @@
       "teacherDescription": "توضیحات مدرس:" ,
       "teacherDescription_en": "Lecturer Description" ,
       "teachersDescription": "توضیحات مدرسین:",
-      "teachersDescription_en": "Lecturers Description:"
+      "teachersDescription_en": "Lecturers Description:",
+      "prerequisites": "پیش‌نیاز های این ورکشاپ:",
+      "prerequisites_en": "Workshop's prerequisites:"
     }
   }
 }

@@ -8,6 +8,7 @@
         <Description
           :registerButtonId="workshop.id"
           :description="workshop.description"
+          :prerequisites="workshop.prerequisites"
           :isRegOpen="workshop.isRegOpen"
           :price="workshop.price"
           :times="workshop.times"

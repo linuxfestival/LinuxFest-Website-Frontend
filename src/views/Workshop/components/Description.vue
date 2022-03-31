@@ -6,6 +6,12 @@
     </h1>
     <div class="workshopContentDescription-desc" v-html="description" />
 
+    
+    <div v-if="prerequisites">
+      <h3 class="prerequisites-title">{{$t("workshop.description.prerequisites_en")}}</h3>
+      <div class="prerequisites-description" v-html="prerequisites"></div>
+    </div>
+
     <h3 class="timeline-title">{{ $t("workshop.description.timeTable_en") }}</h3>
 
     <p
@@ -38,6 +44,7 @@ export default {
   props: {
     price: Number,
     description: String,
+    prerequisites: String,
     isRegOpen: Boolean,
     times: Array,
     registerButtonId: String,
@@ -112,6 +119,18 @@ export default {
 
 .timeline-description {
 
+  color: white;
+  font-size: 15px;
+  margin: 5px 40px;
+}
+
+.prerequisites-title {
+  color: #fcc113;
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.prerequisites-description {
   color: white;
   font-size: 15px;
   margin: 5px 40px;
