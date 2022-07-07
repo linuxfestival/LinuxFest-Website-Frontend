@@ -2,6 +2,7 @@
   import HorizontalDivider from '@/components/HorizontalDivider.vue';
 
   import WelcomeHero from './components/WelcomeHero.vue';
+  import HomeDescription from './components/HomeDescription.vue';
 
 </script>
 
@@ -9,6 +10,8 @@
   <main class="home">
     <WelcomeHero />
     <HorizontalDivider size="large" />
+    <HomeDescription />
+    <HorizontalDivider />
   </main>
 </template>
 
