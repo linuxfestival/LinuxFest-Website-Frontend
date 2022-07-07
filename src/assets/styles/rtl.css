@@ -1,0 +1,7 @@
+*,
+body {
+  box-sizing: border-box;
+  direction: rtl;
+  text-align: right;
+  font-family: Vazirmatn, sans-serif;
+}
