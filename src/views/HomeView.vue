@@ -4,6 +4,7 @@
   import WelcomeHero from './components/WelcomeHero.vue';
   import HomeDescription from './components/HomeDescription.vue';
   import HomeWorkshops from './components/HomeWorkshops.vue';
+  import HomeTimeLine from './components/HomeTimeLine.vue';
 
 </script>
 
@@ -15,6 +16,7 @@
     <HorizontalDivider size="large" />
     <HomeWorkshops />
     <HorizontalDivider size="large" />
+    <HomeTimeLine />
   </main>
 </template>
 
