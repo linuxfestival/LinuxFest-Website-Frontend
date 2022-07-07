@@ -6,13 +6,11 @@ defineProps([
 ])
 </script>
 
-
 <template>
   <RouterLink :to="to" class="navbar-link">
     <slot />
   </RouterLink>
 </template>
-
 
   <style scoped>
   .navbar-link {

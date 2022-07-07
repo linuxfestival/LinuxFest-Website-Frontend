@@ -1,9 +1,19 @@
 <script setup>
-import TheWelcome from '@/components/TheWelcome.vue'
+  import HorizontalDivider from '@/components/HorizontalDivider.vue';
+
+  import WelcomeHero from './components/WelcomeHero.vue';
+
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
+  <main class="home">
+    <WelcomeHero />
+    <HorizontalDivider size="large" />
   </main>
 </template>
+
+<style scoped>
+  .home {
+    margin-top: 60px;
+  }
+</style>

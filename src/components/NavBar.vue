@@ -5,8 +5,8 @@
   import Button from '@/components/Button/index.vue';
   import * as paths from '@/router/paths.js'
 
-  function handleClick(e) {
-    console.log('clicked:', e)
+  function handleClick() {
+    console.log('register clicked.')
   }
 </script>
 
@@ -34,9 +34,14 @@
 .navbar {
   height: 60px;
   width: 100%;
+  padding: 0 16px;
+
   display: flex;
   align-items: center;
-  padding: 0 16px;
+
+  position: fixed;
+  top: 0;
+  right: 0;
 
   background-color: #252040;
 }
