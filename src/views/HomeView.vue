@@ -3,6 +3,7 @@
 
   import WelcomeHero from './components/WelcomeHero.vue';
   import HomeDescription from './components/HomeDescription.vue';
+  import HomeWorkshops from './components/HomeWorkshops.vue';
 
 </script>
 
@@ -11,7 +12,9 @@
     <WelcomeHero />
     <HorizontalDivider size="large" />
     <HomeDescription />
-    <HorizontalDivider />
+    <HorizontalDivider size="large" />
+    <HomeWorkshops />
+    <HorizontalDivider size="large" />
   </main>
 </template>
 
