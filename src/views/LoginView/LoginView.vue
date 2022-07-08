@@ -1,57 +1,96 @@
 <script setup>
-  import { reactive } from 'vue';
+  import { useSnackbar } from "vue3-snackbar";
+
   import TextInput from '@/components/TextInput/TextInput.vue';
   import Button from '@/components/Button/index.vue';
+  import useForm from '@/composables/useForm.js'
+  import useHttp from '@/composables/useHttp.js';
+  import useAuthStore from '@/stores/auth.js'
   import { isPresent, isEmail, hasMinLength } from '@/utils/validators.js'
+  import { generateErrorMessage } from '@/utils/error-message.js';
 
-  const values = reactive({
-    password: '',
-    email: ''
+  import * as paths from '@/router/paths.js'
+
+  import { sendLogin } from './requests.js';
+  
+  const snackbar = useSnackbar()
+  const authStore = useAuthStore()
+  const {
+    errors,
+    values,
+    generateErrors,
+    getHasErrors
+  } = useForm({
+    email: {
+      value: '',
+      validators: [
+        {
+          checker: isPresent,
+          getMessage() {
+            return 'ایمیل، اجباری است.'
+          }
+        },
+        {
+          checker: isEmail,
+          getMessage() {
+            return 'ساختار ایمیل، صحیح نیست.'
+          }
+        }
+      ]
+    },
+    password: {
+      value: '',
+      validators: [
+        {
+          checker: isPresent,
+          getMessage() {
+            return 'رمزعبور، اجباری است.'
+          }
+        },
+        {
+          checker(val) {
+            return hasMinLength(val, 8)
+          },
+          getMessage() {
+            return 'رمزعبور باید حداقل ۸ کاراکتر باشد.'
+          }
+        }
+      ]
+    }
   })
 
-  const errors = reactive({
-    email: [],
-    password: []
-  })
-
-  function generateEmailErrors() {
-    const newErrors = []
-    if(!isPresent(values.email)) {
-      newErrors.push('ایمیل، اجباری است.')
-    }
-
-    if(!isEmail(values.email)) {
-      newErrors.push('ساختار ایمیل نادرست است.')
-    }
-
-    errors.email = newErrors
-  }
-
-  function generatePasswordErrors() {
-    const newErrors = []
-
-    if(!isPresent(values.password)) {
-      newErrors.push('رمزعبور اجباری است.')
-    }
-
-    if(!hasMinLength(values.password, 8)) {
-      newErrors.push('رمزعبور باید حداقل ۸ کاراکتر باشد.')
-    }
-
-    errors.password = newErrors;
-  }
+  const {
+    isLoading,
+    execute,
+  } = useHttp(sendLogin)
 
   function handleSubmit() {
-    generateEmailErrors()
-    generatePasswordErrors()
+    generateErrors()
 
-    const hasError = errors.email.length > 0 || errors.password.length > 0;
-
-    if(hasError) {
+    const hasErrors = getHasErrors()
+    if(hasErrors) {
       console.log('has error', errors)
       return
     }
-    console.log(values)
+
+    execute({
+      email: values.email,
+      password: values.password
+    })
+    .then(({ token, user }) => {
+      authStore.login(token)
+      authStore.setUser(user)
+      snackbar.add({
+        type: 'success',
+        text: 'با موفقیت وارد حساب خود شدید.'
+      })
+    })
+    .catch((e) => {
+      snackbar.add({
+        type: 'error',
+        text: generateErrorMessage(e),
+      }) 
+    })
   }
 
 </script>
@@ -76,15 +115,15 @@
         id="login-password"
         type="password"
         placeholder="رمزعبور خود را وارد کنید"
-        :errors="errors.password"
         v-model="values.password"
+        :errors="errors.password"
         hasStar
       />
       <div class="form__meta">
         <ul class="form__options">
           <li class="form__option">
             حساب کاربری ندارید؟ برای ثبت‌نام، 
-            <a href="#">اینجا</a>
+            <RouterLink :to="{ name: paths.REGISTER.name }" >اینجا</RouterLink>
             را کلیک کنید
           </li>
           <li class="form__option">
@@ -93,7 +132,12 @@
             را کلیک کنید.
           </li>
         </ul>
-        <Button class="form__button">ورود به حساب کاربری</Button>
+        <Button 
+          class="form__button" 
+          :isLoading="isLoading" 
+          :disabled="isLoading">
+            ورود به حساب کاربری
+        </Button>
       </div>
     </form>
   </div>

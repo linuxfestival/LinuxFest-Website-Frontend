@@ -9,11 +9,11 @@ function takeoutData({ data } = {}) {
 }
 
 export default {
-  get(...params) {
+  async get(...params) {
     return instance.get(...params).then(takeoutData)
   },
 
-  post(...params) {
+  async post(...params) {
     return instance.post(...params).then(takeoutData)
   }
 }

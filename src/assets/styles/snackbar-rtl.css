@@ -1,0 +1,13 @@
+.vue3-snackbar-message-close {
+  margin-left: 0 !important;
+  margin-right: 16px;
+}
+
+.vue3-snackbar-message-icon {
+  margin-right: 0 !important;
+  margin-left: 16px;
+}
+
+.vue3-snackbar-message-content {
+  margin-top: 4px;
+}

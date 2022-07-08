@@ -8,6 +8,11 @@ export const LOGIN = {
   path: '/login'
 }
 
+export const REGISTER = {
+  name: 'register',
+  path: '/register'
+}
+
 export const WORKSHOP = {
   name: 'workshop',
   path: '/workshops/:id'

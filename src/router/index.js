@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeView from '@/views/HomeView/HomeView.vue';
 import LoginView from '@/views/LoginView/LoginView.vue';
+import RegisterView from '@/views/RegisterView/RegisterView.vue';
 import WorkshopView from '@/views/WorkshopView/WorkshopView.vue';
 
 import * as paths from './paths.js';
@@ -21,6 +22,10 @@ const router = createRouter({
     {
       ...paths.WORKSHOP,
       component: WorkshopView,
+    },
+    {
+      ...paths.REGISTER,
+      component: RegisterView
     }
     // {
     //   path: '/about',

@@ -9,16 +9,20 @@ export default function useHttp(request) {
   const data = ref(null)
   const errorMessage = ref(null)
 
-  function execute(...args) {
+  async function execute(...args) {
     isLoading.value = true
-    request(...args)
+    return request(...args)
       .then(responseData => {
         data.value = responseData
         isLoading.value = false
+
+        return responseData
       })
       .catch((e) => {
         errorMessage.value = generateErrorMessage(e)
         isLoading.value = false
+
+        throw e
       })
   }
 
