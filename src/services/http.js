@@ -10,10 +10,10 @@ function takeoutData({ data } = {}) {
 
 export default {
   get(...params) {
-    return instance.get(params).then(takeoutData)
+    return instance.get(...params).then(takeoutData)
   },
 
   post(...params) {
-    return instance.get(params).then(takeoutData)
+    return instance.post(...params).then(takeoutData)
   }
 }
