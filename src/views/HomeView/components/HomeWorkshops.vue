@@ -1,35 +1,43 @@
 <script setup>
+  import { onBeforeMount } from 'vue';
+  import SyncLoader from 'vue-spinner/src/SyncLoader.vue';
+
+  import useHttp from '@/composables/useHttp.js';
+  import RetryBox from '@/components/RetryBox.vue';
+
+  import { fetchWorkshops } from '../requests.js'
   import WorkshopBox from './WorkshopBox.vue';
+
+  const {
+    isLoading,
+    data,
+    errorMessage,
+    execute
+  } = useHttp(fetchWorkshops)
+
+  onBeforeMount(() => {
+    execute()
+  })
 </script>
+
 <template>
   <section class="workshops">
     <h1 class="workshops__title">
       ارائه‌ها و سخنرانی‌ها
     </h1>
-    <div class="workshops__row">
-      <div class="workshops__col">
-        <WorkshopBox />
-      </div>
-      <div class="workshops__col">
-        <WorkshopBox />
-      </div>
-      <div class="workshops__col">
-        <WorkshopBox />
-      </div>
-      <div class="workshops__col">
-        <WorkshopBox />
-      </div>
-      <div class="workshops__col">
-        <WorkshopBox />
-      </div>
-      <div class="workshops__col">
-        <WorkshopBox />
-      </div>
-      <div class="workshops__col">
-        <WorkshopBox />
-      </div>
-      <div class="workshops__col">
-        <WorkshopBox />
+    <div v-if="isLoading" class="workshops__loading">
+      <SyncLoader
+        :loading="true"
+        color="black"
+      />
+    </div>
+    <RetryBox class="workshops__retry-box" v-else-if="Boolean(errorMessage)"
+      :message="errorMessage"
+      @retry="execute"
+    />
+    <div class="workshops__row" v-else>
+      <div class="workshops__col" v-for="workshop in data" :key="workshop.id">
+        <WorkshopBox v-bind="workshop" />
       </div>
     </div>
   </section>
@@ -61,7 +69,17 @@
     box-sizing: border-box;
     padding: 16px;
     display: flex;
-    max-height: 278px;
+  }
+
+  .workshops__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 32px 0;
+  }
+
+  .workshops__retry-box {
+    margin-bottom: 32px;
   }
 
   @media only screen and (min-width: 1366px) {

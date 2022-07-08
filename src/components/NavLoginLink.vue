@@ -1,9 +1,11 @@
 <script setup>
   import NavLink from '@/components/NavLink.vue'
+  import * as paths from '@/router/paths.js'
+
 </script>
 
 <template>
-  <NavLink to="/login" class="navbar-login-link">
+  <NavLink :to="paths.LOGIN.path" class="navbar-login-link">
     ورود به حساب کاربری
   </NavLink>
 </template>

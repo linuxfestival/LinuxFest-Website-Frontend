@@ -4,19 +4,7 @@
       تقویم برگزاری
     </h1>
     <div class="timelines">
-    <article class="timeline">
-      <span class="timeline__indicator" />
-      <h1 class="timeline__title">
-Linux Virtualization
-      </h1>
-      <p class="timeline__text">
-        چهارشنبه ۱۴۰۱/۱/۱۷ 9:45 - 9:0
-      </p>
-      <p class="timeline__text">
-        مدرس: سید پرهام الوانی
-      </p>
-    </article>
-    <span class="timeline-divider" />
+
     <article class="timeline">
       <span class="timeline__indicator" />
       <h1 class="timeline__title">
@@ -59,6 +47,22 @@ Linux Virtualization
         مدرس: سید پرهام الوانی
       </p>
     </article>
+
+    <span class="timeline-divider" />
+
+    <article class="timeline">
+      <span class="timeline__indicator" />
+      <h1 class="timeline__title">
+Linux Virtualization
+      </h1>
+      <p class="timeline__text">
+        چهارشنبه ۱۴۰۱/۱/۱۷ 9:45 - 9:0
+      </p>
+      <p class="timeline__text">
+        مدرس: سید پرهام الوانی
+      </p>
+    </article>
+
     </div>
   </section>
 </template>
@@ -86,6 +90,7 @@ Linux Virtualization
     width: 100%;
     max-width: 560px;
     margin: 0 auto;
+    padding-bottom: 32px;
   }
 
   .timeline {

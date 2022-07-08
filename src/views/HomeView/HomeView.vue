@@ -5,6 +5,7 @@
   import HomeDescription from './components/HomeDescription.vue';
   import HomeWorkshops from './components/HomeWorkshops.vue';
   import HomeTimeLine from './components/HomeTimeLine.vue';
+  import HomeFooter from './components/HomeFooter.vue';
 
 </script>
 
@@ -17,6 +18,8 @@
     <HomeWorkshops />
     <HorizontalDivider size="large" />
     <HomeTimeLine />
+    <HorizontalDivider size="large" />
+    <HomeFooter />
   </main>
 </template>
 

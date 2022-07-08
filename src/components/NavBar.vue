@@ -43,6 +43,8 @@
   top: 0;
   right: 0;
 
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   background-color: #252040;
 }
 
