@@ -1,8 +1,12 @@
 <script setup>
+  import { useSnackbar } from 'vue3-snackbar';
+
   import TextInput from '@/components/TextInput/TextInput.vue';
   import CheckboxField from '@/components/CheckboxField/CheckboxField.vue';
   import Button from '@/components/Button/index.vue';
-  import useForm from '@/composables/useForm.js'
+  import useForm from '@/composables/useForm.js';
+  import useHttp from '@/composables/useHttp.js';
+  import useAuthStore from '@/stores/auth.js'
   import { 
     isPresent,
     isEmail,
@@ -11,12 +15,15 @@
     isPhoneNumber 
   } from '@/utils/validators.js'
   import * as paths from '@/router/paths.js'
+  import { generateErrorMessage } from '@/utils/error-message.js';
+
+  import { submitRegister } from './requests.js';
 
   const {
     errors,
     values,
     generateErrors,
-    hasErrors
+    getHasErrors,
   } = useForm({
     firstName: {
       value: '',
@@ -61,7 +68,11 @@
       validators: [
         {
           checker(value, fieldValues) {
-            return fieldValues.isAmirkabiri && isPresent(value)
+            if(!fieldValues.isAmirkabiri) {
+              return true
+            }
+
+            return isPresent(value)
           },
           getMessage() {
             return 'شماره‌دانشجویی اجباری است.'
@@ -126,14 +137,38 @@
     }
   })
 
+  const {
+    isLoading,
+    execute,
+  } = useHttp(submitRegister)
+  const snackbar = useSnackbar()
+  const authStore = useAuthStore()
+
   function handleSubmit() {
     generateErrors()
+
+    const hasErrors = getHasErrors()
 
     if(hasErrors) {
       console.log('has error', errors)
       return
     }
-    console.log(values)
+
+    execute(values).then(({ user, token }) => {
+      authStore.login(token)
+      authStore.setUser(user)
+      snackbar.add({
+        type: 'success',
+        text: 'با موفقیت ثبت‌نام و وارد حساب خود شدید.'
+      })
+    })
+    .catch((e) => {
+      snackbar.add({
+        type: 'error',
+        text: generateErrorMessage(e)
+      })
+    })
+    // submitRegister(values).then(console.log)
   }
 
 </script>
@@ -223,7 +258,7 @@
             را کلیک کنید
           </li>
         </ul>
-        <Button class="form__button">ثبت‌نام</Button>
+        <Button class="form__button" :isLoading="isLoading" :disabled="isLoading">ثبت‌نام</Button>
       </div>
     </form>
   </div>

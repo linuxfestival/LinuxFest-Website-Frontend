@@ -1,6 +1,6 @@
 export const EMAIL_REGEX = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 export const FARSI_REGEX = /^[\u0600-\u06FF\s]+$/;
-export const PERSIAN_PHONE_REGEX = /^(\+98?)?{?(0?9[0-9]{9,9}}?)$/gm
+export const PERSIAN_PHONE_REGEX = /^(\+98?)?{?(0?9[0-9]{9,9}}?)$/m
 
 export function isPrimitiveEmpty(val) {
   return val === null || val === undefined || val === ''
