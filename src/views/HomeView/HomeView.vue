@@ -10,7 +10,6 @@
 </script>
 
 <template>
-  <main class="home">
     <WelcomeHero />
     <HorizontalDivider size="large" />
     <HomeDescription />
@@ -20,11 +19,4 @@
     <HomeTimeLine />
     <HorizontalDivider size="large" />
     <HomeFooter />
-  </main>
 </template>
-
-<style scoped>
-  .home {
-    margin-top: 60px;
-  }
-</style>

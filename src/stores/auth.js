@@ -8,8 +8,8 @@ const userStorage = new LocalStorageManager('user', true)
 export default defineStore({
   id: 'auth',
   state: () => ({
-    token: authService.getToken() || '',
-    user: userStorage.get() || ''
+    token: authService.getToken() || null,
+    user: userStorage.get() || null
   }),
   getters: {
     isLoggedIn: (state) => authService.isLoggedIn() && Boolean(state.token),
@@ -21,7 +21,9 @@ export default defineStore({
     },
     logout() {
       authService.removeToken()
-      this.token = ''
+      userStorage.remove()
+      this.user = null
+      this.token = null
     },
     setUser(user) {
       userStorage.set(user)

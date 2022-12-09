@@ -6,7 +6,9 @@ import NavBar from '@/components/NavBar.vue'
   <header class="header">
     <NavBar />
   </header>
-  <RouterView />
+  <main class="content">
+    <RouterView />
+  </main>
   <teleport to="body">
     <Vue3Snackbar :duration="4500" bottom />
   </teleport>
@@ -16,4 +18,9 @@ import NavBar from '@/components/NavBar.vue'
 @import '@/assets/styles/reset.css';
 @import '@/assets/styles/rtl.css';
 @import '@/assets/styles/snackbar-rtl.css';
+
+.content {
+  min-height: calc(100vh - 60px);
+  margin-top: 60px;
+}
 </style>
