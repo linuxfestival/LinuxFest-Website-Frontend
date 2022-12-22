@@ -78,8 +78,7 @@
       password: values.password
     })
     .then(({ token, user }) => {
-      authStore.login(token)
-      authStore.setUser(user)
+      authStore.login({ token, user })
       snackbar.add({
         type: 'success',
         text: 'با موفقیت وارد حساب خود شدید.'

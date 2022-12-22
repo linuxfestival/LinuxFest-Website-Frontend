@@ -1,23 +1,24 @@
 <script setup>
-  import NavLink from '@/components/NavLink.vue';
+  import { storeToRefs } from 'pinia';
+
   import * as paths from '@/router/paths.js'
+  import NavLink from '@/components/NavLink.vue';
   import useAuthStore from '@/stores/auth.js';
 
   import NavDivider from './NavDivider.vue';
   import Button from './Button/index.vue';
 
   const authStore = useAuthStore()
-
-console.log(authStore)
+  const { isLoggedIn } = storeToRefs(authStore)
 </script>
 
 <template>
-  <NavLink :to="paths.LOGIN.path" class="navbar-login-link" v-if="!authStore.isLoggedIn">
+  <NavLink :to="paths.LOGIN.path" class="navbar-login-link" v-if="!isLoggedIn">
     ورود به حساب کاربری
   </NavLink>
-  <NavLink to="/" v-if="authStore.isLoggedIn">حساب من</NavLink>
-  <NavDivider v-if="authStore.isLoggedIn"/>
-  <Button v-if="authStore.isLoggedIn" @click="authStore.logout">خروج</Button>
+  <NavLink to="/me/register-workshops" v-if="isLoggedIn">حساب من</NavLink>
+  <NavDivider v-if="isLoggedIn"/>
+  <Button v-if="isLoggedIn" @click="authStore.logout">خروج</Button>
 </template>
 
 <style scoped>

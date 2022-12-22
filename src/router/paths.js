@@ -17,3 +17,22 @@ export const WORKSHOP = {
   name: 'workshop',
   path: '/workshops/:id'
 }
+
+export const MyProfile = {
+  name: 'me',
+  path: '/me',
+  children: {
+    CurrentWorkshops: {
+      name: 'me-current-workshops',
+      path: 'current-workshops'
+    },
+    SelectWorkshops: {
+      name: 'me-select-workshops',
+      path: 'register-workshops'
+    },
+    MyEdit: {
+      name: 'my-edit',
+      path: 'edit'
+    }
+  }
+}

@@ -12,22 +12,20 @@ export default defineStore({
     user: userStorage.get() || null
   }),
   getters: {
-    isLoggedIn: (state) => authService.isLoggedIn() && Boolean(state.token),
+    isLoggedIn: (state) => Boolean(state.token),
   },
   actions: {
-    login(token) {
+    login({ token, user }) {
       authService.setToken(token)
+      userStorage.set(user)
       this.token = token
+      this.user = user
     },
     logout() {
       authService.removeToken()
       userStorage.remove()
-      this.user = null
       this.token = null
+      this.user = null
     },
-    setUser(user) {
-      userStorage.set(user)
-      this.user = user
-    }
   }
 })

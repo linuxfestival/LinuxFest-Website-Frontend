@@ -154,9 +154,8 @@
       return
     }
 
-    execute(values).then(({ user, token }) => {
-      authStore.login(token)
-      authStore.setUser(user)
+    execute(values).then(({ token, user }) => {
+      authStore.login({ token, user })
       snackbar.add({
         type: 'success',
         text: 'با موفقیت ثبت‌نام و وارد حساب خود شدید.'

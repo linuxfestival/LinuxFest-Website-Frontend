@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
   import { computed } from 'vue';
-    import SyncLoader from 'vue-spinner/src/SyncLoader.vue';
+  import SyncLoader from 'vue-spinner/src/SyncLoader.vue';
 
   import { VARIANTS } from './constants'
 
@@ -20,6 +20,9 @@
     disabled: {
       type: Boolean,
       default: false,
+    },
+    type: {
+      type: String,
     }
   })
 
