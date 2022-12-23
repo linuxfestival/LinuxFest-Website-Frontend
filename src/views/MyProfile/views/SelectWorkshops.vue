@@ -1,5 +1,5 @@
 <script setup>
-  import { onBeforeMount, ref, computed } from 'vue';
+  import { onBeforeMount, ref } from 'vue';
   import SyncLoader from 'vue-spinner/src/SyncLoader.vue';
 
   import useHttp from '@/composables/useHttp.js';
@@ -21,8 +21,12 @@
   })
 
   // eslint-disable-next-line no-unused-vars
-  const openWorkshops = computed(() => data?.filter?.(({ isRegOpen }) => isRegOpen) || [])
   const selectedWorkshops = ref([])
+
+  function handleSubmit() {
+    console.log('Submit workshops for:')
+    console.log({ workshops: selectedWorkshops.value })
+  }
 
 </script>
 
@@ -37,7 +41,7 @@
       :message="errorMessage"
       @retry="execute"
     />
-    <form class="workshops__row" v-else>
+    <form class="workshops__row" @submit.prevent="handleSubmit" v-else>
       <h2 class="workshops__title">ورکشاپ‌های مورد نظر را از لیست زیر انتخاب کنید</h2>
       <WorkshopCheckboxVue 
         v-for="workshop in data" 

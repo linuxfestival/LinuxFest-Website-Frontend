@@ -19,6 +19,10 @@
             type: Boolean,
             required: true
         },
+        isRegOpen: {
+            type: Boolean,
+            required: true
+        },
         id: {
             type: String,
             required: true
@@ -42,8 +46,8 @@
     })
 
     const isChecked = computed(() => model.value.includes(props.id))
-    const classes = computed(() => ({ 'workshop-checkbox--checked': isChecked }))
     const holderClasses = computed(() => ({'checkbox-holder--checked': isChecked }))
+
     const priceText = computed(() => {
         if(props.isFree) {
             return 'رایگان'
@@ -52,20 +56,34 @@
         return `${props.price} تومان`
     })
     const workshopRoute = computed(() => generatePath(WORKSHOP.path, { id: props.id }))
+    const canSelect = computed(() => props.selectable && props.isRegOpen)
+
+    const classes = computed(() => ({ 
+        'workshop-checkbox--checked': isChecked.value,
+        'workshop-checkbox--selectable': canSelect.value,
+    }))
+
+    console.log({
+        isChecked: isChecked.value,
+        canSelect: canSelect.value,
+        selectable: props.selectable,
+        isRegOpen: props.isRegOpen
+    })
 </script>
 
 <template>
     <label :title="title" :for="id" class="workshop-checkbox" :class="classes">
         <input 
-            v-if="selectable"
+            v-if="canSelect"
             name="workshops"
             type="checkbox" 
             :id="id" 
-            :value="id"  
+            :value="id"
+            :disabled="!canSelect"
             v-model="model"
             class="workshop-checkbox__controller"
         />
-        <span v-if="selectable" class="checkbox-holder" :class="holderClasses">
+        <span v-if="canSelect" class="checkbox-holder" :class="holderClasses">
             <MaterialIcon v-if="isChecked" name="done" />
         </span>
         <p class="workshop-checkbox__title">{{ title }}</p>
@@ -82,7 +100,6 @@
         border-radius: 4px;
         background-color: #444;
         direction: rtl;
-        cursor: pointer;
         color: white;
 
         transition: all 0.2s ease-in-out;
@@ -91,6 +108,10 @@
     .workshop-checkbox:hover {
         background-color: #252040;
         color: #fcc113;
+    }
+
+    .workshop-checkbox--selectable {
+        cursor: pointer;
     }
 
     .workshop-checkbox:not(:first-of-type) {

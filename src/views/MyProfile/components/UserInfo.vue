@@ -23,8 +23,6 @@
     })
 
     const fullName = computed(() => `${props.firstName} ${props.lastName}`)
-
-    console.log(fullName)
 </script>
 
 <template>

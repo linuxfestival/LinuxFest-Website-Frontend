@@ -16,7 +16,7 @@
   <NavLink :to="paths.LOGIN.path" class="navbar-login-link" v-if="!isLoggedIn">
     ورود به حساب کاربری
   </NavLink>
-  <NavLink to="/me/register-workshops" v-if="isLoggedIn">حساب من</NavLink>
+  <NavLink to="/me/current-workshops" v-if="isLoggedIn">حساب من</NavLink>
   <NavDivider v-if="isLoggedIn"/>
   <Button v-if="isLoggedIn" @click="authStore.logout">خروج</Button>
 </template>

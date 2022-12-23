@@ -18,15 +18,13 @@ function transformUpdatedUser({
         id
     }
 }
+
 export function updateUser(userInfo) {
     const payload = Object.fromEntries(Object.entries(userInfo).filter(([, val]) => !isPrimitiveEmpty(val)))
 
     const config = {
         headers: getAuthHeaders()
     }
-
-    console.log({ payload })
-    console.log({ config })
 
     return http.patch(`${API_USERS}/me`, payload, config).then(transformUpdatedUser)
 }
