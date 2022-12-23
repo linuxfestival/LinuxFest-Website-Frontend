@@ -27,5 +27,9 @@ export default defineStore({
       this.token = null
       this.user = null
     },
+    updateUser(user) {
+      userStorage.set(user);
+      this.user = user
+    }
   }
 })

@@ -1,15 +1,30 @@
 <script setup>
+    import { storeToRefs } from 'pinia';
+    import { useSnackbar } from "vue3-snackbar";
+
     import TextInput from '@/components/TextInput/TextInput.vue';
     import Button from '@/components/Button/index.vue';
     import useForm from '@/composables/useForm.js';
+    import useHttp from '@/composables/useHttp.js';
+    import useAuthStore from '@/stores/auth.js';
     import { isFarsi, isEmail, isPhoneNumber, hasMinLength } from '@/utils/validators.js';
+    import { generateErrorMessage } from '@/utils/error-message.js';
+  
+    import { updateUser } from '../requests.js';
+
+    const authStore = useAuthStore()
+    const snackbar = useSnackbar()
+    const { user } = storeToRefs(authStore)
 
     const {
     errors,
     values,
+    generateErrors,
+    getHasErrors
   } = useForm({
     firstName: {
       value: '',
+      optional: true,
       validators: [
         {
           checker: isFarsi,
@@ -21,6 +36,7 @@
     },
     lastName: {
       value: '',
+      optional: true,
       validators: [
         {
           checker: isFarsi,
@@ -32,19 +48,17 @@
     },
     phone: {
       value: '',
+      optional: true,
       validators: [{
         checker: isPhoneNumber,
         getMessage() {
-          return 'ساختاری شماره‌تلفن، معتبر نیست.'
+          return 'ساختار شماره‌تلفن، معتبر نیست.'
         }
       }]
     },
-    age: {
-      value: '',
-      validators: []
-    },
     email: {
       value: '',
+      optional: true,
       validators: [
         {
           checker: isEmail,
@@ -56,6 +70,7 @@
     },
     password: {
       value: '',
+      optional: true,
       validators: [
         {
           checker(val) {
@@ -68,18 +83,47 @@
       ]
     }
   })
+
+  const {
+    isLoading,
+    execute: executeUpdateUser
+  } = useHttp(updateUser)
+
+  function handleSubmit() {
+    generateErrors()
+    const hasError = getHasErrors();
+
+    if(hasError) {
+      return
+    }
+
+    executeUpdateUser(values)
+      .then((newUser) => {
+        authStore.updateUser(newUser)
+        snackbar.add({
+          type: 'success',
+          text: 'اطلاعات کاربری شما با موفقیت تغییر کرد.'
+        })
+      })
+      .catch(e => {
+        snackbar.add({
+          type: 'error',
+          text: generateErrorMessage(e)
+        })
+      })
+  }
 </script>
 
 <template>
-    <form class="edit">
+    <form class="edit" @submit.prevent="handleSubmit">
         <h2 class="edit__title">
-            برای ویرایش اطلاعات خود فیلد های مورد نظر را تغییر دهید. فیلد های خالی نادیده گرفته می شوند
+            برای ویرایش اطلاعات خود فیلد های مورد نظر را تغییر دهید. فیلدهای خالی یا بدون تغییر، نادیده گرفته می شوند
         </h2>
         <TextInput
         class="form__field"
         id="register-firstName"
         title="نام:"
-        placeholder="نام خود را وارد کنید"
+        :placeholder="user.firstName"
         v-model="values.firstName"
         :errors="errors.firstName"
       />
@@ -87,7 +131,7 @@
         class="form__field"
         id="register-lastName"
         title="نام خانوادگی:"
-        placeholder="نام خانوادگی خود را وارد کنید"
+        :placeholder="user.lastName"
         v-model="values.lastName"
         :errors="errors.lastName"
       />
@@ -96,44 +140,21 @@
         title="ایمیل:"
         id="register-email"
         type="email"
-        placeholder="ایمیل خود را وارد کنید"
+        :placeholder="user.email"
         v-model="values.email"
         :errors="errors.email"
-      />
-      <CheckboxField
-        class="form__field"
-        id="register-isamirkabiri"
-        title="امیرکبیری هستم"
-        v-model="values.isAmirkabiri"
-      />
-      <TextInput
-        v-if="values.isAmirkabiri"
-        class="form__field"
-        id="register-studentNumber"
-        title="شماره دانشجویی:"
-        placeholder="شماره‌ دانشجویی خود را وارد کنید"
-        v-model="values.studentNumber"
-        :errors="errors.studentNumber"
       />
       <TextInput
         title="تلفن:"
         class="form__field"
         id="register-phone"
         type="text"
-        placeholder="تلفن خود را وارد کنید"
+        :placeholder="user.phoneNumber"
         v-model="values.phone"
         :errors="errors.phone"
       />
-       <TextInput
-        title="سن:"
-        id="register-age"
-        type="number"
-        class="form__field"
-        placeholder="سن خود را وارد کنید"
-        v-model="values.age"
-      />
       <TextInput
-        title="رمزعبور:"
+        title=" رمز عبور جدید:"
         id="register-password"
         type="password"
         class="form__field"
@@ -141,7 +162,7 @@
         :errors="errors.password"
         v-model="values.password"
       />
-      <Button type="submit" class="form__field" variant="primary">
+      <Button :isLoading="isLoading" :disabled="isLoading" type="submit" class="form__field" variant="primary">
         ثبت تغییرات
       </Button>
     </form>
@@ -150,7 +171,6 @@
 <style scoped>
     .edit {
         border-radius: 4px;
-        /* background-color: #444; */
         min-height: 400px;
         direction: rtl;
 

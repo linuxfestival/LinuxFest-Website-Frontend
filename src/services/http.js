@@ -15,5 +15,9 @@ export default {
 
   async post(...params) {
     return instance.post(...params).then(takeoutData)
+  },
+
+  async patch(...params) {
+    return instance.patch(...params).then(takeoutData)
   }
 }
