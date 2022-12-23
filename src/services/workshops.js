@@ -40,6 +40,10 @@ function transformMyWorkshops({
   return transformWorkshops(workshops)
 }
 
+function transformRegisterResponse() {
+  
+}
+
 export default {
     getAll() {
         return http.get(API_WORKSHOPS).then(transformWorkshops)
@@ -49,5 +53,16 @@ export default {
       const config = { headers: getAuthHeaders() }
 
       return http.get(`${API_USERS}/me`, config).then(transformMyWorkshops)
+    },
+
+    register(workshops, discountCode) {
+      const url = `${API_USERS}/initpayment`;
+      const config = { headers: getAuthHeaders() }
+      const payload = {
+          workshopIds: workshops,
+          discountCode
+      }
+
+      return http.post(url, payload, config).then(transformRegisterResponse)
     }
 }
