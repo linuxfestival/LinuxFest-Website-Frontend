@@ -13,12 +13,12 @@
             style="width: 140px; height: 140px"
           />
         </a>
-        <a class="footer-social--ceitlogo">
+       <!-- <a class="footer-social--ceitlogo">
           <img
             src="../assets/img/snapp.png"
             alt="snapp logo"
             style="width: 140px"
-          />
+          /> -->
         </a>
         <div class="footer-social--items">
           <a
