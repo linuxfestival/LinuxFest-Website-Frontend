@@ -238,7 +238,7 @@ export default {
   .mainMenu-link.show {
     display: flex;
     margin: 5px;
-    font-size: 10px;
+    font-size: 1.0rem;
   }
 
   .profileMenu {
@@ -252,7 +252,7 @@ export default {
   .profileMenu-link.show {
     display: flex;
     margin: 5px;
-    font-size: 10px;
+    font-size: 1.0rem;
   }
 }
 </style>

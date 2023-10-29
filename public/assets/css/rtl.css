@@ -1,13 +1,14 @@
-@font-face {
-  font-family: 'iransans';
-  src: url("assets/fonts/iranSansFarsiNumber.ttf") format("truetype");
-}
-
 * {
-  font-family: 'iransans';
+  font-family: Vazirmatn, sans-serif;
 }
 
 body {
   direction: rtl;
-  font-family: 'iransans';
+  font-family: Vazirmatn, sans-serif;
+}
+
+
+/* Base */
+:root {
+  --secondryColor: rgb(242, 169, 56);
 }

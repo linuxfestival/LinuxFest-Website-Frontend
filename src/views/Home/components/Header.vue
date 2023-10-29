@@ -1,25 +1,42 @@
 <template>
   <section class="homeHeaderWrapper" id="homes">
-    <h2 class="homeHeader-title-horizontal">
-      {{ $t("home.header.sscPresents") }}
-    </h2>
-    <h1 class="homeHeader-title">
-      <span class="homeHeader-title-yazdahomin">
+    <!-- <h1 class="homeHeader-title">
+      <span class="homeHeader-title-yazdahomin same-width">
         {{ $t("home.header.periodCounter") }}
       </span>
       <br />
-      <span class="homeHeader-title-jashnvareh">
+      <span class="homeHeader-title-jashnvareh same-width">
         {{ $t("home.header.festival") }}
       </span>
       <br />
-      <span class="homeHeader-title-linux">
+      <span class="homeHeader-title-linux same-width">
         {{ $t("home.header.linux") }}
       </span>
       <br />
-      <span class="homeHeader-title-amirkabir">
+      <span class="homeHeader-title-amirkabir same-width">
         {{ $t("home.header.amirkabir") }}
       </span>
-    </h1>
+    </h1> -->
+    <div class="homeHeader-title">
+      <h2 class="homeHeader-title-horizontal">
+        {{ $t("home.header.sscPresents") }}
+      </h2>
+      <div class="homeHeader-title-verticle">
+        <h1 class="homeHeader-title-text">
+          <span class="homeHeader-title-periodCounter-number">{{ $t("home.header.periodCounter") }}</span>
+          {{ $t("home.header.periodCounter2") }}
+        </h1>
+        <h1 class="homeHeader-title-text">
+          {{ $t("home.header.festival") }}
+        </h1>
+        <h1 class="homeHeader-title-text">
+          {{ $t("home.header.linux") }}
+        </h1>
+        <h1 class="homeHeader-title-text">
+          {{ $t("home.header.amirkabir") }}
+        </h1> 
+      </div>
+    </div>
     <router-link to="/" v-scroll-to="'#abouts'" class="homeHeader--startButton">
       <i class="material-icons">keyboard_arrow_down</i>
     </router-link>
@@ -31,113 +48,91 @@ export default {
 }
 </script>
 <style scoped>
+
 .homeHeaderWrapper {
-  width: 100%;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  min-height: calc(100vh);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(
-      0deg,
-      rgba(41, 41, 41, 0.9),
-      rgba(41, 41, 41, 0.9)
-    ),
-    url("../../../assets/img/withEye.png") no-repeat top / 100%;
-  border-bottom: 10px solid rgb(242, 169, 56);
-}
-
-.homeHeader-title {
-
-  font-size: 145px;
-  font-weight: bolder;
-  line-height: 145px;
-  color: rgb(242, 169, 56);
-}
-
-.homeHeader-title-horizontal {
-  color: white;
-
-  font-size: 18px;
-  text-align: center;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  height: 390px;
-  margin-left: 10px;
-}
-
-.homeHeader--startButton {
-  color: white;
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 20px;
-  transition: all 0.2s ease-in;
-}
-
-.homeHeader--startButton i.material-icons {
-  font-size: 60px;
-}
-
-.homeHeader--startButton:hover {
-  color: rgb(242, 169, 56);
-}
-
-.homeHeader-title-yazdahomin {
-  font-size: 86px;
-  word-spacing: -29px;
-}
-.homeHeader-title-jashnvareh {
-  font-size: 145px;
-}
-.homeHeader-title-linux {
-  font-size: 155px;
-}
-.homeHeader-title-amirkabir {
-  font-size: 155px;
-}
-
-@media only screen and (max-width: 660px) {
-  .homeHeaderWrapper {
-    background-size: 140%;
-  }
-}
-
-@media only screen and (max-width: 560px) {
-  .homeHeaderWrapper {
-    background-size: 200%;
-    flex-direction: column-reverse;
-  }
-
-  .homeHeader-title {
-    line-height: 80px;
-    text-align: center;
-    order: 1;
-  }
-
-  .homeHeader-title-yazdahomin {
-    font-size: 50px;
-    word-spacing: -10px;
-  }
-  .homeHeader-title-jashnvareh {
-    font-size: 85px;
-  }
-  .homeHeader-title-linux {
-    font-size: 90px;
-  }
-  .homeHeader-title-amirkabir {
-    font-size: 90px;
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    min-height: calc(100vh);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(
+        0deg,
+        rgba(41, 41, 41, 0.9),
+        rgba(41, 41, 41, 0.9)
+      ),
+      url("../../../assets/img/withEye.png") no-repeat top / 100%;
+    border-bottom: 10px solid rgb(242, 169, 56);
+    flex-direction: column;
+    padding: 100px 0px 30px 0px;
   }
 
   .homeHeader-title-horizontal {
-    width: 300px;
+    color: white;
+
+    font-size: 18px;
     text-align: center;
-    writing-mode: initial;
+    writing-mode: vertical-rl;
     text-orientation: mixed;
-    height: initial;
-    margin: 20px;
-    font-size: 15px;
-    order: 2;
+    height: 390px;
+    margin: 0px 30px;
   }
-}
+  
+  .homeHeader-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .homeHeader-title-periodCounter-number {
+    font-size: 9.3rem;
+  }
+
+  .homeHeader-title-text {
+    font-size: 6rem;
+    color: var(--secondryColor);
+  }
+
+  .homeHeader-title-verticle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Media Queries */
+
+  @media only screen and (max-width: 768px) {
+    .homeHeader-title-periodCounter-number {
+      font-size: 4.3rem;
+    }
+    
+    .homeHeader-title-text {
+      font-size: 3rem;
+    }
+
+    .homeHeader-title-horizontal {
+      font-size: .8rem;
+      height: calc(100% - 190px);
+      margin: 0px 10px;
+    }
+  }
+
+  @media only screen and (max-width: 300px) {
+    .homeHeader-title-periodCounter-number {
+      font-size: 3.3rem;
+    }
+    
+    .homeHeader-title-text {
+      font-size: 2rem;
+    }
+
+    .homeHeader-title-horizontal {
+      font-size: .8rem;
+      height: calc(100% - 190px);
+      margin: 0px 10px;
+    }
+  }
 </style>

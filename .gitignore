@@ -20,4 +20,8 @@ yarn-error.log*
 *.sln
 *.sw?
 
+
+package-lock.json*
+/node_modules/
+
 linuxFest-manifest.pdf
