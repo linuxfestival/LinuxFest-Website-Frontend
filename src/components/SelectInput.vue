@@ -1,15 +1,18 @@
 <template>
   <div class="input">
     <label :v-for="id" v-if="label" class="input__label">{{label}}</label>
-    <input
+    <select
       class="input__controller"
-      :options="options"
-      :placeholder="placeholder"
       :type="type"
       :id="id"
       :class="inputClass"
       @input="$emit('input', $event.target.value)"
-    />
+    >
+      <option value="" disabled selected v-if="default_option"> {{ default_option }} </option>
+      <option :value="optionData.value" v-for="optionData in options" :select="optionData.value === value"> {{ optionData.text }} </option>
+      <!-- <option value="bsc">Undergraduated (BSc).</option> -->
+      <!-- <option value="msc">Graduated (MSc).</option> -->
+    </select>
     <p v-if="hasError" class="input__message input__message--error">
       {{ error }}
     </p>
@@ -17,12 +20,14 @@
 </template>
 
 <script>
+import { type } from 'os';
+
 export default {
-  name: 'TextInput',
+  name: 'SelectInput',
   props: {
-    value: String,
-    options: Object,
-    placeholder: String,
+    value: {
+      type: String
+    },
     type: {
       type: String,
       default: () => 'text',
@@ -43,7 +48,11 @@ export default {
     },
     id: {
       type: String
-    }
+    },
+    options: {
+      type: Array
+    },
+    default_option: String
   },
   computed: {
     inputClass() {
@@ -88,4 +97,5 @@ export default {
 .input__message--error {
   color: darkred;
 }
+
 </style>

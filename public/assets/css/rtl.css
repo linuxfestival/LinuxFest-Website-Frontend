@@ -10,5 +10,29 @@ body {
 
 /* Base */
 :root {
+  --mainColor: #252040;
   --secondryColor: rgb(242, 169, 56);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #555;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--secondryColor);
+  border-radius: 10px;
+  /* box-shadow: inset 0px 0px 4px .5px #232323 */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  /* background: #252040; */
+  background-color: rgb(189, 131, 44);;
 }

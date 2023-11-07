@@ -18,9 +18,9 @@
       </span>
     </h1> -->
     <div class="homeHeader-title">
-      <h2 class="homeHeader-title-horizontal">
+      <!-- <h2 class="homeHeader-title-horizontal">
         {{ $t("home.header.sscPresents") }}
-      </h2>
+      </h2> -->
       <div class="homeHeader-title-verticle">
         <h1 class="homeHeader-title-text">
           <span class="homeHeader-title-periodCounter-number">{{ $t("home.header.periodCounter") }}</span>
@@ -62,7 +62,8 @@ export default {
         rgba(41, 41, 41, 0.9),
         rgba(41, 41, 41, 0.9)
       ),
-      url("../../../assets/img/withEye.png") no-repeat top / 100%;
+      url("../../../assets/img/withEye.png") no-repeat center / 100%;
+      background-size: contain;
     border-bottom: 10px solid rgb(242, 169, 56);
     flex-direction: column;
     padding: 100px 0px 30px 0px;
@@ -76,7 +77,7 @@ export default {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     height: 390px;
-    margin: 0px 30px;
+    /* margin: 0px 30px; */
   }
   
   .homeHeader-title {
@@ -89,6 +90,16 @@ export default {
 
   .homeHeader-title-periodCounter-number {
     font-size: 9.3rem;
+    /* text-shadow: 0px 0px orange 3px 3px; */
+    animation-name: numberAnimation;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes numberAnimation {
+    0% {text-shadow: 0px 0px 10px orange;}
+    50% {text-shadow: 0px 0px 18px orange;}
+    100% {text-shadow: 0px 0px 10px orange;}
   }
 
   .homeHeader-title-text {
@@ -100,6 +111,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding: 0px 30px;
   }
 
   /* Media Queries */

@@ -15,6 +15,8 @@ import PaymenResult from '@/views/PaymentResult/index.vue'
 import ForgetPass from '@/views/ForgetPass/index.vue'
 import Careers from '@/views/Careers/index.vue'
 import Career from '@/views/Career/index.vue'
+import NotFound from '@/views/NotFound/index.vue'
+import StaffPage from '@/views/StaffPage/index.vue'
 
 Vue.use(VueRouter)
 
@@ -88,6 +90,20 @@ const routes = [
     path: '/payment/result/',
     name: 'confirmPayment',
     component: PaymenResult,
+  },
+  {
+    path: '/staff',
+    name: 'staff',
+    component: StaffPage
+  },
+
+
+
+  // Errors
+  {
+    path: '*',
+    name: '404',
+    component: NotFound,
   },
 ]
 

@@ -34,6 +34,6 @@ export default {
 label {
   font-size: 13px;
   text-align: right;
-
+  margin-right: 5px;
 }
 </style>

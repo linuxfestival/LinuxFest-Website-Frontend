@@ -52,4 +52,10 @@ button:hover {
   text-align: right;
   font-size: 13px;
 }
+
+@media only screen and (max-width: 768px) {
+  .bottom {
+    flex-direction: column-reverse;
+  }
+}
 </style>

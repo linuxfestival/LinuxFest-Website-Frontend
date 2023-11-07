@@ -5,6 +5,13 @@
 </template>
 
 <script>
+// import ProgressBar from '@/components/RouteProgress.vue';
+
+// export default {
+//   name: 'RoutesWithTransition',
+//   components: {
+//     ProgressBar,
+//   },
 export default {
   name: 'RoutesWithTransition',
 }

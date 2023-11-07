@@ -61,4 +61,14 @@ export default {
   list-style-type: disc;
   font-size: 15px;
 }
+
+@media only screen and (max-width: 768px) {
+  .formFormFooter {
+    flex-direction: column;
+  }
+
+  .formWrapper {
+    padding: 30px;
+  }
+}
 </style>

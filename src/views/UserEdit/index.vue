@@ -52,6 +52,11 @@
           label="سن :"
         />
       </FormGroup>
+      
+      <FormGroup>
+        <SelectInput id="education" v-model="$v.user.education.$model" label="تحصیلات" :value="this.currentUserData.education" :options="education_types" />
+      </FormGroup>
+
       <FormGroup>
         <button :disabled="isLoading">اعمال تغییرات</button>
       </FormGroup>
@@ -63,6 +68,7 @@
 import { numeric, between, email } from 'vuelidate/lib/validators'
 
 import TextInput from '@/components/TextInput.vue'
+import SelectInput from '@/components/SelectInput.vue'
 import PartialHeader from '@/components/PartialHeader'
 import { showErrorNotif, showSuccessNotif } from '@/utils/notifs'
 import { isPersian, isPasswordValid, isPhoneValid } from '@/utils/validators'
@@ -72,6 +78,9 @@ import Header from './components/Header.vue'
 import Description from './components/Description.vue'
 import { fetchUser, editUserRequest } from './requests'
 
+import { education_types } from '@/utils/educations'
+
+
 export default {
   name: 'UserEdit',
   components: {
@@ -80,7 +89,8 @@ export default {
     TextInput,
     Header,
     Description,
-  },
+    SelectInput
+},
   validations: {
     user: {
       firstName: { isPersian },
@@ -89,6 +99,7 @@ export default {
       phoneNumber: { numeric, isPhoneValid },
       password: { isPasswordValid },
       age: { numeric, between: between(15, 100) },
+      education: {}
     },
   },
 
@@ -102,14 +113,19 @@ export default {
         phoneNumber: '',
         password: '',
         age: '',
+        education: ''
       },
       currentUserData: {},
+      education_types
     }
   },
   created() {
     fetchUser()
       .then((user) => {
+        console.log(user)
         this.currentUserData = user
+        this.currentUserData.education = 'bsc'
+        console.log(this.currentUserData)
       })
       .catch(() => {
         showErrorNotif(

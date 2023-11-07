@@ -11,6 +11,7 @@
         <InfoItem title="ایمیل:" :content="user.email" />
         <InfoItem title="‌‌شماره تماس:" :content="user.phone" />
         <InfoItem title="سن:" :content="user.age" v-if="user.age" />
+        <InfoItem title="تحصیلات:" :content="user.education" v-if="user.education" />
         <InfoItem
           title="شماره دانشجویی:"
           :content="user.studentNumber"
@@ -48,6 +49,8 @@ import InfoBox from './components/InfoBox.vue'
 import InfoItem from './components/InfoItem.vue'
 import { fetchUserAndWorkshops } from './requests'
 
+import { getOptionName } from '@/utils/educations'
+
 export default {
   name: 'UserAccount',
   components: {
@@ -73,6 +76,8 @@ export default {
     fetchUserAndWorkshops()
       .then(({ user, workshops }) => {
         this.user = user
+        this.user.education = 'bsc'
+        this.user.education = getOptionName(this.user.education)
         this.workshops = workshops
       })
       .catch(() => {

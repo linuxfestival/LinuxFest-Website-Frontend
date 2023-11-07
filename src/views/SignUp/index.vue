@@ -67,6 +67,7 @@
           :hasError="$v.user.password.$error"
           error="رمز عبور باید بیش از ۸ کاراکتر و شامل حروف کوچک و بزرگ و اعداد باشد"
         />
+        <SelectInput id="education" default_option="تحصیلات" v-model="$v.user.education.$model" :hasError="$v.user.education.$error" value="bsc" :options="education_types" />          
 
         <Actions :disabled="isLoading" />
       </form>
@@ -87,14 +88,18 @@ import {
 import { showErrorNotif, showSuccessNotif } from '@/utils/notifs'
 import { isPersian, isPhoneValid, isPasswordValid, validateIf } from '@/utils/validators'
 import TextInput from '@/components/TextInput.vue'
+import SelectInput from '@/components/SelectInput.vue'
 import Checkbox from '@/components/Checkbox.vue'
 
 import Actions from './components/Actions.vue'
+
+import { education_types } from '@/utils/educations'
 
 export default {
   name: 'SignUp',
   components: {
     TextInput,
+    SelectInput,
     Checkbox,
     Actions,
   },
@@ -110,6 +115,7 @@ export default {
         minLength: validateIf('isAmirkabiri', minLength(7)),
         maxLength: validateIf('isAmirkabiri', maxLength(10)),
       },
+      education: { required }
     },
   },
   data() {
@@ -124,6 +130,7 @@ export default {
         age: '',
         studentNumber: '',
         isAmirkabiri: false,
+        education: ''
       },
     }
   },
@@ -174,7 +181,8 @@ export default {
 
 .main-frame {
   background-color: white;
-  padding: 24px;
+  /* padding: 24px; */
+  padding: 80px 30px;
   border-radius: 12px;
   width: 600px;
 }
