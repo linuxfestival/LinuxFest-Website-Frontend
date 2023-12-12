@@ -19,11 +19,22 @@ export default {
   data() {
     return {
       isLoading: true,
-      workshops: [],
+      workshops: [
+        {
+          title: 'test title',
+          teachers: {name: 'test name', id: 1}
+        },
+        
+        {
+          title: 'test title',
+          teachers: [{name: 'test name', id: 1}, {name: 'test name', id: 2}]
+        }
+      ],
     }
   },
 
   created() {
+    this.isLoading = false
     fetchWorkshops()
       .then((workshops) => {
         this.workshops = workshops

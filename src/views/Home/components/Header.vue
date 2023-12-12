@@ -36,6 +36,7 @@
           {{ $t("home.header.amirkabir") }}
         </h1> 
       </div>
+      <!-- <img src="../../../../public/Designer (1).png" width="100px" alt=""> -->
     </div>
     <router-link to="/" v-scroll-to="'#abouts'" class="homeHeader--startButton">
       <i class="material-icons">keyboard_arrow_down</i>

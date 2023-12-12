@@ -65,7 +65,7 @@
           v-model="$v.user.password.$model"
           placeholder="رمز عبور"
           :hasError="$v.user.password.$error"
-          error="رمز عبور باید بیش از ۸ کاراکتر و شامل حروف کوچک و بزرگ و اعداد باشد"
+          error="رمز عبور باشد شامل عدد و یک حرف بزرگ و کوچک باشد"
         />
         <SelectInput id="education" default_option="تحصیلات" v-model="$v.user.education.$model" :hasError="$v.user.education.$error" value="bsc" :options="education_types" />          
 
